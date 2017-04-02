@@ -24,7 +24,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text=""
+            android:text="songpeixin"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_36px" />
 
