@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_96px"
+        layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp" >
+
+        <RadioGroup
+            android:id="@+id/mine_mylicai_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/main_background"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/mine_mylicai_rb1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/action_bar_tab_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="申请中"
+                android:textColor="@color/radiobtn_text_color"
+                android:textSize="@dimen/sp_24px" />
+
+            <RadioButton
+                android:id="@+id/mine_mylicai_rb2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/action_bar_tab_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="参与中"
+                android:textColor="@color/radiobtn_text_color"
+                android:textSize="@dimen/sp_24px" />
+
+            <RadioButton
+                android:id="@+id/mine_mylicai_rb3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/action_bar_tab_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="已截止"
+                android:textColor="@color/radiobtn_text_color"
+                android:textSize="@dimen/sp_24px" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <com.quqian.listview.XListView
+        android:id="@+id/mine_mylicai_listview1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </com.quqian.listview.XListView>
+
+</LinearLayout>

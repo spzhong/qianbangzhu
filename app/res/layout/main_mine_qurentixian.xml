@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_96px"
+            layout="@layout/titlebar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="提现银行卡"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_28px" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/main_line_gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/main_mine_tixian_meiyong13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon27"
+                android:padding="15dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px" />
+
+            <TextView
+                android:id="@+id/main_mine_querentixian_bangding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/main_mine_tixian_meiyong14"
+                android:layout_toRightOf="@+id/main_mine_tixian_meiyong13"
+                android:padding="15dp"
+                android:text=""
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_28px" />
+
+            <LinearLayout
+                android:id="@+id/main_mine_tixian_meiyong14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                android:padding="15dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="songpeixin"
+                    android:textColor="@color/main_text_black"
+                    android:textSize="@dimen/sp_24px"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_28px"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/main_line_gray" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/main_line_gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/main_mine_tixian_meiyong15"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="提款金额"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px" />
+
+            <TextView
+                android:id="@+id/main_mine_querentixian_jiner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/main_mine_tixian_meiyong16"
+                android:layout_toRightOf="@+id/main_mine_tixian_meiyong15"
+                android:padding="15dp"
+                android:text="0.00"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_28px" />
+
+            <LinearLayout
+                android:id="@+id/main_mine_tixian_meiyong16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                android:paddingBottom="15dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="8dp"
+                android:paddingTop="15dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="songpeixin"
+                    android:textColor="@color/main_text_black"
+                    android:textSize="@dimen/sp_24px"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_28px"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="15dp"
+            android:background="@color/main_line_gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/main_mine_tixian_meiyong17"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="提现手续费"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px" />
+
+            <TextView
+                android:id="@+id/main_mine_querentixian_shouxufei"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/main_mine_tixian_meiyong18"
+                android:layout_toRightOf="@+id/main_mine_tixian_meiyong17"
+                android:padding="15dp"
+                android:text="0.00"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_28px" />
+
+            <LinearLayout
+                android:id="@+id/main_mine_tixian_meiyong18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                android:paddingBottom="15dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="8dp"
+                android:paddingTop="15dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="songpeixin"
+                    android:textColor="@color/main_text_black"
+                    android:textSize="@dimen/sp_24px"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_28px"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/main_line_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:text="1-2个工作日到账（双休日和法定节假日除外）"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_24px" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/main_line_gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/main_mine_tixian_meiyong19"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="0dp"
+                android:paddingTop="15dp"
+                android:text="实际扣除金额"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px" />
+
+            <TextView
+                android:id="@+id/main_mine_querentixian_kouchu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/main_mine_tixian_meiyong20"
+                android:layout_toRightOf="@+id/main_mine_tixian_meiyong19"
+                android:padding="15dp"
+                android:text="0.00"
+                android:textColor="@color/main_orange"
+                android:textSize="@dimen/sp_28px" />
+
+            <LinearLayout
+                android:id="@+id/main_mine_tixian_meiyong20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                android:paddingBottom="15dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="8dp"
+                android:paddingTop="15dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="songpeixin"
+                    android:textColor="@color/main_text_black"
+                    android:textSize="@dimen/sp_24px"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_28px"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/main_line_gray" />
+
+        <Button
+            android:id="@+id/main_mine_querentixian_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
+            android:gravity="center"
+            android:text="确认提现"
+            android:textColor="@color/btn_text_color_black"
+            android:textSize="@dimen/sp_32px"
+            android:visibility="visible" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+    </LinearLayout>
+
+</ScrollView>

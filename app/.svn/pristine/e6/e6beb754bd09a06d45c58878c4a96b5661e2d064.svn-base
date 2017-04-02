@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/tongzhi_item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:padding="15dp"
+        android:src="@drawable/xiaoxi1" />
+
+    <TextView
+        android:id="@+id/tongzhi_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/tongzhi_item_time"
+        android:layout_toRightOf="@+id/tongzhi_item_image"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:text="理财体验还款..."
+        android:textColor="@color/main_text_black"
+        android:textSize="@dimen/sp_28px" />
+
+    <TextView
+        android:id="@+id/tongzhi_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:padding="15dp"
+        android:text="2015-04-18 11:46:30"
+        android:textColor="@color/main_text_black"
+        android:textSize="@dimen/sp_28px" />
+
+</RelativeLayout>

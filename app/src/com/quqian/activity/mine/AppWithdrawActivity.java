@@ -1,0 +1,162 @@
+package com.quqian.activity.mine;
+
+import java.util.List;
+import java.util.Map;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Toast;
+
+import com.example.quqian.R;
+import com.quqian.activity.mine.KjChongZhiActivity.JavaScriptinterface;
+import com.quqian.base.BaseActivity;
+import com.quqian.been.UserMode;
+import com.quqian.util.HttpResponseInterface;
+import com.quqian.util.ProcessDialogUtil;
+import com.quqian.util.Tool;
+
+public class AppWithdrawActivity extends BaseActivity implements OnClickListener,
+		HttpResponseInterface {
+
+	
+	
+	private String mchnt_cd = null;
+	private String mchnt_txn_ssn = null;
+	private String amt = null;
+	private String login_id = null;
+	private String page_notify_url = null;
+	private String back_notify_url = null;
+	private String signatureStr = null;
+	private ProcessDialogUtil juhua = null;
+	private String fyUrl = null;
+	private WebView webView = null;
+
+	@Override
+	protected int layoutId() {
+		// TODO Auto-generated method stub
+		return R.layout.main_mine_appwithdraw;
+	}
+
+	@Override
+	protected void getIntentWord() {
+		// TODO Auto-generated method stub
+		super.getIntentWord();
+		
+	}
+	
+	/**
+	 * 接受页面参数类，用于跳转和数据核对
+	 * @author zhuming
+	 * add by zhuming at 2016-07-08 14:14
+	 */
+	public class JavaScriptinterface {
+		
+		 @JavascriptInterface
+		 public void getCode(String code) {
+			  if(code.equals("0000")){
+				  UserMode user = Tool.getUser(AppWithdrawActivity.this);
+				  double money = Double.parseDouble(user.getKyye()) - Double.parseDouble(amt)/100 - 2;
+				  user.setKyye(String.valueOf(money));
+				  user.saveUserToDB(AppWithdrawActivity.this);
+				  Intent intent1 = new Intent(AppWithdrawActivity.this,
+						  MineActivity.class);
+				  startActivity(intent1);
+			  }
+		  }
+	}
+
+	@Override
+	protected void initView() {
+		// TODO Auto-generated method stub
+		super.initView();
+		setTitle("富友提现");
+		showBack();
+		webView =  (WebView) findViewById(R.id.appwithdrawView);
+		webView.setWebViewClient(new WebViewClient()); 
+		webView.setWebChromeClient(new WebChromeClient());
+		webView.getSettings().setJavaScriptEnabled(true);
+		webView.addJavascriptInterface(new JavaScriptinterface(),
+                "android");
+		juhua = new ProcessDialogUtil(AppWithdrawActivity.this);
+		Intent intent = getIntent();
+		mchnt_cd = intent.getStringExtra("mchnt_cd");
+		mchnt_txn_ssn = intent.getStringExtra("mchnt_txn_ssn");
+		amt = intent.getStringExtra("amt");
+		login_id = intent.getStringExtra("login_id");
+		page_notify_url = intent.getStringExtra("page_notify_url");
+		back_notify_url = intent.getStringExtra("back_notify_url");
+		signatureStr = intent.getStringExtra("signatureStr");
+		fyUrl = intent.getStringExtra("fyUrl");
+		String postData = makePostHTML();
+		webView.loadData(postData, "text/html", "UTF-8");
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
+			webView.goBack();
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	} 
+	
+	@Override
+	protected void initViewListener() {
+		// TODO Auto-generated method stub
+		super.initViewListener();
+		titleBarBack.setOnClickListener(this);
+	}
+	
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		switch (arg0.getId()) {
+		case R.id.title_bar_back:
+			AppWithdrawActivity.this.finish();
+			anim_right_out();
+			break;
+		default:
+			break;
+		}
+	}
+	
+
+
+	private String makePostHTML(){
+		String html = "<!DOCTYPE HTML><html><body><form id='sbform' action='%s' method='post'>%s</form><script type='text/javascript'>document.getElementById('sbform').submit();</script></body></html>";;
+	    StringBuffer sb = new StringBuffer();
+	    sb.append("<input type='hidden' name='mchnt_cd' value='" + mchnt_cd + "'>\n");
+	    sb.append("<input type='hidden' name='mchnt_txn_ssn' value='" + mchnt_txn_ssn + "'>\n");
+	    sb.append("<input type='hidden' name='amt' value='" + amt + "'>\n");
+	    sb.append("<input type='hidden' name='login_id' value='" + login_id + "'>\n");
+	    sb.append("<input type='hidden' name='page_notify_url' value='" + page_notify_url + "'>\n");
+	    sb.append("<input type='hidden' name='back_notify_url' value='" + back_notify_url + "'>\n");
+	    sb.append("<input type='hidden' name='signature' value='" + signatureStr + "'>\n");
+	    return String.format(html, fyUrl, sb.toString());
+	}
+
+
+	@Override
+	public void httpResponse_success(Map<String, String> map,
+			List<Object> list, Object jsonObj) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void httpResponse_fail(Map<String, String> map, String msg,
+			Object jsonObj) {
+		// TODO Auto-generated method stub
+	}
+
+}

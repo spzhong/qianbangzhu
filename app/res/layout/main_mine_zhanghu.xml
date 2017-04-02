@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_96px"
+        layout="@layout/titlebar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/main_line_gray" />
+
+            <RelativeLayout
+                android:id="@+id/main_mine_zhanghu_layout_anquan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="@string/anquanxinxi"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_28px" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal"
+                    android:padding="15dp"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:id="@+id/main_mine_zhanghu_anquan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100.000.00"
+                        android:textColor="@color/main_orange"
+                        android:textSize="@dimen/sp_24px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_28px" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/main_line_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/main_line_gray" />
+
+            <RelativeLayout
+                android:id="@+id/main_mine_zhanghu_layout_nicheng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="用户名"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_28px" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:id="@+id/main_mine_zhanghu_nicheng"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="小猪一号"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_24px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_28px"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginLeft="15dp"
+                android:background="@color/main_line_gray" />
+
+            <RelativeLayout
+                android:id="@+id/main_mine_zhanghu_layout_xingbie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="@string/xingbie"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_28px" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:id="@+id/main_mine_zhanghu_xingbie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="男"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_24px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_28px"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginLeft="15dp"
+                android:background="@color/main_line_gray" />
+
+            <RelativeLayout
+                android:id="@+id/main_mine_zhanghu_layout_chusheng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="@string/chushengriqi"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_28px" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:id="@+id/main_mine_zhanghu_chusheng"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1992-11-08"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_24px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_28px"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/main_line_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/main_line_gray" />
+
+            <RelativeLayout
+                android:id="@+id/main_mine_zhanghu_layout_fuwuma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="@string/wodefuwuma"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_28px" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:id="@+id/main_mine_zhanghu_fuwuma"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ffffffff"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_24px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_28px"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/main_line_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/main_line_gray" />
+
+            <RelativeLayout
+                android:id="@+id/main_mine_zhanghu_layout_erweima"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="@string/wodeerweima"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_28px" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal"
+                    android:padding="15dp"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:id="@+id/main_mine_zhanghu_erweima"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.00"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_24px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_28px"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/main_line_gray" />
+
+            <Button
+                android:id="@+id/main_mine_zhanghu_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button"
+                android:text="@string/tuichu"
+                android:textColor="@color/btn_text_color_black"
+                android:textSize="@dimen/sp_32px" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

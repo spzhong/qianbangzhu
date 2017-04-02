@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_96px"
+        layout="@layout/titlebar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/main_mine_bangding_meiyong17"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="开户名"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_28px" />
+
+        <TextView
+            android:id="@+id/main_mine_bangding_kaihuming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/main_mine_bangding_meiyong17"
+            android:padding="15dp"
+            android:text=""
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/main_mine_bangding_meiyong17123"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="银行卡号"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_28px" />
+
+        <EditText
+            android:id="@+id/main_mine_bangding_yinhangkahao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/main_mine_bangding_meiyong17123"
+            android:background="@null"
+            android:hint="请输入银行卡号"
+            android:numeric="integer"
+            android:padding="15dp"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/main_mine_bangding_meiyong117"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="选择银行"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_28px" />
+
+        <TextView
+            android:id="@+id/main_mine_bangding_xuanzeyinhang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/main_mine_bangding_meiyong117"
+            android:hint="请选择银行"
+            android:padding="15dp"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/main_mine_bangding_meiyong217"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="开户所在地"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_28px" />
+
+        <TextView
+            android:id="@+id/main_mine_bangding_kaihusuozaidi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/main_mine_bangding_meiyong217"
+            android:hint="请选择开户所在地"
+            android:padding="15dp"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+ 
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/main_mine_bangding_meiyong317"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="开户行"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_28px" />
+
+        <EditText
+            android:id="@+id/main_mine_bangding_kaihuhang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/main_mine_bangding_meiyong317"
+            android:background="@null"
+            android:hint="请输入开户行"
+            android:padding="15dp"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/main_mine_bangding_meiyong18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="8dp"
+            android:paddingTop="15dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="songpeixin"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_24px"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px"
+                android:visibility="visible" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <Button
+        android:id="@+id/main_mine_bangding_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="确认绑定"
+        android:textColor="@color/btn_text_color_black"
+        android:textSize="@dimen/sp_32px"
+        android:visibility="visible" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+</LinearLayout>

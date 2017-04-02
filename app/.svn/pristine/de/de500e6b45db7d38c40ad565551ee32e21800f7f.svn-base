@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp" >
+
+        <LinearLayout
+            android:id="@+id/main_index_listview_item_meiyou_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/san_listview_item_tv_btn"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/san_listview_item_tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/icon8"
+                    android:gravity="center"
+                    android:text="实"
+                    android:textColor="@color/main_text_blue"
+                    android:textSize="@dimen/sp_20px" />
+
+                <TextView
+                    android:id="@+id/san_listview_item_tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/icon8"
+                    android:gravity="center"
+                    android:text="企"
+                    android:textColor="@color/main_text_blue"
+                    android:textSize="@dimen/sp_20px" />
+
+                <TextView
+                    android:id="@+id/san_listview_item_tv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="借款买房"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_32px" />
+
+                <TextView
+                    android:id="@+id/san_listview_item_tv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/icon9"
+                    android:gravity="center"
+                    android:text="新手奖"
+                    android:textColor="@color/main_orange_xinshoujiang"
+                    android:textSize="@dimen/sp_20px" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ProgressBar
+                    android:id="@+id/san_listview_item_pb"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_toLeftOf="@+id/san_listview_item_tv_jindu" />
+
+                <TextView
+                    android:id="@+id/san_listview_item_tv_jindu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="100%"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_28px" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/san_listview_item_tv_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_kuang_blue"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="立即投标"
+            android:textColor="@color/main_text_blue"
+            android:textSize="@dimen/sp_28px" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.2"
+            android:orientation="vertical"
+            android:padding="5dp" >
+
+            <TextView
+                android:id="@+id/san_listview_item_tv_i11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="立即投标"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_22px" />
+
+            <TextView
+                android:id="@+id/san_listview_item_tv_i12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/biaodezonger"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_20px"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/san_listview_item_v1"
+            android:layout_width="0.1dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/main_line_gray" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.2"
+            android:orientation="vertical"
+            android:padding="5dp" >
+
+            <TextView
+                android:id="@+id/san_listview_item_tv_i21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="立即投标"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_22px" />
+
+            <TextView
+                android:id="@+id/san_listview_item_tv_i22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/nianlilv"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_20px"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/san_listview_item_v2"
+            android:layout_width="0.1dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/main_line_gray" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.9"
+            android:orientation="vertical"
+            android:padding="5dp" >
+
+            <TextView
+                android:id="@+id/san_listview_item_tv_i31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="立即投标"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_22px" />
+
+            <TextView
+                android:id="@+id/san_listview_item_tv_i32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/huankuanqixian"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_20px"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/san_listview_item_v3"
+            android:layout_width="0.1dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/main_line_gray"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/san_listview_layout4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.2"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/san_listview_item_tv_i41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="立即投标"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_22px" />
+
+            <TextView
+                android:id="@+id/san_listview_item_tv_i42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="立即投标"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_20px"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/san_listview_item_v4"
+            android:layout_width="0.1dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/main_line_gray"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/san_listview_item_tv_i51"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="立即投标"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_24px" />
+
+            <TextView
+                android:id="@+id/san_listview_item_tv_i52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="立即投标"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_20px"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

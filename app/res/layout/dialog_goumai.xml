@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_goumai_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/dialog_goumai_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="购买确认"
+        android:textSize="@dimen/sp_36px" />
+
+    <View
+        android:id="@+id/line_view1"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:text="您此次购买的份数为"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+
+        <TextView
+            android:id="@+id/dialog_goumai_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="15dp"
+            android:text="1"
+            android:textColor="@color/main_orange"
+            android:textSize="@dimen/sp_28px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="15dp"
+            android:paddingRight="15dp"
+            android:text="份，"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+        <CheckBox
+            android:id="@+id/goumai_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/register_wotongyi"
+            android:checked="true"
+            android:text="@string/wotongyi"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_24px" >
+        </CheckBox>
+
+        <TextView
+            android:id="@+id/goumai_xieyi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="《借款协议》"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/sp_24px" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line_view2"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <LinearLayout
+        android:id="@+id/dialog_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/dialog_goumai_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/quexiao"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/sp_32px" />
+
+        <View
+            android:id="@+id/line_view3"
+            android:layout_width="0.1dp"
+            android:layout_height="match_parent"
+            android:background="@color/main_line_gray" />
+
+        <Button
+            android:id="@+id/dialog_goumai_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/queding"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/sp_32px" />
+    </LinearLayout>
+
+</LinearLayout>

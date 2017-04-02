@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_96px"
+        layout="@layout/titlebar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:id="@+id/main_mine_anquan_layout_shiming"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="@string/shimingrenzheng"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_28px"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            android:visibility="visible" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已发送验证码至您的手机"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/main_wangji_yanzhengshouji_shouji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="186****9999"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" >
+
+        <ImageView
+            android:id="@+id/register_meiyong_iv31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:src="@drawable/icon17" />
+
+        <Button
+            android:id="@+id/main_wangji_yanzhengshouji_huoqu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="15dp"
+            android:background="@drawable/button_kuang_blue"
+            android:gravity="center"
+            android:text="@string/huoquyanzhengma"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/sp_20px"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/main_wangji_yanzhengshouji_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/register_meiyong_iv31"
+            android:background="@null"
+            android:ems="10"
+            android:hint="@string/duanxinyanzhengma"
+            android:lines="1"
+            android:padding="10dp"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <Button
+        android:id="@+id/main_wangji_yanzhengshouji_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="下一步"
+        android:background="@drawable/button"
+        android:textColor="@color/btn_text_color_black"
+        android:textSize="@dimen/sp_32px"
+        android:visibility="visible" />
+
+</LinearLayout>

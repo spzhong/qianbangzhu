@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_96px"
+        layout="@layout/titlebar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:id="@+id/main_mine_chongzhi_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/main_mine_chongzhi_meiyong17"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="银行卡号"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_28px" />
+
+        <EditText
+            android:id="@+id/main_mine_chongzhi_yinhangkahao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/main_mine_chongzhi_meiyong18"
+            android:layout_toRightOf="@+id/main_mine_chongzhi_meiyong17"
+            android:hint="请输入银行卡号"
+            android:lines="1"
+            android:numeric="integer"
+            android:background="@null"
+            android:paddingTop="15dp"
+            android:paddingLeft="5dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+
+        <LinearLayout
+            android:id="@+id/main_mine_chongzhi_meiyong18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="8dp"
+            android:paddingTop="15dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="songpeixin"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_24px"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px"
+                android:visibility="visible" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/main_mine_chongzhi_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/main_mine_chongzhi_meiyong1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon27"
+                android:padding="15dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px" />
+
+            <TextView
+                android:id="@+id/main_mine_chongzhi_bangding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/main_mine_chongzhi_meiyong2"
+                android:layout_toRightOf="@+id/main_mine_chongzhi_meiyong1"
+               	android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="15dp"
+                android:text=""
+                android:textColor="@color/main_blue"
+                android:textSize="@dimen/sp_28px" />
+
+            <LinearLayout
+                android:id="@+id/main_mine_chongzhi_meiyong2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingTop="15dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="15dp" 
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/main_mine_tixian_tv_xiugai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="修改"
+                    android:textColor="@color/main_text_black"
+                    android:textSize="@dimen/sp_24px"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_28px"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/main_mine_chongzhi_meiyong17"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="充值金额"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_28px" />
+
+        <EditText
+            android:id="@+id/main_mine_chongzhi_shurujiner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/main_mine_chongzhi_meiyong18"
+            android:layout_toRightOf="@+id/main_mine_chongzhi_meiyong17"
+            android:background="@null"
+            android:hint="请输入充值金额，至少10"
+            android:lines="1"
+            android:numeric="decimal"
+            android:paddingBottom="15dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+
+        <LinearLayout
+            android:id="@+id/main_mine_chongzhi_meiyong18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="8dp"
+            android:paddingTop="15dp"
+            android:visibility="visible" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="songpeixin"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_24px"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px"
+                android:visibility="visible" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/main_mine_chongzhi_meiyong17"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="充值手续费"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_28px" />
+
+        <TextView
+            android:id="@+id/main_mine_chongzhi_shouxufei"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/main_mine_chongzhi_meiyong18"
+            android:layout_toRightOf="@+id/main_mine_chongzhi_meiyong17"
+            android:hint="0.00"
+            android:paddingBottom="15dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+
+        <LinearLayout
+            android:id="@+id/main_mine_chongzhi_meiyong18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="8dp"
+            android:paddingTop="15dp"
+            android:visibility="visible" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="songpeixin"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_24px"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px"
+                android:visibility="visible" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <TextView
+        android:id="@+id/main_mine_chongzhi_shouming"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="充值费率0.0%，由第三方平台收取"
+        android:textColor="@color/main_text_gray"
+        android:textSize="@dimen/sp_24px" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/main_mine_chongzhi_meiyong17"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:text="实际支付金额"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_28px" />
+
+        <TextView
+            android:id="@+id/main_mine_chongzhi_shijizhifu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/main_mine_chongzhi_meiyong18"
+            android:layout_toRightOf="@+id/main_mine_chongzhi_meiyong17"
+            android:paddingBottom="15dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="15dp"
+            android:text="0.00"
+            android:textColor="@color/main_orange"
+            android:textSize="@dimen/sp_28px" />
+
+        <LinearLayout
+            android:id="@+id/main_mine_chongzhi_meiyong18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="8dp"
+            android:paddingTop="15dp"
+            android:visibility="visible" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="songpeixin"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_24px"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px"
+                android:visibility="visible" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <Button
+        android:id="@+id/main_mine_chongzhi_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="下一步"
+        android:textColor="@color/btn_text_color_black"
+        android:textSize="@dimen/sp_32px"
+        android:visibility="visible" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+</LinearLayout>

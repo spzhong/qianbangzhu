@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/app_name"
+        android:textSize="@dimen/sp_36px" />
+
+    <View
+        android:id="@+id/line_view1"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <TextView
+        android:id="@+id/dialog_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:paddingLeft="15dp"
+        android:layout_gravity="center"
+        android:paddingRight="15dp"
+        android:paddingTop="20dp"
+        android:text="@string/app_name"
+        android:textSize="@dimen/sp_28px" />
+
+    <EditText
+        android:id="@+id/dialog_et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shurukuang"
+        android:lines="1"
+        android:layout_margin="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        android:hint="请输入体验金券号"
+        android:textSize="@dimen/sp_28px"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/line_view2"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <LinearLayout
+        android:id="@+id/dialog_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/dialog_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/quexiao"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/sp_32px" />
+
+        <View
+            android:id="@+id/line_view3"
+            android:layout_width="0.1dp"
+            android:layout_height="match_parent"
+            android:background="@color/main_line_gray" />
+
+        <Button
+            android:id="@+id/dialog_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/queding"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/sp_32px" />
+    </LinearLayout>
+
+</LinearLayout>
