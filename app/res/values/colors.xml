@@ -10,7 +10,7 @@
     <color name="main_red1">#fd5224</color>
     <color name="main_orange">#FF9900</color>
     <color name="main_orange_xinshoujiang">#F2A708</color>
-    <color name="main_text_gray">#ABABAB</color>
+    <color name="main_text_gray">#969696</color>
     <color name="main_blue">#30C4FF</color>
      <color name="main_gray">#6B6B6B</color>
     <color name="main_text_blue">#128DD3</color>
@@ -20,5 +20,5 @@
     <color name="line">#ffd3dde6</color>
     <color name="griditems_bg">#ffe8ecef</color>
     <color name="commo_text_color">#ff333333</color>
-
+<color name="title_blue">#3C9AEB</color>
 </resources>

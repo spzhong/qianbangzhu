@@ -42,14 +42,14 @@
     <string name="shengyufenshu">剩余份数</string>
     <string name="goumaizongxu">购买总需</string>
     <string name="lijigoumai">立即购买</string>
-    <string name="indexkzb">快赚宝</string>
-    <string name="indexkzbdesc">周期短，投资灵活，理财首选</string>
-    <string name="indexxmzt">项目直投</string>
-    <string name="indexxmztdesc">8%-13%稳定年收益</string>
+    <string name="indexkzb">精选理财</string>
+    <string name="indexkzbdesc">周期短、投资灵活</string>
+    <string name="indexxmzt">存管理财</string>
+    <string name="indexxmztdesc">华兴银行资金存管</string>
     <string name="indexzqzr">债权转让</string>
     <string name="indexzqzrdesc">灵活理财，更多选择</string>
     <string name="indewyjk">我要借款</string>
-    <string name="indexwyjkdesc">小借款，大未来</string>
+    <string name="indexwyjkdesc">安全、快捷、高效</string>
 
     <!--kzb  -->
     <string name="kuaizhuaibao">快赚宝</string>
@@ -127,4 +127,22 @@
     <string name="set_gesture_pattern_reason">手势密码将在您开启程序是启动</string>
     <string name="reset_gesture_code">重设手势密码</string>
 
+    <string name="wuyoucunzheng1">无忧存证是安存科技联合公证机构共同推出，以“增强互联网金融用户交易安全”为核心的全球首个一站式互联网金融公证保全解决方案。当用户通过互联网发生交易行为的同时，将交易数据实时同步至安存金融级数据保全云。所保全数据严格满足证据的真实性、合法性、相关性要求，必要时可以依法申请出具公证书，真正做到一站式公证保全。</string>
+    <string name="wuyoucunzheng2">安存无忧电子数据保全平台已跟全国28个省、直辖市、自治区公证处签约合作，其证明力获得人民法院的认可。一旦出现纠纷，投资者可以通过后台提交公证申请，维护自身合法权益。</string>
+    
+    <string name="wuyoucunzheng3">2013年1月1日实施的《中华人民共和国民事诉讼法》第63条已经明确将电子数据列为单一证据类别——电子数据证据成为法定证据。但与其它传统证据形式相比，电子数据证据有着海量、脆弱、易变易改、不易保存原始数据等特点，普通电子数据证据证明力通常不受司法认可。</string>
+    <string name="wuyoucunzheng4">钱帮主联手无忧存证，采取全电子数据生命周期存证模式，即从数据的生成和创建——数据的存储和传输——数据的取得，全方位确保所保全的电子数据的真实性、完整性、安全性。在无忧存证中保全的电子数据，能通过后台申请公正机关公证，证明力获人民法院认可。</string>
+    <string name="wuyoucunzheng5">用户在钱帮主整个投资过程的电子数据，用第三方保全的办法记录事实真相，明确主体的权利与义务，有效防范法律风险。平台信息更透明，投资人利益有所保障。</string>
+    <string name="wuyoucunzheng6">保全数据包括：项目信息、交易信息、充值信息、提现信息、用户信息。</string>
+    
+    <string name="yinhangcunguan1">银行资金存管，是指投资人、借款人在华兴银行开通实名电子银行账户（即E账户），用户投资和还款均通过银行账户资金划拨完成，钱帮主平台仅进行信息撮合，全程不触碰任何资金。</string>
+    <string name="yinhangcunguan2">上线资金存管，意味着钱帮主与华兴银行系统对接，确保平台自有资金账户和客户资金账户分离，平台投资人均可通过华兴银行存管系统开设独立的存管账户。用户的充值、投资、提现与划拨等交易类操作，均通过独立存管账户完成，能有效避免网贷平台非法挪用投资人资金，提供银行级别的资金安全保障。</string>
+    <string name="yinhangcunguan3">根据银监会最新发布的《网络借贷信息中介机构业务活动管理暂行办法》第二十八条，网络借贷信息中介机构应当实行自身资金与出借人和借款人资金的隔离管理，并选择符合条件的银行业金融机构作为出借人与借款人的资金存管机构。</string>
+    <string name="yinhangcunguan4">广东华兴银行是经国务院有关部委批准，于2011年8月依法创新设立的一家混合所有制商业银行，注册资本50亿元，注册地位于汕头经济特区，运营总部设在广州市。</string>
+    <string name="yinhangcunguan5">广东华兴银行作为较早上线网贷平台客户资金存管系统的银行，在资金存管、风险把控等方面拥有先进的技术和丰富的经验。</string>
+    <string name="yinhangcunguan6">用户操作投资的交易信息和资金则在华兴银行系统体现，平台不直接经手客户所有资金，也无权动用客户在银行存管系统的资金。华兴银行会对交易流程进行核查，使借贷双方的债权关系清晰明确，保障您资金安全。</string>
+    <string name="yinhangcunguan7">方法一：通过E账户充值（实时到账）（需先通过本人银行卡转账至您的华兴银行E账户中，然后进行充值） 官方推荐方法 </string>
+    <string name="yinhangcunguan8">方法二：通过已绑定的银行卡充值（T+1工作日到账）</string>
+    <string name="yinhangcunguan9">所有账户均需经要实名认证。华兴银行存管系统采用“同卡进出”原则，即您在该账户内的资金只能提现至您绑定的银行卡中，只有“账户余额”与“待收金额”同时为“0”时，才能更换绑定银行卡，因此，即便您的账户及提现密码同时被不法分子窃取，也无法动用您的资金。</string>
+    <string name="yinhangcunguan10">新注册用户需下载广东华兴银行“投融资平台”APP登录华兴银行E账户进行个人实名信息认证后方可进行提现。</string>
 </resources>

@@ -51,6 +51,10 @@ import com.quqian.activity.LoginActivity;
 import com.quqian.activity.MainActivity;
 import com.quqian.activity.RegisterActivity;
 import com.quqian.activity.YanZhengShouJiActivity;
+import com.quqian.activity.index.xin.WoYaoJieKuan;
+import com.quqian.activity.index.xin.WuYouCunZhengOne;
+import com.quqian.activity.index.xin.YinHangCunGuanOne;
+import com.quqian.activity.index.xin.YunYingShuJu;
 import com.quqian.activity.mine.ZiJinGuanLiActivity;
 import com.quqian.activity.more.MoreActivity;
 import com.quqian.base.BaseActivity;
@@ -77,28 +81,18 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 	// R.drawable.pic7, R.drawable.pic5, R.drawable.pic8 };
 	private ImageView[] dotImage;
 
-	// 登录注册的布局
-	private LinearLayout layout_login_register = null;
-	private Button index_login = null;
-	private Button index_register = null;
+	//运营数据布局按钮
+	private LinearLayout yunyingshuju = null;
+	private LinearLayout yinhangcunguan = null;
+	private LinearLayout wuyoucunzheng = null;
+	
+	// 精选理财布局按钮
+	private RelativeLayout jingxuanlicai = null;
+	// 存管理财布局按钮
+	private RelativeLayout cunguanlicai = null;
+	// 我要借款布局按钮
+	private RelativeLayout woyaojiekuan = null;
 
-	// 余额信息的布局按钮
-	private LinearLayout layout_yuer = null;
-
-	// 散标投资布局按钮
-	private RelativeLayout layout_sanbiao = null;
-	// 快赚宝布局按钮
-	private RelativeLayout layout_kuaizhuanbao = null;
-	// 债权转让布局按钮
-	private RelativeLayout layout_zhaiquan = null;
-	// 理财体验布局按钮
-/*	private LinearLayout layout_licai = null;
-	// 领取体验金
-	private TextView tv_lingqu = null;*/
-
-	// 已赚总额跟账户余额
-	private TextView tv_keyong = null;
-	private TextView tv_yizhuan = null;
 
 	// 读取登录状态 ，loginState = login.
 	private Boolean loginState = false;
@@ -159,31 +153,21 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 		} else {
 			loginState = true;
 		}
-
-		layout_login_register = (LinearLayout) findViewById(R.id.index_layout_login);
-		index_login = (Button) findViewById(R.id.index_btn_denglu);
-		index_register = (Button) findViewById(R.id.index_btn_zhuce);
-
-		layout_yuer = (LinearLayout) findViewById(R.id.index_layout_yuer);
-
-	/*	tv_lingqu = (TextView) findViewById(R.id.index_tv_lingqu);*/
-		tv_keyong = (TextView) findViewById(R.id.index_tv_keyong);
-		tv_yizhuan = (TextView) findViewById(R.id.index_tv_yizhuan);
-
-		if (loginState) {
-			layout_login_register.setVisibility(View.GONE);
-			layout_yuer.setVisibility(View.VISIBLE);
-			// 显示
-			tv_keyong.setText(user.getKyye());// 可用余额
-			tv_yizhuan.setText(user.getYzze());// 已赚取金额
-		}
-
-		layout_sanbiao = (RelativeLayout) findViewById(R.id.index_layout_xmzt);
-		//快赚宝
-		layout_kuaizhuanbao = (RelativeLayout)findViewById(R.id.index_layout_kzb);
-		//债权转让
-		layout_zhaiquan = (RelativeLayout) findViewById(R.id.index_layout_zqzr);
-		/*layout_licai = (LinearLayout) findViewById(R.id.index_layout_licaitiyan);*/
+	
+		//运营数据
+		yunyingshuju = (LinearLayout) findViewById(R.id.index_layout_yunyingshuju);
+		//运营数据
+		yinhangcunguan = (LinearLayout) findViewById(R.id.index_layout_yinhangchunguan);
+		//运营数据
+		wuyoucunzheng = (LinearLayout) findViewById(R.id.index_layout_wuyoucunzheng);
+		
+		//精选理财
+		jingxuanlicai = (RelativeLayout) findViewById(R.id.index_layout_jingxuanlicai);
+		//存管理财
+		cunguanlicai = (RelativeLayout)findViewById(R.id.index_layout_cunguanlicai);
+		//我要借款
+		woyaojiekuan = (RelativeLayout) findViewById(R.id.index_layout_woyaojiekuan);
+		
 
 		// 获取广告条信息
 		loadHttp_bannerInfo();
@@ -191,33 +175,29 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 		// loadHttp_info();
  
 		// 接受广播
-		BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
-			@Override
-			public void onReceive(Context arg0, Intent arg1) {
-				// Intent intent = getIntent();
-				user = Tool.getUser(IndexActivity.this);
-				tv_keyong.setText(user.getKyye());// 可用余额
-				tv_yizhuan.setText(user.getYzze());// 已赚取金额
-			}
-		};
-		IntentFilter intentFilter = new IntentFilter();
-		intentFilter.addAction("dengluhoushuaxinshuju");
-		registerReceiver(mBroadcastReceiver, intentFilter);
+//		BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+//			@Override
+//			public void onReceive(Context arg0, Intent arg1) {
+//				// Intent intent = getIntent();
+//				user = Tool.getUser(IndexActivity.this);
+//			}
+//		};
+//		IntentFilter intentFilter = new IntentFilter();
+//		intentFilter.addAction("dengluhoushuaxinshuju");
+//		registerReceiver(mBroadcastReceiver, intentFilter);
 	}
 
 	@Override
 	protected void initViewListener() {
 		// TODO Auto-generated method stub
 		super.initViewListener();
-		index_login.setOnClickListener(this);
-		index_register.setOnClickListener(this);
-		layout_yuer.setOnClickListener(this);
-		layout_sanbiao.setOnClickListener(this);
-		//得到快赚宝点击事件
-		layout_kuaizhuanbao.setOnClickListener(this);
-		layout_zhaiquan.setOnClickListener(this);
-		/*layout_licai.setOnClickListener(this);
-		tv_lingqu.setOnClickListener(this);*/
+		yunyingshuju.setOnClickListener(this);
+		yinhangcunguan.setOnClickListener(this);
+		wuyoucunzheng.setOnClickListener(this);
+		jingxuanlicai.setOnClickListener(this);
+		cunguanlicai.setOnClickListener(this);
+		woyaojiekuan.setOnClickListener(this);
+	
 	}
 
 	protected void doOther() {
@@ -291,54 +271,36 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 
 		switch (arg0.getId()) {
-		case R.id.index_btn_denglu:
-			// 登陆按钮，跳转到登陆界面
-			startActivity(new Intent(IndexActivity.this, LoginActivity.class));
-			anim_down_in();
-			break;
-		case R.id.index_btn_zhuce:
-			// 注册按钮，跳转到注册界面
-			startActivity(new Intent(IndexActivity.this, RegisterActivity.class));
-			anim_down_in();
-			break;
-		case R.id.index_layout_yuer:
-			// 跳转到资金管理
-			startActivity(new Intent(IndexActivity.this,
-					ZiJinGuanLiActivity.class));
+		case R.id.index_layout_yunyingshuju:
+			// 跳转到运营数据
+			startActivity(new Intent(IndexActivity.this,YunYingShuJu.class));
 			anim_right_in();
 			break;
-		case R.id.index_layout_xmzt:
-			// 跳转到散标投资
-			startActivity(new Intent(IndexActivity.this,SanBiaoTouZiActivity.class));
+		case R.id.index_layout_yinhangchunguan:
+			// 跳转到银行存管
+			startActivity(new Intent(IndexActivity.this,YinHangCunGuanOne.class));
 			anim_right_in();
 			break;
-		case R.id.index_layout_kzb:
-			// 切换到快赚宝页面
-			startActivity(new Intent(IndexActivity.this,KuaizhuanBaoActivity.class));
+		case R.id.index_layout_wuyoucunzheng:
+			// 跳转到无忧存证
+			startActivity(new Intent(IndexActivity.this,WuYouCunZhengOne.class));
 			anim_right_in();
 			break;
-		case R.id.index_layout_zqzr:
-			// 跳转到债权转让
+		case R.id.index_layout_jingxuanlicai:
+			// 跳转到精选理财
 			startActivity(new Intent(IndexActivity.this,ZhaiQuanZhuanRangActivity.class));
 			anim_right_in();
 			break;
-	 /*case R.id.index_layout_licaitiyan:
-			// 跳转到理财体验
-			startActivity(new Intent(IndexActivity.this,
-					LiCaiTiYanActivity.class));
+		case R.id.index_layout_cunguanlicai:
+			// 跳转存管理财
+			startActivity(new Intent(IndexActivity.this,ZhaiQuanZhuanRangActivity.class));
 			anim_right_in();
 			break;
-		case R.id.index_tv_lingqu:
-			// 弹出领取体验金对话框，是否调接口刷新，
-			if (loginState) {
-				lingqutiyanjin();
-			} else {
-				 //进入登陆的页面
-				startActivity(new Intent(IndexActivity.this, LoginActivity.class));
-				anim_down_in();
-			}
-			break;*/
-
+		case R.id.index_layout_woyaojiekuan:
+			// 跳转到我要借款
+			startActivity(new Intent(IndexActivity.this,WoYaoJieKuan.class));
+			anim_right_in();
+			break;
 		default:
 			break;
 		}

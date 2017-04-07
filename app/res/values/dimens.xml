@@ -20,6 +20,7 @@
     <dimen name="sp_44px">22sp</dimen>
     <dimen name="sp_40px">20sp</dimen>
     <dimen name="sp_36px">18sp</dimen>
+    <dimen name="sp_30px">14sp</dimen>
     <dimen name="sp_32px">16sp</dimen>
     <dimen name="sp_28px">14sp</dimen>
     <dimen name="sp_26px">13sp</dimen>

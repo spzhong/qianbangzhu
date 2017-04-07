@@ -82,7 +82,11 @@ public class API {
 	
 	public static String androidRegion = HTTP+ "user/bankcard/androidRegion.htm";// 47,获取省，市，区
 	
-	// 新增
+	//4月5号新增
+	public static String YysjCount = HTTP+ "app/YysjCount.htm";// 100,统计数据
+	
+	//4月5号新增
+	
 
 	public API() {
 		// TODO Auto-generated constructor stub
@@ -663,6 +667,7 @@ public class API {
 		// 添加URL
 		map.put("url", VERSION);
 		map.put("urlNum", "35");
+		map.put("type", "android");
 		// 发起网络请求
 		Http.POST(map, activity);
 		return "";
@@ -802,5 +807,16 @@ public class API {
 			Http.POST(map, activity);
 			return "";
 		}
-
+	// 统计数据
+	public static String APIYysjCount_100(Map<String, String> map,
+					HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", YysjCount);
+		map.put("urlNum", "100");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";		
+	}
+	 
+	
 }

@@ -17,13 +17,14 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public abstract class BaseActivity extends FragmentActivity{
 
 	protected Context context;
 
-	public TextView titleBarBack = null;
+	public ImageView titleBarBack = null;
 	public TextView titleBarTitle = null;
 	public TextView titleBarMenu = null;
 
@@ -65,7 +66,7 @@ public abstract class BaseActivity extends FragmentActivity{
 
 	protected void allTitleBar() {
 		// TODO Auto-generated method stub
-		titleBarBack = (TextView) findViewById(R.id.title_bar_back);
+		titleBarBack = (ImageView) findViewById(R.id.title_bar_back);
 		titleBarTitle = (TextView) findViewById(R.id.titile_bar_title);
 		titleBarMenu = (TextView) findViewById(R.id.title_bar_menu);
 	}

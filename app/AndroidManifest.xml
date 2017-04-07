@@ -114,6 +114,74 @@
             android:theme="@style/AppTheme" >
         </activity>
         
+        <!-- 首页 new-->
+        <activity
+            android:name="com.quqian.activity.index.xin.WoYaoJieKuan"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.index.xin.YunYingShuJu"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.index.xin.YunYingShuJuNext"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.index.xin.WuYouCunZhengOne"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.index.xin.WuYouCunZhengTwo"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.index.xin.WuYouCunZhengThree"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.index.xin.WuYouCunZhengFour"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.index.xin.YinHangCunGuanOne"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.index.xin.YinHangCunGuanTwo"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.index.xin.YinHangCunGuanThree"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.index.xin.YinHangCunGuanFour"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        
         <!-- 首页 -->
         <activity
             android:name="com.quqian.activity.index.IndexActivity"

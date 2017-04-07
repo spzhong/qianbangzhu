@@ -27,18 +27,56 @@ public class UserMode {
 	public String sfzsfrz; // 是否设置了身份认证
 	public String txmmsfsz; // 提现密码是否设置
 	public String yjsfsz; // 邮件是否设置
-	
-	public String fwmlj;//服务码的地址
-	public String znxwdts;//通知未读
-	
+	public String znxwdts;//站内未读数
+	public String fwmlj;//服务码连接
 	
 	//其他特殊的字段
 	public String codeError;//输入错误手势密码的次数
 	public String shoushiCode;//手势密码
 
 	
+	//新增4月5号
+	public String cgkyye;//存管账户可用余额
+	public String cgdjje;//存管账户冻结金额
+	public String cgyzze;//存管账户已赚金额
+	public String cgzhze;//存管账户总金额
+	//新增4月5号
+	
+	 
 	public String getZnxwdts() {
 		return znxwdts;
+	}
+
+	public String getCgkyye() {
+		return cgkyye;
+	}
+
+	public void setCgkyye(String cgkyye) {
+		this.cgkyye = cgkyye;
+	}
+
+	public String getCgdjje() {
+		return cgdjje;
+	}
+
+	public void setCgdjje(String cgdjje) {
+		this.cgdjje = cgdjje;
+	}
+
+	public String getCgyzze() {
+		return cgyzze;
+	}
+
+	public void setCgyzze(String cgyzze) {
+		this.cgyzze = cgyzze;
+	}
+
+	public String getCgzhze() {
+		return cgzhze;
+	}
+
+	public void setCgzhze(String cgzhze) {
+		this.cgzhze = cgzhze;
 	}
 
 	public void setZnxwdts(String znxwdts) {
@@ -239,7 +277,10 @@ public class UserMode {
 			this.xm = json.getString("xm");
 			this.fwmlj = json.getString("fwmlj");
 			this.znxwdts = json.getString("znxwdts");
-			
+			this.cgkyye = json.getString("cgkyye");
+			this.cgdjje = json.getString("cgdjje");
+			this.cgyzze = json.getString("cgyzze");
+			this.cgzhze = json.getString("cgzhze");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -287,9 +328,11 @@ public class UserMode {
 		Tool.writeData(ctx, "user", "shoushiCode", this.getShoushiCode());
 		Tool.writeData(ctx, "user", "fwmlj", this.getFwmlj());
 		Tool.writeData(ctx, "user", "znxwdts", this.getZnxwdts());
-		
+		Tool.writeData(ctx, "user", "cgkyye", this.getCgkyye());
+		Tool.writeData(ctx, "user", "cgdjje", this.getCgdjje());
+		Tool.writeData(ctx, "user", "cgyzze", this.getCgyzze());
+		Tool.writeData(ctx, "user", "cgzhze", this.getCgzhze());
 	}
-
  
 
 }

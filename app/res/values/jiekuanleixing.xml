@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="jiekuanleixingArray">
+        <item>请选择借款类型</item>  
+        <item>个人借款</item>  
+        <item>企业借款</item>                  
+    </string-array>  
+    
+</resources>

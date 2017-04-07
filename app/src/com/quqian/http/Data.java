@@ -13,6 +13,7 @@ import com.quqian.been.Notification;
 import com.quqian.been.SanProject;
 import com.quqian.been.TiYanProject;
 import com.quqian.been.UserMode;
+import com.quqian.been.Yunying;
 import com.quqian.been.ZhaiQuanProject;
 import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.Tool;
@@ -94,6 +95,8 @@ public class Data {
             API_USRXXGLLIST_29();
         }else if(this.urlNum=="48"){//快赚宝列表
             API_USRXXGLLIST_48();
+        }else if(this.urlNum=="100"){//运营数据
+            API_yunying_100();
         }
         
     }
@@ -276,7 +279,15 @@ public class Data {
                   e.printStackTrace();
               }
           }
-}
+    	}
+    	
+    	//运营数据
+    	private void API_yunying_100(){
+    		JSONObject json = (JSONObject) this.resultObj;
+            Yunying yunying = new Yunying();
+            yunying.initMakeData_Info(json);
+            this.list.add(yunying);//加入list中
+    	}
     
     
 }

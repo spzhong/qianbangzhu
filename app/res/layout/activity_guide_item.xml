@@ -41,10 +41,10 @@
     <TextView
         android:id="@+id/btn"
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="110dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:paddingBottom="20dp"
         android:paddingLeft="30dp"
