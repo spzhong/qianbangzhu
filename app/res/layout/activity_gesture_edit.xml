@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/lock_bg" >
+    android:background="#116597" >
 
     <LinearLayout
         android:id="@+id/gesture_tip_layout"
@@ -11,14 +11,12 @@
         android:gravity="center"
         android:orientation="vertical" >
 
-        <!--
-             <com.quqian.look.widget.LockIndicator
+        <com.quqian.lock.widget.LockIndicator
             android:id="@+id/lock_indicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dip" 
-            android:visibility="gone"/>
-        -->
+            android:layout_marginTop="10dip"
+           android:visibility="gone" />
 
         <TextView
             android:id="@+id/text_tip"

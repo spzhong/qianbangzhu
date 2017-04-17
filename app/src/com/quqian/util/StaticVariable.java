@@ -48,10 +48,12 @@ public class StaticVariable {
 	 * */
 	public static String sv_toMine = "to_mine";
 	public static String sv_toMore = "to_more";
+	public static String sv_toInvest = "to_invest";
 	/**
 	 * PolicyLoginActivity To PolicyIndexActivity
 	 * */
 	public static String xiaoxi = "";
+	public static String licaitab = "1";
 	public static String sv_pl_pi_url = "pl_pi_url";
 
 	/**

@@ -69,6 +69,7 @@ import com.quqian.util.BitmapUtil;
 import com.quqian.util.CommonUtil;
 import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.ProcessDialogUtil;
+import com.quqian.util.StaticVariable;
 import com.quqian.util.TimeUtil;
 import com.quqian.util.Tool;
 import com.quqian.util.WebViewActivity;
@@ -283,18 +284,22 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 			break;
 		case R.id.index_layout_wuyoucunzheng:
 			// 跳转到无忧存证
-			startActivity(new Intent(IndexActivity.this,WuYouCunZhengOne.class));
+			startActivity(new Intent(IndexActivity.this,SanBiaoTouZiActivity.class));
 			anim_right_in();
 			break;
 		case R.id.index_layout_jingxuanlicai:
 			// 跳转到精选理财
-			startActivity(new Intent(IndexActivity.this,ZhaiQuanZhuanRangActivity.class));
-			anim_right_in();
+			Intent intent3 = new Intent(this, MainActivity.class);
+			StaticVariable.put(StaticVariable.licaitab, "1");
+			StaticVariable.put(StaticVariable.sv_toInvest, "4");
+			startActivity(intent3);
 			break;
 		case R.id.index_layout_cunguanlicai:
 			// 跳转存管理财
-			startActivity(new Intent(IndexActivity.this,ZhaiQuanZhuanRangActivity.class));
-			anim_right_in();
+			Intent intent4 = new Intent(this, MainActivity.class);
+			StaticVariable.put(StaticVariable.licaitab, "2");
+			StaticVariable.put(StaticVariable.sv_toInvest, "4");
+			startActivity(intent4);
 			break;
 		case R.id.index_layout_woyaojiekuan:
 			// 跳转到我要借款

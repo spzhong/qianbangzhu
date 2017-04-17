@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.example.quqian.R;
 import com.quqian.activity.index.IndexActivity;
+import com.quqian.activity.invert.Invert;
 import com.quqian.activity.mine.MineActivity;
 import com.quqian.activity.more.MoreActivity;
 import com.quqian.base.AppManager;
@@ -42,12 +43,13 @@ public class MainActivity extends ActivityGroup implements OnClickListener {
 
 	private LocalActivityManager localActivityManager;
 	private FrameLayout container;
-	private RadioButton rbIndex, rbMine, rbMore;
+	private RadioButton rbIndex, rbMine, rbMore,rbInvest;
 	private String currentActivityName = "";
 	private RadioGroup rg;
 	private FrameLayout currentView;
 
 	private Bundle bundle = new Bundle();
+	private Bundle bundle1 = new Bundle();
 	
 	// 读取登录状态 ，loginState = login.
 	private Boolean loginState = false;
@@ -70,12 +72,14 @@ public class MainActivity extends ActivityGroup implements OnClickListener {
 		rbIndex = (RadioButton) findViewById(R.id.rbIndex);
 		rbMine = (RadioButton) findViewById(R.id.rbMine);
 		rbMore = (RadioButton) findViewById(R.id.rbMore);
+		rbInvest = (RadioButton) findViewById(R.id.rbInvest);
 	}
 
 	private void initViewListener() {
 		rbIndex.setOnClickListener(this);
 		rbMine.setOnClickListener(this);
 		rbMore.setOnClickListener(this);
+		rbInvest.setOnClickListener(this);
 	}
 
 	private void doOtherThing() {
@@ -183,13 +187,18 @@ public class MainActivity extends ActivityGroup implements OnClickListener {
 						LoginActivity.class);
 				intent.putExtra("fangxiang", "main");
 				startActivity(intent);
-				overridePendingTransition(R.anim.slide_down_in, R.anim.stay);
+				overridePendingTransition(R.anim.slide_right_in, R.anim.stay);
 				Log.v("quqain", "-----toLoginActivity------");
 			}
 			break;
 		case R.id.rbMore:
 			setContainerView("more", MoreActivity.class, null, false);
 			rbMore.setChecked(true);
+			BackKeyCount = 0;
+			break;
+		case R.id.rbInvest:
+			setContainerView("invest", Invert.class, bundle1, false);
+			rbInvest.setChecked(true);
 			BackKeyCount = 0;
 			break;
 		}
@@ -211,12 +220,16 @@ public class MainActivity extends ActivityGroup implements OnClickListener {
 						LoginActivity.class);
 				intent.putExtra("fangxiang", "main");
 				startActivity(intent);
-				overridePendingTransition(R.anim.slide_down_in, R.anim.stay);
+				overridePendingTransition(R.anim.slide_right_in, R.anim.stay);
 			}
 			break;
 		case R.id.rbMore:
-			setContainerView("mmore", MoreActivity.class, b, needRestart);
+			setContainerView("more", MoreActivity.class, b, needRestart);
 			rbMore.setChecked(true);
+			break;
+		case R.id.rbInvest:
+			setContainerView("invest", Invert.class, b, needRestart);
+			rbInvest.setChecked(true);
 			break;
 		}
 	}
@@ -281,10 +294,12 @@ public class MainActivity extends ActivityGroup implements OnClickListener {
 		}
 
 		bundle.putString("xiaoxigeshu", StaticVariable.get(StaticVariable.xiaoxi));
+		bundle1.putString("licaitab",  StaticVariable.get(StaticVariable.licaitab));
 		
 		String toIndex = StaticVariable.get(StaticVariable.sv_toIndex);
 		String toMine = StaticVariable.get(StaticVariable.sv_toMine);
 		String toMore = StaticVariable.get(StaticVariable.sv_toMore);
+		String toInvest = StaticVariable.get(StaticVariable.sv_toInvest);
 		if (toIndex.equals("1")) {
 			toTab(R.id.rbIndex, null, true);
 		}
@@ -293,6 +308,9 @@ public class MainActivity extends ActivityGroup implements OnClickListener {
 		}
 		if (toMore.equals("3")) {
 			toTab(R.id.rbMore, null, false);
+		}
+		if (toInvest.equals("4")) {
+			toTab(R.id.rbInvest, bundle1, true);
 		}
 		super.onResume();
 	}

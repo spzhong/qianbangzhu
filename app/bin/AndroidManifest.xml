@@ -182,6 +182,19 @@
             android:theme="@style/AppTheme" >
         </activity>
         
+        <activity
+            android:name="com.quqian.activity.invert.Invert"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.invert.InvertInfoActivity"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        
         <!-- 首页 -->
         <activity
             android:name="com.quqian.activity.index.IndexActivity"

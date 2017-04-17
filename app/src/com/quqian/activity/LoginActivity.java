@@ -46,7 +46,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 	private EditText et_pass = null;
 	// 忘记密码
 	private TextView tv_wang = null;
-
+	// 忘记密码
+	private TextView tv_zhuce = null;
+	
 	private Boolean fangxiang = false;
 
 	//usermode
@@ -81,8 +83,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 		super.initView();
 		setTitle("登录");
 		showBack();
-		showMenu();
-		setMenu("注册");
+		//showMenu();
+		//setMenu("注册");
 
 		jindu = new ProcessDialogUtil(LoginActivity.this);
 		
@@ -90,7 +92,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 		et_name = (EditText) findViewById(R.id.login_et_name);
 		et_pass = (EditText) findViewById(R.id.login_et_pass);
 		tv_wang = (TextView) findViewById(R.id.login_wangjimima);
-
+		tv_zhuce = (TextView) findViewById(R.id.login_mianfeizhuce);
 	}
 
 	@Override
@@ -98,10 +100,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		super.initViewListener();
 		titleBarBack.setOnClickListener(this);
-		titleBarMenu.setOnClickListener(this);
 		login.setOnClickListener(this);
 		tv_wang.setOnClickListener(this);
-
+		tv_zhuce.setOnClickListener(this);
 	}
 
 	@Override
@@ -112,7 +113,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 			// 返回键
 			backTo();
 			break;
-		case R.id.title_bar_menu:
+		case R.id.login_mianfeizhuce:
 			// 注册键
 			startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
 			anim_right_in();

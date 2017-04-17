@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_96px"
+        layout="@layout/titlebar"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/main_blue"
+        android:padding="10dp" >
+
+        <RadioGroup
+            android:id="@+id/mine_invert_rg"
+            android:layout_width="match_parent"
+           	android:layout_marginLeft="50dp"
+           	android:layout_marginRight="50dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/mine_invert_rb1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/action_bar_tab_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="精选理财"
+                android:textColor="@color/radiobtn_text_color"
+                android:textSize="@dimen/sp_30px" />
+
+            <RadioButton
+                android:id="@+id/mine_invert_rb2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/action_bar_tab_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="存管理财"
+                android:textColor="@color/radiobtn_text_color"
+                android:textSize="@dimen/sp_30px" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <com.quqian.listview.XListView
+        android:id="@+id/mine_invert_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </com.quqian.listview.XListView>
+
+</LinearLayout>

@@ -1,109 +1,144 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_background"
+    android:background="@drawable/login_bg"
     android:orientation="vertical" >
 
-    <include
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_96px"
-        layout="@layout/titlebar" />
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/main_line_gray" />
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_96px"
+            layout="@layout/titlebar"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_logo" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:background="#3fffffff"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/login_et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:background="@null"
+                android:hint="@string/yonghumingshoujihao"
+                android:lines="1"
+                android:padding="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/sp_28px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="#3feeeeee" >
+
+            <EditText
+                android:id="@+id/login_et_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:background="@null"
+                android:hint="@string/denglumima"
+                android:lines="1"
+                android:padding="15dp"
+                android:password="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/sp_28px" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/login_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_red"
+            android:text="立即登录"
+            android:textColor="@color/btn_text_color_black"
+            android:textSize="@dimen/sp_36px" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/login_wangjimima"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="30dp"
+                android:padding="20dp"
+                android:text="@string/wangjimima"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_24px" />
+
+            <TextView
+                android:id="@+id/login_mianfeizhuce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:padding="20dp"
+                android:text="免费注册"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:padding="10dp"
-            android:src="@drawable/icon20" />
-
-        <EditText
-            android:id="@+id/login_et_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:background="@null"
-            android:hint="@string/yonghumingshoujihao"
-            android:lines="1"
-            android:padding="10dp"
-            android:textColor="@color/main_text_black"
-            android:textSize="@dimen/sp_28px" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginLeft="15dp"
-        android:background="@color/main_line_gray" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white" >
-
-        <ImageView
-            android:id="@+id/login_meiyong_iv1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:padding="10dp"
-            android:src="@drawable/icon16" />
-
-        <EditText
-            android:id="@+id/login_et_pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_toLeftOf="@+id/login_wangjimima"
-            android:layout_toRightOf="@+id/login_meiyong_iv1"
-            android:background="@null"
-            android:hint="@string/denglumima"
-            android:lines="1"
-            android:padding="10dp"
-            android:password="true"
-            android:textColor="@color/main_text_black"
-            android:textSize="@dimen/sp_28px" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:gravity="center" >
 
         <TextView
-            android:id="@+id/login_wangjimima"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:padding="15dp"
-            android:text="@string/wangjimima"
-            android:textColor="@color/main_blue"
+            android:background="@drawable/login_yinhang"
             android:textSize="@dimen/sp_24px" />
-    </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/main_line_gray" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="您的资金由广东华兴银行存管系统全程监管"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_24px" >
+        </TextView>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/login_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/denglu"
-        android:background="@drawable/button"
-        android:textColor="@color/btn_text_color_black"
-        android:textSize="@dimen/sp_36px" />
-
-</LinearLayout>
+</RelativeLayout>

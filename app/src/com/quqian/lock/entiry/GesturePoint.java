@@ -132,9 +132,9 @@ public class GesturePoint {
 		case Constants.POINT_STATE_SELECTED:
 			this.image.setBackgroundResource(R.drawable.lock_2);
 			break;
-//		case Constants.POINT_STATE_WRONG:
-//			this.image.setBackgroundResource(R.drawable.gesture_node_wrong);
-//			break;
+		case Constants.POINT_STATE_WRONG:
+			this.image.setBackgroundResource(R.drawable.lock3);
+			break;
 		default:
 			break;
 		}

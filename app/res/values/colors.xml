@@ -2,23 +2,27 @@
 <resources>
 
     <color name="translucent_background">#88000000</color>
-   
     <color name="bottom_bar_gray">#f8f8f9</color>
     <color name="progress_gray">#CCCCCC</color>
     <color name="main_line_gray">#DCDCDC</color>
     <color name="main_text_black">#4f5257</color>
+    <color name="main_invert_gray">#dcdcdc</color>
+    <color name="main_invert_text">#969696</color>
+    <color name="main_invert_text_b">#333333</color>
     <color name="main_red1">#fd5224</color>
     <color name="main_orange">#FF9900</color>
     <color name="main_orange_xinshoujiang">#F2A708</color>
     <color name="main_text_gray">#969696</color>
-    <color name="main_blue">#30C4FF</color>
-     <color name="main_gray">#6B6B6B</color>
-    <color name="main_text_blue">#128DD3</color>
+    <color name="main_blue">#3C9AEB</color>
+    <color name="main_gray">#6B6B6B</color>
+    <color name="shoushicuowuline">#ffc364</color>
+    <color name="main_text_blue">#ff8800</color>
     <color name="main_background">#F8F8F8</color>
     <color name="black" type="color">#000000</color>
     <color name="white" type="color">#FFFFFFFF</color>
     <color name="line">#ffd3dde6</color>
     <color name="griditems_bg">#ffe8ecef</color>
     <color name="commo_text_color">#ff333333</color>
-<color name="title_blue">#3C9AEB</color>
+    <color name="title_blue">#3C9AEB</color>
+
 </resources>

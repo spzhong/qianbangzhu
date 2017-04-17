@@ -213,7 +213,11 @@ public abstract class BaseActivity extends FragmentActivity{
 	// }
 	//
 	// }
-
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+	
 	@Override
 	protected void onStart() {
 		super.onStart();
