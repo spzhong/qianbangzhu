@@ -21,8 +21,8 @@
             <RelativeLayout
                 android:id="@+id/licai_listview_item_pb_aaa"
                 android:layout_width="match_parent"
-                android:visibility="gone"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone" >
 
                 <ProgressBar
                     android:id="@+id/licai_listview_item_pb"
@@ -99,9 +99,7 @@
                 android:text="借款买房"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sp_32px" />
-
         </LinearLayout>
-
     </RelativeLayout>
 
     <LinearLayout
@@ -134,8 +132,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="借款金额"
                 android:layout_marginTop="10dp"
+                android:text="借款金额"
                 android:textColor="@color/main_text_black"
                 android:textSize="@dimen/sp_26px"
                 android:visibility="visible" />
@@ -147,8 +145,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:background="@color/main_line_gray" 
-            android:visibility="gone"/>
+            android:background="@color/main_line_gray"
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -173,13 +171,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="预期年化利率"
                 android:layout_marginTop="10dp"
+                android:text="预期年化利率"
                 android:textColor="@color/main_text_black"
                 android:textSize="@dimen/sp_26px"
                 android:visibility="visible" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="0dp"
@@ -210,51 +207,52 @@
                 android:textSize="@dimen/sp_26px"
                 android:visibility="visible" />
         </LinearLayout>
-
-       
-
     </LinearLayout>
-	<View
-          android:layout_width="match_parent"
-          android:layout_height="0.5dp"
-          android:layout_marginBottom="10dp"
-          android:layout_marginTop="10dp"
-          android:background="@color/main_line_gray"
-          android:visibility="visible" />
-	<LinearLayout
-            android:layout_width="match_parent"
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/main_line_gray"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/licai_layout_gongsi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/licai_logo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:orientation="horizontal" >
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/licai_logo"
+            android:gravity="center"
+            android:textColor="@color/main_text_blue"
+            android:textSize="@dimen/sp_20px"
+            android:visibility="visible" />
 
-            <TextView
-                android:id="@+id/licai_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/licai_logo"
-                android:gravity="center"
-                android:textColor="@color/main_text_blue"
-                android:textSize="@dimen/sp_20px"
-                android:visibility="visible" />
+        <TextView
+            android:id="@+id/inert_licai_tv8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:text="东莞市广信商业保理有限公司 推荐"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_24px" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/inert_licai_tv8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:text="东莞市广信商业保理有限公司 推荐"
-                android:textColor="@color/main_text_black"
-                android:textSize="@dimen/sp_24px" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:layout_marginTop="10dp"
+        android:background="#EBF3F6"
+        android:visibility="visible" />
 
-        </LinearLayout>
-        <View
-          android:layout_width="match_parent"
-          android:layout_marginTop="10dp"
-          android:layout_height="7dp"
-          android:background="#EBF3F6"
-          android:visibility="visible" />
 </LinearLayout>

@@ -53,6 +53,7 @@ import com.quqian.activity.MainActivity;
 import com.quqian.activity.RegisterActivity;
 import com.quqian.activity.YanZhengShouJiActivity;
 import com.quqian.activity.index.IndexActivity;
+import com.quqian.activity.mine.ChongZhiActivity;
 import com.quqian.activity.mine.ZiJinGuanLiActivity;
 import com.quqian.activity.more.MoreActivity;
 import com.quqian.base.BaseActivity;
@@ -161,8 +162,9 @@ public class WoYaoJieKuan extends BaseActivity implements OnClickListener,
 			anim_right_out();
 			break;
 		case R.id.wyjk_shenqing:
+			woyaojiekuan();
 			// 立即申请
-			Toast.makeText(WoYaoJieKuan.this,"likeshenqing", 1000).show();
+			
 			break;
 		default:
 			break;
@@ -178,11 +180,11 @@ public class WoYaoJieKuan extends BaseActivity implements OnClickListener,
 			super.handleMessage(msg);
 
 			juhua.cancel();
-
 			switch (msg.what) {
-		
 			case 1:		
-
+				Toast.makeText(WoYaoJieKuan.this,"借款成功", 1000).show();
+				WoYaoJieKuan.this.finish();
+				anim_right_out();
 				break;
 			default:
 				break;
@@ -190,16 +192,63 @@ public class WoYaoJieKuan extends BaseActivity implements OnClickListener,
 		}
 	};
 
-	// 网络请求
-	private void loadHttp_bannerInfo() {
+	// 借款网络请求
+	private void woyaojiekuan() {
 		// TODO Auto-generated method stub
-
+		UserMode user = Tool.getUser(WoYaoJieKuan.this);
+		if(user==null){
+			Toast.makeText(WoYaoJieKuan.this,"你还没有登录", 1000).show();
+			return;
+		}
+		
+		String names = name.getText().toString();
+		String phones = phone.getText().toString();
+		String jines = jine.getText().toString();
+		String qixians = qixian.getText().toString();
+		String citys = city.getText().toString(); 
+		
+		
+		if (names.length()==0) {
+			Toast.makeText(WoYaoJieKuan.this,"请输入姓名", 1000).show();
+			return;
+		} 
+		if (!Tool.isMobileNO(phones)) {
+			Toast.makeText(WoYaoJieKuan.this,"请输入正确的手机号", 1000).show();
+			return;
+		}
+		if (jines.length()==0) {
+			Toast.makeText(WoYaoJieKuan.this,"请输入借款金额", 1000).show();
+			return;
+		}  
+		if (qixians.length()==0) {
+			Toast.makeText(WoYaoJieKuan.this,"请输入预筹款期限", 1000).show();
+			return;
+		}		 
+		if (citys.length()==0) {
+			Toast.makeText(WoYaoJieKuan.this,"请输入所在城市", 1000).show();
+			return;
+		}
+		
+		String types = (String)type.getSelectedItem();
+		if (types.length()==0) {
+			Toast.makeText(WoYaoJieKuan.this,"请选择借款类型", 1000).show();
+			return;
+		}
+		 
 		juhua.show();
-
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
-		map.put("isLock", "0");// 0不锁，1是锁
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(33,
+		map.put("xm", names);
+		map.put("sjh",phones);
+		map.put("jkje",jines);
+		map.put("ckqx",qixians);
+		map.put("cs", citys);
+		if (types.endsWith("个人借款")) {
+			map.put("jklx", "GRKH");
+		}else{
+			map.put("jklx", "QYKH");
+		}
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(101,
 				map, WoYaoJieKuan.this, mHandler);
 		RequestPool.execute(thread);
 	}
@@ -210,13 +259,11 @@ public class WoYaoJieKuan extends BaseActivity implements OnClickListener,
 			List<Object> list, Object jsonObj) {
 		// TODO Auto-generated method stub
 
-		// 个人资料信息
+		// 我要借款
 		if (map.get("urlTag").equals("1")) {
-			if (list.size() == 1) {
-				Message msg1 = new Message();
-				msg1.what = 1;
-				mHandler.sendMessage(msg1);
-			}
+			Message msg1 = new Message();
+			msg1.what = 1;
+			mHandler.sendMessage(msg1); 
 		} 
 
 	}

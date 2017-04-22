@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_96px"
+        layout="@layout/titlebar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/main_line_gray" />
+
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" >
+
+        <ImageView
+            android:id="@+id/register_meiyong_iv333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:src="@drawable/z_shoujihao" />
+
+        <EditText
+            android:id="@+id/main_zhaohuimima_shoujihao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/register_meiyong_iv333"
+            android:background="@null"
+            android:ems="10"
+            android:hint="手机号"
+            android:lines="1"
+            android:padding="10dp"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/main_line_gray" />
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" >
+
+        <ImageView
+            android:id="@+id/register_meiyong_iv3336"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:src="@drawable/z_yanzhengma" />
+
+        <EditText
+            android:id="@+id/main_zhaohuimima_yanzhengma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/register_meiyong_iv3336"
+            android:background="@null"
+            android:ems="10"
+            android:hint="验证码"
+            android:lines="1"
+            android:padding="10dp"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+    </RelativeLayout>
+     <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" >
+
+        <ImageView
+            android:id="@+id/register_meiyong_iv31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:src="@drawable/z_shoujiyanzhengma" />
+
+        <Button
+            android:id="@+id/main_zhaohuimima_shoujiyanzhengma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="15dp"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/huoquyanzhengma"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/sp_20px"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/main_zhaohuimima_etshoujiyanzhengma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/register_meiyong_iv31"
+            android:background="@null"
+            android:ems="10"
+            android:hint="手机验证码"
+            android:lines="1"
+            android:padding="10dp"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/main_line_gray" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text="6~16个字符，区分大小写，不包含特殊字符"
+        android:textColor="#5A5A5A"
+        android:textSize="@dimen/sp_24px" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" >
+
+        <ImageView
+            android:id="@+id/register_meiyong_iv3n"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:src="@drawable/z_mima" />
+
+        <EditText
+            android:id="@+id/main_zhaohuimima_newmima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/register_meiyong_iv3n"
+            android:background="@null"
+            android:ems="10"
+            android:hint="新密码"
+            android:lines="1"
+            android:padding="10dp"
+            android:password="true"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" >
+
+        <ImageView
+            android:id="@+id/register_meiyong_iv4n"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:src="@drawable/z_mima" />
+
+        <EditText
+            android:id="@+id/main_zhaohuimima_queren"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/register_meiyong_iv4n"
+            android:background="@null"
+            android:ems="10"
+            android:hint="确认新密码"
+            android:lines="1"
+            android:padding="10dp"
+            android:password="true"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_28px" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/main_line_gray" />
+
+    <Button
+        android:id="@+id/main_zhaohuimima_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_new_blue"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="@color/btn_text_color_black"
+        android:textSize="@dimen/sp_32px"
+        android:visibility="visible" />
+
+</LinearLayout>

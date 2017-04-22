@@ -36,6 +36,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="精选理财"
+                android:checked="true"
                 android:textColor="@color/radiobtn_text_color"
                 android:textSize="@dimen/sp_30px" />
 

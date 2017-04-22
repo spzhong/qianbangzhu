@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingTop="15dp"
-        android:src="@drawable/main_more" />
+        android:src="@drawable/main_more"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/more_banbenhao"
@@ -25,7 +26,8 @@
         android:paddingTop="5dp"
         android:text="@string/banbenhao"
         android:textColor="@color/main_orange"
-        android:textSize="@dimen/sp_36px" />
+        android:textSize="@dimen/sp_36px"
+        android:visibility="gone" />
 
     <View
         android:layout_width="match_parent"
@@ -36,59 +38,152 @@
     <LinearLayout
         android:id="@+id/more_layout_kefurenxian"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
         android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="15dp" >
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/m_kefurexian"
+                android:textColor="@color/main_text_black"
+                android:layout_marginLeft="15dp"
+                android:textSize="@dimen/sp_24px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kefurexian"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_24px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kefurexianhao"
+                android:textColor="#3597ee"
+                android:textSize="@dimen/sp_24px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="客服工作时间"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_24px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="09：00-21：00"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_24px" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/main_line_gray" />
+
+    <LinearLayout
+        android:id="@+id/more_layout_yijianfankui"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/kefurexian"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/m_yijianfankui"
             android:textColor="@color/main_text_black"
-            android:textSize="@dimen/sp_28px" />
+            android:textSize="@dimen/sp_24px" />
 
         <TextView
             android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="@string/kefurexianhao"
-            android:textColor="@color/black"
+            android:text="@string/yijianfankui"
+            android:textColor="@color/main_text_black"
             android:textSize="@dimen/sp_24px" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:layout_marginLeft="15dp"
         android:background="@color/main_line_gray" />
 
     <LinearLayout
-        android:id="@+id/more_layout_yijianfankui"
+        android:id="@+id/more_layout_jianchagenxin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="15dp" >
+        android:orientation="horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/yijianfankui"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/m_jianchagengxin"
             android:textColor="@color/main_text_black"
-            android:textSize="@dimen/sp_28px" />
+            android:textSize="@dimen/sp_24px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:text="检查更新"
+            android:textColor="@color/main_text_black"
+            android:textSize="@dimen/sp_24px" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:background="@color/main_line_gray" />
-
+    
+    
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:layout_marginTop="20dp"
-        android:background="@color/main_line_gray" />
+        android:background="@color/main_line_gray"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/more_layout_shezhi"
@@ -96,7 +191,8 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="horizontal"
-        android:padding="15dp" >
+        android:padding="15dp"
+        android:visibility="gone" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -109,7 +205,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/main_line_gray" />
+        android:background="@color/main_line_gray"
+        android:visibility="gone" />
 
     <TextView
         android:layout_width="match_parent"
@@ -118,6 +215,7 @@
         android:gravity="center"
         android:text="@string/kefugongzuoshijian"
         android:textColor="@color/main_text_black"
-        android:textSize="@dimen/sp_24px" />
+        android:textSize="@dimen/sp_24px"
+        android:visibility="gone" />
 
 </LinearLayout>

@@ -333,7 +333,7 @@ public class Http {
 					|| urlNum == "37" || urlNum == "38" || urlNum == "39"
 					|| urlNum == "40" || urlNum == "41" || urlNum == "42"
 					|| urlNum == "43" || urlNum == "44" || urlNum == "45"
-					|| urlNum == "46" || urlNum == "47") {
+					|| urlNum == "46" || urlNum == "47" || urlNum == "101" || urlNum == "100" || urlNum == "102") {
 				// 成功的操作
 				if (code == 0) {
 					// 填充数据

@@ -24,6 +24,8 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,66 +47,49 @@ import com.readystatesoftware.viewbadger.BadgeView;
 public class MineActivity extends BaseActivity implements OnClickListener,
 		HttpResponseInterface {
 
-	// 我的账户按钮
-	private LinearLayout zhanghu = null;
-
+	//用户名
 	private TextView mine_name = null;
-	// 三个点亮图标
-	private ImageView iv_phone = null;
-	private ImageView iv_people = null;
-	private ImageView iv_qian = null;
+	//消息 设置
 	private ImageView iv_xiaoxi = null;
-
-	// 余额详情按钮
-	private LinearLayout yuer = null;
-	// 可用余额显示文本
+	private ImageView iv_shezhi = null;
+	
+	//存管账户，普通账户按钮，
+	private RadioGroup rg = null;
+	private RadioButton rb1 = null;
+	private RadioButton rb2 = null;
+	
+	// 可用余额显示文本，已赚总额显示文本
 	private TextView tv_keyong = null;
-	// 已赚总额显示文本
 	private TextView tv_yizhuan = null;
 
-	// 我的散标投资按钮
-	private RelativeLayout sanbiaotouzi = null;
-	// 我的稳赚宝按钮
-	// private RelativeLayout wenzhuanbao = null;
-	// 我的债权转让按钮
-	private RelativeLayout zhaiquan = null;
-	// 交易记录按钮
-	private RelativeLayout jiaoyi = null;
-	// 充值按钮
-	private Button chongzhi = null;
-	// 提款按钮
-	private Button tikuan = null;
+	// 充值按钮，提现按钮
+	private TextView chongzhi = null;
+	private TextView tikuan = null;
 
+	//账户总额，交易记录，我的投标，邀请好友，
+	private LinearLayout zhanghuzonge = null;
+	private LinearLayout jiaoyijilu = null;
+	private LinearLayout wodetoubiao = null;
+	private LinearLayout yaoqinghaoyou = null;
+	
+	//推广记录，我的借款，我的加息卡，银行卡管理
+	private LinearLayout tuiguangjilu = null;
+	private LinearLayout wodejiekuan = null;
+	private LinearLayout wodejiaxika = null;
+	private LinearLayout yinhangkaguanli = null;
+	
+	//用户数据
 	private UserMode user = null;
-
 	private Chongzhi chongzhiModel = null;
-
 	private ProcessDialogUtil juhua = null;
 
-	// 退出按钮
-	private Button button = null;
 
 	// 接受广播
 	BroadcastReceiver mBroadcastReceiver = null;
 
 	// 返回过来的消息个数
 	private String xiaoxi = "";
-	
-	private GridView list_home;  
-	private MyAdapter adapter;  
-	private static String [] names = {  
-				"账户总览","活动奖励","热门活动",  
-	            "交易记录","我的投标","债权转让",  
-	            "我的借款","我的推广","我的加息卡"  
-	  
-	};  
-	  
-	private static int[] ids = {  
-			R.drawable.mine_zh,R.drawable.mine_hdjl,R.drawable.mine_hd,  
-			R.drawable.mine_jy,R.drawable.mine_tb,R.drawable.mine_zr, 
-			R.drawable.mine_jk,R.drawable.mine_tg,R.drawable.mine_jxq
-	  
-	};  
+	 
 
 	@Override
 	protected void onDestroy() {
@@ -133,32 +118,33 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		super.initView();
 		setTitle("我的账户");
-		showMenu();
-		setMenu("通知");
 
 		juhua = new ProcessDialogUtil(MineActivity.this);
 
 		mine_name = (TextView) findViewById(R.id.mine_name);
-		zhanghu = (LinearLayout) findViewById(R.id.mine_layout_zhanghu);
-		iv_phone = (ImageView) findViewById(R.id.mine_phone);
-		iv_people = (ImageView) findViewById(R.id.mine_people);
-		iv_qian = (ImageView) findViewById(R.id.mine_qian);
+		
 		iv_xiaoxi = (ImageView) findViewById(R.id.mine_xiaoxi);
+		iv_shezhi = (ImageView) findViewById(R.id.mine_shezhi);
+		
+		rg = (RadioGroup) findViewById(R.id.m_zhanghu_rg);
+		rb1 = (RadioButton) findViewById(R.id.m_zhanghu_rb1);
+		rb2 = (RadioButton) findViewById(R.id.m_zhanghu_rb2);
 
-		yuer = (LinearLayout) findViewById(R.id.mine_layout_yuer);
 		tv_keyong = (TextView) findViewById(R.id.mine_tv_keyong);
 		tv_yizhuan = (TextView) findViewById(R.id.mine_tv_yizhuan);
 
-		sanbiaotouzi = (RelativeLayout) findViewById(R.id.mine_layout_sanbiaotouzi);
-		// wenzhuanbao = (RelativeLayout)
-		// findViewById(R.id.mine_layout_wenzhuanbao);
-		zhaiquan = (RelativeLayout) findViewById(R.id.mine_layout_zhaiquanzhuanrang);
-		jiaoyi = (RelativeLayout) findViewById(R.id.mine_layout_licaitiyan);
-		chongzhi = (Button) findViewById(R.id.main_mine_index_cz_btn);
-		tikuan = (Button) findViewById(R.id.main_mine_index_tx_btn);
+		chongzhi = (TextView) findViewById(R.id.main_mine_index_cz_btn);
+		tikuan = (TextView) findViewById(R.id.main_mine_index_tx_btn);
 		
-		//退出
-		button = (Button) findViewById(R.id.main_mine_zhanghu_btn);
+		zhanghuzonge = (LinearLayout) findViewById(R.id.m_zhanghu);
+		jiaoyijilu = (LinearLayout) findViewById(R.id.m_jiaoyi);
+		wodetoubiao = (LinearLayout) findViewById(R.id.m_toubiao);
+		yaoqinghaoyou = (LinearLayout) findViewById(R.id.m_yaoqing);
+		
+		tuiguangjilu = (LinearLayout) findViewById(R.id.m_tuiguangjilu);
+		wodejiekuan = (LinearLayout) findViewById(R.id.m_wodejiekuan);
+		wodejiaxika = (LinearLayout) findViewById(R.id.m_wodejiaxika);
+		yinhangkaguanli = (LinearLayout) findViewById(R.id.m_yinhangkaguanli);
 
 		user = Tool.getUser(MineActivity.this);
 		if (user == null) {
@@ -179,46 +165,19 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 
 			mine_name.setText(user.getYhzh());
 
-			if (user.getSfzsfrz().equals("false")) {
-				iv_people.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_people1));
-			} else {
-				iv_people.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_people2));
-			}
-			// 没有设置了手机号
-			if (user.getSjsfsz().equals("false")) {
-				iv_phone.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_phone1));
-			} else {
-				iv_phone.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_phone2));
-			}
-			// 没有设置提现密码
-			if (user.getTxmmsfsz().equals("false")) {
-				iv_qian.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_yang1));
-			} else {
-				iv_qian.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_yang2));
-			}
 			// email
 			if (user.getYjsfsz().equals("false")) {
 				iv_xiaoxi.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_xiaoxi1));
+						R.drawable.m_xiaoxi_yidu));
 			} else {
 				iv_xiaoxi.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_xiaoxi2));
+						R.drawable.m_xiaoxi_weidu));
 			}
 
 			// mine_name.setText(user.getNc());
 			tv_keyong.setText(user.getKyye());// 可用余额
 			tv_yizhuan.setText(user.getYzze());// 已赚取金额
 			
-			list_home = (GridView) findViewById(R.id.main_mine_index_grd);  
-	        adapter = new MyAdapter();  
-	        list_home.setAdapter(adapter);  
-	        list_home.setOnItemClickListener(new ItemClickListener());
 		}
 
 		// 接受广播
@@ -240,68 +199,6 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 
 	}
 	
-	//当AdapterView被单击(触摸屏或者键盘)，则返回的Item单击事件     
-	private class ItemClickListener implements OnItemClickListener{
-		@Override
-		public void onItemClick(AdapterView<?> arg0, View arg1, int index,long arg3) {
-				// TODO Auto-generated method stub
-				//得到点击item的index
-				if(index == 0){
-					//跳转到账户总览页面
-					
-					startActivity(new Intent(MineActivity.this,ZiJinGuanLiActivity.class));
-				}else if(index == 1){
-					//跳转到活动奖励页面
-				}else if(index == 2){
-					//跳转到热门活动页面
-				}else if(index == 3){
-					//跳转到交易记录页面
-					startActivity(new Intent(MineActivity.this,MyJiaoYiJiLuActivity.class));
-				}else if(index == 4){
-					//跳转到我的投标页面
-					startActivity(new Intent(MineActivity.this, MyTouBiaoActivity.class));
-					anim_right_in();
-				}else if(index == 5){
-					//跳转到债权转让页面
-				}else if(index == 6){
-					//跳转到我的借款页面
-				}else if(index == 7){
-					//跳转到我的推广页面
-				}else if(index == 8){
-					//跳转到我的加息卡页面
-				}
-			}       	  
-		} 
-	
-	private class MyAdapter extends BaseAdapter{  
-        @Override  
-        public int getCount() {  
-            return names.length;  
-        }  
-  
-        @Override  
-        public Object getItem(int i) {  
-            return null;  
-        }  
-  
-        @Override  
-        public long getItemId(int i) {  
-            return 0;  
-        }  
-  
-        @Override  
-        public View getView(int position, View convertView, ViewGroup parent) {  
-            // TODO Auto-generated method stub  
-            View view = View.inflate(MineActivity.this, R.layout.main_mine_grd_item, null);  
-            ImageView iv_item = (ImageView) view.findViewById(R.id.iv_item);  
-            TextView tv_item = (TextView) view.findViewById(R.id.tv_item);  
-  
-            tv_item.setText(names[position]);  
-            iv_item.setImageResource(ids[position]); 
-            return view;  
-        }  
-    }  
-
 	public void reload() {
 
 		user = Tool.getUser(MineActivity.this);
@@ -311,36 +208,13 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 
 			mine_name.setText(user.getYhzh());
 
-			if (user.getSfzsfrz().equals("false")) {
-				iv_people.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_people1));
-			} else {
-				iv_people.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_people2));
-			}
-			// 没有设置了手机号
-			if (user.getSjsfsz().equals("false")) {
-				iv_phone.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_phone1));
-			} else {
-				iv_phone.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_phone2));
-			}
-			// 没有设置提现密码
-			if (user.getTxmmsfsz().equals("false")) {
-				iv_qian.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_yang1));
-			} else {
-				iv_qian.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_yang2));
-			}
 			// email
 			if (user.getYjsfsz().equals("false")) {
 				iv_xiaoxi.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_xiaoxi1));
+						R.drawable.m_xiaoxi_yidu));
 			} else {
 				iv_xiaoxi.setImageDrawable(getResources().getDrawable(
-						R.drawable.mine_xiaoxi2));
+						R.drawable.m_xiaoxi_weidu));
 			}
 
 			// mine_name.setText(user.getNc());
@@ -354,63 +228,79 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 	protected void initViewListener() {
 		// TODO Auto-generated method stub
 		super.initViewListener();
-		titleBarMenu.setOnClickListener(this);
 
-		zhanghu.setOnClickListener(this);
-		yuer.setOnClickListener(this);
-
-		sanbiaotouzi.setOnClickListener(this);
-		// wenzhuanbao.setOnClickListener(this);
-		zhaiquan.setOnClickListener(this);
-		jiaoyi.setOnClickListener(this);
+		iv_xiaoxi.setOnClickListener(this);
+		iv_shezhi.setOnClickListener(this);
+		
+		rb1.setOnClickListener(this);
+		rb2.setOnClickListener(this);
+		
 		chongzhi.setOnClickListener(this);
 		tikuan.setOnClickListener(this);
-		button.setOnClickListener(this);
+		
+		zhanghuzonge.setOnClickListener(this);
+		jiaoyijilu.setOnClickListener(this);
+		wodetoubiao.setOnClickListener(this);
+		yaoqinghaoyou.setOnClickListener(this);
+		
+		tuiguangjilu.setOnClickListener(this);
+		wodejiekuan.setOnClickListener(this);
+		wodejiaxika.setOnClickListener(this);
+		yinhangkaguanli.setOnClickListener(this);
+		
 	}
 
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
-		case R.id.title_bar_menu:
+		case R.id.mine_xiaoxi://消息
 			startActivity(new Intent(MineActivity.this, TongZhiActivity.class));
 			anim_right_in();
 			break;
-		case R.id.mine_layout_zhanghu:
+		case R.id.mine_shezhi://设置
 			startActivity(new Intent(MineActivity.this,
 					ZhangHuGuanLiActivity.class));
 			anim_right_in();
 			break;
-		case R.id.mine_layout_yuer:
+		case R.id.m_zhanghu://账户总额
 			startActivity(new Intent(MineActivity.this,
 					ZiJinGuanLiActivity.class));
 			anim_right_in();
 			break;
-		case R.id.mine_layout_sanbiaotouzi:
-			startActivity(new Intent(MineActivity.this, MyTouBiaoActivity.class));
-			anim_right_in();
-			break;
-		// case R.id.mine_layout_wenzhuanbao:
-		// Toast.makeText(MineActivity.this, "wodewenzhuanbao",
-		// Toast.LENGTH_SHORT)
-		// .show();
-		// break;
-		case R.id.mine_layout_zhaiquanzhuanrang:
-			startActivity(new Intent(MineActivity.this, MyLiCaiActivity.class));
-			anim_right_in();
-			break;
-		case R.id.mine_layout_licaitiyan:
+		case R.id.m_jiaoyi://交易记录
 			startActivity(new Intent(MineActivity.this,
 					MyJiaoYiJiLuActivity.class));
 			break;
-		case R.id.main_mine_index_cz_btn:
+		case R.id.m_toubiao://我的投标
+			startActivity(new Intent(MineActivity.this, MyTouBiaoActivity.class));
+			anim_right_in();
+			break;
+		case R.id.m_yaoqing://邀请好友
+			startActivity(new Intent(MineActivity.this, MyLiCaiActivity.class));
+			anim_right_in();
+			break;
+		case R.id.m_tuiguangjilu://推广记录
+			startActivity(new Intent(MineActivity.this, MyLiCaiActivity.class));
+			anim_right_in();
+			break;
+		case R.id.m_wodejiekuan://我的借款
+			startActivity(new Intent(MineActivity.this, MyLiCaiActivity.class));
+			anim_right_in();
+			break;
+		case R.id.m_wodejiaxika://我的加息卡
+			startActivity(new Intent(MineActivity.this, MyLiCaiActivity.class));
+			anim_right_in();
+			break;
+		case R.id.m_yinhangkaguanli://银行卡管理
+			startActivity(new Intent(MineActivity.this, MyLiCaiActivity.class));
+			anim_right_in();
+			break;
+		case R.id.main_mine_index_cz_btn://充值
 			isgoto_chongzhi_tixian(0);
 			break;
-		case R.id.main_mine_index_tx_btn:
+		case R.id.main_mine_index_tx_btn://提现
 			isgoto_chongzhi_tixian(1);
-			break;
-		case R.id.main_mine_zhanghu_btn:
-			loadHttp_zhuxiao();
 			break;
 		default:
 			break;

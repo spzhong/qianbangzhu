@@ -54,6 +54,8 @@ import com.quqian.activity.RegisterActivity;
 import com.quqian.activity.YanZhengShouJiActivity;
 import com.quqian.activity.index.IndexActivity;
 import com.quqian.activity.index.ZhaiQuanZhuanRangActivity;
+import com.quqian.activity.mine.TongZhiActivity;
+import com.quqian.activity.mine.TongZhiInfoActivity;
 import com.quqian.activity.mine.ZiJinGuanLiActivity;
 import com.quqian.activity.more.MoreActivity;
 import com.quqian.base.BaseActivity;
@@ -119,8 +121,13 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 		jiekuan = (TextView)findViewById(R.id.yysj_wanchengjiekuan);
 		zhuce = (TextView)findViewById(R.id.yysj_zhucerenshu);
 		
+		anquanday.setText("");
+		jiekuan.setText("");
+		zhuce.setText("");
+		
 		submit = (Button)findViewById(R.id.yysj_xia1);
 
+		loadHttp_yunyingInfo();
 	}
 
 	@Override
@@ -147,8 +154,21 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 			anim_right_out();
 			break;
 		case R.id.yysj_xia1:
+			
+			Intent intent = new Intent(YunYingShuJu.this,
+					YunYingShuJuNext.class);
+			try {
+				intent.putExtra("ljcj", json.getString("ljcj")+"");
+				intent.putExtra("tzrljsy", json.getString("tzrljsy")+"");
+				intent.putExtra("dhbj", json.getString("dhbj")+"");
+				intent.putExtra("tzrdhsy", json.getString("tzrdhsy")+"");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			startActivity(intent);
 			// 下一页运营数据
-			startActivity(new Intent(YunYingShuJu.this,YunYingShuJuNext.class));
+			//startActivity(new Intent(YunYingShuJu.this,YunYingShuJuNext.class));
 			anim_right_in();
 			break;
 		default:
@@ -163,13 +183,17 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
-
 			juhua.cancel();
-
 			switch (msg.what) {
-		
-			case 1:		
-
+			case 1:	
+				 try {
+					 anquanday.setText(json.get("yysj")+"天");
+					 jiekuan.setText(json.getString("jkbs")+"笔");
+					 zhuce.setText(json.getString("zcrs")+"人");
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
 				break;
 			default:
 				break;
@@ -178,7 +202,7 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 	};
 
 	// 网络请求
-	private void loadHttp_bannerInfo() {
+	private void loadHttp_yunyingInfo() {
 		// TODO Auto-generated method stub
 
 		juhua.show();
@@ -186,7 +210,7 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(33,
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(100,
 				map, YunYingShuJu.this, mHandler);
 		RequestPool.execute(thread);
 	}
@@ -196,14 +220,20 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 	public void httpResponse_success(Map<String, String> map,
 			List<Object> list, Object jsonObj) {
 		// TODO Auto-generated method stub
-
-		// 个人资料信息
+		// 运营数据
 		if (map.get("urlTag").equals("1")) {
-			if (list.size() == 1) {
-				Message msg1 = new Message();
-				msg1.what = 1;
-				mHandler.sendMessage(msg1);
+			
+			JSONObject js = (JSONObject) jsonObj;
+			try {
+				json = js.getJSONObject("rvalue");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			
+			Message msg1 = new Message();
+			msg1.what = 1;
+			mHandler.sendMessage(msg1);
 		} 
 
 	}

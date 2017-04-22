@@ -51,8 +51,6 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 	private EditText et_tuijian = null;
 	// 获取验证码按钮
 	private Button huoqu = null;
-	// 我同意
-	private CheckBox cb_tongyi = null;
 	// 注册按钮
 	private Button register = null;
 
@@ -83,7 +81,6 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		et_yanzhengma = (EditText) findViewById(R.id.register_et_yanzhengma);
 		et_tuijian = (EditText) findViewById(R.id.register_et_tuijianren);
 		huoqu = (Button) findViewById(R.id.register_tv_huoqu);
-		cb_tongyi = (CheckBox) findViewById(R.id.register_cb);
 		register = (Button) findViewById(R.id.register_register);
 		
 		xieyi = (TextView)findViewById(R.id.register_xieyi);
@@ -121,11 +118,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		case R.id.register_register:
 			// 注册成功直接登录，将 该用户的的信息标记为已登录，finish掉注册页面，加上动画 -----判断checkBox是否勾上
 			// Toast.makeText(RegisterActivity.this, "注册成功", 1000).show();
-			if(cb_tongyi.isChecked()){
-				loadHttp_zhuce();
-			}else{
-				Toast.makeText(RegisterActivity.this, "请选择同意趣钱注册协议", Toast.LENGTH_SHORT).show();
-			}
+			loadHttp_zhuce();
 			break;
 		case R.id.register_xieyi:
 			Intent intent = new Intent(RegisterActivity.this,WebViewActivity.class);

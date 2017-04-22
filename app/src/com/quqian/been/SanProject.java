@@ -12,6 +12,38 @@ import org.json.JSONObject;
 
 public class SanProject implements Serializable {
 
+	public String getTjf() {
+		return tjf;
+	}
+
+	public void setTjf(String tjf) {
+		this.tjf = tjf;
+	}
+
+	public String getBdtype() {
+		return bdtype;
+	}
+
+	public void setBdtype(String bdtype) {
+		this.bdtype = bdtype;
+	}
+
+	public String getMbsj() {
+		return mbsj;
+	}
+
+	public void setMbsj(String mbsj) {
+		this.mbsj = mbsj;
+	}
+
+	public String getJkqx() {
+		return jkqx;
+	}
+
+	public void setJkqx(String jkqx) {
+		this.jkqx = jkqx;
+	}
+
 	//
 	// @Override
 	// public Object clone() throws CloneNotSupportedException {
@@ -36,6 +68,10 @@ public class SanProject implements Serializable {
 	public String hkqx = "0"; // 还款期限
 	public String jkfs = ""; // 0是按月，1是按天，2是秒标
 	public String zt = ""; // 状态，（敬请期待、立即投标、已满标、还款中、已流标、已结清）
+	public String tjf = "";//推荐
+	public String bdtype = "";//标的类型，存管标：1普通标：0
+	
+	
 
 	public String syje = "";// 剩余金额 （特殊处理，不要显示在详情列表中）
 
@@ -102,6 +138,8 @@ public class SanProject implements Serializable {
 			this.jlll = json.getString("jlll");
 			this.hkqx = json.getString("hkqx");
 			this.zt = json.getString("zt");
+			this.tjf =  json.getString("tjf");
+			this.bdtype = json.getString("bdtype");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -136,6 +174,7 @@ public class SanProject implements Serializable {
 			this.zqxx_url = json.getString("zqxx_url");
 			this.zrjl_url = json.getString("zrjl_url");
 			this.jlmd_url = json.getString("jlmd_url");
+			this.bdtype = json.getString("bdtype");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -180,6 +219,7 @@ public class SanProject implements Serializable {
 			this.zczryk = json.getString("zczryk");
 			
 			this.tzje = json.getString("tzje");
+			this.bdtype = json.getString("bdtype");
 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -256,13 +296,13 @@ public class SanProject implements Serializable {
 		}
 	    //标的总额
 	    if (Double.valueOf(this.getBdze()) < 10000) {
-	    	return exchangeStringToHtml_list(this.getBdze(), "元", "标的总额");
+	    	return this.getBdze()+"元";
 	    }else if (Double.valueOf(this.getBdze()) > 1000000000){
 	        double zonge = Double.valueOf(this.getBdze())/1000000000;
-	        return exchangeStringToHtml_list(zonge+"", "亿", "标的总额");
+	        return zonge+""+"亿";
 	    }else{
 	        double zonge = Double.valueOf(this.getBdze())/10000;
-	        return exchangeStringToHtml_list(zonge+"", "万", "标的总额");
+	        return  zonge+""+ "万";
 	    }
 	}
 
@@ -274,32 +314,32 @@ public class SanProject implements Serializable {
 		}
 		//投资额
 	    if (Double.valueOf(this.getTzje()) < 10000) {
-	    	return exchangeStringToHtml_list(this.getTzje(), "元", "投资金额");
+	    	return exchangeStringToHtml_list(this.getTzje(), "元", "借款金额");
 	    }else if (Double.valueOf(this.getTzje()) > 1000000000){
 	        double zonge = Double.valueOf(this.getTzje())/1000000000;
-	        return exchangeStringToHtml_list(zonge+"", "亿", "投资金额");
+	        return exchangeStringToHtml_list(zonge+"", "亿", "借款金额");
 	    }else{
 	        double zonge = Double.valueOf(this.getTzje())/10000;
-	        return exchangeStringToHtml_list(zonge+"", "万", "投资金额");
+	        return exchangeStringToHtml_list(zonge+"", "万", "借款金额");
 	    }
 	}
 
 	// 年利率
 	public String show_list_two() {
 		if(this.getJlll().equals("-1")){
-			return exchangeStringToHtml_list(this.nll+"%","", "年利率");
+			return this.nll+"%";
 		}
-		return exchangeStringToHtml_list(this.nll+"%", this.jlll+"%", "年利率");
+		return this.nll+"%";
 	}
 
 	// 还款期限
 	public String show_list_three() {
 		if (this.jkfs.equals("0"))
-			return exchangeStringToHtml_list(this.hkqx, "个月", "还款期限");
+			return this.hkqx+"个月";
 		if (this.jkfs.equals("1"))
-			return exchangeStringToHtml_list(this.hkqx, "天", "还款期限");
+			return  this.hkqx+"天";
 		if (this.jkfs.equals("2"))
-			return exchangeStringToHtml_list(this.hkqx, "秒标", "还款期限");
+			return this.hkqx+"秒标";
 		return "";
 	}
 

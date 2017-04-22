@@ -46,6 +46,8 @@ public class JianYiActivity extends BaseActivity implements OnClickListener,
 	// 如果是未登录状态，填写建议的时候需要输入邮箱，否则不需要，
 	private LinearLayout layout = null;
 
+	private Button btn = null;
+	
 	private Dialog juhua = null;
 
 	@Override
@@ -60,13 +62,13 @@ public class JianYiActivity extends BaseActivity implements OnClickListener,
 		super.initView();
 		setTitle("意见反馈");
 		showBack();
-		showMenu();
-		setMenu("提交");
 
 		juhua = new ProcessDialogUtil(JianYiActivity.this);
 
 		et1 = (EditText) findViewById(R.id.more_yijian_et1);
 		et2 = (EditText) findViewById(R.id.more_yijian_et2);
+		
+		btn = (Button) findViewById(R.id.more_yijianfankuai_tijiao);
 
 		layout = (LinearLayout) findViewById(R.id.main_more_yijian_layout);
 
@@ -84,7 +86,7 @@ public class JianYiActivity extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		super.initViewListener();
 		titleBarBack.setOnClickListener(this);
-		titleBarMenu.setOnClickListener(this);
+		btn.setOnClickListener(this);
 	}
 
 	@Override
@@ -96,7 +98,7 @@ public class JianYiActivity extends BaseActivity implements OnClickListener,
 			JianYiActivity.this.finish();
 			anim_right_out();
 			break;
-		case R.id.title_bar_menu:
+		case R.id.more_yijianfankuai_tijiao:
 			// 提交按钮
 			// Toast.makeText(JianYiActivity.this, "tijiao", 1000).show();
 			loadHttp_tijiao();

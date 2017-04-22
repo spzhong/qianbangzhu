@@ -26,12 +26,12 @@
         <EditText
             android:id="@+id/more_yijian_et1"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:background="@null"
             android:gravity="top"
             android:lines="5"
             android:padding="15dp"
-            android:hint="10-200字以内..."
+            android:hint="您的建议是我们前进最大的动力，谢谢您的反馈！10-200字以内"
             android:textColor="@color/main_text_black"
             android:textSize="@dimen/sp_24px" />
     </LinearLayout>
@@ -44,7 +44,7 @@
     <LinearLayout
         android:id="@+id/main_more_yijian_layout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:background="#fff"
         android:orientation="vertical" >
@@ -59,7 +59,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:hint="请留下您的联系方式 QQ/手机/邮箱"
+            android:hint="请留下您的联系方式 QQ/邮箱/手机"
             android:lines="1"
             android:padding="15dp"
             android:textColor="@color/main_text_black"
@@ -71,4 +71,16 @@
             android:background="@color/main_line_gray" />
     </LinearLayout>
 
+    <Button
+            android:id="@+id/more_yijianfankuai_tijiao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_new_blue"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_36px" />
+    
 </LinearLayout>

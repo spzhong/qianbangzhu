@@ -19,7 +19,7 @@
     <!-- index -->
     <string name="keyongyuer">可用余额（元）</string>
     <string name="yizhuanzonger">已赚总额（元）</string>
-    <string name="lingyuan">￥0.00</string>
+    <string name="lingyuan">0.00</string>
     <string name="touzilicai">投资理财</string>
     <string name="tiyanzhuanqu">债权转让</string>
     <string name="qutouzi">去投资</string>

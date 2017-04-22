@@ -538,6 +538,42 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				handler.sendMessage(msg);
 			}
 			break;	
+		case 100:
+			String errMsg100 = API.APIYysjCount_100(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg100.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg100);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;	
+		case 101:
+			String errMsg101 = API.APIwoyaojiekuan_101(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg101.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg101);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;	
+		case 102:
+			String errMsg102 = API.APIgetJxkList_102(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg102.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg102);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;	
 		default:
 			break;
 		}

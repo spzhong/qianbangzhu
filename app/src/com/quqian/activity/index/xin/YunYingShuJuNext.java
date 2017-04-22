@@ -72,19 +72,24 @@ import com.quqian.util.TimeUtil;
 import com.quqian.util.Tool;
 import com.quqian.util.WebViewActivity;
 
-public class YunYingShuJuNext extends BaseActivity implements OnClickListener{
+public class YunYingShuJuNext extends BaseActivity implements OnClickListener {
 
-	//累计成交
+	// 累计成交
 	private TextView leijichengjiao = null;
-	//投资人累计赚取收益
+	// 投资人累计赚取收益
 	private TextView leijizhuanquanshouyi = null;
-	//待还本金
-	private TextView  daihuanbenjin = null;
-	//投资人待赚取收益
+	// 待还本金
+	private TextView daihuanbenjin = null;
+	// 投资人待赚取收益
 	private TextView daizhuanqushouyi = null;
 
 	// jsonObj
 	private JSONObject json = null;
+
+	private String ljcj = null; // 累计成交金额
+	private String tzrljsy = null; // 投资人累计赚取收益
+	private String dhbj = null; // 待还本金
+	private String tzrdhsy = null; // 投资人待收收益
 
 	@Override
 	protected int layoutId() {
@@ -96,7 +101,18 @@ public class YunYingShuJuNext extends BaseActivity implements OnClickListener{
 	protected void getIntentWord() {
 		// TODO Auto-generated method stub
 		super.getIntentWord();
-		//获取上个页面传递过来的数据
+		if (getIntent().getStringExtra("ljcj") != null) {
+			ljcj = getIntent().getStringExtra("ljcj");
+		}
+		if (getIntent().getStringExtra("tzrljsy") != null) {
+			tzrljsy = getIntent().getStringExtra("tzrljsy");
+		}
+		if (getIntent().getStringExtra("dhbj") != null) {
+			dhbj = getIntent().getStringExtra("dhbj");
+		}
+		if (getIntent().getStringExtra("tzrdhsy") != null) {
+			tzrdhsy = getIntent().getStringExtra("tzrdhsy");
+		}
 	}
 
 	@Override
@@ -112,11 +128,15 @@ public class YunYingShuJuNext extends BaseActivity implements OnClickListener{
 		setTitle("运营数据");
 		showBack();
 
-		leijichengjiao = (TextView)findViewById(R.id.yysjn_leijichengjiao);
-		leijizhuanquanshouyi = (TextView)findViewById(R.id.yysjn_leijizhuanqushouyi);
-		daihuanbenjin = (TextView)findViewById(R.id.yysjn_daihuanbenjin);
-		daizhuanqushouyi = (TextView)findViewById(R.id.yysjn_leijizhuanqushouyi);
+		leijichengjiao = (TextView) findViewById(R.id.yysjn_leijichengjiao);
+		leijizhuanquanshouyi = (TextView) findViewById(R.id.yysjn_leijizhuanqushouyi);
+		daihuanbenjin = (TextView) findViewById(R.id.yysjn_daihuanbenjin);
+		daizhuanqushouyi = (TextView) findViewById(R.id.yysjn_leijizhuanqushouyi);
 
+		leijichengjiao.setText(ljcj + "元");
+		leijizhuanquanshouyi.setText(tzrljsy + "元");
+		daihuanbenjin.setText(dhbj + "元");
+		daizhuanqushouyi.setText(tzrdhsy + "元");
 	}
 
 	@Override
@@ -127,7 +147,7 @@ public class YunYingShuJuNext extends BaseActivity implements OnClickListener{
 	}
 
 	protected void doOther() {
-		
+
 	}
 
 	@Override

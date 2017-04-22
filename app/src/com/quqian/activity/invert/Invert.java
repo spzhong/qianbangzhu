@@ -42,6 +42,8 @@ import com.quqian.activity.index.IndexActivity;
 import com.quqian.activity.index.LiCaiInfoActivity;
 import com.quqian.activity.index.LiCaiTiYanActivity;
 import com.quqian.activity.index.LiJiShenQingActivity;
+import com.quqian.activity.index.SanBiaoTouZiActivity;
+import com.quqian.activity.index.SanInfoActivity;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.SanProject;
 import com.quqian.been.TiYanProject;
@@ -136,24 +138,25 @@ public class Invert extends BaseActivity implements OnClickListener,
 
 				// TODO Auto-generated method stub
 				if (position != 0) {
-					
-					TiYanProject licai = null;
-					if(rb1.isChecked()){
-						 licai = (TiYanProject) allList1
-								.get(position - 1);
-					}else if(rb2.isChecked()){
-						licai = (TiYanProject) allList2
-								.get(position - 1);
+
+					UserMode user = Tool.getUser(Invert.this);
+					if (user == null) {
+						startActivity(new Intent(Invert.this,
+								LoginActivity.class));
+					} else {
+						SanProject san = (SanProject) allList1.get(position - 1);
+						Intent intent = new Intent(Invert.this,
+								InvertInfoActivity.class);
+						Bundle bundle = new Bundle();
+						bundle.putString("pId", san.getpId());
+						// bundle.putSerializable("sanProject", test);
+						intent.putExtras(bundle);
+						Log.v("quqian", "-----pid----" + san.getpId());
+						startActivity(intent);
 					}
-					
-					//TODO 跳转到详情页
-					Intent intent = new Intent(Invert.this,
-							InvertInfoActivity.class);
-					intent.putExtra("pId", licai.getpId());
-					Log.v("quqian", "-----pid----" + licai.getpId()
-							+ "-----position" + position);
-					startActivity(intent);
 					anim_right_in();
+					
+ 
 				} else {
 					return;
 				}
@@ -267,51 +270,84 @@ public class Invert extends BaseActivity implements OnClickListener,
 				holder.tv_i4 = (TextView) convertView
 						.findViewById(R.id.inert_licai_tv8);
 
+				holder.layout = (LinearLayout)  convertView
+						.findViewById(R.id.licai_layout_gongsi);
+				
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-			final TiYanProject licai = (TiYanProject) allList1.get(position);
-
-			holder.tv1.setVisibility(View.VISIBLE);
-			holder.tv2.setVisibility(View.GONE);
-			holder.tv3.setText(licai.getBt());
-
-			if (licai.isJudgment_bid_butonPress()) {
+			final SanProject san = (SanProject) allList1.get(position);
+			 
+			 			
+			if(san.bdtype == "0"){
+				holder.tv1.setVisibility(View.VISIBLE);	
+				holder.tv2.setVisibility(View.GONE);
+			}else{
+				holder.tv2.setVisibility(View.VISIBLE);
+				holder.tv1.setVisibility(View.GONE);
+			}
+			 
+			holder.tv3.setText(san.getBdbt());
+			if (san.isJudgment_bid_butonPress()) {
 				holder.tv_btn.setTextColor(getResources().getColor(
 						R.color.main_text_blue));
+				holder.tv_btn
+						.setBackgroundResource(R.drawable.button_kuang_blue);
 				holder.tv_btn.setEnabled(true);
 			} else {
 				holder.tv_btn.setTextColor(getResources().getColor(
 						R.color.main_text_gray));
+				holder.tv_btn
+						.setBackgroundResource(R.drawable.button_kuang_gray);
 				holder.tv_btn.setEnabled(false);
 			}
-			holder.tv_btn.setText(licai.getZt());
-		
+			holder.tv_btn.setText(san.getZt());
+  
 			
-			//holder.tv_i1.setText(Html.fromHtml(licai.show_list_one()));
-			//holder.tv_i2.setText(Html.fromHtml(licai.show_list_two()));
-			//holder.tv_i3.setText(Html.fromHtml(licai.show_list_three()));
-			holder.tv_i1.setText("100.00万");
-			holder.tv_i2.setText("9.5%");
-			holder.tv_i3.setText("1个月");
+
+			holder.tv_i1.setText(san.show_list_one());
+			holder.tv_i2.setText(san.show_list_two());
+			holder.tv_i3.setText(san.show_list_three());
+			if(san.tjf.length()==0){
+				holder.layout.setVisibility(View.GONE);
+			}else{
+				holder.layout.setVisibility(View.VISIBLE);
+				holder.tv_i4.setText(san.tjf +" 推荐");
+			}
 			
-			
-			holder.tv_i4.setText("东莞市广信商业保理有限公司 推荐");
 			
 			holder.tv_btn.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-				
-					Intent intent = new Intent(Invert.this,
-							LiJiShenQingActivity.class);
-					intent.putExtra("pId", licai.getpId());
-					intent.putExtra("joinlimit", licai.getJoinLimit());
-					Log.v("quqian", "-----pid----" + licai.getpId());
-					startActivity(intent);
+ 
+					UserMode user = Tool.getUser(Invert.this);
+					if (user == null) {
+						startActivity(new Intent(Invert.this,
+								LoginActivity.class));
+					} else {
+
+						SanProject san = (SanProject) allList1.get(position);
+
+						Intent intent = new Intent(Invert.this,
+								LiJiTouBiaoActivity.class);
+						Bundle bundle = new Bundle();
+						bundle.putString("pId", san.getpId());
+						bundle.putString("shengyu", san.getSyje());// 剩余金额
+						bundle.putString("huankuanqixian", san.getHkqx());// 还款期限
+						bundle.putString("nianlilv", san.getNll());// 年利率
+						bundle.putString("jiangli", san.getJlll());// 奖励利率
+						bundle.putString("jiekuan", san.getJkfs());// 借款方式
+						bundle.putString("huankuanfangshi", san.getHkfs());// 还款方式
+						bundle.putString("bdtype", san.getBdtype());//标的类型
+						intent.putExtras(bundle);
+
+						startActivity(intent);
+					}
 					anim_right_in();
+					
 				
 				}
 			});
@@ -329,6 +365,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 			TextView tv_i2;
 			TextView tv_i3;
 			TextView tv_i4;
+			LinearLayout layout;
 
 		}
 	}
@@ -338,7 +375,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 
 		@Override
 		public int getCount() {
-			return allList1 != null ? allList1.size() : 0;
+			return allList2 != null ? allList2.size() : 0;
 		}
 
 		@Override
@@ -384,37 +421,52 @@ public class Invert extends BaseActivity implements OnClickListener,
 						.findViewById(R.id.inert_licai_tv7);
 				holder.tv_i4 = (TextView) convertView
 						.findViewById(R.id.inert_licai_tv8);
-
+				holder.layout = (LinearLayout)  convertView
+						.findViewById(R.id.licai_layout_gongsi);
+				
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-			final TiYanProject licai = (TiYanProject) allList1.get(position);
-
-			holder.tv1.setVisibility(View.GONE);
-			holder.tv2.setVisibility(View.VISIBLE);
-			holder.tv3.setText(licai.getBt());
-
-			if (licai.isJudgment_bid_butonPress()) {
+			final SanProject san = (SanProject) allList2.get(position);
+			
+			 
+			if(san.bdtype == "0"){
+				holder.tv1.setVisibility(View.VISIBLE);	
+				holder.tv2.setVisibility(View.GONE);
+			}else{
+				holder.tv2.setVisibility(View.VISIBLE);
+				holder.tv1.setVisibility(View.GONE);
+			}
+			
+			holder.tv3.setText(san.getBdbt());
+			 
+			if (san.isJudgment_bid_butonPress()) {
 				holder.tv_btn.setTextColor(getResources().getColor(
 						R.color.main_text_blue));
+				holder.tv_btn
+						.setBackgroundResource(R.drawable.button_kuang_blue);
 				holder.tv_btn.setEnabled(true);
 			} else {
 				holder.tv_btn.setTextColor(getResources().getColor(
 						R.color.main_text_gray));
+				holder.tv_btn
+						.setBackgroundResource(R.drawable.button_kuang_gray);
 				holder.tv_btn.setEnabled(false);
 			}
-			holder.tv_btn.setText(licai.getZt());
-		
+			holder.tv_btn.setText(san.getZt());
+ 
 			
-//			holder.tv_i1.setText(Html.fromHtml(licai.show_list_one()));
-//			holder.tv_i2.setText(Html.fromHtml(licai.show_list_two()));
-//			holder.tv_i3.setText(Html.fromHtml(licai.show_list_three()));
-			holder.tv_i1.setText("100.00万");
-			holder.tv_i2.setText("9.5%");
-			holder.tv_i3.setText("1个月");
+			holder.tv_i1.setText(san.show_list_one());
+			holder.tv_i2.setText(san.show_list_two());
+			holder.tv_i3.setText(san.show_list_three());
+			if(san.tjf.length()==0){
+				holder.layout.setVisibility(View.GONE);
+			}else{
+				holder.layout.setVisibility(View.VISIBLE);
+				holder.tv_i4.setText(san.tjf +" 推荐");
+			}
 			
-			holder.tv_i4.setText("东莞市广信商业保理有限公司 推荐");
 			
 			holder.tv_btn.setOnClickListener(new OnClickListener() {
 
@@ -422,13 +474,31 @@ public class Invert extends BaseActivity implements OnClickListener,
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
 				
-					Intent intent = new Intent(Invert.this,
-							LiJiShenQingActivity.class);
-					intent.putExtra("pId", licai.getpId());
-					intent.putExtra("joinlimit", licai.getJoinLimit());
-					Log.v("quqian", "-----pid----" + licai.getpId());
-					startActivity(intent);
+					UserMode user = Tool.getUser(Invert.this);
+					if (user == null) {
+						startActivity(new Intent(Invert.this,
+								LoginActivity.class));
+					} else {
+
+						SanProject san = (SanProject) allList2.get(position);
+
+						Intent intent = new Intent(Invert.this,
+								LiJiTouBiaoActivity.class);
+						Bundle bundle = new Bundle();
+						bundle.putString("pId", san.getpId());
+						bundle.putString("shengyu", san.getSyje());// 剩余金额
+						bundle.putString("huankuanqixian", san.getHkqx());// 还款期限
+						bundle.putString("nianlilv", san.getNll());// 年利率
+						bundle.putString("jiangli", san.getJlll());// 奖励利率
+						bundle.putString("jiekuan", san.getJkfs());// 借款方式
+						bundle.putString("huankuanfangshi", san.getHkfs());// 还款方式
+						bundle.putString("bdtype", san.getBdtype());//标的类型
+						intent.putExtras(bundle);
+
+						startActivity(intent);
+					}
 					anim_right_in();
+					
 				
 				}
 			});
@@ -446,7 +516,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 			TextView tv_i2;
 			TextView tv_i3;
 			TextView tv_i4;
-
+			LinearLayout layout;
 		}
 	}
 	
@@ -489,10 +559,11 @@ public class Invert extends BaseActivity implements OnClickListener,
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 		// 请求的参数如下
-		map.put("status", status);// 0精选理财，1是存管理财，
+		
+		map.put("bdlx", status);// 0精选理财，1是存管理财，
 		map.put("page", curPage + "");// 当前页码
 
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(11,
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(8,
 				map, Invert.this, mHandler);
 		RequestPool.execute(thread);
 
@@ -516,7 +587,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 			case 1:
 
 				//json = (JSONObject) msg.getData().get("json");
-				if (msg.getData().get("status").equals("0")) {
+				if (msg.getData().get("bdlx").equals("0")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -526,7 +597,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 					allList1.addAll(list);
 					mAdapter1.notifyDataSetChanged();
 
-				} else if (msg.getData().get("status").equals("1")) {
+				} else if (msg.getData().get("bdlx").equals("1")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -587,7 +658,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 		Bundle b = new Bundle();
 		b.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) list);
 		//b.putParcelable("json", (Parcelable) json);
-		b.putString("status", map.get("status"));
+		b.putString("bdlx", map.get("bdlx"));
 		Message msg1 = new Message();
 		msg1.setData(b);
 		msg1.what = 1;

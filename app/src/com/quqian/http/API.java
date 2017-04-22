@@ -9,6 +9,9 @@ import com.quqian.util.Tool;
 
 public class API {
 
+	// 本地测试环境
+	//public static String HTTP = "http://192.168.1.87:9111/app/";
+
 	// 测试环境
 	public static String HTTP = "http://test.qbzvip.com/app/";
 
@@ -26,7 +29,7 @@ public class API {
 	public static String YJFK = HTTP + "yjfk.htm"; // 7,意见反馈
 	// 散标
 	public static String SBTZLIST = HTTP + "sbtz/list.htm"; // 8,散标投资列表
-	//快赚宝
+	// 快赚宝
 	public static String KZBLIST = HTTP + "kzb/list.htm"; // 48,快赚宝列表
 	public static String SBTZGET = HTTP + "sbtz/get.htm"; // 9,散标详情
 	public static String SBTZTB = HTTP + "sbtz/tb.htm"; // 10,散标投资投标
@@ -68,25 +71,28 @@ public class API {
 
 	// 新增
 	public static String getrecharge = HTTP + "user/deal/getrecharge.htm";// 38,充值判断信息
-	//public static String pay = HTTP + "user/deal/pay.htm";// 39,充值
+	// public static String pay = HTTP + "user/deal/pay.htm";// 39,充值
 	public static String pay = HTTP + "user/deal/appKjPay.htm";// 39,快捷充值
 	public static String getwithdraw = HTTP + "user/deal/getwithdraw.htm";// 40,提款判断信息
 	public static String checkWpassword = HTTP + "checkWpassword.htm";// 41,验证提款密码
-	//public static String withdraw = HTTP + "user/deal/withdraw.htm";// 42,提款
+	// public static String withdraw = HTTP + "user/deal/withdraw.htm";// 42,提款
 	public static String withdraw = HTTP + "user/deal/appWithdraw.htm";// 42,提款
 	public static String bankcard = HTTP + "user/bankcard/get.htm";// 43,获取银行卡信息资料
 	public static String getbank = HTTP + "user/bankcard/getbank.htm";// 44,获取所有银行
 	public static String region = HTTP + "user/bankcard/region.htm";// 45,获取所有的银行区域
 	public static String addorupdate = HTTP + "user/bankcard/addorupdate.htm";// 46,绑定和修改银行信息
 
-	
-	public static String androidRegion = HTTP+ "user/bankcard/androidRegion.htm";// 47,获取省，市，区
-	
-	//4月5号新增
-	public static String YysjCount = HTTP+ "app/YysjCount.htm";// 100,统计数据
-	
-	//4月5号新增
-	
+	public static String androidRegion = HTTP
+			+ "user/bankcard/androidRegion.htm";// 47,获取省，市，区
+
+	// 4月号新增
+	public static String YysjCount = HTTP + "yysjCount.htm";// 100,统计数据
+
+	// 4月21号新增
+	public static String woyaojiekuan = HTTP + "wyjk.htm";// 101,我要借款
+
+	// 获取加息卡列表
+	public static String getJxkList = HTTP + "sbtz/getJxkList.htm";// 102,获取加息卡类标
 
 	public API() {
 		// TODO Auto-generated constructor stub
@@ -267,10 +273,10 @@ public class API {
 	// 散标详情
 	public static String API_SBTZGET_9(Map<String, String> map,
 			HttpResponseInterface activity) {
-		//String pid = map.get("id");
-//		if (pid.length() == 0) {
-//			return "请上传散标的id";
-//		}
+		// String pid = map.get("id");
+		// if (pid.length() == 0) {
+		// return "请上传散标的id";
+		// }
 		// 添加URL
 		map.put("url", SBTZGET);
 		map.put("urlNum", "9");
@@ -782,7 +788,7 @@ public class API {
 		Http.POST(map, activity);
 		return "";
 	}
-	
+
 	// 获取省市区
 	public static String API_androidRegion_47(Map<String, String> map,
 			HttpResponseInterface activity) {
@@ -793,30 +799,53 @@ public class API {
 		Http.POST(map, activity);
 		return "";
 	}
+
 	// 快赚宝列表
 	public static String API_KZBLIST_48(Map<String, String> map,
-				HttpResponseInterface activity) {
-			String page = map.get("page");
-			if (page.length() == 0) {
-				return "请上传页码";
-			}
-			// 添加URL
-			map.put("url", KZBLIST);
-			map.put("urlNum", "48");
-			// 发起网络请求
-			Http.POST(map, activity);
-			return "";
+			HttpResponseInterface activity) {
+		String page = map.get("page");
+		if (page.length() == 0) {
+			return "请上传页码";
 		}
+		// 添加URL
+		map.put("url", KZBLIST);
+		map.put("urlNum", "48");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
 	// 统计数据
 	public static String APIYysjCount_100(Map<String, String> map,
-					HttpResponseInterface activity) {
+			HttpResponseInterface activity) {
 		// 添加URL
 		map.put("url", YysjCount);
 		map.put("urlNum", "100");
 		// 发起网络请求
 		Http.POST(map, activity);
-		return "";		
+		return "";
 	}
-	 
-	
+
+	// 我要借款
+	public static String APIwoyaojiekuan_101(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", woyaojiekuan);
+		map.put("urlNum", "101");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 获取加息卡李列表
+	public static String APIgetJxkList_102(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", getJxkList);
+		map.put("urlNum", "102");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
 }

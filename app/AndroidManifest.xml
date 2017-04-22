@@ -217,7 +217,7 @@
             android:theme="@style/AppTheme" >
         </activity>
         <activity
-            android:name="com.quqian.activity.index.LiJiTouBiaoActivity"
+            android:name="com.quqian.activity.invert.LiJiTouBiaoActivity"
             android:label="@string/bottom_bar_index"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -473,6 +473,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
+        <!--webview-->
+         <activity
+            android:name="com.quqian.activity.index.xin.WebViewActivity"
+            android:label="@string/bottom_bar_index"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -522,5 +530,5 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
-
+	<uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

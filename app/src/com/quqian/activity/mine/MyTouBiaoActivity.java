@@ -36,9 +36,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quqian.R;
-import com.quqian.activity.index.LiJiTouBiaoActivity;
 import com.quqian.activity.index.SanBiaoTouZiActivity;
 import com.quqian.activity.index.SanInfoActivity;
+import com.quqian.activity.invert.LiJiTouBiaoActivity;
 import com.quqian.activity.mine.MyLiCaiActivity.MyAdapter1;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.SanProject;
