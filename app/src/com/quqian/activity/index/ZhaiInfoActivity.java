@@ -37,7 +37,7 @@ import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.ProcessDialogUtil;
 import com.quqian.util.TimeUtil;
 import com.quqian.util.Tool;
-import com.quqian.util.WebViewActivity;
+import com.quqian.util.MyWebViewActivity;
 
 public class ZhaiInfoActivity extends BaseActivity implements OnClickListener,
 		HttpResponseInterface {
@@ -247,7 +247,7 @@ public class ZhaiInfoActivity extends BaseActivity implements OnClickListener,
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					Intent intent = new Intent(ZhaiInfoActivity.this,WebViewActivity.class);
+					Intent intent = new Intent(ZhaiInfoActivity.this,MyWebViewActivity.class);
 					intent.putExtra("title",str1 );
 					intent.putExtra("url", str2+"&"+Tool.timechuo());
 					startActivity(intent);

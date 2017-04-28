@@ -70,12 +70,9 @@ import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.ProcessDialogUtil;
 import com.quqian.util.TimeUtil;
 import com.quqian.util.Tool;
-import com.quqian.util.WebViewActivity;
+import com.quqian.util.MyWebViewActivity;
 
 public class WuYouCunZhengOne extends BaseActivity implements OnClickListener{
-
-	//按钮，下一页
-	private Button next = null;
 
 
 	@Override
@@ -104,8 +101,6 @@ public class WuYouCunZhengOne extends BaseActivity implements OnClickListener{
 		setTitle("无忧存证");
 		showBack();
 
-		next = (Button)findViewById(R.id.wzcy_next1);
-
 	}
 
 	@Override
@@ -113,7 +108,6 @@ public class WuYouCunZhengOne extends BaseActivity implements OnClickListener{
 		// TODO Auto-generated method stub
 		super.initViewListener();
 		titleBarBack.setOnClickListener(this);
-		next.setOnClickListener(this);
 	}
 
 	protected void doOther() {
@@ -129,11 +123,6 @@ public class WuYouCunZhengOne extends BaseActivity implements OnClickListener{
 			// 返回
 			WuYouCunZhengOne.this.finish();
 			anim_right_out();
-			break;
-		case R.id.wzcy_next1:
-			// 返回
-			startActivity(new Intent(WuYouCunZhengOne.this,WuYouCunZhengTwo.class));
-			anim_right_in();
 			break;
 		default:
 			break;

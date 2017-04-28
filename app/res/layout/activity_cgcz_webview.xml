@@ -10,7 +10,7 @@
         layout="@layout/titlebar" />
     
     <WebView
-        android:id="@+id/webView11"
+        android:id="@+id/webViewchongzhi"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

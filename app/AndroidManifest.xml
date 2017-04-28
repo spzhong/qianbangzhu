@@ -18,22 +18,21 @@
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-             
+            android:theme="@style/AppTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            
         </activity>
-        
-          <!-- LLYT SDK START -->
+
+        <!-- LLYT SDK START -->
         <activity
             android:name="com.yintong.secure.activity.BaseActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize" >
         </activity>
 
         <service
@@ -41,7 +40,7 @@
             android:exported="false" >
         </service>
         <!-- LLYT SDK END -->
-        
+
         <activity
             android:name="com.quqian.activity.GuideActivity"
             android:label="@string/app_name"
@@ -105,16 +104,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-        
-         <activity
-            android:name="com.quqian.util.WebViewActivity"
+        <activity
+            android:name="com.quqian.util.MyWebViewActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-        
-        <!-- 首页 new-->
+
+        <!-- 首页 new -->
         <activity
             android:name="com.quqian.activity.index.xin.WoYaoJieKuan"
             android:label="@string/bottom_bar_index"
@@ -181,7 +179,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-        
         <activity
             android:name="com.quqian.activity.invert.Invert"
             android:label="@string/bottom_bar_index"
@@ -194,7 +191,49 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-        
+        <activity
+            android:name="com.quqian.activity.mine.xin.ChongZhiJILu"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.NewChongQianYuKuaiJie"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.NewChongZhi"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.NewTiXian"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.TiXianJILu"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.NewYinHangKaGuanLi"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.KaiTongCunGuanActivity"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+
         <!-- 首页 -->
         <activity
             android:name="com.quqian.activity.index.IndexActivity"
@@ -280,7 +319,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-         <activity
+        <activity
             android:name="com.quqian.activity.mine.SelectInfoActivity"
             android:label="@string/bottom_bar_mine"
             android:launchMode="singleTask"
@@ -378,7 +417,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-
         <activity
             android:name="com.quqian.activity.mine.TiXianActivity"
             android:label="@string/bottom_bar_mine"
@@ -386,7 +424,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-         <activity
+        <activity
             android:name="com.quqian.activity.mine.QueRenTiXianActivity"
             android:label="@string/bottom_bar_mine"
             android:launchMode="singleTask"
@@ -400,14 +438,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-         <activity
+        <activity
             android:name="com.quqian.activity.mine.WoErWeiMaActivity"
             android:label="@string/bottom_bar_mine"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-          <activity
+        <activity
             android:name="com.quqian.activity.mine.BangDingYinHangKaActivity"
             android:label="@string/bottom_bar_mine"
             android:launchMode="singleTask"
@@ -435,13 +473,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-        
+
         <!-- 更多 -->
         <activity
             android:name="com.quqian.activity.more.MoreActivity"
             android:label="@string/bottom_bar_more"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme" >
         </activity>
         <activity
             android:name="com.quqian.activity.more.JianYiActivity"
@@ -457,30 +495,31 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-        <!--kzb  -->
-         <activity
+        <!-- kzb -->
+        <activity
             android:name="com.quqian.activity.index.KuaizhuanBaoActivity"
             android:label="@string/bottom_bar_index"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-        <!--申请借款-->
-         <activity
+        <!-- 申请借款 -->
+        <activity
             android:name="com.quqian.activity.SqLoanActivity"
             android:label="@string/bottom_bar_index"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-        <!--webview-->
-         <activity
-            android:name="com.quqian.activity.index.xin.WebViewActivity"
+        <!-- webview -->
+        <activity
+            android:name="com.quqian.activity.mine.xin.CGWebView"
             android:label="@string/bottom_bar_index"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
+         
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -530,5 +569,6 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
-	<uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

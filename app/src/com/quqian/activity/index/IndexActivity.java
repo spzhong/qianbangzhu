@@ -72,7 +72,7 @@ import com.quqian.util.ProcessDialogUtil;
 import com.quqian.util.StaticVariable;
 import com.quqian.util.TimeUtil;
 import com.quqian.util.Tool;
-import com.quqian.util.WebViewActivity;
+import com.quqian.util.MyWebViewActivity;
 
 public class IndexActivity extends BaseActivity implements OnClickListener,
 		HttpResponseInterface {
@@ -284,7 +284,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 			break;
 		case R.id.index_layout_wuyoucunzheng:
 			// 跳转到无忧存证
-			startActivity(new Intent(IndexActivity.this,SanBiaoTouZiActivity.class));
+			startActivity(new Intent(IndexActivity.this,WuYouCunZhengOne.class));
 			anim_right_in();
 			break;
 		case R.id.index_layout_jingxuanlicai:
@@ -378,7 +378,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 					// Toast.makeText(IndexActivity.this, position+"",
 					// 1000).show();
 					Intent intent = new Intent(IndexActivity.this,
-							WebViewActivity.class);
+							MyWebViewActivity.class);
 					intent.putExtra("title", urlTitle.get(position));
 					intent.putExtra("url", urlList.get(position));
 					startActivity(intent);

@@ -11,8 +11,8 @@ import android.os.Handler;
 import android.os.Message;
 
 public class RequestThreadImp extends RequestThreadAbstract {
-	protected RequestThreadImp(int i, Map<String, String> map, HttpResponseInterface context,
-			Handler handler) {
+	protected RequestThreadImp(int i, Map<String, String> map,
+			HttpResponseInterface context, Handler handler) {
 		super(i, map, context, handler);
 	}
 
@@ -66,7 +66,7 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				msg.setData(bundle);
 				handler.sendMessage(msg);
 			}
-			break; 
+			break;
 		case 5:
 			String errMsg5 = API.API_SENDREGISTERMSG_5(map, context);
 			// 说明有错误的信息－－网络没有发送
@@ -78,7 +78,7 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				msg.setData(bundle);
 				handler.sendMessage(msg);
 			}
-			break; 
+			break;
 		case 6:
 			String errMsg6 = API.API_SENDZHMMMSG_6(map, context);
 			// 说明有错误的信息－－网络没有发送
@@ -102,7 +102,7 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				msg.setData(bundle);
 				handler.sendMessage(msg);
 			}
-			break; 
+			break;
 		case 8:
 			String errMsg8 = API.API_SBTZLIST_8(map, context);
 			// 说明有错误的信息－－网络没有发送
@@ -139,7 +139,7 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				handler.sendMessage(msg);
 			}
 			break;
-			
+
 		case 11:
 			String errMsg11 = API.API_LCTYLIST_11(map, context);
 			// 说明有错误的信息－－网络没有发送
@@ -152,7 +152,7 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				handler.sendMessage(msg);
 			}
 			break;
-			
+
 		case 12:
 			String errMsg12 = API.API_LCTYGET_12(map, context);
 			// 说明有错误的信息－－网络没有发送
@@ -201,7 +201,7 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				handler.sendMessage(msg);
 			}
 			break;
-			
+
 		case 16:
 			String errMsg16 = API.API_ZQZRLIST_16(map, context);
 			// 说明有错误的信息－－网络没有发送
@@ -537,7 +537,7 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				msg.setData(bundle);
 				handler.sendMessage(msg);
 			}
-			break;	
+			break;
 		case 100:
 			String errMsg100 = API.APIYysjCount_100(map, context);
 			// 说明有错误的信息－－网络没有发送
@@ -549,7 +549,7 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				msg.setData(bundle);
 				handler.sendMessage(msg);
 			}
-			break;	
+			break;
 		case 101:
 			String errMsg101 = API.APIwoyaojiekuan_101(map, context);
 			// 说明有错误的信息－－网络没有发送
@@ -561,7 +561,7 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				msg.setData(bundle);
 				handler.sendMessage(msg);
 			}
-			break;	
+			break;
 		case 102:
 			String errMsg102 = API.APIgetJxkList_102(map, context);
 			// 说明有错误的信息－－网络没有发送
@@ -573,7 +573,55 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				msg.setData(bundle);
 				handler.sendMessage(msg);
 			}
-			break;	
+			break;
+		case 103:
+			String errMsg103 = API.APIgetYhkgl_103(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg103.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg103);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
+		case 104:
+			String errMsg104 = API.APIDealpay_104(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg104.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg104);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
+		case 105:
+			String errMsg105 = API.APIWithdraw_105(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg105.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg105);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
+		case 106:
+			String errMsg106 = API.BankcardRegCg_106(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg106.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg106);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
 		default:
 			break;
 		}

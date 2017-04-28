@@ -11,9 +11,9 @@ import android.webkit.WebViewClient;
 import com.example.quqian.R;
 import com.quqian.base.BaseActivity;
 
-public class WebViewActivity extends BaseActivity implements OnClickListener {
+public class MyWebViewActivity extends BaseActivity implements OnClickListener {
 
-	private String title = "趣钱";
+	private String title = "钱帮主";
 	private String url = "";
 
 	private WebView webView = null;

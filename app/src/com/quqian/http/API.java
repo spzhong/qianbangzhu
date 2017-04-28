@@ -10,7 +10,7 @@ import com.quqian.util.Tool;
 public class API {
 
 	// 本地测试环境
-	//public static String HTTP = "http://192.168.1.87:9111/app/";
+	// public static String HTTP = "http://192.168.1.87:9111/app/";
 
 	// 测试环境
 	public static String HTTP = "http://test.qbzvip.com/app/";
@@ -93,6 +93,18 @@ public class API {
 
 	// 获取加息卡列表
 	public static String getJxkList = HTTP + "sbtz/getJxkList.htm";// 102,获取加息卡类标
+
+	// 获取银行卡管理信息 2017-04-23 小猪
+	public static String YHKGL = HTTP + "user/bankcard/list.htm";// 103，
+
+	// 充值
+	public static String Dealpay = HTTP + "user/deal/pay.htm";// 104
+
+	// 提现
+	public static String Withdraw = HTTP + "user/deal/withdraw.htm";// 105
+
+	// 开通存管的账户
+	public static String BankcardRegCg = HTTP + "user/bankcard/regCg.htm";// 106
 
 	public API() {
 		// TODO Auto-generated constructor stub
@@ -843,6 +855,61 @@ public class API {
 		// 添加URL
 		map.put("url", getJxkList);
 		map.put("urlNum", "102");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 银行卡管理
+	public static String APIgetYhkgl_103(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", YHKGL);
+		map.put("urlNum", "103");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 充值
+	public static String APIDealpay_104(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", Dealpay);
+		map.put("urlNum", "104");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 提现
+	public static String APIWithdraw_105(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", Withdraw);
+		map.put("urlNum", "105");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 开通存管的账户
+	public static String BankcardRegCg_106(Map<String, String> map,
+			HttpResponseInterface activity) {
+		String zsxm = map.get("realname");
+		String sfzh = map.get("idcard");
+		if (zsxm.length() == 0) {
+			return "请输入真实姓名";
+		}
+		if (sfzh.length() == 0) {
+			return "请输入身份证号";
+		}
+		if (sfzh.length() != 18) {
+			return "身份证号错误";
+		}
+		// 添加URL
+		map.put("url", BankcardRegCg);
+		map.put("urlNum", "106");
 		// 发起网络请求
 		Http.POST(map, activity);
 		return "";

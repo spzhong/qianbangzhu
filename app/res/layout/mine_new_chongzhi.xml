@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_96px"
+        layout="@layout/titlebar"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:paddingTop="3dp" >
+
+        <RadioGroup
+            android:id="@+id/cz_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/cz_rb1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="存管充值"
+                android:textColor="@color/radiobtn_text_color_black"
+                android:textSize="@dimen/sp_30px" />
+
+            <RadioButton
+                android:id="@+id/cz_rb2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="普通充值"
+                android:textColor="@color/radiobtn_text_color_black"
+                android:textSize="@dimen/sp_30px" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/cz_tvrb1"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="@color/main_radio_blue" />
+
+        <TextView
+            android:id="@+id/cz_tvrb2"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cz_layout_weikaitong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/cz_layout_weikaitongtip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:text="您尚未开通存管账户，现在去开通？"
+            android:textSize="@dimen/sp_26px" />
+
+        <Button
+            android:id="@+id/cz_layout_weikaitongbtn"
+            android:layout_width="210dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_new_blue"
+            android:text="前往开通"
+            android:textColor="@color/btn_text_color_black"
+            android:textSize="@dimen/sp_36px" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cz_layout_cg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="可用余额"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/cz_layout_cg_keyong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="10000.00元"
+                android:textColor="@color/main_text_blue"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/main_line_gray" >
+        </View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="华兴E账户"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/cz_layout_cg_zhanghu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="6236882280000375472"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/main_line_gray" >
+        </View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="充值金额"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <EditText
+                android:id="@+id/cz_layout_cg_chongzhi"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@null"
+                android:hint="请输入充值金额"
+                android:numeric="decimal"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="元"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/cz_layout_cg_btn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button_new_blue"
+            android:text="立即充值"
+            android:textColor="@color/btn_text_color_black"
+            android:textSize="@dimen/sp_36px" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="重要提示"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="1.充值全程不收取任何手续费;"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="2.充值最低金额应大于1元；"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="3.请选择合适的充值方式:"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="方法一：通过E账户充值，需先通过本人银行卡转账（手机银行、网上银行、银行柜台都可）至您的华兴银行E账户中，然后进行充值，最快T+0到账（推荐）"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="方法二：通过已绑定的银行卡直接充值，T+1工作日到账；"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="4.通过各大银行手机银行、网上银行可直接转账到华兴E账户；"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="5.如您在充值过程中遇到任何问题，可直接致电400-8535-666或咨询在线客服。"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cz_layout_pu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:id="@+id/cz_layout_pu_qianyue"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/qianyuechongzhi"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="签约充值"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/main_line_gray" >
+        </View>
+
+        <LinearLayout
+            android:id="@+id/cz_layout_pu_kuaijie"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/kuaijiechognzhi"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="快捷充值"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="温馨提示"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="签约充值"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="1.无需开通网银，签约成功后，无需输入卡号及验证码；"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="2.签约充值单笔金额最低2000元；"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="3.签约支持银行包括中国银行，农业银行，工商银行，建设银行，兴业银行，中信银行，光大银行，民生银行，广发银行，平安银行，招商银行，浦发银行，华夏银行，国家邮政局邮政储蓄局；若您绑定的银行卡不在这十四家银行内，请联系商户进行线下签约或修改绑定卡。"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="25dp"
+                    android:text="快捷充值"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="需开通银行网银，针对无法签约的用户。"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+            </LinearLayout>
+        </ScrollView>
+        
+    </LinearLayout>
+
+</LinearLayout>

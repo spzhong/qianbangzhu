@@ -43,11 +43,11 @@ import android.widget.Toast;
 
 import com.example.quqian.R;
 import com.quqian.activity.index.IndexActivity;
-import com.quqian.activity.index.xin.WebViewActivity;
 import com.quqian.activity.index.xin.YunYingShuJu;
 import com.quqian.activity.index.xin.YunYingShuJuNext;
 import com.quqian.activity.mine.MineActivity;
 import com.quqian.activity.mine.ZiJinGuanLiActivity;
+import com.quqian.activity.mine.xin.CGWebView;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.SanProject;
 import com.quqian.been.UserMode;
@@ -466,14 +466,13 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 						Toast.makeText(LiJiTouBiaoActivity.this,"操作失败", 1000).show();
 						return;
 					}
-					
 					Intent intent2 = new Intent(LiJiTouBiaoActivity.this,
-							WebViewActivity.class);
+							CGWebView.class);
 					intent2.putExtra("sendUrl", sendUrl);
 					intent2.putExtra("sendStr", sendStr);
 					intent2.putExtra("transCode", transCode);
+					intent2.putExtra("title", "投标确认");
 					startActivity(intent2);
-
 					anim_right_in();
 
 				} else {

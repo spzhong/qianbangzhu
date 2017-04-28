@@ -78,7 +78,7 @@ public class KjChongZhiActivity extends BaseActivity implements OnClickListener,
 	protected void initView() {
 		// TODO Auto-generated method stub
 		super.initView();
-		setTitle("富有充值");
+		
 		showBack();
 		webView =  (WebView) findViewById(R.id.kjczView);
 		webView.setWebViewClient(new WebViewClient()); 
@@ -87,7 +87,9 @@ public class KjChongZhiActivity extends BaseActivity implements OnClickListener,
 		webView.addJavascriptInterface(new JavaScriptinterface(),
                 "android");
 		juhua = new ProcessDialogUtil(KjChongZhiActivity.this);
+		//上个页面传递过来的数据
 		Intent intent = getIntent();
+		setTitle(intent.getStringExtra("title"));
 		mchnt_cd = intent.getStringExtra("mchnt_cd");
 		mchnt_txn_ssn = intent.getStringExtra("mchnt_txn_ssn");
 		amt = intent.getStringExtra("amt");
@@ -133,7 +135,8 @@ public class KjChongZhiActivity extends BaseActivity implements OnClickListener,
 
 
 	private String makePostHTML(){
-		String html = "<!DOCTYPE HTML><html><body><form id='sbform' action='%s' method='post'>%s</form><script type='text/javascript'>document.getElementById('sbform').submit();</script></body></html>";;
+		 
+		String html = "<!DOCTYPE HTML><html><head><meta charset=\"UTF-8\"></head><body><form id='sbform' action='%s' method='post'>%s</form><script type='text/javascript'>document.getElementById('sbform').submit();</script></body></html>";;
 	    StringBuffer sb = new StringBuffer();
 	    sb.append("<input type='hidden' name='mchnt_cd' value='" + mchnt_cd + "'>\n");
 	    sb.append("<input type='hidden' name='mchnt_txn_ssn' value='" + mchnt_txn_ssn + "'>\n");

@@ -34,7 +34,7 @@ import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.ProcessDialogUtil;
 import com.quqian.util.StaticVariable;
 import com.quqian.util.Tool;
-import com.quqian.util.WebViewActivity;
+import com.quqian.util.MyWebViewActivity;
 
 public class RegisterActivity extends BaseActivity implements OnClickListener,
 		HttpResponseInterface {
@@ -121,7 +121,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 			loadHttp_zhuce();
 			break;
 		case R.id.register_xieyi:
-			Intent intent = new Intent(RegisterActivity.this,WebViewActivity.class);
+			Intent intent = new Intent(RegisterActivity.this,MyWebViewActivity.class);
 			intent.putExtra("title", "趣钱注册协议");
 			intent.putExtra("url", API.HTTP_WEB+"/term/ZCXY.html");
 			startActivity(intent);

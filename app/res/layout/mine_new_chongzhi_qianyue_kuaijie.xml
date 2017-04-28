@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_96px"
+        layout="@layout/titlebar"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="30dp"
+                android:gravity="center"
+                android:text="第三方合作机构"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:text="富友"
+                android:gravity="center"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="5dp"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="15dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="可用余额"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/qianyuekuaijie_keyong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text="23456.00元"
+                android:textColor="@color/main_text_blue"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp" >
+
+            <EditText
+                android:id="@+id/qianyuekuaijie_chongzhi"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@color/main_background"
+                android:gravity="center"
+                android:hint="请输入充值金额 最少2000元"
+                android:numeric="decimal"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/qianyuekuaijie_yinhangkaweihao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:text="银行卡尾号：3075"
+            android:textColor="@color/main_invert_text_b"
+            android:textSize="@dimen/sp_24px" >
+        </TextView>
+
+        <Button
+            android:id="@+id/qianyuekuaijie_btn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button_new_blue"
+            android:text="立即充值"
+            android:textColor="@color/btn_text_color_black"
+            android:textSize="@dimen/sp_36px" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="温馨提示"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/qianyuekuaijie_tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="温馨提示"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/qianyuekuaijie_tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="温馨提示"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:text="请点击"
+                        android:textColor="@color/text_tips"
+                        android:textSize="@dimen/sp_24px" >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/qianyuekuaijie_tvbtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:text="《签约充值限额表》"
+                        android:textColor="@color/main_blue"
+                        android:textSize="@dimen/sp_24px" >
+                    </TextView>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/qianyuekuaijie_tv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="温馨提示"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/qianyuekuaijie_tv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="5dp"
+                    android:text="温馨提示"
+                    android:textColor="@color/text_tips"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

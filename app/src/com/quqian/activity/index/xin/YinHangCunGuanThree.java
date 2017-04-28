@@ -70,7 +70,7 @@ import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.ProcessDialogUtil;
 import com.quqian.util.TimeUtil;
 import com.quqian.util.Tool;
-import com.quqian.util.WebViewActivity;
+import com.quqian.util.MyWebViewActivity;
 
 public class YinHangCunGuanThree extends BaseActivity implements OnClickListener{
 

@@ -1,36 +1,28 @@
-package com.quqian.activity.index.xin;
+package com.quqian.activity.mine.xin;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.example.quqian.R;
-import com.quqian.base.BaseActivity;
-import com.quqian.http.API;
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import com.example.quqian.R;
+import com.quqian.base.BaseActivity;
+import com.quqian.http.API;
 
-public class WebViewActivity extends BaseActivity implements OnClickListener{
+public class CGWebView extends BaseActivity implements OnClickListener {
 
 	private String url = "";
 	private String sendStr = "";
 	private String transCode = "";
-	 
+
+	private String title = "";
 	
 	private WebView webView;
 	private String urlParameter = "";
-
 
 	@Override
 	protected void getIntentWord() {
@@ -45,29 +37,30 @@ public class WebViewActivity extends BaseActivity implements OnClickListener{
 		if (getIntent().getStringExtra("transCode") != null) {
 			this.transCode = getIntent().getStringExtra("transCode");
 		}
-		 
+		if (getIntent().getStringExtra("title") != null) {
+			this.title = getIntent().getStringExtra("title");
+		}
+
 	}
-	
 
 	@Override
 	protected int layoutId() {
 		// TODO Auto-generated method stub
-		return R.layout.activity_sign_webview;
+		return R.layout.activity_cgcz_webview;
 	}
-	
 
 	@Override
 	protected void initView() {
 		// TODO Auto-generated method stub
-		setTitle("立即投标");
+		setTitle(title);
 		showBack();
 
 		initWebView();
 
 	}
-	
+
 	private void initWebView() {
-		webView = (WebView) findViewById(R.id.webView11);
+		webView = (WebView) findViewById(R.id.webViewchongzhi);
 		// 初始化webview
 		// 启用支持javascript
 		WebSettings settings = webView.getSettings();
@@ -76,12 +69,35 @@ public class WebViewActivity extends BaseActivity implements OnClickListener{
 		settings.setJavaScriptCanOpenWindowsAutomatically(true);
 		Log.d("TAG", "url:" + url);
 		// post请求(使用键值对形式，格式与get请求一样，key=value,多个用&连接)
-		urlParameter = "RequestData=" + sendStr + "&" + "transCode="+transCode;
-		webView.postUrl(url, urlParameter.getBytes());
+		// urlParameter = "RequestData=" + sendStr + "&" +
+		// "transCode="+transCode;
+		// webView.postUrl(url, urlParameter.getBytes());
 
-		
+		String html = "<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"Generator\" content=\"EditPlus®\">"
+				+ "<meta name=\"Author\" content=\"\">"
+				+ "<meta name=\"Keywords\" content=\"\">"
+				+ "<meta name=\"Description\" content=\"\">"
+				+ "<title>Document</title></head>"
+				+ "<body>"
+				+ "<form  id=\"cgForm\" method=\"post\" action=\""
+				+ url
+				+ "\">"
+				+ "<input type=\"hidden\" name=\"RequestData\" id=\"RequestData\" value=\""
+				+ sendStr
+				+ "\" />"
+				+ "<input type=\"hidden\" name=\"transCode\" id=\"transCode\" value=\""
+				+ transCode
+				+ "\" />"
+				+ "</form>"
+				+ "<script type=\"text/javascript\">"
+				+ "window.onload= function(){document.getElementById('cgForm').submit();}</script></body></html>";
+
+		webView.loadDataWithBaseURL("", html, "text/html", "utf-8", null);
+		webView.getSettings().setJavaScriptEnabled(true);
+		webView.setWebChromeClient(new WebChromeClient());
+
 		// webView.loadUrl(url);//get
-		//webView.setWebChromeClient(new MyWebChromeClient());// 设置浏览器可弹窗
+		// webView.setWebChromeClient(new MyWebChromeClient());// 设置浏览器可弹窗
 		// 覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
 		webView.setWebViewClient(new WebViewClient() {
 			@Override
@@ -96,7 +112,7 @@ public class WebViewActivity extends BaseActivity implements OnClickListener{
 			public void onPageStarted(WebView view, String url, Bitmap favicon) {
 				Log.d("TAG", "onPageStarted--url:" + url);
 				// 支付完成后,点返回关闭界面
-				if (url.endsWith(API.HTTP+"sbtz/tbBack.htm")) {
+				if (url.endsWith(API.HTTP + "sbtz/tbBack.htm")) {
 					finish();
 				}
 
@@ -147,6 +163,5 @@ public class WebViewActivity extends BaseActivity implements OnClickListener{
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-
 
 }

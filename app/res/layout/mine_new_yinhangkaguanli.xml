@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_96px"
+        layout="@layout/titlebar"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:paddingTop="3dp" >
+
+        <RadioGroup
+            android:id="@+id/yhk_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/yhk_rb1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="存管账户"
+                android:textColor="@color/radiobtn_text_color_black"
+                android:textSize="@dimen/sp_30px" />
+
+            <RadioButton
+                android:id="@+id/yhk_rb2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="普通账户"
+                android:textColor="@color/radiobtn_text_color_black"
+                android:textSize="@dimen/sp_30px" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/yhk_tvrb1"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="@color/main_radio_blue" />
+
+        <TextView
+            android:id="@+id/yhk_tvrb2"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/yhk_layout_weikaitong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/yhk_layout_weikaitongtip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/lingjikaitong"
+            android:textSize="@dimen/sp_26px" />
+
+        <TextView
+            android:id="@+id/yhk_layout_weikaitongbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@null"
+            android:text="立即开通"
+            android:textColor="@color/main_invert_text_b"
+            android:textSize="@dimen/sp_30px" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/yhk_layout_cg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="华兴E账户："
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/yhk_layout_cg_zhanghu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="6236882280000375472"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="开户人姓名："
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/yhk_layout_cg_kaihurenxingming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="袁*"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="开户支行："
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/yhk_layout_cg_kaihuzhihang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="汕头分行营业部"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/yhk_layout_weikaitong2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/lingjikaitong"
+                android:textSize="@dimen/sp_26px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@null"
+                android:text="立即绑卡"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_30px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/yhk_layout_weikaitong3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="40dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/lingjikaitong"
+                android:textSize="@dimen/sp_26px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:background="@null"
+                android:gravity="center"
+                android:text="已绑卡"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_30px" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/yhk_layout_pu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="银行开户行："
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/yhk_layout_pu_yinhangkaihuhang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="招商银行"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="开户行地区："
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/yhk_layout_pu_kaihuhangdiqu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="广东省深圳市"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="银行卡号："
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/yhk_layout_pu_zhanghu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="6236882280000375472"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="5dp"
+                android:text="重要提示"
+                android:textColor="@color/text_tips"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/yhkgl_tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="5dp"
+                android:text="1. 华兴银行E账户即华兴银行电子账户，是用户在华兴银行实名开立的、用于办理钱帮主资金业务的账户；"
+                android:textColor="@color/text_tips"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/yhkgl_tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="5dp"
+                android:text="2.一个用户只能开立一个E账户，且只能绑定一张银行卡；"
+                android:textColor="@color/text_tips"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/yhkgl_tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="5dp"
+                android:text="3.如需更换绑定银行卡，请按实际情况选择更换；"
+                android:textColor="@color/text_tips"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/yhkgl_tv4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="5dp"
+                android:text=" （1）E账户资产全部转出，登录华兴银行投融资平台进行更换"
+                android:textColor="@color/text_tips"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/yhkgl_tv5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="5dp"
+                android:text=" （2）绑定银行卡挂失或销户销卡，通过投融资APP申请人工审批换卡。"
+                android:textColor="@color/text_tips"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

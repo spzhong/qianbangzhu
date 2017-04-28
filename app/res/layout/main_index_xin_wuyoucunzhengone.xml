@@ -4,62 +4,207 @@
     android:layout_height="match_parent" >
 
     <include
-        android:id="@+id/mmmmscrollview3" 
+        android:id="@+id/mmmmscrollview3"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_96px"
         layout="@layout/titlebar" />
-    
-    <ScrollView 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/mmmmscrollview3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" 
-        android:background="#F0FCFF">
+        android:background="#F0FCFF" >
+
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingLeft="15dp"
-	    android:paddingRight="15dp"
-        android:orientation="vertical">
-		<LinearLayout
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center"
-	        android:gravity="center"
-	        android:layout_marginTop="30dp"
-	        android:orientation="vertical">
-			<TextView 
-			    android:layout_width="match_parent"
-	       		android:layout_height="wrap_content"
-	       		android:text="什么是无忧存证？"
-	       		android:gravity="center"
-	       		android:textColor="@color/black"
-	       		android:textSize="@dimen/sp_36px"/>
-	    </LinearLayout>
-        <TextView 
-			    android:layout_width="match_parent"
-	       		android:layout_height="wrap_content"
-	       		android:text="@string/wuyoucunzheng1"
-	       		android:layout_marginTop="30dp"
-	       		android:textColor="@color/black"
-	       		android:textSize="@dimen/sp_28px"/>
-        <TextView 
-			    android:layout_width="match_parent"
-	       		android:layout_height="wrap_content"
-	       		android:text="@string/wuyoucunzheng2"
-	       		android:textColor="@color/black"
-	       		android:textSize="@dimen/sp_28px"/>
-    </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="什么是无忧存证？"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_36px" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/wuyoucunzheng1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wuyoucunzheng2"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="什么是全电子数据生命周期？"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_36px" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/wuyoucunzheng3"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/wuyoucunzheng4"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="交易完成出具保全证书"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_36px" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/wuyoucunzheng5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/wuyoucunzheng6"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_28px" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/xiangmuxinxi" >
+                </ImageView>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/jiaoyixinxi" >
+                </ImageView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/chongzhixinxi" >
+                </ImageView>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/tixianxinxi" >
+                </ImageView>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/yonghuxinxi" >
+                </ImageView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="电子交易数据保全证书（示例）"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_36px" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:src="@drawable/baoquanzhengshu" >
+            </ImageView>
+        </LinearLayout>
     </ScrollView>
-    
-		<Button
-	        android:id="@+id/wzcy_next1"
-	        android:layout_width="wrap_content"
-	        android:layout_height="50dp"
-	        android:layout_alignParentBottom="true"
-	        android:layout_centerHorizontal="true"
-	        android:background="@color/title_blue"
-	        android:textColor="#fff"
-	        android:textSize="@dimen/sp_36px"
-	        android:text="下一个" />
+
 </RelativeLayout>

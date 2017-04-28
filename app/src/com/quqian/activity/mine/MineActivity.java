@@ -32,6 +32,9 @@ import android.widget.Toast;
 
 import com.example.quqian.R;
 import com.quqian.activity.MainActivity;
+import com.quqian.activity.mine.xin.NewChongZhi;
+import com.quqian.activity.mine.xin.NewTiXian;
+import com.quqian.activity.mine.xin.NewYinHangKaGuanLi;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.Chongzhi;
 import com.quqian.been.UserMode;
@@ -293,14 +296,18 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 			anim_right_in();
 			break;
 		case R.id.m_yinhangkaguanli://银行卡管理
-			startActivity(new Intent(MineActivity.this, MyLiCaiActivity.class));
+			startActivity(new Intent(MineActivity.this, NewYinHangKaGuanLi.class));
 			anim_right_in();
 			break;
 		case R.id.main_mine_index_cz_btn://充值
-			isgoto_chongzhi_tixian(0);
+			//isgoto_chongzhi_tixian(0);
+			startActivity(new Intent(MineActivity.this, NewChongZhi.class));
+			anim_right_in();
 			break;
 		case R.id.main_mine_index_tx_btn://提现
-			isgoto_chongzhi_tixian(1);
+			//isgoto_chongzhi_tixian(1);
+			startActivity(new Intent(MineActivity.this, NewTiXian.class));
+			anim_right_in();
 			break;
 		default:
 			break;

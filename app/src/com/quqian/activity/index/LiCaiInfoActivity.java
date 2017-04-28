@@ -37,7 +37,7 @@ import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.ProcessDialogUtil;
 import com.quqian.util.TimeUtil;
 import com.quqian.util.Tool;
-import com.quqian.util.WebViewActivity;
+import com.quqian.util.MyWebViewActivity;
 
 public class LiCaiInfoActivity extends BaseActivity implements OnClickListener,
 		HttpResponseInterface {
@@ -158,7 +158,7 @@ public class LiCaiInfoActivity extends BaseActivity implements OnClickListener,
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
 						Intent intent = new Intent(LiCaiInfoActivity.this,
-								WebViewActivity.class);
+								MyWebViewActivity.class);
 						intent.putExtra("title", "理财体验说明书");
 						intent.putExtra("url", allLicai.getLcsm_url()+"&"+Tool.timechuo());
 						startActivity(intent);
