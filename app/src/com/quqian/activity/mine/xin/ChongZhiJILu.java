@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -46,6 +47,7 @@ import com.quqian.base.BaseActivity;
 import com.quqian.been.SanProject;
 import com.quqian.been.TiYanProject;
 import com.quqian.been.UserMode;
+import com.quqian.been.ZhaiQuanProject;
 import com.quqian.http.API;
 import com.quqian.http.RequestFactory;
 import com.quqian.http.RequestPool;
@@ -121,7 +123,7 @@ public class ChongZhiJILu extends BaseActivity implements OnClickListener,
 		mListView.setAdapter(mAdapter1);
 
 		// diao接口
-		loadHttp("1");
+		loadHttp("0");
 	}
 
 	@Override
@@ -150,12 +152,12 @@ public class ChongZhiJILu extends BaseActivity implements OnClickListener,
 			break;
 		case R.id.czjl_rb1:
 			// 存管充值记录
-			//修改状态条
+			// 修改状态条
 			tvrb1.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
-			
-			//请求数据
+
+			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter1);
 			// mAdapter1.notifyDataSetChanged();
@@ -163,12 +165,12 @@ public class ChongZhiJILu extends BaseActivity implements OnClickListener,
 			break;
 		case R.id.czjl_rb2:
 			// 普通充值记录
-			//改变单选状态条
-			tvrb1.setBackgroundColor(getResources().getColor(
-					R.color.white));
-			tvrb2.setBackgroundColor(getResources().getColor(R.color.main_radio_blue));
+			// 改变单选状态条
+			tvrb1.setBackgroundColor(getResources().getColor(R.color.white));
+			tvrb2.setBackgroundColor(getResources().getColor(
+					R.color.main_radio_blue));
 
-			//请求数据
+			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter2);
 			// mAdapter2.notifyDataSetChanged();
@@ -210,23 +212,26 @@ public class ChongZhiJILu extends BaseActivity implements OnClickListener,
 				convertView = LayoutInflater.from(ChongZhiJILu.this).inflate(
 						R.layout.mine_new_chongzhijlu_item, null);
 
-				holder.tv1 = (TextView) convertView
-						.findViewById(R.id.czjl_tv1);
+				holder.tv1 = (TextView) convertView.findViewById(R.id.czjl_tv1);
 
-				holder.tv2 = (TextView) convertView
-						.findViewById(R.id.czjl_tv2);
+				holder.tv2 = (TextView) convertView.findViewById(R.id.czjl_tv2);
 
-				holder.tv3 = (TextView) convertView
-						.findViewById(R.id.czjl_tv3);
+				holder.tv3 = (TextView) convertView.findViewById(R.id.czjl_tv3);
 
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			holder.tv1.setText("2017-01-10 19:30:02");
-			holder.tv2.setText("10000000");
-			holder.tv3.setText("充值成功");
+			JSONObject json = (JSONObject) allList1.get(position);
+			try {
+				holder.tv1.setText(json.getString("time"));
+				holder.tv2.setText(json.getString("je"));
+				holder.tv3.setText(json.getString("zt"));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			return convertView;
 		}
@@ -244,7 +249,7 @@ public class ChongZhiJILu extends BaseActivity implements OnClickListener,
 
 		@Override
 		public int getCount() {
-			return allList1 != null ? allList1.size() : 0;
+			return allList2 != null ? allList2.size() : 0;
 		}
 
 		@Override
@@ -270,23 +275,26 @@ public class ChongZhiJILu extends BaseActivity implements OnClickListener,
 				convertView = LayoutInflater.from(ChongZhiJILu.this).inflate(
 						R.layout.mine_new_chongzhijlu_item, null);
 
-				holder.tv1 = (TextView) convertView
-						.findViewById(R.id.czjl_tv1);
+				holder.tv1 = (TextView) convertView.findViewById(R.id.czjl_tv1);
 
-				holder.tv2 = (TextView) convertView
-						.findViewById(R.id.czjl_tv2);
+				holder.tv2 = (TextView) convertView.findViewById(R.id.czjl_tv2);
 
-				holder.tv3 = (TextView) convertView
-						.findViewById(R.id.czjl_tv3);
+				holder.tv3 = (TextView) convertView.findViewById(R.id.czjl_tv3);
 
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			holder.tv1.setText("2017-01-10 19:30:02");
-			holder.tv2.setText("10000000");
-			holder.tv3.setText("充值成功");
+			JSONObject json = (JSONObject) allList2.get(position);
+			try {
+				holder.tv1.setText(json.getString("time"));
+				holder.tv2.setText(json.getString("je"));
+				holder.tv3.setText(json.getString("zt"));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			return convertView;
 		}
@@ -344,10 +352,13 @@ public class ChongZhiJILu extends BaseActivity implements OnClickListener,
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 		// 请求的参数如下
-		map.put("status", status);// 0精选理财，1是存管理财，
+		if (status.endsWith("0")) {
+			map.put("type", "CGCZ");// 0存管充值，1是普通充值
+		} else {
+			map.put("type", "PTCZ");// 0存管充值，1是普通充值
+		}
 		map.put("page", curPage + "");// 当前页码
-
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(11,
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(107,
 				map, ChongZhiJILu.this, mHandler);
 		RequestPool.execute(thread);
 
@@ -371,7 +382,7 @@ public class ChongZhiJILu extends BaseActivity implements OnClickListener,
 			case 1:
 
 				// json = (JSONObject) msg.getData().get("json");
-				if (msg.getData().get("status").equals("0")) {
+				if (msg.getData().get("type").equals("CGCZ")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -381,7 +392,7 @@ public class ChongZhiJILu extends BaseActivity implements OnClickListener,
 					allList1.addAll(list);
 					mAdapter1.notifyDataSetChanged();
 
-				} else if (msg.getData().get("status").equals("1")) {
+				} else if (msg.getData().get("type").equals("PTCZ")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -439,10 +450,26 @@ public class ChongZhiJILu extends BaseActivity implements OnClickListener,
 
 		json = (JSONObject) jsonObj;
 
+		list = new ArrayList<Object>();
+		 
+		
+		try {
+			JSONArray jsonArray = (JSONArray) json.getJSONObject("rvalue")
+					.getJSONArray("items");
+			for (int i = 0; i < jsonArray.length(); i++) {
+				JSONObject noejson = jsonArray.getJSONObject(i);
+				list.add(noejson);// 加入list中
+			}
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		Bundle b = new Bundle();
 		b.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) list);
 		// b.putParcelable("json", (Parcelable) json);
-		b.putString("status", map.get("status"));
+		b.putString("type", map.get("type"));
 		Message msg1 = new Message();
 		msg1.setData(b);
 		msg1.what = 1;

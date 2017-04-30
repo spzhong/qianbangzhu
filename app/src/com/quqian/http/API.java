@@ -105,7 +105,18 @@ public class API {
 
 	// 开通存管的账户
 	public static String BankcardRegCg = HTTP + "user/bankcard/regCg.htm";// 106
-	 
+
+	// 充值记录
+	public static String payRecord = HTTP + "user/deal/payRecord.htm";// 107
+
+	// 提现记录
+	public static String withdrawRecord = HTTP + "user/deal/withdrawRecord.htm";// 108
+
+	// 绑定银行卡
+	public static String bankcardregJin = HTTP + "user/bankcard/regJin.htm";// 109
+
+	// 账户总览
+	public static String jyjlzhzl = HTTP + "user/jyjl/zhzl.htm";// 110
 
 	public API() {
 		// TODO Auto-generated constructor stub
@@ -911,6 +922,50 @@ public class API {
 		// 添加URL
 		map.put("url", BankcardRegCg);
 		map.put("urlNum", "106");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 充值记录
+	public static String payRecord_107(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", payRecord);
+		map.put("urlNum", "107");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 提现记录
+	public static String withdrawRecord_108(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", withdrawRecord);
+		map.put("urlNum", "108");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 绑定银行卡
+	public static String bankcardregJin_109(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", bankcardregJin);
+		map.put("urlNum", "109");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 绑定银行卡
+	public static String jyjlzhzl_110(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", jyjlzhzl);
+		map.put("urlNum", "110");
 		// 发起网络请求
 		Http.POST(map, activity);
 		return "";

@@ -34,7 +34,6 @@ import com.example.quqian.R;
 import com.quqian.activity.LoginActivity;
 import com.quqian.activity.MainActivity;
 import com.quqian.activity.index.LiJiShenQingActivity;
-import com.quqian.activity.mine.BangDingYinHangKaActivity;
 import com.quqian.activity.mine.ChongZhiActivity;
 import com.quqian.activity.mine.KjChongZhiActivity;
 import com.quqian.base.BaseActivity;
@@ -96,6 +95,8 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 
 	// 当前选中的radio button
 	private String myrb = "1";
+
+	private String zhlx = "";
 
 	// 网络加载中
 	ProcessDialogUtil juhua = null;
@@ -206,7 +207,7 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 				layout_pu.setVisibility(View.GONE);
 
 				// 设置开通存管账户数据 ,可用余额，华兴E账户
-				cg_tv_zhanghu.setText(cgkyye);
+				cg_tv_keyong.setText(cgkyye);
 				cg_tv_zhanghu.setText(cgzh);
 
 			} else {
@@ -253,17 +254,16 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 				startActivity(intent);
 				anim_right_in();
 			} else {
-				// 前去绑定 普通账户
-				// 注意此地方确认判断普通用户还是，企业的用户
-				UserMode user = Tool.getUser(NewChongZhi.this);
-				// 判断是否是企业的用户
-
-				// 判断是否是普通的用户
-				Intent intent = new Intent(NewChongZhi.this,
-						BangDingYinHangKaActivity.class);
-				startActivity(intent);
-				anim_right_in();
-
+				// 前去绑定 普通账户 个人：GRKH 企业：QYKH
+				if (zhlx.equals("GRKH")) {
+					// 跳转到个人
+					startActivity(new Intent(NewChongZhi.this,
+							BangDingYinHangKaActivity.class));
+				} else {
+					// 跳转到企业
+					startActivity(new Intent(NewChongZhi.this,
+							QiYeBangDingYinHangKaActivity.class));
+				}
 			}
 
 			break;
@@ -275,12 +275,13 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 				return;
 			}
 			double JINdd = Double.valueOf(JIN);
-			if(JINdd>=100 && JINdd < 1000000){
-			} else{
-				Toast.makeText(NewChongZhi.this, "充值金额必须大于100小于1000000", 1000).show();
+			if (JINdd >= 100 && JINdd < 1000000) {
+			} else {
+				Toast.makeText(NewChongZhi.this, "充值金额必须大于100小于1000000", 1000)
+						.show();
 				return;
 			}
-			
+
 			loadHttp_cg_chognzhi();
 
 			break;
@@ -330,7 +331,7 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 					layout_pu.setVisibility(View.GONE);
 
 					// 设置开通存管账户数据 ,可用余额，华兴E账户
-					cg_tv_zhanghu.setText(cgkyye + "元");
+					cg_tv_keyong.setText(cgkyye + "元");
 					cg_tv_zhanghu.setText(cgzh);
 
 				} else {
@@ -419,6 +420,7 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 				ptzt = pt.getString("ptzt");
 				ptkyye = pt.getString("ptkyye");
 				yhkh = pt.getString("yhkh");
+				zhlx = pt.getString("zhlx");
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -433,14 +435,16 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 			Bundle bundle = new Bundle();
 			try {
 				JSONArray rvalue = json.getJSONArray("rvalue");
-				JSONObject asydataJson = (JSONObject)rvalue.get(0);
-				 
-				bundle.putString("transCode", asydataJson.getJSONObject("asydata")
-						.getString("transCode"));
-				bundle.putString("sendUrl", asydataJson.getJSONObject("asydata")
-						.getString("sendUrl"));
-				bundle.putString("sendStr", asydataJson.getJSONObject("asydata")
-						.getString("sendStr"));
+				JSONObject asydataJson = (JSONObject) rvalue.get(0);
+
+				bundle.putString(
+						"transCode",
+						asydataJson.getJSONObject("asydata").getString(
+								"transCode"));
+				bundle.putString("sendUrl", asydataJson
+						.getJSONObject("asydata").getString("sendUrl"));
+				bundle.putString("sendStr", asydataJson
+						.getJSONObject("asydata").getString("sendStr"));
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

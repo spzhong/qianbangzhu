@@ -1,4 +1,4 @@
-package com.quqian.activity.mine;
+package com.quqian.activity.mine.xin;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -40,6 +40,7 @@ import android.widget.Toast;
 
 import com.example.quqian.R;
 import com.quqian.activity.index.IndexActivity;
+import com.quqian.activity.mine.SelectInfoActivity;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.Chongzhi;
 import com.quqian.been.QuYu;
@@ -67,6 +68,10 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 	// 开户行所在城市
 	private TextView kahuchengshi = null;
 
+	private String shengId = null;
+		
+ 
+	
 	// 银行卡号
 	private EditText yinhangkahao = null;
 
@@ -101,8 +106,13 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 	protected void getIntentWord() {
 		// TODO Auto-generated method stub
 		super.getIntentWord();
-		Intent intent = getIntent();
-		chongzhiModel = (Chongzhi) intent.getSerializableExtra("chongzhiModel");
+
+		chongzhiModel = new Chongzhi();
+		chongzhiModel.setType("0");
+
+		// Intent intent = getIntent();
+		// chongzhiModel = (Chongzhi)
+		// intent.getSerializableExtra("chongzhiModel");
 	}
 
 	@Override
@@ -111,13 +121,15 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 		super.initView();
 		setTitle(chongzhiModel.getTitle());
 		showBack();
+		setTitle("绑定银行卡");
 
 		juhua = new ProcessDialogUtil(BangDingYinHangKaActivity.this);
 
 		kaihuming = (EditText) findViewById(R.id.main_mine_bangding_kaihuming);
 		xuanzeyinhang = (TextView) findViewById(R.id.main_mine_bangding_xuanzeyinhang);
 		kahudi = (TextView) findViewById(R.id.main_mine_bangding_kaihusuozaidi);
-		kahuchengshi = (TextView) findViewById(R.id.main_mine_bangding_kaihusuozaishi);
+		// kahuchengshi = (TextView)
+		// findViewById(R.id.main_mine_bangding_kaihusuozaishi);
 		shenfenzheng = (EditText) findViewById(R.id.main_mine_bangding_shenfenzheng);
 		yinhangkahao = (EditText) findViewById(R.id.main_mine_bangding_yinhangkahao);
 
@@ -156,7 +168,9 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 					chongzhiModel.setCityId((String) arg1
 							.getStringExtra("cityId"));
 					kahudi.setText(chongzhiModel.getCity());
-
+					
+					shengId = (String) arg1.getStringExtra("shengid");
+					 
 				}
 			}
 		};
@@ -174,7 +188,7 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 
 		xuanzeyinhang.setOnClickListener(this);
 		kahudi.setOnClickListener(this);
-		kahuchengshi.setOnClickListener(this);
+		// kahuchengshi.setOnClickListener(this);
 		next.setOnClickListener(this);
 
 	}
@@ -188,11 +202,6 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 			anim_right_out();
 			break;
 		case R.id.main_mine_bangding_xuanzeyinhang:
-
-			// 不可修改银行的信息
-			if (chongzhiModel.getIsBound().equals("1")) {
-				return;
-			}
 
 			loadHttp_allYinhang();
 
@@ -210,19 +219,19 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 
 			// loadHttp_kaihuhangsuozaidi();
 			break;
-		case R.id.main_mine_bangding_kaihusuozaishi:
-			// 请选择开户所在地
-
-			Intent intent3 = new Intent(BangDingYinHangKaActivity.this,
-					SelectInfoActivity.class);
-			intent3.putExtra("title", "选择省份");
-			intent3.putExtra("type1", "0");
-			intent3.putExtra("type", "1");
-			startActivity(intent3);
-			anim_right_in();
-
-			// loadHttp_kaihuhangsuozaidi();
-			break;
+		// case R.id.main_mine_bangding_kaihusuozaishi:
+		// // 请选择开户所在地
+		//
+		// Intent intent3 = new Intent(BangDingYinHangKaActivity.this,
+		// SelectInfoActivity.class);
+		// intent3.putExtra("title", "选择省份");
+		// intent3.putExtra("type1", "0");
+		// intent3.putExtra("type", "1");
+		// startActivity(intent3);
+		// anim_right_in();
+		//
+		// // loadHttp_kaihuhangsuozaidi();
+		// break;
 		case R.id.main_mine_bangding_next:
 			// 下一步
 			loadHttp_bangding();
@@ -335,6 +344,12 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 		// TODO Auto-generated method stu
 		// 参数判断
 
+		if (kaihuming.getText().toString().length() == 0) {
+			Toast.makeText(BangDingYinHangKaActivity.this, "请输入开户名称", 1000)
+					.show();
+			return;
+		}
+
 		if (yinhangkahao.getText().toString().length() == 0) {
 			Toast.makeText(BangDingYinHangKaActivity.this, "请输入银行卡号", 1000)
 					.show();
@@ -348,12 +363,7 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 		}
 
 		if (chongzhiModel.getCityId() == null) {
-			Toast.makeText(BangDingYinHangKaActivity.this, "请选择开户所在地", 1000)
-					.show();
-			return;
-		}
-		if (chongzhiModel.getCityId().length() == 0) {
-			Toast.makeText(BangDingYinHangKaActivity.this, "请选择开户所在地", 1000)
+			Toast.makeText(BangDingYinHangKaActivity.this, "请选择开户行所在地", 1000)
 					.show();
 			return;
 		}
@@ -370,27 +380,15 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("urlTag", "3");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
+		map.put("banknumber", yinhangkahao.getText().toString());
+		map.put("bankname", chongzhiModel.getBankId());
+		map.put("sheng", shengId);
+		map.put("shi", chongzhiModel.getCityId());
+		map.put("type", "GRKH");
+		map.put("realname", kaihuming.getText().toString());
+		map.put("idcard", shenfenzheng.getText().toString());
 
-		// 银行信息id
-		if (chongzhiModel.getBankCardId().equals("")) {
-			map.put("bankCardId", "");
-		} else {
-			map.put("bankCardId", chongzhiModel.getBankCardId());
-		}
-		map.put("bankNumber", yinhangkahao.getText().toString());
-
-		try {
-			map.put("subbranch", URLEncoder.encode(shenfenzheng.getText()
-					.toString(), "UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		map.put("bankId", chongzhiModel.getBankId());
-		map.put("cityId", chongzhiModel.getCityId());
-
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(46,
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(109,
 				map, BangDingYinHangKaActivity.this, mHandler);
 		RequestPool.execute(thread);
 	}

@@ -38,7 +38,6 @@ import android.widget.Toast;
 import com.example.quqian.R;
 import com.quqian.activity.index.LiJiShenQingActivity;
 import com.quqian.activity.invert.LiJiTouBiaoActivity;
-import com.quqian.activity.mine.BangDingYinHangKaActivity;
 import com.quqian.activity.mine.KjChongZhiActivity;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.TiYanProject;
@@ -99,6 +98,8 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 	// 当前选中的radio button
 	private String myrb = "1";
 
+	private String zhlx = "";
+	
 	// 网络加载中
 	ProcessDialogUtil juhua = null;
 
@@ -250,10 +251,10 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 				double f = Double.valueOf(txfy);
 				double t = Double.valueOf(medit);
 				if (t == 0) {
-					tx_shijikouchujine.setText("0.0元");
+					tx_shijikouchujine.setText("0.0");
 				} else {
 					double k = f + t;
-					tx_shijikouchujine.setText(k + "元");
+					tx_shijikouchujine.setText(k+"");
 				}
 			}
 		});
@@ -312,7 +313,7 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 				layout_pu.setVisibility(View.GONE);
 
 				// 设置开通存管账户数据 ,可用余额，华兴E账户
-				cg_tv_zhanghu.setText(cgkyye + "元");
+				cg_tv_keyong.setText(cgkyye + "元");
 				cg_tv_zhanghu.setText(cgzh);
 
 			} else {
@@ -365,12 +366,16 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 				startActivity(intent);
 				anim_right_in();
 			} else {
-				// 前去绑定 普通账户
-				// 判断是否是普通的用户
-				Intent intent = new Intent(NewTiXian.this,
-						BangDingYinHangKaActivity.class);
-				startActivity(intent);
-				anim_right_in();
+ 
+				// 前去绑定 普通账户 个人：GRKH 企业：QYKH
+				if (zhlx.equals("GRKH")) {
+					// 跳转到个人
+					startActivity(new Intent(NewTiXian.this,BangDingYinHangKaActivity.class));
+				} else {
+					// 跳转到企业
+					startActivity(new Intent(NewTiXian.this,
+							QiYeBangDingYinHangKaActivity.class));
+				}
 			}
 
 			break;
@@ -426,7 +431,7 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 					layout_pu.setVisibility(View.GONE);
 
 					// 设置开通存管账户数据 ,可用余额，华兴E账户
-					cg_tv_zhanghu.setText(cgkyye + "元");
+					cg_tv_keyong.setText(cgkyye + "元");
 					cg_tv_zhanghu.setText(cgzh);
 
 				} else {
@@ -518,7 +523,7 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 		map.put("urlTag", "3");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 		map.put("amount", tx_shijikouchujine.getText().toString());
-		map.put("amount", "129");
+		//map.put("amount", "129");
 		map.put("type", "CGTX");
 		// 请求的参数如下
 		RequestThreadAbstract thread = RequestFactory.createRequestThread(105,
@@ -562,6 +567,7 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 				ptkyye = pt.getString("ptkyye");
 				yhkh = pt.getString("yhkh");
 				txfy = pt.getString("txfy");
+				zhlx = pt.getString("zhlx");
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

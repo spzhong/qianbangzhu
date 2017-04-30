@@ -98,6 +98,7 @@ public class SelectInfoActivity extends BaseActivity implements
 			} else if (type_1 == 2) {
 
 				sheng = intent.getStringExtra("sheng");
+				shengid = intent.getStringExtra("shengid");
 				shi = intent.getStringExtra("shi");
 				shiid = intent.getStringExtra("shiid");
 			}
@@ -190,6 +191,7 @@ public class SelectInfoActivity extends BaseActivity implements
 								SelectInfoActivity.class);
 						intent2.putExtra("title", "选择区县");
 						intent2.putExtra("sheng", sheng);
+						intent2.putExtra("shengid", shengid);
 						intent2.putExtra("shiid", map.get("id"));
 						intent2.putExtra("shi", map.get("name"));
 						intent2.putExtra("type1", "2");
@@ -208,7 +210,7 @@ public class SelectInfoActivity extends BaseActivity implements
 						bundle.putString("city",
 								sheng + " " + shi + " " + map.get("name"));
 						bundle.putString("cityId", map.get("id"));
-						
+						bundle.putString("shengid", shengid);
 						intent.putExtras(bundle);
 						sendBroadcast(intent);
 

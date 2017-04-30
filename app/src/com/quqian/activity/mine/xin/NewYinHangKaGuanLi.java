@@ -37,6 +37,7 @@ import com.quqian.activity.mine.ChongZhiActivity;
 import com.quqian.activity.mine.KjChongZhiActivity;
 import com.quqian.activity.mine.MineActivity;
 import com.quqian.base.BaseActivity;
+import com.quqian.been.Chongzhi;
 import com.quqian.been.TiYanProject;
 import com.quqian.been.UserMode;
 import com.quqian.http.RequestFactory;
@@ -284,8 +285,11 @@ public class NewYinHangKaGuanLi extends BaseActivity implements
 				// 前去绑定 普通账户 个人：GRKH 企业：QYKH
 				if (zhlx.equals("GRKH")) {
 					// 跳转到个人
+					startActivity(new Intent(NewYinHangKaGuanLi.this,BangDingYinHangKaActivity.class));
 				} else {
 					// 跳转到企业
+					startActivity(new Intent(NewYinHangKaGuanLi.this,
+							QiYeBangDingYinHangKaActivity.class));
 				}
 			}
 			break;

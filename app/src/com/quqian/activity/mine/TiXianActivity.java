@@ -38,6 +38,7 @@ import android.widget.Toast;
 
 import com.example.quqian.R;
 import com.quqian.activity.index.IndexActivity;
+import com.quqian.activity.mine.xin.BangDingYinHangKaActivity;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.Chongzhi;
 import com.quqian.been.UserMode;

@@ -1,6 +1,8 @@
 package com.quqian.activity.mine.xin;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -65,6 +68,10 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 	// 开户行所在城市
 	private TextView kahuchengshi = null;
 
+	private String shengId = null;
+	
+	private String imgbitbase64String = null;
+
 	// 银行卡号
 	private EditText yinhangkahao = null;
 
@@ -104,8 +111,9 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 	protected void getIntentWord() {
 		// TODO Auto-generated method stub
 		super.getIntentWord();
-		Intent intent = getIntent();
-		chongzhiModel = (Chongzhi) intent.getSerializableExtra("chongzhiModel");
+		chongzhiModel = new Chongzhi();
+		chongzhiModel.setType("0");
+
 	}
 
 	@Override
@@ -120,7 +128,8 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 		kaihuming = (EditText) findViewById(R.id.main_mine_bangding_q_kaihuming);
 		xuanzeyinhang = (TextView) findViewById(R.id.main_mine_bangding_q_xuanzeyinhang);
 		kahudi = (TextView) findViewById(R.id.main_mine_bangding_q_kaihusuozaidi);
-		kahuchengshi = (TextView) findViewById(R.id.main_mine_bangding_q_kaihusuozaishi);
+		// kahuchengshi = (TextView)
+		// findViewById(R.id.main_mine_bangding_q_kaihusuozaishi);
 		shenfenzheng = (EditText) findViewById(R.id.main_mine_bangding_q_shenfenzheng);
 		yinhangkahao = (EditText) findViewById(R.id.main_mine_bangding_q_yinhangkahao);
 		qiye = (EditText) findViewById(R.id.main_mine_bangding_q_qiye);
@@ -135,7 +144,7 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 
 		// 绑定银行卡信息
 		if (chongzhiModel.getType().equals("0")) {
-			next.setText("绑定银行卡");
+			next.setText("绑定企业账户");
 		} else {// 修改和完善银行卡信息
 			loadHttp_bankInfo();
 			next.setText("完成");
@@ -163,7 +172,7 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 					chongzhiModel.setCityId((String) arg1
 							.getStringExtra("cityId"));
 					kahudi.setText(chongzhiModel.getCity());
-
+					shengId = (String) arg1.getStringExtra("shengid");
 				}
 			}
 		};
@@ -181,7 +190,7 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 
 		xuanzeyinhang.setOnClickListener(this);
 		kahudi.setOnClickListener(this);
-		kahuchengshi.setOnClickListener(this);
+		// kahuchengshi.setOnClickListener(this);
 
 		shangchuan.setOnClickListener(this);
 		next.setOnClickListener(this);
@@ -197,11 +206,6 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 			anim_right_out();
 			break;
 		case R.id.main_mine_bangding_q_xuanzeyinhang:
-
-			// 不可修改银行的信息
-			if (chongzhiModel.getIsBound().equals("1")) {
-				return;
-			}
 
 			loadHttp_allYinhang();
 
@@ -219,19 +223,19 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 
 			// loadHttp_kaihuhangsuozaidi();
 			break;
-		case R.id.main_mine_bangding_q_kaihusuozaishi:
-			// 请选择开户所在地
-
-			Intent intent3 = new Intent(QiYeBangDingYinHangKaActivity.this,
-					SelectInfoActivity.class);
-			intent3.putExtra("title", "选择省份");
-			intent3.putExtra("type1", "0");
-			intent3.putExtra("type", "1");
-			startActivity(intent3);
-			anim_right_in();
-
-			// loadHttp_kaihuhangsuozaidi();
-			break;
+		// case R.id.main_mine_bangding_q_kaihusuozaishi:
+		// // 请选择开户所在地
+		//
+		// Intent intent3 = new Intent(QiYeBangDingYinHangKaActivity.this,
+		// SelectInfoActivity.class);
+		// intent3.putExtra("title", "选择省份");
+		// intent3.putExtra("type1", "0");
+		// intent3.putExtra("type", "1");
+		// startActivity(intent3);
+		// anim_right_in();
+		//
+		// // loadHttp_kaihuhangsuozaidi();
+		// break;
 		case R.id.main_mine_bangding_q_shangchuanbtn:
 			// 拍照按钮
 			Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -268,13 +272,16 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 					int scale = ImageThumbnail.reckonThumbnail(
 							camorabitmap.getWidth(), camorabitmap.getHeight(),
 							35, 35);
-					Bitmap	bitMap = ImageThumbnail.PicZoom(camorabitmap,
+					Bitmap bitMap = ImageThumbnail.PicZoom(camorabitmap,
 							camorabitmap.getWidth() / scale,
 							camorabitmap.getHeight() / scale);
 					// 由于Bitmap内存占用较大，这里需要回收内存，否则会报out of memory异常
 					camorabitmap.recycle();
 					// 将处理过的图片显示在界面上，并保存到本地
 					img.setImageBitmap(bitMap);
+					 
+					imgbitbase64String =  QiYeBangDingYinHangKaActivity.bitmapToBase64(bitMap);
+					 
 				}
 			}
 		}
@@ -381,7 +388,24 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 	private void loadHttp_bangding() {
 		// TODO Auto-generated method stu
 		// 参数判断
+		if (kaihuming.getText().toString().length() == 0) {
+			Toast.makeText(QiYeBangDingYinHangKaActivity.this, "请输入法人姓名", 1000)
+					.show();
+			return;
+		}
 
+		if (qiye.getText().toString().length() == 0) {
+			Toast.makeText(QiYeBangDingYinHangKaActivity.this, "请输入企业名称", 1000)
+					.show();
+			return;
+		}
+
+		if (shehui.getText().toString().length() == 0) {
+			Toast.makeText(QiYeBangDingYinHangKaActivity.this, "请输入社会统一信用代码", 1000)
+					.show();
+			return;
+		}
+		
 		if (yinhangkahao.getText().toString().length() == 0) {
 			Toast.makeText(QiYeBangDingYinHangKaActivity.this, "请输入银行卡号", 1000)
 					.show();
@@ -399,18 +423,21 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 					.show();
 			return;
 		}
-		if (chongzhiModel.getCityId().length() == 0) {
-			Toast.makeText(QiYeBangDingYinHangKaActivity.this, "请选择开户所在地", 1000)
-					.show();
-			return;
-		}
 
 		if (shenfenzheng.getText().toString().length() == 0) {
-			Toast.makeText(QiYeBangDingYinHangKaActivity.this, "请输入身份证号", 1000)
-					.show();
+			Toast.makeText(QiYeBangDingYinHangKaActivity.this, "请输入法人身份证号码",
+					1000).show();
 			return;
 		}
-
+		
+		//取出图片
+		if(imgbitbase64String == null){
+			Toast.makeText(QiYeBangDingYinHangKaActivity.this, "请选择企业章图片",
+					1000).show();
+			return;
+		}
+		//取出图片
+		
 		chongzhiModel.setBankNumber(yinhangkahao.getText().toString());
 
 		juhua.show();
@@ -418,26 +445,18 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 		map.put("urlTag", "3");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 
-		// 银行信息id
-		if (chongzhiModel.getBankCardId().equals("")) {
-			map.put("bankCardId", "");
-		} else {
-			map.put("bankCardId", chongzhiModel.getBankCardId());
-		}
-		map.put("bankNumber", yinhangkahao.getText().toString());
-
-		try {
-			map.put("subbranch", URLEncoder.encode(shenfenzheng.getText()
-					.toString(), "UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		map.put("bankId", chongzhiModel.getBankId());
-		map.put("cityId", chongzhiModel.getCityId());
-
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(46,
+		map.put("realname", kaihuming.getText().toString());
+		map.put("idcard", shenfenzheng.getText().toString());
+		map.put("corpname", qiye.getText().toString());
+		map.put("campcode", shehui.getText().toString());
+		map.put("banknumber", yinhangkahao.getText().toString());
+		map.put("bankname", chongzhiModel.getBankId());
+		map.put("shi", chongzhiModel.getCityId());
+		map.put("type", "QYKH");
+		map.put("upload",imgbitbase64String);
+		map.put("sheng", shengId);
+		
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(109,
 				map, QiYeBangDingYinHangKaActivity.this, mHandler);
 		RequestPool.execute(thread);
 	}
@@ -564,5 +583,35 @@ public class QiYeBangDingYinHangKaActivity extends BaseActivity implements
 		msg2.setData(bundle);
 		mHandler.sendMessage(msg2);
 	}
+	
+	public static String bitmapToBase64(Bitmap bitmap) {  
+		  
+	    String result = null;  
+	    ByteArrayOutputStream baos = null;  
+	    try {  
+	        if (bitmap != null) {  
+	            baos = new ByteArrayOutputStream();  
+	            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);  
+	  
+	            baos.flush();  
+	            baos.close();  
+	  
+	            byte[] bitmapBytes = baos.toByteArray();  
+	            result = Base64.encodeToString(bitmapBytes, Base64.DEFAULT);  
+	        }  
+	    } catch (IOException e) {  
+	        e.printStackTrace();  
+	    } finally {  
+	        try {  
+	            if (baos != null) {  
+	                baos.flush();  
+	                baos.close();  
+	            }  
+	        } catch (IOException e) {  
+	            e.printStackTrace();  
+	        }  
+	    }  
+	    return result;  
+	}  
 
 }

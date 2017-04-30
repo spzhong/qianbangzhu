@@ -622,6 +622,54 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				handler.sendMessage(msg);
 			}
 			break;
+		case 107:
+			String errMsg107 = API.payRecord_107(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg107.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg107);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
+		case 108:
+			String errMsg108 = API.withdrawRecord_108(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg108.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg108);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
+		case 109:
+			String errMsg109 = API.bankcardregJin_109(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg109.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg109);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
+		case 110:
+			String errMsg110 = API.jyjlzhzl_110(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg110.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg110);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
 		default:
 			break;
 		}

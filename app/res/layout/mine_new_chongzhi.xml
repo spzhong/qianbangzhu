@@ -128,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="10000.00元"
+                android:text=""
                 android:textColor="@color/main_text_blue"
                 android:textSize="@dimen/sp_24px" >
             </TextView>
@@ -162,7 +162,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="6236882280000375472"
+                android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >
             </TextView>

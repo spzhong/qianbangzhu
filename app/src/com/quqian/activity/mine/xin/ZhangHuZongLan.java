@@ -34,7 +34,6 @@ import com.example.quqian.R;
 import com.quqian.activity.LoginActivity;
 import com.quqian.activity.MainActivity;
 import com.quqian.activity.index.LiJiShenQingActivity;
-import com.quqian.activity.mine.BangDingYinHangKaActivity;
 import com.quqian.activity.mine.ChongZhiActivity;
 import com.quqian.activity.mine.KjChongZhiActivity;
 import com.quqian.base.BaseActivity;
@@ -76,6 +75,8 @@ public class ZhangHuZongLan extends BaseActivity implements OnClickListener,
 	private TextView daihuanlixi = null;
 	private TextView daihuanguanlifei = null;
 
+	private JSONObject sjonObg = null;
+
 	// 当前选中的radio button
 	private String myrb = "1";
 
@@ -110,11 +111,11 @@ public class ZhangHuZongLan extends BaseActivity implements OnClickListener,
 		tvrb1 = (TextView) findViewById(R.id.zhzl_tvrb1);
 		tvrb2 = (TextView) findViewById(R.id.zhzl_tvrb2);
 
-		//账户总览
+		// 账户总览
 		keyongyue = (TextView) findViewById(R.id.zhzl_keyongyue);
 		dongjiejine = (TextView) findViewById(R.id.zhzl_dongjieyue);
 		zhanghuzonge = (TextView) findViewById(R.id.zhzl_zhanghuzonge);
-		
+
 		yizhuangshouyi = (TextView) findViewById(R.id.zhzl_yizhuanshouyi);
 		daishoubenjin = (TextView) findViewById(R.id.zhzl_daishoubenjin);
 		daishoulixi = (TextView) findViewById(R.id.zhzl_daishoulixi);
@@ -124,7 +125,7 @@ public class ZhangHuZongLan extends BaseActivity implements OnClickListener,
 		daihuanbenjin = (TextView) findViewById(R.id.zhzl_daihuanbenjin);
 		daihuanlixi = (TextView) findViewById(R.id.zhzl_daihuanlixi);
 		daihuanguanlifei = (TextView) findViewById(R.id.zhzl_daihuanguanlifei);
-		
+
 		// 调用接口 获取充值信息，然后加载页面
 		loadHttp();
 	}
@@ -163,6 +164,8 @@ public class ZhangHuZongLan extends BaseActivity implements OnClickListener,
 			// 将当前的选中按钮设置为1，
 			myrb = "1";
 
+			fuzhi();
+
 			break;
 		case R.id.zhzl_rb2:
 			// 普通充值选项
@@ -173,11 +176,55 @@ public class ZhangHuZongLan extends BaseActivity implements OnClickListener,
 
 			// 将当前的选中按钮设置为1，
 			myrb = "2";
-
+			fuzhi();
 			break;
 		default:
 			break;
 		}
+	}
+
+	private void fuzhi() {
+
+		try {
+
+			if (myrb.endsWith("1")) {
+				// 存管账户
+				keyongyue.setText(sjonObg.get("cgkyye").toString());
+				dongjiejine.setText(sjonObg.get("cgdjje").toString());
+				zhanghuzonge.setText(sjonObg.get("cgzhze").toString());
+
+				yizhuangshouyi.setText(sjonObg.get("cgyzsy").toString());
+				daishoubenjin.setText(sjonObg.get("cgdsbj").toString());
+				daishoulixi.setText(sjonObg.get("cgdslx").toString());
+				leijitouzi.setText(sjonObg.get("cgtzlj").toString());
+
+				leijijiekuan.setText(sjonObg.get("cgljjk").toString());
+				daihuanbenjin.setText(sjonObg.get("cgdhbj").toString());
+				daihuanlixi.setText(sjonObg.get("cgdhlx").toString());
+				daihuanguanlifei.setText(sjonObg.get("cgdhglf").toString());
+
+			} else if (myrb.endsWith("2")) {
+				// 普通账户
+				keyongyue.setText(sjonObg.get("kyye").toString());
+				dongjiejine.setText(sjonObg.get("cgdjje").toString());
+				zhanghuzonge.setText(sjonObg.get("zhze").toString());
+
+				yizhuangshouyi.setText(sjonObg.get("yzsy").toString());
+				daishoubenjin.setText(sjonObg.get("dsbj").toString());
+				daishoulixi.setText(sjonObg.get("cgdslx").toString());
+				leijitouzi.setText(sjonObg.get("tzlj").toString());
+
+				leijijiekuan.setText(sjonObg.get("ljjk").toString());
+				daihuanbenjin.setText(sjonObg.get("dhbj").toString());
+				daihuanlixi.setText(sjonObg.get("dhlx").toString());
+				daihuanguanlifei.setText(sjonObg.get("dhglf").toString());
+
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	private Handler mHandler = new Handler() {
@@ -196,6 +243,9 @@ public class ZhangHuZongLan extends BaseActivity implements OnClickListener,
 
 				break;
 			case 1:
+
+				fuzhi();
+
 				break;
 			case 2:
 				Toast.makeText(ZhangHuZongLan.this,
@@ -217,7 +267,7 @@ public class ZhangHuZongLan extends BaseActivity implements OnClickListener,
 		map.put("isLock", "0");// 0不锁，1是锁
 
 		// 请求的参数如下
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(38,
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(110,
 				map, ZhangHuZongLan.this, mHandler);
 		RequestPool.execute(thread);
 	}
@@ -228,7 +278,7 @@ public class ZhangHuZongLan extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		JSONObject json = (JSONObject) jsonObj;
 		try {
-			JSONObject cg = json.getJSONObject("rvalue").getJSONObject("cg");
+			sjonObg = json.getJSONObject("rvalue");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

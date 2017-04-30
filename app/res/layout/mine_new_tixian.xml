@@ -445,20 +445,20 @@
             android:background="#fff"
             android:gravity="center_vertical"
             android:orientation="horizontal" >
+
             <EditText
                 android:id="@+id/tx_tixianjiner"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:layout_gravity="center"
-                android:gravity="center"
                 android:background="@color/main_background"
+                android:gravity="center"
                 android:hint="请输入提现金额 最少100元"
                 android:numeric="decimal"
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" />
-            
         </LinearLayout>
 
         <RelativeLayout
@@ -513,7 +513,15 @@
                 android:id="@+id/tx_shijikouchujine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0.00元"
+                android:text="0.00"
+                android:textColor="@color/main_text_blue"
+                android:textSize="@dimen/sp_24px" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元"
                 android:textColor="@color/main_text_blue"
                 android:textSize="@dimen/sp_24px" >
             </TextView>
@@ -530,7 +538,7 @@
             android:text="立即提现"
             android:textColor="@color/btn_text_color_black"
             android:textSize="@dimen/sp_36px" />
-        
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

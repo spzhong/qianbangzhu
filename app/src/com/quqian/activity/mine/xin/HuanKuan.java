@@ -34,7 +34,6 @@ import com.example.quqian.R;
 import com.quqian.activity.LoginActivity;
 import com.quqian.activity.MainActivity;
 import com.quqian.activity.index.LiJiShenQingActivity;
-import com.quqian.activity.mine.BangDingYinHangKaActivity;
 import com.quqian.activity.mine.ChongZhiActivity;
 import com.quqian.activity.mine.KjChongZhiActivity;
 import com.quqian.base.BaseActivity;

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -81,7 +82,7 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 
 	// 记录当前刷新页
 	private int curPage = 1;
-
+	
 	ProcessDialogUtil juhua = null;
 
 	@Override
@@ -121,7 +122,7 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 		mListView.setAdapter(mAdapter1);
 
 		// diao接口
-		loadHttp("1");
+		loadHttp("0");
 	}
 
 	@Override
@@ -149,13 +150,13 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 			anim_right_out();
 			break;
 		case R.id.txjl_rb1:
-			//存管提现记录
-			//修改状态条
+			// 存管提现记录
+			// 修改状态条
 			tvrb1.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
-			
-			//请求数据
+
+			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter1);
 			// mAdapter1.notifyDataSetChanged();
@@ -163,12 +164,12 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 			break;
 		case R.id.txjl_rb2:
 			// 普通提现记录
-			//修改状态条
-			tvrb1.setBackgroundColor(getResources().getColor(
-					R.color.white));
-			tvrb2.setBackgroundColor(getResources().getColor(R.color.main_radio_blue));
+			// 修改状态条
+			tvrb1.setBackgroundColor(getResources().getColor(R.color.white));
+			tvrb2.setBackgroundColor(getResources().getColor(
+					R.color.main_radio_blue));
 
-			//请求数据
+			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter2);
 			// mAdapter2.notifyDataSetChanged();
@@ -210,23 +211,26 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 				convertView = LayoutInflater.from(TiXianJILu.this).inflate(
 						R.layout.mine_new_chongzhijlu_item, null);
 
-				holder.tv1 = (TextView) convertView
-						.findViewById(R.id.czjl_tv1);
+				holder.tv1 = (TextView) convertView.findViewById(R.id.czjl_tv1);
 
-				holder.tv2 = (TextView) convertView
-						.findViewById(R.id.czjl_tv2);
+				holder.tv2 = (TextView) convertView.findViewById(R.id.czjl_tv2);
 
-				holder.tv3 = (TextView) convertView
-						.findViewById(R.id.czjl_tv3);
+				holder.tv3 = (TextView) convertView.findViewById(R.id.czjl_tv3);
 
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			holder.tv1.setText("2017-01-10 19:30:02");
-			holder.tv2.setText("10000000");
-			holder.tv3.setText("充值成功");
+			JSONObject json = (JSONObject) allList1.get(position);
+			try {
+				holder.tv1.setText(json.getString("time"));
+				holder.tv2.setText(json.getString("je"));
+				holder.tv3.setText(json.getString("zt"));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			return convertView;
 		}
@@ -244,7 +248,7 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 
 		@Override
 		public int getCount() {
-			return allList1 != null ? allList1.size() : 0;
+			return allList2 != null ? allList2.size() : 0;
 		}
 
 		@Override
@@ -270,23 +274,26 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 				convertView = LayoutInflater.from(TiXianJILu.this).inflate(
 						R.layout.mine_new_chongzhijlu_item, null);
 
-				holder.tv1 = (TextView) convertView
-						.findViewById(R.id.czjl_tv1);
+				holder.tv1 = (TextView) convertView.findViewById(R.id.czjl_tv1);
 
-				holder.tv2 = (TextView) convertView
-						.findViewById(R.id.czjl_tv2);
+				holder.tv2 = (TextView) convertView.findViewById(R.id.czjl_tv2);
 
-				holder.tv3 = (TextView) convertView
-						.findViewById(R.id.czjl_tv3);
+				holder.tv3 = (TextView) convertView.findViewById(R.id.czjl_tv3);
 
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			holder.tv1.setText("2017-01-10 19:30:02");
-			holder.tv2.setText("10000000");
-			holder.tv3.setText("充值成功");
+			JSONObject json = (JSONObject) allList2.get(position);
+			try {
+				holder.tv1.setText(json.getString("time"));
+				holder.tv2.setText(json.getString("je"));
+				holder.tv3.setText(json.getString("zt"));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			return convertView;
 		}
@@ -338,10 +345,15 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 		// 请求的参数如下
-		map.put("status", status);// 0精选理财，1是存管理财，
-		map.put("page", curPage + "");// 当前页码
 
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(11,
+		// 请求的参数如下
+		if (status.endsWith("0")) {
+			map.put("type", "CGTX");// 0存管提现，1是普通提现
+		} else {
+			map.put("type", "PTTX");//  0存管提现，1是普通提现
+		}
+		map.put("page", curPage + "");// 当前页码
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(108,
 				map, TiXianJILu.this, mHandler);
 		RequestPool.execute(thread);
 
@@ -365,7 +377,7 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 			case 1:
 
 				// json = (JSONObject) msg.getData().get("json");
-				if (msg.getData().get("status").equals("0")) {
+				if (msg.getData().get("type").equals("CGTX")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -375,7 +387,7 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 					allList1.addAll(list);
 					mAdapter1.notifyDataSetChanged();
 
-				} else if (msg.getData().get("status").equals("1")) {
+				} else if (msg.getData().get("type").equals("PTTX")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -392,8 +404,8 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 
 				break;
 			case 2:
-				Toast.makeText(TiXianJILu.this,
-						msg.getData().getString("msg"), 1000).show();
+				Toast.makeText(TiXianJILu.this, msg.getData().getString("msg"),
+						1000).show();
 				onStopLoad();
 				break;
 			default:
@@ -432,11 +444,24 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 
 		json = (JSONObject) jsonObj;
+		list = new ArrayList<Object>();
+		try {
+			JSONArray jsonArray = (JSONArray) json.getJSONObject("rvalue")
+					.getJSONArray("items");
+			for (int i = 0; i < jsonArray.length(); i++) {
+				JSONObject noejson = jsonArray.getJSONObject(i);
+				list.add(noejson);// 加入list中
+			}
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		Bundle b = new Bundle();
 		b.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) list);
 		// b.putParcelable("json", (Parcelable) json);
-		b.putString("status", map.get("status"));
+		b.putString("type", map.get("type"));
 		Message msg1 = new Message();
 		msg1.setData(b);
 		msg1.what = 1;
