@@ -74,6 +74,7 @@
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/licai_xin"
                 android:gravity="center"
+                android:padding="5dp"
                 android:textColor="@color/main_text_blue"
                 android:textSize="@dimen/sp_20px"
                 android:visibility="gone" />

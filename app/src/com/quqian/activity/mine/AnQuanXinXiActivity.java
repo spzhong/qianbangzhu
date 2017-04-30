@@ -25,13 +25,20 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.quqian.R;
+import com.quqian.activity.LoginActivity;
+import com.quqian.activity.MainActivity;
 import com.quqian.activity.index.IndexActivity;
+import com.quqian.activity.more.SheZhiActivity;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.UserMode;
+import com.quqian.lockq.GestureVerifyActivity;
+import com.quqian.util.CommonUtil;
 import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.ProcessDialogUtil;
+import com.quqian.util.StaticVariable;
 import com.quqian.util.Tool;
 
 public class AnQuanXinXiActivity extends BaseActivity implements
@@ -45,24 +52,27 @@ public class AnQuanXinXiActivity extends BaseActivity implements
 	private TextView shouji = null;
 	// 设置 ,未设置
 	private TextView shezhi = null;
-	// 提现设置，未设置
-	private TextView tixian = null;
 
 	// 实名认证
 	private RelativeLayout layout_shiming = null;
 	// 修改手机
-	private RelativeLayout layout_xiugai = null;
-	// 提现密码
-	private RelativeLayout layout_tixian = null;
+	private TextView layout_xiugai = null;
+	// 登录密码
+	private TextView layout_tixian = null;
+
+	// 手势密码
+	private ToggleButton shoushianniu = null;
+	private RelativeLayout layout = null;
+	private View view = null;
+	private Button btn = null;
 
 	private UserMode user = null;
 
 	private Dialog juhua = null;
-	
-	
+
 	// 接受广播
 	BroadcastReceiver mBroadcastReceiver = null;
- 
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -79,24 +89,29 @@ public class AnQuanXinXiActivity extends BaseActivity implements
 	protected void initView() {
 		// TODO Auto-generated method stub
 		super.initView();
-		setTitle("安全信息");
+		setTitle("设置");
 		showBack();
-		
+
 		juhua = new ProcessDialogUtil(AnQuanXinXiActivity.this);
 
 		card = (TextView) findViewById(R.id.main_mine_anquan_card);
 		shiming = (TextView) findViewById(R.id.main_mine_anquan_shiming);
 		shouji = (TextView) findViewById(R.id.main_mine_anquan_shouji);
 		shezhi = (TextView) findViewById(R.id.main_mine_anquan_shezhi);
-		tixian = (TextView) findViewById(R.id.main_mine_anquan_tixian);
 
-		layout_shiming = (RelativeLayout) findViewById(R.id.main_mine_anquan_layout_shiming);
-		layout_xiugai = (RelativeLayout) findViewById(R.id.main_mine_anquan_layout_xiugai);
-		layout_tixian = (RelativeLayout) findViewById(R.id.main_mine_anquan_layout_tixian);
+		layout_shiming = (RelativeLayout) findViewById(R.id.main_mine_anquan_layout_shiming1);
+		layout_xiugai = (TextView) findViewById(R.id.main_mine_anquan_layout_xiugai);
+		layout_tixian = (TextView) findViewById(R.id.main_mine_anquan_layout_tixian);
 
-		//加载数据
+		//
+		shoushianniu = (ToggleButton) findViewById(R.id.sz_shoushi);
+		view = (View) findViewById(R.id.sz_view);
+		layout = (RelativeLayout) findViewById(R.id.sz_layout);
+		btn = (Button) findViewById(R.id.sz_btn);
+
+		// 加载数据
 		reloadData();
-		
+
 		// 接受广播
 		mBroadcastReceiver = new BroadcastReceiver() {
 			@Override
@@ -104,20 +119,18 @@ public class AnQuanXinXiActivity extends BaseActivity implements
 				// TODO Auto-generated method stub
 				// Intent intent = getIntent();
 				reloadData();
-				
-				//发送通知
+
+				// 发送通知
 				Intent intent = new Intent();
 				intent.setAction("dengluhoushuaxinshuju");
-			    sendBroadcast(intent);
+				sendBroadcast(intent);
 			}
 		};
 		IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction("wanchenghoudeshuaxin");
 		registerReceiver(mBroadcastReceiver, intentFilter);
-		
+
 	}
-	
-	 
 
 	public void reloadData() {
 		// 进行初始化赋值--获取用户的信息
@@ -142,17 +155,13 @@ public class AnQuanXinXiActivity extends BaseActivity implements
 			// 设置数据
 			shouji.setText(user.new_mobile());
 		}
-		// 没有设置提现密码
-		if (user.getTxmmsfsz().equals("false")) {
-			shezhi.setVisibility(View.GONE);
-			tixian.setText("设置");
-			tixian.setTextColor(getResources().getColor(R.color.main_blue));
-		} else {
-			// 设置数据
-			shezhi.setVisibility(View.VISIBLE);
-			tixian.setText("修改/找回");
-			tixian.setTextColor(getResources().getColor(R.color.main_blue));
-		}
+		// 没有设置登录密码
+		// if (user.getTxmmsfsz().equals("false")) {
+		// shezhi.setVisibility(View.GONE);
+		// } else {
+		// // 设置数据
+		// shezhi.setVisibility(View.VISIBLE);
+		// }
 	}
 
 	@Override
@@ -164,6 +173,9 @@ public class AnQuanXinXiActivity extends BaseActivity implements
 		layout_shiming.setOnClickListener(this);
 		layout_xiugai.setOnClickListener(this);
 		layout_tixian.setOnClickListener(this);
+		shoushianniu.setOnClickListener(this);
+		layout.setOnClickListener(this);
+		btn.setOnClickListener(this);
 
 	}
 
@@ -181,33 +193,75 @@ public class AnQuanXinXiActivity extends BaseActivity implements
 				startActivity(new Intent(AnQuanXinXiActivity.this,
 						ShiMingRenZhengActivity.class));
 				anim_right_in();
-			} 
+			}
 			break;
 		case R.id.main_mine_anquan_layout_xiugai:
 			if (user.getSjsfsz().equals("false")) {
 
 			} else {
-				//修改手机
+				// 修改手机
 				startActivity(new Intent(AnQuanXinXiActivity.this,
 						XiuGaiShouJiActivity.class));
 				anim_right_in();
 			}
 			break;
 		case R.id.main_mine_anquan_layout_tixian:
-			// 判断是否设置了提现密码，如果否的话应该跳转到 设置提现密码 SheZhiTiXianMiMaActivity
-			// 没有设置提现密码
-			if (user.getTxmmsfsz().equals("false")) {
-				startActivity(new Intent(AnQuanXinXiActivity.this,
-						SheZhiTiXianMiMaActivity.class));
-				anim_right_in();
+			// if (user.getTxmmsfsz().equals("false")) {
+			// startActivity(new Intent(AnQuanXinXiActivity.this,
+			// SheZhiTiXianMiMaActivity.class));
+			// anim_right_in();
+			// } else {
+			// xiugaizhaohui();
+			// }
+			// 设置登录密码
+			startActivity(new Intent(AnQuanXinXiActivity.this,
+					XiuGaiDengLuMiMaActivity.class));
+			anim_right_in();
+			break;
+
+		case R.id.sz_shoushi:
+			// 手势按钮，
+			if (shoushianniu.isChecked()) {
+				view.setVisibility(View.VISIBLE);
+				layout.setVisibility(View.VISIBLE);
 			} else {
-				xiugaizhaohui();
+				view.setVisibility(View.GONE);
+				layout.setVisibility(View.GONE);
+			}
+
+			break;
+		case R.id.sz_layout:
+			UserMode user = Tool.getUser(this);
+			if (user == null) {
+				// 跳转到登录页面，
+				startActivity(new Intent(AnQuanXinXiActivity.this,
+						LoginActivity.class));
+			} else {
+				// 跳转到校验手势
+				Intent intent = new Intent(AnQuanXinXiActivity.this,
+						GestureVerifyActivity.class);
+				intent.putExtra("type", "jiaoyan");
+				startActivity(intent);
 			}
 			break;
 
+		case R.id.sz_btn:
+			// 退出按钮
+			clearLogin();
+			Intent intent3 = new Intent(this, MainActivity.class);
+			StaticVariable.put(StaticVariable.sv_toIndex, "1");
+			startActivity(intent3);
+			finish();
+			anim_right_out();
+			break;
 		default:
 			break;
 		}
+	}
+
+	// 清除登录账户，仅仅是登录人的登录状态，
+	private void clearLogin() {
+		CommonUtil.clearByKey(AnQuanXinXiActivity.this, "loginState", "", "");
 	}
 
 	private Dialog dialog = null;
@@ -228,7 +282,7 @@ public class AnQuanXinXiActivity extends BaseActivity implements
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				startActivity(new Intent(AnQuanXinXiActivity.this,
-						XiuGaiTiXianMiMaActivity.class));
+						XiuGaiDengLuMiMaActivity.class));
 				anim_right_in();
 				dialog.dismiss();
 			}

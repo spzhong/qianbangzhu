@@ -13,34 +13,45 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="7dp"
         android:background="@color/main_line_gray" />
 
     <RelativeLayout
-        android:id="@+id/main_mine_anquan_layout_shiming"
+        android:id="@+id/main_mine_anquan_layout_shiming1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:background="@color/white"
         android:orientation="horizontal" >
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:text="@string/shimingrenzheng"
-            android:textColor="@color/black"
-            android:textSize="@dimen/sp_28px" />
-
-        <TextView
-            android:id="@+id/main_mine_anquan_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:padding="15dp"
-            android:text="410725***"
-            android:textColor="@color/main_text_black"
-            android:textSize="@dimen/sp_24px" />
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/sz_shimingrenzheng" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/shimingrenzheng"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_28px" />
+
+            <TextView
+                android:id="@+id/main_mine_anquan_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="410725***"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_24px" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -48,57 +59,58 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:orientation="horizontal"
-            android:padding="15dp" >
+            android:padding="10dp" >
 
             <TextView
                 android:id="@+id/main_mine_anquan_shiming"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="songpeixin"
-                android:textColor="@color/main_text_black"
-                android:textSize="@dimen/sp_24px" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="元"
+                android:text="钱帮主"
                 android:textColor="@color/black"
-                android:textSize="@dimen/sp_28px"
-                android:visibility="gone" />
+                android:textSize="@dimen/sp_24px" />
         </LinearLayout>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:layout_marginLeft="15dp"
         android:background="@color/main_line_gray" />
 
     <RelativeLayout
-        android:id="@+id/main_mine_anquan_layout_xiugai"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:background="#fff"
         android:orientation="horizontal" >
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:text="@string/xiugaishouji"
-            android:textColor="@color/black"
-            android:textSize="@dimen/sp_28px" />
-
-        <TextView
-            android:id="@+id/main_mine_anquan_shouji"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:padding="15dp"
-            android:text="185****9999"
-            android:textColor="@color/main_text_black"
-            android:textSize="@dimen/sp_24px" />
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/sz_shoujihaoma" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/xiugaishouji"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_28px" />
+
+            <TextView
+                android:id="@+id/main_mine_anquan_shouji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="185****9999"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_24px" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -106,57 +118,58 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:orientation="horizontal"
-            android:padding="15dp" >
+            android:padding="10dp" >
 
             <TextView
+                android:id="@+id/main_mine_anquan_layout_xiugai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/xiugai"
                 android:textColor="@color/main_blue"
                 android:textSize="@dimen/sp_24px" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="元"
-                android:textColor="@color/black"
-                android:textSize="@dimen/sp_28px"
-                android:visibility="gone" />
         </LinearLayout>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:layout_marginLeft="15dp"
         android:background="@color/main_line_gray" />
 
     <RelativeLayout
-        android:id="@+id/main_mine_anquan_layout_tixian"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:background="#fff"
         android:orientation="horizontal" >
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:padding="15dp"
-            android:text="@string/tixianmima"
-            android:textColor="@color/black"
-            android:textSize="@dimen/sp_28px" />
-
-        <TextView
-            android:id="@+id/main_mine_anquan_shezhi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:padding="15dp"
-            android:text="@string/yishezhi"
-            android:textColor="@color/main_text_black"
-            android:textSize="@dimen/sp_24px" />
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/sz_denglumima" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="登录密码"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_28px" />
+
+            <TextView
+                android:id="@+id/main_mine_anquan_shezhi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/yishezhi"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_24px" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -164,23 +177,15 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:orientation="horizontal"
-            android:padding="15dp" >
+            android:padding="10dp" >
 
             <TextView
-                android:id="@+id/main_mine_anquan_tixian"
+                android:id="@+id/main_mine_anquan_layout_tixian"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/zhaohui"
+                android:text="修改"
                 android:textColor="@color/main_blue"
                 android:textSize="@dimen/sp_24px" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="元"
-                android:textColor="@color/black"
-                android:textSize="@dimen/sp_28px"
-                android:visibility="gone" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -188,5 +193,174 @@
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/sz_denglumima" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="风险测评"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_28px" />
+
+            <TextView
+                android:id="@+id/main_mine_anquan_fengxianceping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="谨慎型"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_24px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <TextView
+                android:id="@+id/main_mine_anquan_fengxiancepingbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查看"
+                android:textColor="@color/main_blue"
+                android:textSize="@dimen/sp_24px" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="7dp"
+        android:background="#fff" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/sz_denglumima"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="手势密码"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_28px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ToggleButton
+                android:id="@+id/sz_shoushi"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:button="@drawable/switch_btn"
+                android:checked="true"
+                android:text=""
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/sz_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/main_line_gray" />
+
+    <RelativeLayout
+        android:id="@+id/sz_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#fff"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/sz_denglumima"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="修改手势密码"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_28px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">"
+                android:textColor="@color/main_text_black"
+                android:textSize="@dimen/sp_28px" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/sz_btn"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_new_o"
+        android:text="退出账户"
+        android:textColor="@color/btn_text_color_white"
+        android:textSize="@dimen/sp_32px" />
 
 </LinearLayout>

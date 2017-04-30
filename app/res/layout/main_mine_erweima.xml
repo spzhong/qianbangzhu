@@ -50,7 +50,6 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
-            android:background="@drawable/anquanyunyingshijian"
             android:padding="15dp"
             android:visibility="visible" />
 

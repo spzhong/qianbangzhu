@@ -70,7 +70,7 @@ public class XiuGaiShouJiActivity extends BaseActivity implements
 	protected void initView() {
 		// TODO Auto-generated method stub
 		super.initView();
-		setTitle("修改手机");
+		setTitle("修改手机号");
 		showBack();
 
 		juhua = new ProcessDialogUtil(XiuGaiShouJiActivity.this);

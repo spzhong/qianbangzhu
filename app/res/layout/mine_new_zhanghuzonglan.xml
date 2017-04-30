@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_radio_blue"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_radio_blue"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -169,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_radio_blue"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -203,7 +203,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_radio_blue"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -236,7 +236,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_radio_blue"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -269,7 +269,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_radio_blue"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -302,7 +302,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_radio_blue"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -336,7 +336,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_radio_blue"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -369,7 +369,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_radio_blue"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -402,7 +402,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_radio_blue"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -435,7 +435,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_radio_blue"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>

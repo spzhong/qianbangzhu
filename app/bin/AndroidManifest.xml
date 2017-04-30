@@ -404,7 +404,7 @@
             android:theme="@style/AppTheme" >
         </activity>
         <activity
-            android:name="com.quqian.activity.mine.XiuGaiTiXianMiMaActivity"
+            android:name="com.quqian.activity.mine.XiuGaiDengLuMiMaActivity"
             android:label="@string/bottom_bar_mine"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"

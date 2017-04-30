@@ -3,6 +3,7 @@ package com.quqian.lockq;
 import com.example.quqian.R;
 import com.quqian.activity.LoginActivity;
 import com.quqian.activity.MainActivity;
+import com.quqian.activity.mine.AnQuanXinXiActivity;
 import com.quqian.activity.more.SheZhiActivity;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.UserMode;
@@ -128,7 +129,7 @@ public class GestureEditActivity extends BaseActivity implements OnClickListener
 							startActivity(intent3);
 						}else if("shezhi".equals(from)){
 							Intent intent3 = new Intent(GestureEditActivity.this,
-									SheZhiActivity.class);
+									AnQuanXinXiActivity.class);
 							startActivity(intent3);
 						}
 						GestureEditActivity.this.finish();

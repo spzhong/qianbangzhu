@@ -56,17 +56,17 @@ import com.readystatesoftware.viewbadger.BadgeView;
 public class MineActivity extends BaseActivity implements OnClickListener,
 		HttpResponseInterface {
 
-	//用户名
+	// 用户名
 	private TextView mine_name = null;
-	//消息 设置
+	// 消息 设置
 	private ImageView iv_xiaoxi = null;
 	private ImageView iv_shezhi = null;
-	
-	//存管账户，普通账户按钮，
+
+	// 存管账户，普通账户按钮，
 	private RadioGroup rg = null;
 	private RadioButton rb1 = null;
 	private RadioButton rb2 = null;
-	
+
 	// 可用余额显示文本，已赚总额显示文本
 	private TextView tv_keyong = null;
 	private TextView tv_yizhuan = null;
@@ -75,30 +75,31 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 	private TextView chongzhi = null;
 	private TextView tikuan = null;
 
-	//账户总额，交易记录，我的投标，邀请好友，
+	// 账户总额，交易记录，我的投标，邀请好友，
 	private LinearLayout zhanghuzonge = null;
 	private LinearLayout jiaoyijilu = null;
 	private LinearLayout wodetoubiao = null;
 	private LinearLayout yaoqinghaoyou = null;
-	
-	//推广记录，我的借款，我的加息卡，银行卡管理
+
+	// 推广记录，我的借款，我的加息卡，银行卡管理
 	private LinearLayout tuiguangjilu = null;
 	private LinearLayout wodejiekuan = null;
 	private LinearLayout wodejiaxika = null;
 	private LinearLayout yinhangkaguanli = null;
-	
-	//用户数据
+
+	// 用户数据
 	private UserMode user = null;
 	private Chongzhi chongzhiModel = null;
 	private ProcessDialogUtil juhua = null;
-
 
 	// 接受广播
 	BroadcastReceiver mBroadcastReceiver = null;
 
 	// 返回过来的消息个数
 	private String xiaoxi = "";
-	 
+
+	//默认为存管账户
+	private Boolean changeTag = true;
 
 	@Override
 	protected void onDestroy() {
@@ -131,10 +132,10 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 		juhua = new ProcessDialogUtil(MineActivity.this);
 
 		mine_name = (TextView) findViewById(R.id.mine_name);
-		
+
 		iv_xiaoxi = (ImageView) findViewById(R.id.mine_xiaoxi);
 		iv_shezhi = (ImageView) findViewById(R.id.mine_shezhi);
-		
+
 		rg = (RadioGroup) findViewById(R.id.m_zhanghu_rg);
 		rb1 = (RadioButton) findViewById(R.id.m_zhanghu_rb1);
 		rb2 = (RadioButton) findViewById(R.id.m_zhanghu_rb2);
@@ -144,12 +145,12 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 
 		chongzhi = (TextView) findViewById(R.id.main_mine_index_cz_btn);
 		tikuan = (TextView) findViewById(R.id.main_mine_index_tx_btn);
-		
+
 		zhanghuzonge = (LinearLayout) findViewById(R.id.m_zhanghu);
 		jiaoyijilu = (LinearLayout) findViewById(R.id.m_jiaoyi);
 		wodetoubiao = (LinearLayout) findViewById(R.id.m_toubiao);
 		yaoqinghaoyou = (LinearLayout) findViewById(R.id.m_yaoqing);
-		
+
 		tuiguangjilu = (LinearLayout) findViewById(R.id.m_tuiguangjilu);
 		wodejiekuan = (LinearLayout) findViewById(R.id.m_wodejiekuan);
 		wodejiaxika = (LinearLayout) findViewById(R.id.m_wodejiaxika);
@@ -184,9 +185,9 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 			}
 
 			// mine_name.setText(user.getNc());
-			tv_keyong.setText(user.getKyye());// 可用余额
-			tv_yizhuan.setText(user.getYzze());// 已赚取金额
-			
+			tv_keyong.setText(user.getCgkyye());// 可用余额
+			tv_yizhuan.setText(user.getCgyzze());// 已赚取金额
+
 		}
 
 		// 接受广播
@@ -207,7 +208,7 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 		registerReceiver(mBroadcastReceiver, intentFilter);
 
 	}
-	
+
 	public void reload() {
 
 		user = Tool.getUser(MineActivity.this);
@@ -227,8 +228,14 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 			}
 
 			// mine_name.setText(user.getNc());
-			tv_keyong.setText(user.getKyye());// 可用余额
-			tv_yizhuan.setText(user.getYzze());// 已赚取金额
+			// 选中的是存管，普通
+			if (changeTag) {
+				tv_keyong.setText(user.getCgkyye());// 可用余额
+				tv_yizhuan.setText(user.getCgyzze());// 已赚取金额
+			} else {
+				tv_keyong.setText(user.getKyye());// 可用余额
+				tv_yizhuan.setText(user.getYzze());// 已赚取金额
+			}
 		}
 
 	}
@@ -240,78 +247,90 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 
 		iv_xiaoxi.setOnClickListener(this);
 		iv_shezhi.setOnClickListener(this);
-		
+
 		rb1.setOnClickListener(this);
 		rb2.setOnClickListener(this);
-		
+
 		chongzhi.setOnClickListener(this);
 		tikuan.setOnClickListener(this);
-		
+
 		zhanghuzonge.setOnClickListener(this);
 		jiaoyijilu.setOnClickListener(this);
 		wodetoubiao.setOnClickListener(this);
 		yaoqinghaoyou.setOnClickListener(this);
-		
+
 		tuiguangjilu.setOnClickListener(this);
 		wodejiekuan.setOnClickListener(this);
 		wodejiaxika.setOnClickListener(this);
 		yinhangkaguanli.setOnClickListener(this);
-		
+
 	}
 
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
-		case R.id.mine_xiaoxi://消息
+		case R.id.mine_xiaoxi:// 消息
 			startActivity(new Intent(MineActivity.this, TongZhiActivity.class));
 			anim_right_in();
 			break;
-		case R.id.mine_shezhi://设置
+		case R.id.mine_shezhi:// 设置
 			startActivity(new Intent(MineActivity.this,
-					ZhangHuGuanLiActivity.class));
+					AnQuanXinXiActivity.class));
 			anim_right_in();
 			break;
-		case R.id.m_zhanghu://账户总额
-			startActivity(new Intent(MineActivity.this,
-					ZhangHuZongLan.class));
+		case R.id.m_zhanghu_rb1:// 存管账户
+			tv_keyong.setText(user.getCgkyye());// 可用余额
+			tv_yizhuan.setText(user.getCgyzze());// 已赚取金额
+			changeTag = true;
+			break;
+		case R.id.m_zhanghu_rb2:// 普通账户
+			tv_keyong.setText(user.getKyye());// 可用余额
+			tv_yizhuan.setText(user.getYzze());// 已赚取金额
+			changeTag = false;
+			break;
+		case R.id.m_zhanghu:// 账户总额
+			startActivity(new Intent(MineActivity.this, ZhangHuZongLan.class));
 			anim_right_in();
 			break;
-		case R.id.m_jiaoyi://交易记录
-			startActivity(new Intent(MineActivity.this,
-					JiaoYIJiLu.class));
+		case R.id.m_jiaoyi:// 交易记录
+			startActivity(new Intent(MineActivity.this, JiaoYIJiLu.class));
 			break;
-		case R.id.m_toubiao://我的投标
+		case R.id.m_toubiao:// 我的投标
 			startActivity(new Intent(MineActivity.this, WoDeTouBiao.class));
 			anim_right_in();
 			break;
-		case R.id.m_yaoqing://邀请好友
-			startActivity(new Intent(MineActivity.this, WoErWeiMaActivity.class));
+		case R.id.m_yaoqing:// 邀请好友
+			Intent intent1 = new Intent(MineActivity.this,
+					WoErWeiMaActivity.class);
+			intent1.putExtra("fuwuma", user.wdfwm);
+			startActivity(intent1);
 			anim_right_in();
 			break;
-		case R.id.m_tuiguangjilu://推广记录
+		case R.id.m_tuiguangjilu:// 推广记录
 			startActivity(new Intent(MineActivity.this, TuiGuangJiLu.class));
 			anim_right_in();
 			break;
-		case R.id.m_wodejiekuan://我的借款
+		case R.id.m_wodejiekuan:// 我的借款
 			startActivity(new Intent(MineActivity.this, WoDeJieKuan.class));
 			anim_right_in();
 			break;
-		case R.id.m_wodejiaxika://我的加息卡
+		case R.id.m_wodejiaxika:// 我的加息卡
 			startActivity(new Intent(MineActivity.this, WoDeJiaXiKa.class));
 			anim_right_in();
 			break;
-		case R.id.m_yinhangkaguanli://银行卡管理
-			startActivity(new Intent(MineActivity.this, NewYinHangKaGuanLi.class));
+		case R.id.m_yinhangkaguanli:// 银行卡管理
+			startActivity(new Intent(MineActivity.this,
+					NewYinHangKaGuanLi.class));
 			anim_right_in();
 			break;
-		case R.id.main_mine_index_cz_btn://充值
-			//isgoto_chongzhi_tixian(0);
+		case R.id.main_mine_index_cz_btn:// 充值
+			// isgoto_chongzhi_tixian(0);
 			startActivity(new Intent(MineActivity.this, NewChongZhi.class));
 			anim_right_in();
 			break;
-		case R.id.main_mine_index_tx_btn://提现
-			//isgoto_chongzhi_tixian(1);
+		case R.id.main_mine_index_tx_btn:// 提现
+			// isgoto_chongzhi_tixian(1);
 			startActivity(new Intent(MineActivity.this, NewTiXian.class));
 			anim_right_in();
 			break;
@@ -332,12 +351,11 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 			return;
 		}
 		// 去掉判断提现密码是否设置
-		/*if (user.getTxmmsfsz().equals("false")) {
-			startActivity(new Intent(MineActivity.this,
-					SheZhiTiXianMiMaActivity.class));
-			anim_right_in();
-			return;
-		}*/
+		/*
+		 * if (user.getTxmmsfsz().equals("false")) { startActivity(new
+		 * Intent(MineActivity.this, SheZhiTiXianMiMaActivity.class));
+		 * anim_right_in(); return; }
+		 */
 
 		if (tag == 0) {
 			loadHttp_chongzhi();
@@ -383,20 +401,19 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 
 				break;
 			case 4:
-			
+
 				// 停止菊花
 				Tool.writeData(MineActivity.this, "loginState", "zhanghu", "");
 				Tool.writeData(MineActivity.this, "cooke", "cookieValue", "");
-				//弹框提醒
-				Toast.makeText(MineActivity.this,"退出成功", 1000).show();
-				 
-				//进入首页
+				// 弹框提醒
+				Toast.makeText(MineActivity.this, "退出成功", 1000).show();
+
+				// 进入首页
 				Intent intent3 = new Intent(MineActivity.this,
 						MainActivity.class);
 				StaticVariable.put(StaticVariable.sv_toIndex, "1");
 				startActivity(intent3);
-				
-				
+
 				break;
 			case 2:
 				Toast.makeText(MineActivity.this,
@@ -408,14 +425,12 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 			}
 		}
 	};
-	
-	
 
 	// 注销退出登录
 	private void loadHttp_zhuxiao() {
-		
+
 		juhua.show();
-		
+
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("urlTag", "3");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
@@ -423,9 +438,6 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 				map, MineActivity.this, mHandler);
 		RequestPool.execute(thread);
 	}
-
-	
-	
 
 	// 充值
 	private void loadHttp_chongzhi() {

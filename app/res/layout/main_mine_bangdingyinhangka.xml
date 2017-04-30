@@ -68,7 +68,7 @@
             android:textColor="@color/main_text_black"
             android:textSize="@dimen/sp_24px" />
 
-        <!-- <TextView
+        <TextView
             android:id="@+id/main_mine_bangding_kaihusuozaishi"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -78,7 +78,8 @@
             android:hint="请选择城市"
             android:padding="10dp"
             android:textColor="@color/main_text_black"
-            android:textSize="@dimen/sp_24px" /> -->
+            android:textSize="@dimen/sp_24px" 
+            android:visibility="gone"/>
     </LinearLayout>
 
     <EditText

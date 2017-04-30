@@ -30,7 +30,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="0.8"
-            
             android:padding="15dp"
             android:text="交易金额(元)"
             android:textColor="@color/main_text_black"

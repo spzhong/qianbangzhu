@@ -38,7 +38,7 @@ import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.ProcessDialogUtil;
 import com.quqian.util.Tool;
 
-public class XiuGaiTiXianMiMaActivity extends BaseActivity implements
+public class XiuGaiDengLuMiMaActivity extends BaseActivity implements
 		OnClickListener, HttpResponseInterface {
 
 	private EditText yuan = null;
@@ -58,10 +58,10 @@ public class XiuGaiTiXianMiMaActivity extends BaseActivity implements
 	protected void initView() {
 		// TODO Auto-generated method stub
 		super.initView();
-		setTitle("修改提现密码");
+		setTitle("修改登录密码");
 		showBack();
 		
-		juhua = new ProcessDialogUtil(XiuGaiTiXianMiMaActivity.this);
+		juhua = new ProcessDialogUtil(XiuGaiDengLuMiMaActivity.this);
 
 		yuan = (EditText) findViewById(R.id.main_mine_xiugaitixianmima_yuan);
 		xin = (EditText) findViewById(R.id.main_mine_xiugaitixianmima_xin);
@@ -84,7 +84,7 @@ public class XiuGaiTiXianMiMaActivity extends BaseActivity implements
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
 		case R.id.title_bar_back:
-			XiuGaiTiXianMiMaActivity.this.finish();
+			XiuGaiDengLuMiMaActivity.this.finish();
 			anim_right_out();
 			break;
 		case R.id.main_mine_xiugaitixianmima_next:
@@ -111,7 +111,7 @@ public class XiuGaiTiXianMiMaActivity extends BaseActivity implements
 			
 			switch (msg.what) {
 			case 0:
-				Toast.makeText(XiuGaiTiXianMiMaActivity.this,
+				Toast.makeText(XiuGaiDengLuMiMaActivity.this,
 						msg.getData().getString("errMsg"), 1000).show();
 				break;
 			case 1:// 修改成功了
@@ -119,7 +119,7 @@ public class XiuGaiTiXianMiMaActivity extends BaseActivity implements
 				anim_right_out();
 				break;
 			case 2:
-				Toast.makeText(XiuGaiTiXianMiMaActivity.this,
+				Toast.makeText(XiuGaiDengLuMiMaActivity.this,
 						msg.getData().getString("msg"), 1000).show();
 				break;
 
@@ -144,7 +144,7 @@ public class XiuGaiTiXianMiMaActivity extends BaseActivity implements
 		map.put("cmm",queren.getText().toString());
 		
 		RequestThreadAbstract thread = RequestFactory.createRequestThread(23,
-				map, XiuGaiTiXianMiMaActivity.this, mHandler);
+				map, XiuGaiDengLuMiMaActivity.this, mHandler);
 		RequestPool.execute(thread);
 	}
 

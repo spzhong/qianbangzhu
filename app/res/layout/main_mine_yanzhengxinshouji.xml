@@ -10,25 +10,13 @@
         android:layout_height="@dimen/dp_96px"
         layout="@layout/titlebar" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/main_line_gray" />
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
         android:background="@color/white" >
-
-        <ImageView
-            android:id="@+id/register_meiyong_iv3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:padding="10dp"
-            android:src="@drawable/icon15" />
 
         <EditText
             android:id="@+id/main_mine_yanzhengxinshouji_shouji"
@@ -38,33 +26,20 @@
             android:layout_toRightOf="@+id/register_meiyong_iv3"
             android:background="@null"
             android:ems="10"
-            android:hint="请输入新手机号"
+            android:hint="输入新手机号码"
             android:lines="1"
-            android:padding="10dp"
+            android:paddingLeft="15dp"
             android:textColor="@color/main_text_black"
             android:textSize="@dimen/sp_28px" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginLeft="15dp"
-        android:background="@color/main_line_gray" />
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
         android:background="@color/white" >
-
-        <ImageView
-            android:id="@+id/register_meiyong_iv31"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
-            android:padding="10dp"
-            android:src="@drawable/icon17" />
 
         <Button
             android:id="@+id/main_mine_yanzhengxinshouji_huoqu"
@@ -72,12 +47,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_margin="15dp"
-            android:background="@drawable/button_kuang_blue"
+            android:background="@null"
+            android:paddingRight="15dp"
             android:gravity="center"
             android:text="@string/huoquyanzhengma"
             android:textColor="@color/main_blue"
-            android:textSize="@dimen/sp_20px"
+            android:textSize="@dimen/sp_24px"
             android:visibility="visible" />
 
         <EditText
@@ -88,26 +63,23 @@
             android:layout_toRightOf="@+id/register_meiyong_iv31"
             android:background="@null"
             android:ems="10"
-            android:hint="@string/duanxinyanzhengma"
+            android:hint="输入手机验证码"
             android:lines="1"
-            android:padding="10dp"
+            android:paddingLeft="15dp"
             android:textColor="@color/main_text_black"
             android:textSize="@dimen/sp_28px" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/main_line_gray" />
-
     <Button
         android:id="@+id/main_mine_yanzhengxinshouji_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_new_blue"
         android:gravity="center"
-        android:text="完成"
-        android:background="@drawable/button"
+        android:text="确认修改"
         android:textColor="@color/btn_text_color_black"
         android:textSize="@dimen/sp_32px"
         android:visibility="visible" />

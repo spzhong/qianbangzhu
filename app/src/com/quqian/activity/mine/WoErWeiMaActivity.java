@@ -21,7 +21,7 @@ import android.widget.Toast;
 public class WoErWeiMaActivity extends BaseActivity implements OnClickListener {
 	
 	private ImageView image;
-	private String fuwuma = "8888";
+	private String fuwuma = "";
 
 	private TextView tv_fuwuma = null;
 	private TextView tv_lianjie = null;

@@ -10,25 +10,22 @@
         android:layout_height="@dimen/dp_96px"
         layout="@layout/titlebar" />
 
-    <View
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0.1dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:background="@color/main_line_gray" />
+        android:text="原登录密码"
+        android:textColor="#333333"
+        android:textSize="@dimen/sp_26px" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
         android:background="@color/white" >
-
-        <ImageView
-            android:id="@+id/register_meiyong_iv3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:padding="10dp"
-            android:src="@drawable/icon16" />
 
         <EditText
             android:id="@+id/main_mine_xiugaitixianmima_yuan"
@@ -38,33 +35,30 @@
             android:layout_toRightOf="@+id/register_meiyong_iv3"
             android:background="@null"
             android:ems="10"
-            android:hint="原提现密码"
+            android:hint="输入原密码"
             android:lines="1"
-            android:padding="10dp"
+            android:paddingLeft="15dp"
             android:password="true"
             android:textColor="@color/main_text_black"
             android:textSize="@dimen/sp_28px" />
     </RelativeLayout>
 
-    <View
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginLeft="15dp"
-        android:background="@color/main_line_gray" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:text="新登录密码"
+        android:textColor="#333333"
+        android:textSize="@dimen/sp_26px" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
         android:background="@color/white" >
-
-        <ImageView
-            android:id="@+id/register_meiyong_iv4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:padding="10dp"
-            android:src="@drawable/icon16" />
 
         <EditText
             android:id="@+id/main_mine_xiugaitixianmima_xin"
@@ -74,33 +68,21 @@
             android:layout_toRightOf="@+id/register_meiyong_iv4"
             android:background="@null"
             android:ems="10"
-            android:hint="新提现密码"
+            android:hint="输入新密码"
             android:lines="1"
-            android:padding="10dp"
+            android:paddingLeft="15dp"
             android:password="true"
             android:textColor="@color/main_text_black"
             android:textSize="@dimen/sp_28px" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginLeft="15dp"
-        android:background="@color/main_line_gray" />
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
         android:background="@color/white" >
-
-        <ImageView
-            android:id="@+id/register_meiyong_iv5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:padding="10dp"
-            android:src="@drawable/icon16" />
 
         <EditText
             android:id="@+id/main_mine_xiugaitixianmima_queren"
@@ -110,28 +92,25 @@
             android:layout_toRightOf="@+id/register_meiyong_iv5"
             android:background="@null"
             android:ems="10"
-            android:hint="确认新提现密码"
+            android:hint="确认新密码"
             android:lines="1"
-            android:padding="10dp"
+            android:paddingLeft="15dp"
             android:password="true"
             android:textColor="@color/main_text_black"
             android:textSize="@dimen/sp_28px" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/main_line_gray" />
-
     <Button
         android:id="@+id/main_mine_xiugaitixianmima_next"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/button"
-        android:textColor="@color/btn_text_color_black"
+        android:layout_height="45dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/button_new_blue"
         android:gravity="center"
-        android:text="完成"
+        android:text="立即修改"
+        android:textColor="@color/btn_text_color_black"
         android:textSize="@dimen/sp_32px"
         android:visibility="visible" />
 
