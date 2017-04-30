@@ -105,6 +105,7 @@ public class API {
 
 	// 开通存管的账户
 	public static String BankcardRegCg = HTTP + "user/bankcard/regCg.htm";// 106
+	 
 
 	public API() {
 		// TODO Auto-generated constructor stub

@@ -34,28 +34,35 @@ import com.quqian.base.BaseActivity;
 import com.quqian.http.RequestFactory;
 import com.quqian.http.RequestPool;
 import com.quqian.http.RequestThreadAbstract;
+import com.quqian.util.Code;
 import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.ProcessDialogUtil;
 import com.quqian.util.Tool;
 
 public class ZhaoHuiMiMaNEWActivity extends BaseActivity implements
 		OnClickListener, HttpResponseInterface {
-	
+
 	private EditText shouji = null;
 	private EditText yanzhengma = null;
+	private ImageView yanzhengmaimg = null;
 
-	//新密码输入
+	private EditText dongtaima = null;
+
+	// 新密码输入
 	private EditText xin = null;
-	//确认新密码
+	// 确认新密码
 	private EditText queren = null;
-	//完成
+	// 完成
 	private Button next = null;
-	
+
+	// 产生的验证码
+	private String realCode;
+
 	private String shoujihao = "";
 	private String key = "";
 
 	private Dialog juhua = null;
-	
+
 	@Override
 	protected int layoutId() {
 		// TODO Auto-generated method stub
@@ -66,13 +73,14 @@ public class ZhaoHuiMiMaNEWActivity extends BaseActivity implements
 	protected void getIntentWord() {
 		// TODO Auto-generated method stub
 		super.getIntentWord();
-		if(getIntent().getStringExtra("shouji") !=null){
+		if (getIntent().getStringExtra("shouji") != null) {
 			shoujihao = getIntent().getStringExtra("shouji");
 		}
-		if(getIntent().getStringExtra("key") !=null){
+		if (getIntent().getStringExtra("key") != null) {
 			key = getIntent().getStringExtra("key");
 		}
 	}
+
 	@Override
 	protected void initView() {
 		// TODO Auto-generated method stub
@@ -81,13 +89,18 @@ public class ZhaoHuiMiMaNEWActivity extends BaseActivity implements
 		showBack();
 
 		juhua = new ProcessDialogUtil(ZhaoHuiMiMaNEWActivity.this);
-		
+
 		shouji = (EditText) findViewById(R.id.main_zhaohuimima_shoujihao);
-		yanzhengma = (EditText) findViewById(R.id.main_zhaohuimima_shoujiyanzhengma);
-		
+		yanzhengma = (EditText) findViewById(R.id.main_zhaohuimima_yanzhengma);
+		yanzhengmaimg = (ImageView) findViewById(R.id.main_zhaohuimima_yanzhenmaimg);
+		dongtaima = (EditText) findViewById(R.id.main_zhaohuimima_shoujiyanzhengma);
+
+		yanzhengmaimg.setImageBitmap(Code.getInstance().createBitmap());
+		realCode = Code.getInstance().getCode().toLowerCase();
+
 		xin = (EditText) findViewById(R.id.main_zhaohuimima_newmima);
 		queren = (EditText) findViewById(R.id.main_zhaohuimima_queren);
-		next = (Button) findViewById(R.id.main_zhaohuimima_btn);
+		next = (Button) findViewById(R.id.main_zhaohuimima_btn_n);
 
 	}
 
@@ -96,6 +109,7 @@ public class ZhaoHuiMiMaNEWActivity extends BaseActivity implements
 		// TODO Auto-generated method stub
 		super.initViewListener();
 		titleBarBack.setOnClickListener(this);
+		yanzhengmaimg.setOnClickListener(this);
 
 		next.setOnClickListener(this);
 	}
@@ -108,11 +122,25 @@ public class ZhaoHuiMiMaNEWActivity extends BaseActivity implements
 			ZhaoHuiMiMaNEWActivity.this.finish();
 			anim_right_out();
 			break;
-		case R.id.main_wangji_chongzhimima_btn:
-			// 完成  应该记录登录状态，跳转到相应的界面，或者应该判断是否需要设置手势密码，进入首页
-			
+		case R.id.main_zhaohuimima_yanzhenmaimg:
+			// 验证码生成新的
+			yanzhengmaimg.setImageBitmap(Code.getInstance().createBitmap());
+			realCode = Code.getInstance().getCode().toLowerCase();
+			break;
+		case R.id.main_zhaohuimima_shoujiyanzhengma:
+			// 获取手机动态码
+			String yanzhengmatext = yanzhengma.getText().toString().toLowerCase();
+			if (yanzhengmatext.equals(realCode)) {  
+				//调接口获取手机动态码
+            } else {  
+                Toast.makeText(ZhaoHuiMiMaNEWActivity.this, "验证码错误", Toast.LENGTH_SHORT).show();  
+            }  
+			break;
+		case R.id.main_zhaohuimima_btn_n:
+			// 完成 应该记录登录状态，跳转到相应的界面，或者应该判断是否需要设置手势密码，进入首页
+
 			loadHttp_chongzhimima();
-	
+
 			break;
 
 		default:
@@ -120,10 +148,6 @@ public class ZhaoHuiMiMaNEWActivity extends BaseActivity implements
 		}
 	}
 
-	
-	
-	
-	
 	// 登录--网络请求
 	private Handler mHandler = new Handler() {
 
@@ -131,9 +155,9 @@ public class ZhaoHuiMiMaNEWActivity extends BaseActivity implements
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
-			
+
 			juhua.cancel();
-			
+
 			switch (msg.what) {
 			case 0:
 
@@ -143,11 +167,11 @@ public class ZhaoHuiMiMaNEWActivity extends BaseActivity implements
 				break;
 			case 1:
 				// 下一步
-				
-				Toast.makeText(ZhaoHuiMiMaNEWActivity.this,"成功", 1000).show();
+
+				Toast.makeText(ZhaoHuiMiMaNEWActivity.this, "成功", 1000).show();
 				anim_right_out();
 				finish();
-				
+
 				break;
 			case 2:
 				Toast.makeText(ZhaoHuiMiMaNEWActivity.this,
@@ -163,25 +187,26 @@ public class ZhaoHuiMiMaNEWActivity extends BaseActivity implements
 	// 找回密码－重置密码
 	private void loadHttp_chongzhimima() {
 		// TODO Auto-generated method stub
-		
-		//密码长度的判断
-		if (xin.getText().toString().length() < 6 || xin.getText().toString().length() > 16) {
-			Toast.makeText(ZhaoHuiMiMaNEWActivity.this,"密码长度为6-16个字符", 1000).show();
+
+		// 密码长度的判断
+		if (xin.getText().toString().length() < 6
+				|| xin.getText().toString().length() > 16) {
+			Toast.makeText(ZhaoHuiMiMaNEWActivity.this, "密码长度为6-16个字符", 1000)
+					.show();
 			return;
 		}
-		 
-		
+
 		juhua.show();
-		
+
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
-		map.put("type", "1");//类型
-		map.put("phone",shoujihao);//手机号
-		map.put("password",xin.getText().toString());//密码
-		map.put("cpassword",queren.getText().toString());//密码
+		map.put("type", "1");// 类型
+		map.put("phone", shoujihao);// 手机号
+		map.put("password", xin.getText().toString());// 密码
+		map.put("cpassword", queren.getText().toString());// 密码
 		try {
-			map.put("key",Tool.getMD5(shoujihao+"1" + key));
+			map.put("key", Tool.getMD5(shoujihao + "1" + key));
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -191,7 +216,6 @@ public class ZhaoHuiMiMaNEWActivity extends BaseActivity implements
 		RequestPool.execute(thread);
 	}
 
- 
 	@Override
 	public void httpResponse_success(Map<String, String> map,
 			List<Object> list, Object jsonObj) {
@@ -212,6 +236,5 @@ public class ZhaoHuiMiMaNEWActivity extends BaseActivity implements
 		msg2.setData(bundle);
 		mHandler.sendMessage(msg2);
 	}
-
 
 }

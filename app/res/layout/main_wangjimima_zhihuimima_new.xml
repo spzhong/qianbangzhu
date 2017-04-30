@@ -13,13 +13,12 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="7dp"
         android:background="@color/main_line_gray" />
 
-    
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:background="@color/white" >
 
         <ImageView
@@ -50,20 +49,27 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/main_line_gray" />
-    
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         android:background="@color/white" >
 
         <ImageView
-            android:id="@+id/register_meiyong_iv3336"
-            android:layout_width="wrap_content"
+            android:id="@+id/main_zhaohuimima_yanzhenmaimg"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:padding="10dp"
-            android:src="@drawable/z_yanzhengma" />
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
+            android:text="@string/huoquyanzhengma"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/sp_20px"
+            android:visibility="visible" />
 
         <EditText
             android:id="@+id/main_zhaohuimima_yanzhengma"
@@ -78,15 +84,26 @@
             android:padding="10dp"
             android:textColor="@color/main_text_black"
             android:textSize="@dimen/sp_28px" />
+
+        <ImageView
+            android:id="@+id/register_meiyong_iv3336"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:src="@drawable/z_yanzhengma" />
     </RelativeLayout>
-     <View
+
+    <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/main_line_gray" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:background="@color/white" >
 
         <ImageView
@@ -105,12 +122,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_margin="15dp"
             android:background="@null"
             android:gravity="center"
+            android:paddingRight="15dp"
             android:text="@string/huoquyanzhengma"
             android:textColor="@color/main_blue"
-            android:textSize="@dimen/sp_20px"
+            android:textSize="@dimen/sp_28px"
             android:visibility="visible" />
 
         <EditText
@@ -150,7 +167,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:background="@color/white" >
 
         <ImageView
@@ -185,7 +202,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:background="@color/white" >
 
         <ImageView
@@ -219,13 +236,14 @@
         android:background="@color/main_line_gray" />
 
     <Button
-        android:id="@+id/main_zhaohuimima_btn"
+        android:id="@+id/main_zhaohuimima_btn_n"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/button_new_blue"
+        android:enabled="false"
         android:gravity="center"
         android:text="提交"
         android:textColor="@color/btn_text_color_black"

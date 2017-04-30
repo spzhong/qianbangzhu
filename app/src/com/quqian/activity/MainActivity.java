@@ -7,6 +7,7 @@ import com.example.quqian.R;
 import com.quqian.activity.index.IndexActivity;
 import com.quqian.activity.invert.Invert;
 import com.quqian.activity.mine.MineActivity;
+import com.quqian.activity.mine.xin.QiYeBangDingYinHangKaActivity;
 import com.quqian.activity.more.MoreActivity;
 import com.quqian.base.AppManager;
 import com.quqian.base.BaseActivity;

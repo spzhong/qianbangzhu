@@ -1,20 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="@color/white" >
 
-    <include
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_96px"
-        android:layout_alignParentTop="true"
-        layout="@layout/titlebar" />
-
-    <ImageView
-        android:id="@+id/erweima"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center" />
+        android:orientation="vertical" >
 
-</RelativeLayout>
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_96px"
+            layout="@layout/titlebar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chengsebiankuang"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="方式一"
+                android:textColor="@color/main_text_blue"
+                android:textSize="@dimen/sp_26px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:padding="5dp"
+                android:text="二维码邀请"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_26px" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/erweima"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/anquanyunyingshijian"
+            android:padding="15dp"
+            android:visibility="visible" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/main_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chengsebiankuang"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="方式二"
+                android:textColor="@color/main_text_blue"
+                android:textSize="@dimen/sp_26px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:padding="5dp"
+                android:text="服务码邀请"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_26px" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/fuwuma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="181818"
+            android:textColor="#3597ee"
+            android:textSize="36sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="邀请好友注册时填写该服务码"
+            android:textColor="#969696"
+            android:textSize="@dimen/sp_24px" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/main_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chengsebiankuang"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="方式三"
+                android:textColor="@color/main_text_blue"
+                android:textSize="@dimen/sp_26px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:padding="5dp"
+                android:text="链接邀请"
+                android:textColor="@color/main_invert_text_b"
+                android:textSize="@dimen/sp_26px" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lianjie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="http://www.qbzvip.com/register.html?code=8888"
+            android:textColor="#969696"
+            android:textSize="@dimen/sp_24px" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="复制该链接发送给好友"
+            android:textColor="#969696"
+            android:textSize="@dimen/sp_24px" />
+    </LinearLayout>
+
+</ScrollView>

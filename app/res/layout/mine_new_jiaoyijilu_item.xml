@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <TextView
+        android:id="@+id/jiao_tv1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1.5"
+        android:gravity="center"
+        android:text="债券转让手续费"
+        android:textColor="@color/text_tips"
+        android:textSize="@dimen/sp_24px" />
+
+    <TextView
+        android:id="@+id/jiao_tv2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="1000000.00"
+        android:textColor="@color/text_tips"
+        android:textSize="@dimen/sp_24px" />
+
+    <TextView
+        android:id="@+id/jiao_tv3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="2017-02-13 13：20：20"
+        android:textColor="@color/text_tips"
+        android:textSize="@dimen/sp_24px" />
+
+</LinearLayout>

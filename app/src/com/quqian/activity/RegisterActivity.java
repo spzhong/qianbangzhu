@@ -18,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import com.quqian.http.RequestFactory;
 import com.quqian.http.RequestPool;
 import com.quqian.http.RequestThreadAbstract;
 import com.quqian.lockq.GestureEditActivity;
+import com.quqian.util.Code;
 import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.ProcessDialogUtil;
 import com.quqian.util.StaticVariable;
@@ -43,23 +45,30 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 	private EditText et_phone = null;
 	// 登陆密码
 	private EditText et_pass = null;
-	// 确认登录密码
-	private EditText et_repass = null;
 	// 验证码
 	private EditText et_yanzhengma = null;
+	// 手机验证码
+	private EditText et_dongtaima = null;
 	// 推荐人服务码
 	private EditText et_tuijian = null;
 	// 获取验证码按钮
 	private Button huoqu = null;
+	// 验证码按钮
+	private ImageView yanzhengmaimg = null;
+	// 返回按钮
+	private ImageView back = null;
 	// 注册按钮
 	private Button register = null;
 
 	private UserMode allUser = null;
 
 	private Dialog juhua = null;
-	
+
 	private TextView xieyi = null;
-	
+
+	// 产生的验证码
+	private String realCode;
+
 	@Override
 	protected int layoutId() {
 		// TODO Auto-generated method stub
@@ -70,20 +79,26 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 	protected void initView() {
 		// TODO Auto-generated method stub
 		super.initView();
-		setTitle("注册");
-		showBack();
-		
+		// setTitle("注册");
+		// showBack();
+
 		juhua = new ProcessDialogUtil(RegisterActivity.this);
 
 		et_phone = (EditText) findViewById(R.id.register_et_phone);
 		et_pass = (EditText) findViewById(R.id.register_et_pass);
-		et_repass = (EditText) findViewById(R.id.register_et_repass);
-		et_yanzhengma = (EditText) findViewById(R.id.register_et_yanzhengma);
+		et_yanzhengma = (EditText) findViewById(R.id.register_et_repass);
+		et_dongtaima = (EditText) findViewById(R.id.register_et_yanzhengma);
 		et_tuijian = (EditText) findViewById(R.id.register_et_tuijianren);
 		huoqu = (Button) findViewById(R.id.register_tv_huoqu);
 		register = (Button) findViewById(R.id.register_register);
+
+		yanzhengmaimg = (ImageView) findViewById(R.id.register_iv_yanzhengma);
+		back = (ImageView) findViewById(R.id.zhuce_back);
+
+		yanzhengmaimg.setImageBitmap(Code.getInstance().createBitmap());
+		realCode = Code.getInstance().getCode().toLowerCase();
 		
-		xieyi = (TextView)findViewById(R.id.register_xieyi);
+		xieyi = (TextView) findViewById(R.id.register_xieyi);
 
 	}
 
@@ -94,23 +109,26 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		titleBarBack.setOnClickListener(this);
 		huoqu.setOnClickListener(this);
 		register.setOnClickListener(this);
-		
+
+		yanzhengmaimg.setOnClickListener(this);
+		back.setOnClickListener(this);
+
 		xieyi.setOnClickListener(this);
-		
+
 	}
 
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
-		case R.id.title_bar_back:
+		case R.id.zhuce_back:
 			RegisterActivity.this.finish();
 			anim_right_out();
 			break;
 		case R.id.register_tv_huoqu:
 			// 弹出对话框提示验证码发送到手机号码， -------------有问题
 			if (!"".equals(et_phone) || !"".equals(et_pass)
-					|| !"".equals(et_repass)) {
+					|| !"".equals(et_yanzhengma)) {
 				loadHttp_duanxinma();
 			}
 
@@ -118,14 +136,29 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		case R.id.register_register:
 			// 注册成功直接登录，将 该用户的的信息标记为已登录，finish掉注册页面，加上动画 -----判断checkBox是否勾上
 			// Toast.makeText(RegisterActivity.this, "注册成功", 1000).show();
+			// 获取手机动态码
+			String yanzhengmatext = et_yanzhengma.getText().toString()
+					.toLowerCase();
+			if (yanzhengmatext.equals(realCode)) {
+				// 调接口获取手机动态码
+			} else {
+				Toast.makeText(RegisterActivity.this, "验证码错误",
+						Toast.LENGTH_SHORT).show();
+			}
 			loadHttp_zhuce();
 			break;
 		case R.id.register_xieyi:
-			Intent intent = new Intent(RegisterActivity.this,MyWebViewActivity.class);
+			Intent intent = new Intent(RegisterActivity.this,
+					MyWebViewActivity.class);
 			intent.putExtra("title", "趣钱注册协议");
-			intent.putExtra("url", API.HTTP_WEB+"/term/ZCXY.html");
+			intent.putExtra("url", API.HTTP_WEB + "/term/ZCXY.html");
 			startActivity(intent);
-			
+
+			break;
+		case R.id.register_iv_yanzhengma:
+			// 验证码生成新的
+			yanzhengmaimg.setImageBitmap(Code.getInstance().createBitmap());
+			realCode = Code.getInstance().getCode().toLowerCase();
 			break;
 		default:
 			break;
@@ -151,9 +184,9 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
-			
+
 			juhua.cancel();
-			
+
 			switch (msg.what) {
 			case 0:
 
@@ -162,11 +195,12 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 
 				break;
 			case 1:
-				
-				Toast.makeText(RegisterActivity.this,"恭喜您，短信发送成功，请您注意查收。", 1000).show();
+
+				Toast.makeText(RegisterActivity.this, "恭喜您，短信发送成功，请您注意查收。",
+						1000).show();
 				// 停止菊花
 				startTimer();
-				
+
 				break;
 			case 3:// 注册成功了，返回页面
 					// 停止菊花
@@ -196,13 +230,12 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 					StaticVariable.put(StaticVariable.sv_toIndex, "1");
 					startActivity(intent3);
 				}
-				
-				//发送通知
+
+				// 发送通知
 				Intent intent = new Intent();
 				intent.setAction("dengluhoushuaxinshuju");
-			    sendBroadcast(intent);
-			    
-				
+				sendBroadcast(intent);
+
 				Toast.makeText(RegisterActivity.this, "登录成功", 1000).show();
 				anim_right_out();
 				finish();
@@ -290,22 +323,21 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 
 	// 获取短信验证码
 	private void loadHttp_duanxinma() {
-		
+
 		String password = et_pass.getText().toString();
-		String newPassword = et_repass.getText().toString();
-		
+		String newPassword = et_yanzhengma.getText().toString();
+
 		if (password.length() < 6 || password.length() > 16) {
-			Toast.makeText(RegisterActivity.this,"密码长度为6-16个字符", 1000).show();
+			Toast.makeText(RegisterActivity.this, "密码长度为6-16个字符", 1000).show();
 			return;
 		}
 		if (!password.equals(newPassword)) {
-			Toast.makeText(RegisterActivity.this,"你两次输入的密码不一致", 1000).show();
+			Toast.makeText(RegisterActivity.this, "你两次输入的密码不一致", 1000).show();
 			return;
 		}
-		
-		
+
 		juhua.show();
-		
+
 		// TODO Auto-generated method stub
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
@@ -321,16 +353,16 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 	// 进行注册
 	private void loadHttp_zhuce() {
 		// TODO Auto-generated method stub
-		
+
 		juhua.show();
-		
+
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("urlTag", "3");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 		map.put("phone", et_phone.getText().toString());// 手机号码
 		map.put("password", et_pass.getText().toString());
-		map.put("newPassword", et_repass.getText().toString());
-		map.put("verifyCode", et_yanzhengma.getText().toString());
+		map.put("newPassword", et_yanzhengma.getText().toString());
+		map.put("verifyCode", et_dongtaima.getText().toString());
 		map.put("code", et_tuijian.getText().toString());// 服务码
 
 		RequestThreadAbstract thread = RequestFactory.createRequestThread(3,
@@ -345,11 +377,11 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 
 		// 获取短信验证号码
 		if (map.get("urlTag").equals("1")) {
-			 
-				Message msg1 = new Message();
-				msg1.what = 1;
-				mHandler.sendMessage(msg1);
-			 
+
+			Message msg1 = new Message();
+			msg1.what = 1;
+			mHandler.sendMessage(msg1);
+
 		} else if (map.get("urlTag").equals("3")) {// 进行注册
 
 			if (list.size() == 1) {

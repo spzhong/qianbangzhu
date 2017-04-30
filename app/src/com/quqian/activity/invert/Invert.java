@@ -293,7 +293,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 				holder.tv_btn.setTextColor(getResources().getColor(
 						R.color.main_text_blue));
 				holder.tv_btn
-						.setBackgroundResource(R.drawable.button_kuang_blue);
+						.setBackgroundResource(R.drawable.chengsebiankuang);
 				holder.tv_btn.setEnabled(true);
 			} else {
 				holder.tv_btn.setTextColor(getResources().getColor(
@@ -445,7 +445,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 				holder.tv_btn.setTextColor(getResources().getColor(
 						R.color.main_text_blue));
 				holder.tv_btn
-						.setBackgroundResource(R.drawable.button_kuang_blue);
+						.setBackgroundResource(R.drawable.chengsebiankuang);
 				holder.tv_btn.setEnabled(true);
 			} else {
 				holder.tv_btn.setTextColor(getResources().getColor(

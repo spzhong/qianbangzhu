@@ -296,12 +296,6 @@ public class TiXianJILu extends BaseActivity implements OnClickListener,
 			TextView tv1;
 			TextView tv2;
 			TextView tv3;
-			TextView tv_btn;
-			TextView tv_i1;
-			TextView tv_i2;
-			TextView tv_i3;
-			TextView tv_i4;
-
 		}
 	}
 

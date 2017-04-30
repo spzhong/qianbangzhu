@@ -4,174 +4,185 @@
     android:layout_height="match_parent" >
 
     <include
-        android:id="@+id/mmmmscrollview2" 
+        android:id="@+id/mmmmscrollview2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_96px"
         layout="@layout/titlebar" />
-    
-    <ScrollView 
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" 
+        android:layout_height="match_parent"
         android:layout_below="@+id/mmmmscrollview2"
-        android:background="#F0FCFF">
+        android:background="#F0FCFF" >
+
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
-        
-		<LinearLayout
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="50dp"
-	        android:orientation="horizontal">
-			<LinearLayout
-		        android:layout_width="0dp"
-		        android:layout_weight="1"
-		        android:layout_height="wrap_content"
-		        android:layout_gravity="center_vertical"
-		       	android:gravity="center_vertical"
-		        android:orientation="vertical">
-				<ImageView
-		        	android:layout_width="wrap_content"
-		        	android:layout_height="wrap_content"
-		        	android:layout_gravity="center"
-		        	android:src="@drawable/leijichengjiao">		        
-		    	</ImageView>
-			    
-		        <TextView 
-				    android:layout_width="match_parent"
-		       		android:layout_height="wrap_content"
-		       		android:text="累计成交"
-		       		android:layout_gravity="center"
-		       		android:gravity="center"
-		       		android:textColor="#424242"
-		       		android:layout_marginTop="18dp"
-		       		android:textSize="@dimen/sp_32px"/>
-				<TextView 
-				    android:id="@+id/yysjn_leijichengjiao"
-				    android:layout_width="match_parent"
-		       		android:layout_height="wrap_content"
-		       		android:text="369090000.00元"
-		       		android:layout_gravity="center"
-		       		android:gravity="center"
-		       		android:layout_marginTop="13dp"
-		       		android:textColor="#ff6600"
-		       		android:textSize="@dimen/sp_32px"/>
-		    </LinearLayout>
-	        <LinearLayout
-		        android:layout_width="0dp"
-		        android:layout_weight="1"
-		        android:layout_height="wrap_content"
-		        android:layout_gravity="center_vertical"
-		       	android:gravity="center_vertical"
-		        android:orientation="vertical">
-				<ImageView
-		        	android:layout_width="wrap_content"
-		        	android:layout_height="wrap_content"
-		        	android:layout_gravity="center"
-		        	android:src="@drawable/leijizhuanqushouyi">		        
-		    	</ImageView>
-			    
-		        <TextView 
-				    android:layout_width="match_parent"
-		       		android:layout_height="wrap_content"
-		       		android:text="投资人累计赚取收益"
-		       		android:layout_gravity="center"
-		       		android:gravity="center"
-		       		android:textColor="#424242"
-		       		android:layout_marginTop="18dp"
-		       		android:textSize="@dimen/sp_32px"/>
-				<TextView 
-				    android:id="@+id/yysjn_leijizhuanqushouyi"
-				    android:layout_width="match_parent"
-		       		android:layout_height="wrap_content"
-		       		android:text="29532.00元"
-		       		android:layout_gravity="center"
-		       		android:gravity="center"
-		       		android:layout_marginTop="13dp"
-		       		android:textColor="#ff6600"
-		       		android:textSize="@dimen/sp_32px"/>
-	    	</LinearLayout>
-	    </LinearLayout>
-	        
-	    
-		<LinearLayout
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="50dp"
-	        android:orientation="horizontal">
-			<LinearLayout
-		        android:layout_width="0dp"
-		        android:layout_weight="1"
-		        android:layout_height="wrap_content"
-		        android:layout_gravity="center_vertical"
-		       	android:gravity="center_vertical"
-		        android:orientation="vertical">
-				<ImageView
-		        	android:layout_width="wrap_content"
-		        	android:layout_height="wrap_content"
-		        	android:layout_gravity="center"
-		        	android:src="@drawable/daihuanbenjin">		        
-		    	</ImageView>
-			    
-		        <TextView 
-				    android:layout_width="match_parent"
-		       		android:layout_height="wrap_content"
-		       		android:text="待还本金"
-		       		android:layout_gravity="center"
-		       		android:gravity="center"
-		       		android:textColor="#424242"
-		       		android:layout_marginTop="18dp"
-		       		android:textSize="@dimen/sp_32px"/>
-				<TextView 
-				    android:id="@+id/yysjn_daihuanbenjin"
-				    android:layout_width="match_parent"
-		       		android:layout_height="wrap_content"
-		       		android:text="37600000.00元"
-		       		android:layout_gravity="center"
-		       		android:gravity="center"
-		       		android:layout_marginTop="13dp"
-		       		android:textColor="#ff6600"
-		       		android:textSize="@dimen/sp_32px"/>
-		    </LinearLayout>
-	        <LinearLayout
-		        android:layout_width="0dp"
-		        android:layout_weight="1"
-		        android:layout_height="wrap_content"
-		        android:layout_gravity="center_vertical"
-		       	android:gravity="center_vertical"
-		        android:orientation="vertical">
-				<ImageView
-		        	android:layout_width="wrap_content"
-		        	android:layout_height="wrap_content"
-		        	android:layout_gravity="center"
-		        	android:src="@drawable/daizhuanqushouyi">		        
-		    	</ImageView>
-			    
-		        <TextView 
-				    android:layout_width="match_parent"
-		       		android:layout_height="wrap_content"
-		       		android:text="投资人待赚取收益"
-		       		android:layout_gravity="center"
-		       		android:gravity="center"
-		       		android:textColor="#424242"
-		       		android:layout_marginTop="18dp"
-		       		android:textSize="@dimen/sp_32px"/>
-				<TextView 
-				    android:id="@+id/yysjn_daizhuanqushouyi"
-				    android:layout_width="match_parent"
-		       		android:layout_height="wrap_content"
-		       		android:text="71450.00元"
-		       		android:layout_marginTop="13dp"
-		       		android:layout_gravity="center"
-		       		android:gravity="center"
-		       		android:textColor="#ff6600"
-		       		android:textSize="@dimen/sp_32px"/>
-	    	</LinearLayout>
-	    </LinearLayout>
-    </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/leijichengjiao" >
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="18dp"
+                        android:gravity="center"
+                        android:text="累计成交"
+                        android:textColor="#424242"
+                        android:textSize="@dimen/sp_32px" />
+
+                    <TextView
+                        android:id="@+id/yysjn_leijichengjiao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="13dp"
+                        android:gravity="center"
+                        android:text="369090000.00元"
+                        android:textColor="#ff6600"
+                        android:textSize="@dimen/sp_32px" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/leijizhuanqushouyi" >
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="18dp"
+                        android:gravity="center"
+                        android:text="投资人累计赚取收益"
+                        android:textColor="#424242"
+                        android:textSize="@dimen/sp_32px" />
+
+                    <TextView
+                        android:id="@+id/yysjn_leijizhuanqushouyi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="13dp"
+                        android:gravity="center"
+                        android:text="29532.00元"
+                        android:textColor="#ff6600"
+                        android:textSize="@dimen/sp_32px" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/daihuanbenjin" >
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="18dp"
+                        android:gravity="center"
+                        android:text="待还本金"
+                        android:textColor="#424242"
+                        android:textSize="@dimen/sp_32px" />
+
+                    <TextView
+                        android:id="@+id/yysjn_daihuanbenjin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="13dp"
+                        android:gravity="center"
+                        android:text="37600000.00元"
+                        android:textColor="#ff6600"
+                        android:textSize="@dimen/sp_32px" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/daizhuanqushouyi" >
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="18dp"
+                        android:gravity="center"
+                        android:text="投资人待赚取收益"
+                        android:textColor="#424242"
+                        android:textSize="@dimen/sp_32px" />
+
+                    <TextView
+                        android:id="@+id/yysjn_daizhuanqushouyi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="13dp"
+                        android:gravity="center"
+                        android:text="71450.00元"
+                        android:textColor="#ff6600"
+                        android:textSize="@dimen/sp_32px" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
-    
 
 </RelativeLayout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_96px"
+            layout="@layout/titlebar"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:paddingTop="3dp" >
+
+            <RadioGroup
+                android:id="@+id/wdtb_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/wdtb_rb1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="回收中"
+                    android:textColor="@color/radiobtn_text_color_black"
+                    android:textSize="@dimen/sp_30px" />
+
+                <RadioButton
+                    android:id="@+id/wdtb_rb2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="投标中"
+                    android:textColor="@color/radiobtn_text_color_black"
+                    android:textSize="@dimen/sp_30px" />
+                <RadioButton
+                    android:id="@+id/wdtb_rb3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="已结清"
+                    android:textColor="@color/radiobtn_text_color_black"
+                    android:textSize="@dimen/sp_30px" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/wdtb_tvrb1"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_weight="1"
+                android:background="@color/main_radio_blue" />
+
+            <TextView
+                android:id="@+id/wdtb_tvrb2"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_weight="1"
+                android:background="@color/white" />
+            <TextView
+                android:id="@+id/wdtb_tvrb3"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_weight="1"
+                android:background="@color/white" />
+        </LinearLayout>
+
+        <com.quqian.listview.XListView
+            android:id="@+id/wdtb_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </com.quqian.listview.XListView>
+    </LinearLayout>
+
+</RelativeLayout>

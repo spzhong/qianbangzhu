@@ -32,9 +32,15 @@ import android.widget.Toast;
 
 import com.example.quqian.R;
 import com.quqian.activity.MainActivity;
+import com.quqian.activity.mine.xin.JiaoYIJiLu;
 import com.quqian.activity.mine.xin.NewChongZhi;
 import com.quqian.activity.mine.xin.NewTiXian;
 import com.quqian.activity.mine.xin.NewYinHangKaGuanLi;
+import com.quqian.activity.mine.xin.TuiGuangJiLu;
+import com.quqian.activity.mine.xin.WoDeJiaXiKa;
+import com.quqian.activity.mine.xin.WoDeJieKuan;
+import com.quqian.activity.mine.xin.WoDeTouBiao;
+import com.quqian.activity.mine.xin.ZhangHuZongLan;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.Chongzhi;
 import com.quqian.been.UserMode;
@@ -268,31 +274,31 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 			break;
 		case R.id.m_zhanghu://账户总额
 			startActivity(new Intent(MineActivity.this,
-					ZiJinGuanLiActivity.class));
+					ZhangHuZongLan.class));
 			anim_right_in();
 			break;
 		case R.id.m_jiaoyi://交易记录
 			startActivity(new Intent(MineActivity.this,
-					MyJiaoYiJiLuActivity.class));
+					JiaoYIJiLu.class));
 			break;
 		case R.id.m_toubiao://我的投标
-			startActivity(new Intent(MineActivity.this, MyTouBiaoActivity.class));
+			startActivity(new Intent(MineActivity.this, WoDeTouBiao.class));
 			anim_right_in();
 			break;
 		case R.id.m_yaoqing://邀请好友
-			startActivity(new Intent(MineActivity.this, MyLiCaiActivity.class));
+			startActivity(new Intent(MineActivity.this, WoErWeiMaActivity.class));
 			anim_right_in();
 			break;
 		case R.id.m_tuiguangjilu://推广记录
-			startActivity(new Intent(MineActivity.this, MyLiCaiActivity.class));
+			startActivity(new Intent(MineActivity.this, TuiGuangJiLu.class));
 			anim_right_in();
 			break;
 		case R.id.m_wodejiekuan://我的借款
-			startActivity(new Intent(MineActivity.this, MyLiCaiActivity.class));
+			startActivity(new Intent(MineActivity.this, WoDeJieKuan.class));
 			anim_right_in();
 			break;
 		case R.id.m_wodejiaxika://我的加息卡
-			startActivity(new Intent(MineActivity.this, MyLiCaiActivity.class));
+			startActivity(new Intent(MineActivity.this, WoDeJiaXiKa.class));
 			anim_right_in();
 			break;
 		case R.id.m_yinhangkaguanli://银行卡管理

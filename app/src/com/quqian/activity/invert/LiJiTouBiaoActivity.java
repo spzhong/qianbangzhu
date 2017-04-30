@@ -249,18 +249,15 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 
 			break;
 		case R.id.main_index_lijitoubiao_jiaxika:// 获取加息卡的信息
- 
-			 juhua.show();
-			 // TODO Auto-generated method stub
-			 Map<String, String> map = new HashMap<String, String>();
-			 map.put("urlTag", "102");// 可不传（区分一个activity多个请求）
-			 map.put("isLock", "0");// 0不锁，1是锁
-			 // 请求的参数如下
-			 RequestThreadAbstract thread =
-			 RequestFactory.createRequestThread(
-			 102, map, LiJiTouBiaoActivity.this, mHandler);
-			 RequestPool.execute(thread);
-
+			juhua.show();
+			// TODO Auto-generated method stub
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("urlTag", "102");// 可不传（区分一个activity多个请求）
+			map.put("isLock", "0");// 0不锁，1是锁
+			// 请求的参数如下
+			RequestThreadAbstract thread = RequestFactory.createRequestThread(
+					102, map, LiJiTouBiaoActivity.this, mHandler);
+			RequestPool.execute(thread);
 			break;
 		case R.id.main_index_lijitoubiao_jia:
 			jia();
@@ -462,8 +459,9 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 					String sendUrl = (String) bundle.get("sendUrl");
 					String sendStr = (String) bundle.get("sendStr");
 					String transCode = (String) bundle.get("transCode");
-					if(sendUrl==null){
-						Toast.makeText(LiJiTouBiaoActivity.this,"操作失败", 1000).show();
+					if (sendUrl == null) {
+						Toast.makeText(LiJiTouBiaoActivity.this, "操作失败", 1000)
+								.show();
 						return;
 					}
 					Intent intent2 = new Intent(LiJiTouBiaoActivity.this,
@@ -556,7 +554,7 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 		// TODO Auto-generated method stub
 
 		if (map.get("urlTag").equals("1")) {
-			JSONObject jsonO = (JSONObject)jsonObj;
+			JSONObject jsonO = (JSONObject) jsonObj;
 			JSONArray jsonArray = null;
 			try {
 				jsonArray = jsonO.getJSONArray("rvalue");
@@ -564,23 +562,25 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
- 
+
 			Message msg1 = new Message();
 			msg1.what = 1;
 			Bundle bundle = new Bundle();
 			try {
-				
-				JSONObject  json = jsonArray.getJSONObject(0);
-				
+
+				JSONObject json = jsonArray.getJSONObject(0);
+
 				UserMode user = Tool.getUser(LiJiTouBiaoActivity.this);
 				user.setKyye(json.getString("amount"));
 				user.saveUserToDB(LiJiTouBiaoActivity.this);
 				bundle.putString("msg", jsonO.getString("msg"));
-				
-				bundle.putString("transCode", json.getJSONObject("asydata").getString("transCode"));
-				bundle.putString("sendUrl", json.getJSONObject("asydata").getString("sendUrl"));
-				bundle.putString("sendStr", json.getJSONObject("asydata").getString("sendStr"));
-				
+
+				bundle.putString("transCode", json.getJSONObject("asydata")
+						.getString("transCode"));
+				bundle.putString("sendUrl", json.getJSONObject("asydata")
+						.getString("sendUrl"));
+				bundle.putString("sendStr", json.getJSONObject("asydata")
+						.getString("sendStr"));
 
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -609,8 +609,8 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 			}
 		} else if (map.get("urlTag").equals("102")) {
 			JSONObject json = (JSONObject) jsonObj;
-			//list 讲数据添加到☑列表中
-			 
+			// list 讲数据添加到☑列表中
+
 			Message msg1 = new Message();
 			msg1.what = 102;
 			mHandler.sendMessage(msg1);
@@ -719,7 +719,7 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 		map2.put("title", "JXK-b193654--1.00%     2017-03-29到期");
 		list.add(map2);
 
-		mySpinner = (Spinner) findViewById(R.id.Spinner_city);
+		//mySpinner = (Spinner) findViewById(R.id.Spinner_city);
 		// 第二步：为下拉列表定义一个适配器，这里就用到里前面定义的list。
 		adapter = new ArrayAdapter<HashMap<String, String>>(this,
 				android.R.layout.simple_spinner_item, list);

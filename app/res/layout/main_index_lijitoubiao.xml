@@ -204,23 +204,13 @@
             android:textColor="@color/black"
             android:textSize="@dimen/sp_28px" />
 
-        <Spinner
-            android:id="@+id/Spinner_city"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@null" >
-            
-        </Spinner>
-
-        
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:padding="15dp"
-            android:text="图"
+            android:text=">"
             android:textColor="@color/black"
             android:textSize="@dimen/sp_28px" />
     </RelativeLayout>

@@ -297,7 +297,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="推广记录"
+                        android:text="交易记录"
                         android:textColor="@color/main_invert_text_b"
                         android:textSize="@dimen/sp_26px" />
                 </LinearLayout>
@@ -484,7 +484,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center" >

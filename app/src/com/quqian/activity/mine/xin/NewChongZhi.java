@@ -363,6 +363,7 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 				intent2.putExtra("title", "充值");
 				startActivity(intent2);
 				anim_right_in();
+				break;
 			default:
 				break;
 			}

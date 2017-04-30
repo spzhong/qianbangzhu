@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_96px"
+        layout="@layout/titlebar"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:paddingTop="3dp" >
+
+        <RadioGroup
+            android:id="@+id/zhzl_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/zhzl_rb1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="存管账户"
+                android:textColor="@color/radiobtn_text_color_black"
+                android:textSize="@dimen/sp_30px" />
+
+            <RadioButton
+                android:id="@+id/zhzl_rb2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="普通账户"
+                android:textColor="@color/radiobtn_text_color_black"
+                android:textSize="@dimen/sp_30px" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/zhzl_tvrb1"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="@color/main_radio_blue" />
+
+        <TextView
+            android:id="@+id/zhzl_tvrb2"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="@color/white" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:layout_marginTop="7dp"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="15dp"
+                    android:text="可用余额"
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_26px" />
+
+                <TextView
+                    android:id="@+id/zhzl_keyongyue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="15dp"
+                    android:text="1,123,132.75元"
+                    android:textColor="@color/main_radio_blue"
+                    android:textSize="@dimen/sp_26px" >
+                </TextView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/main_invert_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="15dp"
+                    android:text="冻结余额"
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_26px" />
+
+                <TextView
+                    android:id="@+id/zhzl_dongjieyue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="15dp"
+                    android:text="1,123,132.75元"
+                    android:textColor="@color/main_radio_blue"
+                    android:textSize="@dimen/sp_26px" >
+                </TextView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/main_invert_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="15dp"
+                    android:text="账户总额"
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_26px" />
+
+                <TextView
+                    android:id="@+id/zhzl_zhanghuzonge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="15dp"
+                    android:text="1,123,132.75元"
+                    android:textColor="@color/main_radio_blue"
+                    android:textSize="@dimen/sp_26px" >
+                </TextView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/main_invert_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="15dp"
+                    android:text="已赚收益"
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_26px" />
+
+                <TextView
+                    android:id="@+id/zhzl_yizhuanshouyi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="15dp"
+                    android:text="1,123,132.75元"
+                    android:textColor="@color/main_radio_blue"
+                    android:textSize="@dimen/sp_26px" >
+                </TextView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/main_invert_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="15dp"
+                    android:text="待收本金"
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_26px" />
+
+                <TextView
+                    android:id="@+id/zhzl_daishoubenjin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="15dp"
+                    android:text="1,123,132.75元"
+                    android:textColor="@color/main_radio_blue"
+                    android:textSize="@dimen/sp_26px" >
+                </TextView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/main_invert_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="15dp"
+                    android:text="待收利息"
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_26px" />
+
+                <TextView
+                    android:id="@+id/zhzl_daishoulixi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="15dp"
+                    android:text="1,123,132.75元"
+                    android:textColor="@color/main_radio_blue"
+                    android:textSize="@dimen/sp_26px" >
+                </TextView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/main_invert_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="15dp"
+                    android:text="累计投资"
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_26px" />
+
+                <TextView
+                    android:id="@+id/zhzl_leijitouzi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="15dp"
+                    android:text="1,123,132.75元"
+                    android:textColor="@color/main_radio_blue"
+                    android:textSize="@dimen/sp_26px" >
+                </TextView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/main_invert_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="15dp"
+                    android:text="累计借款"
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_26px" />
+
+                <TextView
+                    android:id="@+id/zhzl_leijijiekuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="15dp"
+                    android:text="1,123,132.75元"
+                    android:textColor="@color/main_radio_blue"
+                    android:textSize="@dimen/sp_26px" >
+                </TextView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/main_invert_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="15dp"
+                    android:text="待还本金"
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_26px" />
+
+                <TextView
+                    android:id="@+id/zhzl_daihuanbenjin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="15dp"
+                    android:text="1,123,132.75元"
+                    android:textColor="@color/main_radio_blue"
+                    android:textSize="@dimen/sp_26px" >
+                </TextView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/main_invert_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="15dp"
+                    android:text="待还利息"
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_26px" />
+
+                <TextView
+                    android:id="@+id/zhzl_daihuanlixi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="15dp"
+                    android:text="1,123,132.75元"
+                    android:textColor="@color/main_radio_blue"
+                    android:textSize="@dimen/sp_26px" >
+                </TextView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/main_invert_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="15dp"
+                    android:text="待还管理费"
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_26px" />
+
+                <TextView
+                    android:id="@+id/zhzl_daihuanguanlifei"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="15dp"
+                    android:text="1,123,132.75元"
+                    android:textColor="@color/main_radio_blue"
+                    android:textSize="@dimen/sp_26px" >
+                </TextView>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/guangdonghuaxinglogo"
+                    android:textSize="@dimen/sp_24px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="您的资金由广东华兴银行直接存管"
+                    android:textColor="#969696"
+                    android:textSize="@dimen/sp_24px" >
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

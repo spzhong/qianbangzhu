@@ -82,13 +82,27 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 	private TextView jiekuan = null;
 	private TextView zhuce = null;
 
+	// 累计成交
+	private TextView leijichengjiao = null;
+	// 投资人累计赚取收益
+	private TextView leijizhuanquanshouyi = null;
+	// 待还本金
+	private TextView daihuanbenjin = null;
+	// 投资人待赚取收益
+	private TextView daizhuanqushouyi = null;
+
 	private Button submit = null;
-	
-	//加载框
+
+	// 加载框
 	private Dialog juhua = null;
 
 	// jsonObj
 	private JSONObject json = null;
+
+	private String ljcj = null; // 累计成交金额
+	private String tzrljsy = null; // 投资人累计赚取收益
+	private String dhbj = null; // 待还本金
+	private String tzrdhsy = null; // 投资人待收收益
 
 	@Override
 	protected int layoutId() {
@@ -117,15 +131,14 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 
 		juhua = new ProcessDialogUtil(YunYingShuJu.this);
 
-		anquanday = (TextView)findViewById(R.id.yysj_anquanyunyingshijian);
-		jiekuan = (TextView)findViewById(R.id.yysj_wanchengjiekuan);
-		zhuce = (TextView)findViewById(R.id.yysj_zhucerenshu);
-		
-		anquanday.setText("");
-		jiekuan.setText("");
-		zhuce.setText("");
-		
-		submit = (Button)findViewById(R.id.yysj_xia1);
+		anquanday = (TextView) findViewById(R.id.yysj_anquanyunyingshijian);
+		jiekuan = (TextView) findViewById(R.id.yysj_wanchengjiekuan);
+		zhuce = (TextView) findViewById(R.id.yysj_zhucerenshu);
+
+		leijichengjiao = (TextView) findViewById(R.id.yysjn_leijichengjiao);
+		leijizhuanquanshouyi = (TextView) findViewById(R.id.yysjn_leijizhuanqushouyi);
+		daihuanbenjin = (TextView) findViewById(R.id.yysjn_daihuanbenjin);
+		daizhuanqushouyi = (TextView) findViewById(R.id.yysjn_leijizhuanqushouyi);
 
 		loadHttp_yunyingInfo();
 	}
@@ -135,12 +148,10 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		super.initViewListener();
 		titleBarBack.setOnClickListener(this);
-		submit.setOnClickListener(this);
-	
 	}
 
 	protected void doOther() {
-		
+
 	}
 
 	@Override
@@ -152,24 +163,6 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 			// 返回
 			YunYingShuJu.this.finish();
 			anim_right_out();
-			break;
-		case R.id.yysj_xia1:
-			
-			Intent intent = new Intent(YunYingShuJu.this,
-					YunYingShuJuNext.class);
-			try {
-				intent.putExtra("ljcj", json.getString("ljcj")+"");
-				intent.putExtra("tzrljsy", json.getString("tzrljsy")+"");
-				intent.putExtra("dhbj", json.getString("dhbj")+"");
-				intent.putExtra("tzrdhsy", json.getString("tzrdhsy")+"");
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-			startActivity(intent);
-			// 下一页运营数据
-			//startActivity(new Intent(YunYingShuJu.this,YunYingShuJuNext.class));
-			anim_right_in();
 			break;
 		default:
 			break;
@@ -185,15 +178,20 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 			super.handleMessage(msg);
 			juhua.cancel();
 			switch (msg.what) {
-			case 1:	
-				 try {
-					 anquanday.setText(json.get("yysj")+"天");
-					 jiekuan.setText(json.getString("jkbs")+"笔");
-					 zhuce.setText(json.getString("zcrs")+"人");
+			case 1:
+				try {
+					anquanday.setText(json.get("yysj") + "天");
+					jiekuan.setText(json.getString("jkbs") + "笔");
+					zhuce.setText(json.getString("zcrs") + "人");
+
+					leijichengjiao.setText(json.getString("zcrs") + "元");
+					leijizhuanquanshouyi.setText(tzrljsy + "元");
+					daihuanbenjin.setText(dhbj + "元");
+					daizhuanqushouyi.setText(tzrdhsy + "元");
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} 
+				}
 				break;
 			default:
 				break;
@@ -215,14 +213,13 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 		RequestPool.execute(thread);
 	}
 
-
 	@Override
 	public void httpResponse_success(Map<String, String> map,
 			List<Object> list, Object jsonObj) {
 		// TODO Auto-generated method stub
 		// 运营数据
 		if (map.get("urlTag").equals("1")) {
-			
+
 			JSONObject js = (JSONObject) jsonObj;
 			try {
 				json = js.getJSONObject("rvalue");
@@ -230,11 +227,11 @@ public class YunYingShuJu extends BaseActivity implements OnClickListener,
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			Message msg1 = new Message();
 			msg1.what = 1;
 			mHandler.sendMessage(msg1);
-		} 
+		}
 
 	}
 

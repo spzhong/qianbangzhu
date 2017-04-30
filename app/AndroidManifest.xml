@@ -304,6 +304,62 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.QiYeBangDingYinHangKaActivity"
+            android:label="@string/bottom_bar_index"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.ZhangHuZongLan"
+            android:label="@string/bottom_bar_index"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.HuanKuan"
+            android:label="@string/bottom_bar_index"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.WoDeJiaXiKa"
+            android:label="@string/bottom_bar_index"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.WoDeJieKuan"
+            android:label="@string/bottom_bar_index"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.WoDeTouBiao"
+            android:label="@string/bottom_bar_index"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.TuiGuangJiLu"
+            android:label="@string/bottom_bar_index"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.quqian.activity.mine.xin.JiaoYIJiLu"
+            android:label="@string/bottom_bar_index"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
 
         <!-- 我的 -->
         <activity
@@ -519,7 +575,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-         
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

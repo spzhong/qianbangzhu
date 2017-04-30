@@ -57,14 +57,16 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 		OnClickListener, HttpResponseInterface {
 
 	// 开户名
-	private TextView kaihuming = null;
+	private EditText kaihuming = null;
+	// 开户身份证
+	private EditText shenfenzheng = null;
 	// 选择银行
 	private TextView xuanzeyinhang = null;
-
 	// 开户所在地
 	private TextView kahudi = null;
-	// 开户行
-	private EditText kahuhang = null;
+	// 开户行所在城市
+	private TextView kahuchengshi = null;
+
 	// 银行卡号
 	private EditText yinhangkahao = null;
 
@@ -79,7 +81,7 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 	private ProcessDialogUtil juhua = null;
 
 	JSONArray quyuArray = null;
-	
+
 	// 接受广播
 	BroadcastReceiver mBroadcastReceiver = null;
 
@@ -112,10 +114,11 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 
 		juhua = new ProcessDialogUtil(BangDingYinHangKaActivity.this);
 
-		kaihuming = (TextView) findViewById(R.id.main_mine_bangding_kaihuming);
+		kaihuming = (EditText) findViewById(R.id.main_mine_bangding_kaihuming);
 		xuanzeyinhang = (TextView) findViewById(R.id.main_mine_bangding_xuanzeyinhang);
 		kahudi = (TextView) findViewById(R.id.main_mine_bangding_kaihusuozaidi);
-		kahuhang = (EditText) findViewById(R.id.main_mine_bangding_kaihuhang);
+		kahuchengshi = (TextView) findViewById(R.id.main_mine_bangding_kaihusuozaishi);
+		shenfenzheng = (EditText) findViewById(R.id.main_mine_bangding_shenfenzheng);
 		yinhangkahao = (EditText) findViewById(R.id.main_mine_bangding_yinhangkahao);
 
 		next = (Button) findViewById(R.id.main_mine_bangding_next);
@@ -136,23 +139,24 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 			@Override
 			public void onReceive(Context arg0, Intent arg1) {
 				// TODO Auto-generated method stub
-				  
-				if(arg1.getStringExtra("type").equals("0")){
-					
-					String bankId = (String)arg1.getStringExtra("bankId");
-					String bankName = (String)arg1.getStringExtra("bankName");
-					
+
+				if (arg1.getStringExtra("type").equals("0")) {
+
+					String bankId = (String) arg1.getStringExtra("bankId");
+					String bankName = (String) arg1.getStringExtra("bankName");
+
 					chongzhiModel.setBankId(bankId);
 					chongzhiModel.setBankName(bankName);
 					xuanzeyinhang.setText(chongzhiModel.getBankName());
-					
-				} else{
-			   
-					String ss = (String)arg1.getStringExtra("cityId");
-					chongzhiModel.setCity((String)arg1.getStringExtra("city"));
-					chongzhiModel.setCityId((String)arg1.getStringExtra("cityId"));
+
+				} else {
+
+					String ss = (String) arg1.getStringExtra("cityId");
+					chongzhiModel.setCity((String) arg1.getStringExtra("city"));
+					chongzhiModel.setCityId((String) arg1
+							.getStringExtra("cityId"));
 					kahudi.setText(chongzhiModel.getCity());
-					 
+
 				}
 			}
 		};
@@ -162,8 +166,6 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 
 	}
 
-	
-	
 	@Override
 	protected void initViewListener() {
 		// TODO Auto-generated method stub
@@ -172,6 +174,7 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 
 		xuanzeyinhang.setOnClickListener(this);
 		kahudi.setOnClickListener(this);
+		kahuchengshi.setOnClickListener(this);
 		next.setOnClickListener(this);
 
 	}
@@ -196,7 +199,7 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 			break;
 		case R.id.main_mine_bangding_kaihusuozaidi:
 			// 请选择开户所在地
-			
+
 			Intent intent2 = new Intent(BangDingYinHangKaActivity.this,
 					SelectInfoActivity.class);
 			intent2.putExtra("title", "选择省份");
@@ -204,9 +207,21 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 			intent2.putExtra("type", "1");
 			startActivity(intent2);
 			anim_right_in();
-			
-			
-			//loadHttp_kaihuhangsuozaidi();
+
+			// loadHttp_kaihuhangsuozaidi();
+			break;
+		case R.id.main_mine_bangding_kaihusuozaishi:
+			// 请选择开户所在地
+
+			Intent intent3 = new Intent(BangDingYinHangKaActivity.this,
+					SelectInfoActivity.class);
+			intent3.putExtra("title", "选择省份");
+			intent3.putExtra("type1", "0");
+			intent3.putExtra("type", "1");
+			startActivity(intent3);
+			anim_right_in();
+
+			// loadHttp_kaihuhangsuozaidi();
 			break;
 		case R.id.main_mine_bangding_next:
 			// 下一步
@@ -240,9 +255,9 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 				yinhangkahao.setText(chongzhiModel.getBankNumber());
 				xuanzeyinhang.setText(chongzhiModel.getBankName());
 				kahudi.setText(chongzhiModel.getCity());
-				kahuhang.setText(chongzhiModel.getSubbranch());
+				shenfenzheng.setText(chongzhiModel.getSubbranch());
 
-				//不可编辑
+				// 不可编辑
 				if (chongzhiModel.getIsBound().equals("1")) {
 					xuanzeyinhang.setFocusableInTouchMode(false);
 					yinhangkahao.setFocusableInTouchMode(false);
@@ -252,8 +267,9 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 				break;
 			case 3:// 绑定和修改银行卡
 
-				Toast.makeText(BangDingYinHangKaActivity.this,"成功", 1000).show();
-				
+				Toast.makeText(BangDingYinHangKaActivity.this, "成功", 1000)
+						.show();
+
 				Intent intent = new Intent();
 				intent.setAction("tixianshuaxindata");
 				intent.putExtra("chongzhiModel", chongzhiModel);
@@ -318,22 +334,22 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 	private void loadHttp_bangding() {
 		// TODO Auto-generated method stu
 		// 参数判断
-		
+
 		if (yinhangkahao.getText().toString().length() == 0) {
 			Toast.makeText(BangDingYinHangKaActivity.this, "请输入银行卡号", 1000)
 					.show();
 			return;
 		}
- 
+
 		if (chongzhiModel.getBankName().equals("")) {
 			Toast.makeText(BangDingYinHangKaActivity.this, "请选择银行", 1000)
 					.show();
 			return;
 		}
 
-		if(chongzhiModel.getCityId() == null){
+		if (chongzhiModel.getCityId() == null) {
 			Toast.makeText(BangDingYinHangKaActivity.this, "请选择开户所在地", 1000)
-			.show();
+					.show();
 			return;
 		}
 		if (chongzhiModel.getCityId().length() == 0) {
@@ -342,8 +358,8 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 			return;
 		}
 
-		if (kahuhang.getText().toString().length() == 0) {
-			Toast.makeText(BangDingYinHangKaActivity.this, "请填写开户行", 1000)
+		if (shenfenzheng.getText().toString().length() == 0) {
+			Toast.makeText(BangDingYinHangKaActivity.this, "请输入身份证号码", 1000)
 					.show();
 			return;
 		}
@@ -362,15 +378,15 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 			map.put("bankCardId", chongzhiModel.getBankCardId());
 		}
 		map.put("bankNumber", yinhangkahao.getText().toString());
-		
+
 		try {
-			map.put("subbranch",URLEncoder.encode(kahuhang.getText().toString(), "UTF-8"));
+			map.put("subbranch", URLEncoder.encode(shenfenzheng.getText()
+					.toString(), "UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 		map.put("bankId", chongzhiModel.getBankId());
 		map.put("cityId", chongzhiModel.getCityId());
 
@@ -453,37 +469,35 @@ public class BangDingYinHangKaActivity extends BaseActivity implements
 			msg1.what = 4;
 			mHandler.sendMessage(msg1);
 		} else if (map.get("urlTag").equals("5")) {// 获取开户所在地
-			
+
 			JSONObject json = (JSONObject) jsonObj;
-			
-			
+
 			try {
-				quyuArray  = json.getJSONArray("rvalue");
+				quyuArray = json.getJSONArray("rvalue");
 				for (int i = 0; i < quyuArray.length(); i++) {
 					JSONObject jsonM = quyuArray.getJSONObject(i);
 					QuYu qu = new QuYu();
 					qu.setId(jsonM.getString("id"));
 					qu.setName(jsonM.getString("name"));
-					 
+
 					ArrayList<QuYu> quyuLiset = new ArrayList<QuYu>();
-					for(int j = 0; j < jsonM.getJSONArray("children").length(); j++){
+					for (int j = 0; j < jsonM.getJSONArray("children").length(); j++) {
 						JSONArray rvalueArray2 = jsonM.getJSONArray("children");
 						JSONObject jsonN = rvalueArray2.getJSONObject(i);
 						QuYu qu1 = new QuYu();
 						qu1.setId(jsonN.getString("id"));
 						qu1.setName(jsonN.getString("name"));
 						rvalueArray2.put(qu1);
-					} 
-					
-					qu.setList(quyuLiset); 
+					}
+
+					qu.setList(quyuLiset);
 					arrQuYu.add(qu);
 				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
+
 			Message msg1 = new Message();
 			msg1.what = 5;
 			mHandler.sendMessage(msg1);
