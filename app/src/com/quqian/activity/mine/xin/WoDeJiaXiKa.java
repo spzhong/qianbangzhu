@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -125,11 +126,11 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 		mAdapter1 = new MyAdapter1();
 		mAdapter2 = new MyAdapter2();
 		mAdapter3 = new MyAdapter3();
-		
+
 		mListView.setAdapter(mAdapter1);
 
 		// diao接口
-		loadHttp("1");
+		loadHttp("WSY");
 	}
 
 	@Override
@@ -163,7 +164,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 					R.color.main_radio_blue));
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb3.setBackgroundColor(getResources().getColor(R.color.white));
-			
+
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter1);
@@ -176,7 +177,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 			tvrb2.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
-			
+
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter2);
@@ -186,9 +187,9 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 		case R.id.wdjxk_rb3:
 			// 已过期
 			tvrb1.setBackgroundColor(getResources().getColor(R.color.white));
+			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb2.setBackgroundColor(getResources().getColor(
-					R.color.white));
-			tvrb2.setBackgroundColor(getResources().getColor(R.color.main_radio_blue));
+					R.color.main_radio_blue));
 
 			// 请求数据
 			curPage = 1;
@@ -232,26 +233,41 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 				convertView = LayoutInflater.from(WoDeJiaXiKa.this).inflate(
 						R.layout.mine_new_wodejiaxika_item, null);
 
-				holder.tv1 = (TextView) convertView.findViewById(R.id.wdjxk_tv1);
+				holder.tv1 = (TextView) convertView
+						.findViewById(R.id.wdjxk_tv1);
 
-				holder.tv2 = (TextView) convertView.findViewById(R.id.wdjxk_tv2);
+				holder.tv2 = (TextView) convertView
+						.findViewById(R.id.wdjxk_tv2);
 
-				holder.tv3 = (TextView) convertView.findViewById(R.id.wdjxk_tv3);
+				holder.tv3 = (TextView) convertView
+						.findViewById(R.id.wdjxk_tv3);
+
+				holder.wdjxk_tv1 = (TextView) convertView
+						.findViewById(R.id.wdjxk_time);
 
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			holder.tv3.setText("2017-01-10");
-			holder.tv2.setText("10000000");
-			holder.tv1.setText("充值成功");
+			JSONObject json = (JSONObject) allList1.get(position);
+			try {
+				holder.tv1.setText(json.getString("jxhhm"));
+				holder.tv2.setText(json.getString("mz"));
+				holder.tv3.setText(json.getString("lqsj") + "至"
+						+ json.getString("dqsj"));
+				holder.wdjxk_tv1.setText("有效期");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			return convertView;
 		}
 
 		final class ViewHolder {
 
+			public TextView wdjxk_tv1;
 			TextView tv1;
 			TextView tv2;
 			TextView tv3;
@@ -263,7 +279,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 
 		@Override
 		public int getCount() {
-			return allList1 != null ? allList1.size() : 0;
+			return allList2 != null ? allList2.size() : 0;
 		}
 
 		@Override
@@ -289,26 +305,40 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 				convertView = LayoutInflater.from(WoDeJiaXiKa.this).inflate(
 						R.layout.mine_new_wodejiaxika_item, null);
 
-				holder.tv1 = (TextView) convertView.findViewById(R.id.wdjxk_tv1);
+				holder.tv1 = (TextView) convertView
+						.findViewById(R.id.wdjxk_tv1);
 
-				holder.tv2 = (TextView) convertView.findViewById(R.id.wdjxk_tv2);
+				holder.tv2 = (TextView) convertView
+						.findViewById(R.id.wdjxk_tv2);
 
-				holder.tv3 = (TextView) convertView.findViewById(R.id.wdjxk_tv3);
+				holder.tv3 = (TextView) convertView
+						.findViewById(R.id.wdjxk_tv3);
+
+				holder.wdjxk_tv1 = (TextView) convertView
+						.findViewById(R.id.wdjxk_time);
 
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			holder.tv3.setText("2017-01-10");
-			holder.tv2.setText("10000000");
-			holder.tv1.setText("充值成功");
+			JSONObject json = (JSONObject) allList2.get(position);
+			try {
+				holder.tv1.setText(json.getString("jxhhm"));
+				holder.tv2.setText(json.getString("mz"));
+				holder.tv3.setText(json.getString("sysj"));
+				holder.wdjxk_tv1.setText("使用事件");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			return convertView;
 		}
 
 		final class ViewHolder {
 
+			public TextView wdjxk_tv1;
 			TextView tv1;
 			TextView tv2;
 			TextView tv3;
@@ -320,7 +350,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 
 		@Override
 		public int getCount() {
-			return allList1 != null ? allList1.size() : 0;
+			return allList3 != null ? allList3.size() : 0;
 		}
 
 		@Override
@@ -346,20 +376,33 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 				convertView = LayoutInflater.from(WoDeJiaXiKa.this).inflate(
 						R.layout.mine_new_wodejiaxika_item, null);
 
-				holder.tv1 = (TextView) convertView.findViewById(R.id.wdjxk_tv1);
+				holder.tv1 = (TextView) convertView
+						.findViewById(R.id.wdjxk_tv1);
 
-				holder.tv2 = (TextView) convertView.findViewById(R.id.wdjxk_tv2);
+				holder.tv2 = (TextView) convertView
+						.findViewById(R.id.wdjxk_tv2);
 
-				holder.tv3 = (TextView) convertView.findViewById(R.id.wdjxk_tv3);
+				holder.tv3 = (TextView) convertView
+						.findViewById(R.id.wdjxk_tv3);
+
+				holder.wdjxk_tv1 = (TextView) convertView
+						.findViewById(R.id.wdjxk_time);
 
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			holder.tv3.setText("2017-01-10");
-			holder.tv2.setText("10000000");
-			holder.tv1.setText("充值成功");
+			JSONObject json = (JSONObject) allList3.get(position);
+			try {
+				holder.tv1.setText(json.getString("jxhhm"));
+				holder.tv2.setText(json.getString("mz"));
+				holder.tv3.setText(json.getString("dqsj"));
+				holder.wdjxk_tv1.setText("过期时间");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			return convertView;
 		}
@@ -369,9 +412,12 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 			TextView tv1;
 			TextView tv2;
 			TextView tv3;
+
+			TextView wdjxk_tv1;
+
 		}
 	}
-	
+
 	private void onStopLoad() {
 		mListView.stopRefresh();
 		mListView.stopLoadMore();
@@ -387,7 +433,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 			loadHttp("0");
 		} else if (rb2.isChecked()) {
 			loadHttp("1");
-		}else if(rb3.isChecked()){
+		} else if (rb3.isChecked()) {
 			loadHttp("2");
 		}
 	}
@@ -397,15 +443,15 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		if (rb1.isChecked()) {
 			curPage++;
-			loadHttp("0");
+			loadHttp("WSY");
 		} else if (rb2.isChecked()) {
 			curPage++;
-			loadHttp("1");
-		}else if (rb3.isChecked()) {
+			loadHttp("YSY");
+		} else if (rb3.isChecked()) {
 			curPage++;
-			loadHttp("2");
+			loadHttp("YGQ");
 		}
-		
+
 	}
 
 	private void loadHttp(String status) {
@@ -417,10 +463,10 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 		// 请求的参数如下
-		map.put("status", status);// 0精选理财，1是存管理财，
+		map.put("zt", status);// 0精选理财，1是存管理财，
 		map.put("page", curPage + "");// 当前页码
 
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(11,
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(111,
 				map, WoDeJiaXiKa.this, mHandler);
 		RequestPool.execute(thread);
 
@@ -444,7 +490,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 			case 1:
 
 				// json = (JSONObject) msg.getData().get("json");
-				if (msg.getData().get("status").equals("0")) {
+				if (msg.getData().get("zt").equals("WSY")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -454,7 +500,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 					allList1.addAll(list);
 					mAdapter1.notifyDataSetChanged();
 
-				} else if (msg.getData().get("status").equals("1")) {
+				} else if (msg.getData().get("zt").equals("YSY")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -464,7 +510,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 					allList2.addAll(list);
 					mAdapter2.notifyDataSetChanged();
 
-				}else if (msg.getData().get("status").equals("2")) {
+				} else if (msg.getData().get("zt").equals("YGQ")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -522,10 +568,23 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 
 		json = (JSONObject) jsonObj;
 
+		list = new ArrayList<Object>();
+		try {
+			JSONArray jsonArray = (JSONArray) json.getJSONArray("rvalue");
+			for (int i = 0; i < jsonArray.length(); i++) {
+				JSONObject noejson = jsonArray.getJSONObject(i);
+				list.add(noejson);// 加入list中
+			}
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		Bundle b = new Bundle();
 		b.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) list);
 		// b.putParcelable("json", (Parcelable) json);
-		b.putString("status", map.get("status"));
+		b.putString("zt", map.get("zt"));
 		Message msg1 = new Message();
 		msg1.setData(b);
 		msg1.what = 1;

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -73,6 +74,9 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 	// radioGroup
 	private RadioGroup rg = null;
 
+	private String jylx = "";//交易类型
+	private String jysj = "";//交易时间
+	
 	// 存管账户交易记录
 	private RadioButton rb1 = null;
 	// 普通账户交易记录
@@ -82,6 +86,8 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 	private TextView tvrb1 = null;
 	private TextView tvrb2 = null;
 
+	private int SelectTag = 0;
+	
 	// danxuankuang
 	private Dialog dialog1 = null;
 	private Dialog dialog2 = null;
@@ -91,10 +97,12 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 	// 交易时间
 	private TextView shijian = null;
 
-	private String[] strItems = new String[] { "充值", "投标成功", "招标成功", "成交服务费",
-			"回收本息", "偿还本息", "提前还款违约金", "提前回收违约金" };
-	private String[] strItems2 = new String[] { "今天", "昨天", "近一周", "近一个月",
-			"近六个月" };
+	private String[] strItems = null;
+	private String[] strItems2 = null;
+	
+	ArrayList<JSONObject> jylxlistAllData = new ArrayList<JSONObject>();
+	ArrayList<JSONObject> jysjlistAllData = new ArrayList<JSONObject>();
+	
 
 	// 记录当前刷新页
 	private int curPage = 1;
@@ -139,9 +147,9 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 		mAdapter2 = new MyAdapter2();
 
 		mListView.setAdapter(mAdapter1);
-
-		// diao接口
-		loadHttp("1");
+ 
+		loadHttp_config();
+		
 	}
 
 	@Override
@@ -178,7 +186,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 			tvrb1.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
-
+			SelectTag = 0;
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter1);
@@ -188,6 +196,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 		case R.id.jiao_rb2:
 			// 普通提现记录
 			// 修改状态条
+			SelectTag = 1;
 			tvrb1.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb2.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
@@ -210,6 +219,21 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 									// TODO Auto-generated method stub
 									dialog1.cancel();
 									// 调接口，查询相应的数据
+									String jylxString = strItems[arg1];
+									for (int i = 0; i < jylxlistAllData.size(); i++) {
+										JSONObject onejson = jylxlistAllData.get(i);
+										try {
+											if(jylxString.endsWith(onejson.getString("value"))){
+												jylx = onejson.getString("key");
+												curPage = 1;
+												loadHttp(SelectTag+"");
+												break;
+											}
+										} catch (JSONException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									} 
 								}
 							}).create();
 			dialog1.show();
@@ -225,7 +249,22 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 										int arg1) {
 									// TODO Auto-generated method stub
 									dialog2.cancel();
-									// 调接口，查询相应的数据
+									String jysjString = strItems2[arg1];
+									// 调接口，查询相应的数据String jylxString = strItems[arg1];
+									for (int i = 0; i < jysjlistAllData.size(); i++) {
+										JSONObject onejson = jysjlistAllData.get(i);
+										try {
+											if(jysjString.endsWith(onejson.getString("value"))){
+												jysj = onejson.getString("key");
+												curPage = 1;
+												loadHttp(SelectTag+"");
+												break;
+											}
+										} catch (JSONException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									} 
 								}
 							}).create();
 			dialog2.show();
@@ -275,11 +314,18 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
-			}
+			} 
+			
 
-			holder.tv3.setText("2017-01-10 19:30:02");
-			holder.tv2.setText("10000000");
-			holder.tv1.setText("充值成功");
+			JSONObject json = (JSONObject) allList1.get(position);
+			try {
+				holder.tv1.setText(json.getString("time"));
+				holder.tv2.setText(json.getString("je"));
+				holder.tv3.setText(json.getString("zt"));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			return convertView;
 		}
@@ -297,7 +343,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 
 		@Override
 		public int getCount() {
-			return allList1 != null ? allList1.size() : 0;
+			return allList2 != null ? allList2.size() : 0;
 		}
 
 		@Override
@@ -334,9 +380,16 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			holder.tv3.setText("2017-01-10 19:30:02");
-			holder.tv2.setText("10000000");
-			holder.tv1.setText("充值成功");
+
+			JSONObject json = (JSONObject) allList2.get(position);
+			try {
+				holder.tv1.setText(json.getString("time"));
+				holder.tv2.setText(json.getString("je"));
+				holder.tv3.setText(json.getString("zt"));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			return convertView;
 		}
@@ -379,6 +432,23 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 			loadHttp("1");
 		}
 	}
+	
+	
+	private void loadHttp_config() {
+
+		juhua.show();
+
+		// TODO Auto-generated method stub
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("urlTag", "2");// 可不传（区分一个activity多个请求）
+		map.put("isLock", "0");// 0不锁，1是锁
+ 
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(25,
+				map, JiaoYIJiLu.this, mHandler);
+		RequestPool.execute(thread);
+
+	}
+	
 
 	private void loadHttp(String status) {
 
@@ -389,10 +459,14 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 		// 请求的参数如下
-		map.put("status", status);// 0精选理财，1是存管理财，
+		
+		map.put("jylx", jylx);
+		map.put("jysj", jysj);
+		
+		map.put("jytype", status);// 0精选理财，1是存管理财，
 		map.put("page", curPage + "");// 当前页码
 
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(11,
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(26,
 				map, JiaoYIJiLu.this, mHandler);
 		RequestPool.execute(thread);
 
@@ -416,7 +490,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 			case 1:
 
 				// json = (JSONObject) msg.getData().get("json");
-				if (msg.getData().get("status").equals("0")) {
+				if (msg.getData().get("jytype").equals("1")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -426,7 +500,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 					allList1.addAll(list);
 					mAdapter1.notifyDataSetChanged();
 
-				} else if (msg.getData().get("status").equals("1")) {
+				} else if (msg.getData().get("jytype").equals("0")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -447,6 +521,11 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 						1000).show();
 				onStopLoad();
 				break;
+			case 3:
+				// diao接口
+				loadHttp("1");
+				
+				 break;
 			default:
 				break;
 			}
@@ -484,15 +563,81 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 
 		json = (JSONObject) jsonObj;
 
-		Bundle b = new Bundle();
-		b.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) list);
-		// b.putParcelable("json", (Parcelable) json);
-		b.putString("status", map.get("status"));
-		Message msg1 = new Message();
-		msg1.setData(b);
-		msg1.what = 1;
-		mHandler.sendMessage(msg1);
+		if(map.get("urlTag").endsWith("1")){
+			
+			ArrayList<Object> newlist = new ArrayList<Object>();
+			try {
+				JSONArray jsonArray = (JSONArray) json.getJSONObject("rvalue")
+						.getJSONArray("items");
+				for (int i = 0; i < jsonArray.length(); i++) {
+					JSONObject noejson = jsonArray.getJSONObject(i);
+					newlist.add(noejson);// 加入list中
+				}
 
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			Bundle b = new Bundle();
+			b.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) newlist);
+			// b.putParcelable("json", (Parcelable) json);
+			b.putString("jytype", map.get("jytype"));
+			Message msg1 = new Message();
+			msg1.setData(b);
+			msg1.what = 1;
+			mHandler.sendMessage(msg1);
+			
+		}else if(map.get("urlTag").endsWith("2")){
+			//组装数据
+			ArrayList<String> jylxlist = new ArrayList<String>();
+			ArrayList<String> jysjlist = new ArrayList<String>();
+			
+			try {
+				JSONArray array = json.getJSONArray("rvalue");
+				if (array.length()!=2) {
+					return;
+				}
+				JSONObject json1 = (JSONObject)array.get(0);
+				JSONObject json2 = (JSONObject)array.get(1);
+				if(json1.get("selecttype").toString().endsWith("0")){
+					//交易类型
+					JSONArray jylxArray = json1.getJSONArray("type");
+					for (int i = 0; i < jylxArray.length(); i++) {
+						JSONObject oneJson = (JSONObject)jylxArray.get(i);
+						if(i==0){
+							jylx = oneJson.getString("key");
+						} 
+						jylxlist.add(oneJson.getString("value"));
+						jylxlistAllData.add(oneJson);
+					}
+					 
+				} 
+				
+				if(json2.get("selecttype").toString().endsWith("1")){
+					//交易时间 
+					JSONArray jysjArray = json2.getJSONArray("type");
+					for (int i = 0; i < jysjArray.length(); i++) {
+						JSONObject oneJson = (JSONObject)jysjArray.get(i);
+						if(i==0){
+							jysj = oneJson.getString("key");
+						}
+						jysjlist.add(oneJson.getString("value"));
+						jysjlistAllData.add(oneJson);
+					}
+					 
+				} 
+				 
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			strItems = jylxlist.toArray(new String[jylxlist.size()]);
+			strItems2 = jysjlist.toArray(new String[jysjlist.size()]);
+			Message msg2 = new Message();
+			msg2.what = 3;
+			mHandler.sendMessage(msg2);
+		} 
 	}
 
 	@Override

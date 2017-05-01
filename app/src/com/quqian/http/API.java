@@ -52,7 +52,7 @@ public class API {
 	public static String USRZHAxgtxmmyz = HTTP + "user/zhaq/xgtxmmYz.htm"; // 24,修改提现密码验证
 	// 用户交易记录FF
 	public static String USRJYJLPARAMETERS = HTTP + "user/jyjl/parameters.htm";// 25,获取交易类型和交易时间
-	public static String USRJYJLLIST = HTTP + "user/jyjl/list.htm"; // 26,获取交易列表
+	public static String USRJYJLLIST = HTTP + "user/jyjl/list.htm"; // 26,获取交易列表 
 	// 其它
 	public static String USRSBTZLIST = HTTP + "user/sbtz/list.htm"; // 27,我的散标投资列表
 	public static String USRSLCTYLIST = HTTP + "user/lcty/list.htm"; // 28,我的理财体验列表
@@ -118,6 +118,11 @@ public class API {
 	// 账户总览
 	public static String jyjlzhzl = HTTP + "user/jyjl/zhzl.htm";// 110
 
+	//我的加息卡
+	public static String wodejiaxiak = HTTP + "user/jxk/list.htm";// 111
+	
+	
+	
 	public API() {
 		// TODO Auto-generated constructor stub
 	}
@@ -971,4 +976,16 @@ public class API {
 		return "";
 	}
 
+	//我的加息卡列表
+	public static String wodejiaxiak_111(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", wodejiaxiak);
+		map.put("urlNum", "111");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+	
+	
 }

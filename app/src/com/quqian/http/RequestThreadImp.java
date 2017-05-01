@@ -670,6 +670,19 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				handler.sendMessage(msg);
 			}
 			break;
+		case 111:
+			String errMsg111 = API.wodejiaxiak_111(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg111.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg111);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
+
 		default:
 			break;
 		}

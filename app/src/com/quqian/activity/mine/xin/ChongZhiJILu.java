@@ -449,10 +449,7 @@ public class ChongZhiJILu extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 
 		json = (JSONObject) jsonObj;
-
 		list = new ArrayList<Object>();
-		 
-		
 		try {
 			JSONArray jsonArray = (JSONArray) json.getJSONObject("rvalue")
 					.getJSONArray("items");

@@ -238,7 +238,7 @@ public class Http {
 				client.getConnectionManager().shutdown();
 				
 				if (activity != null) {
-					// activity.httpResponse_fail(map, "请求服务器端异常", null);
+					 activity.httpResponse_fail(map, "请求服务器端异常", null);
 				}
 				Log.i(TAG_STRING, "求服务器端异常");
 			}

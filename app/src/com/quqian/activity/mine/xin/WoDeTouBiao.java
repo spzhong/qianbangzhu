@@ -129,7 +129,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 		mListView.setAdapter(mAdapter1);
 
 		// diao接口
-		loadHttp("1");
+		loadHttp("0");
 	}
 
 	@Override
@@ -194,7 +194,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			curPage = 1;
 			mListView.setAdapter(mAdapter3);
 			// mAdapter2.notifyDataSetChanged();
-			loadHttp("1");
+			loadHttp("2");
 			break;
 		default:
 			break;
@@ -344,7 +344,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 
 		@Override
 		public int getCount() {
-			return allList1 != null ? allList1.size() : 0;
+			return allList2 != null ? allList2.size() : 0;
 		}
 
 		@Override
@@ -469,7 +469,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 
 		@Override
 		public int getCount() {
-			return allList1 != null ? allList1.size() : 0;
+			return allList3 != null ? allList3.size() : 0;
 		}
 
 		@Override
@@ -631,10 +631,10 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 		// 请求的参数如下
-		map.put("status", status);// 0精选理财，1是存管理财，
+		map.put("status", status);//0是回收中，1是投标中，2已结清
 		map.put("page", curPage + "");// 当前页码
 
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(11,
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(27,
 				map, WoDeTouBiao.this, mHandler);
 		RequestPool.execute(thread);
 
@@ -735,7 +735,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 
 		json = (JSONObject) jsonObj;
-
+		
 		Bundle b = new Bundle();
 		b.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) list);
 		// b.putParcelable("json", (Parcelable) json);

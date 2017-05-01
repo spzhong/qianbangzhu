@@ -84,6 +84,7 @@
             android:textSize="@dimen/sp_24px" />
 
         <TextView
+            android:id="@+id/wdjxk_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
