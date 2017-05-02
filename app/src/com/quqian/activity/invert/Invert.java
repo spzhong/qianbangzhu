@@ -149,6 +149,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 								InvertInfoActivity.class);
 						Bundle bundle = new Bundle();
 						bundle.putString("pId", san.getpId());
+						bundle.putString("title", san.getBdbt());
 						// bundle.putSerializable("sanProject", test);
 						intent.putExtras(bundle);
 						Log.v("quqian", "-----pid----" + san.getpId());

@@ -1,6 +1,7 @@
 package com.quqian.activity.invert;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -26,9 +28,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quqian.R;
+import com.quqian.activity.LoginActivity;
+import com.quqian.activity.index.IndexActivity;
 import com.quqian.activity.index.LiJiShenQingActivity;
+import com.quqian.activity.index.SanInfoActivity;
 import com.quqian.base.BaseActivity;
+import com.quqian.been.SanProject;
 import com.quqian.been.TiYanProject;
+import com.quqian.been.UserMode;
 import com.quqian.been.ZhaiQuanProject;
 import com.quqian.http.API;
 import com.quqian.http.RequestFactory;
@@ -46,7 +53,7 @@ public class InvertInfoActivity extends BaseActivity implements
 
 	// 上个页面传递过来的item 的 Pid
 	private String pId = "";
-	private TiYanProject allLicai = null;;
+	private SanProject allSan = null;;
 
 	// 预期年化收益，借款金额,借款期限，剩余可投，进度显示,推荐公司，银行存管图标,
 	private TextView textView1 = null;
@@ -57,10 +64,10 @@ public class InvertInfoActivity extends BaseActivity implements
 	private TextView textView6 = null;
 	private TextView textViewlogo = null;
 
-	//进度条
+	// 进度条
 	private LinearLayout huakuai = null;
 	private ProgressBar progress = null;
-	
+
 	// 还款方式，月还本息，投标限额，起息时间，剩余时间，
 	private TextView textViewhuan = null;
 	private TextView textViewyue = null;
@@ -78,8 +85,9 @@ public class InvertInfoActivity extends BaseActivity implements
 	private Button button = null;
 
 	// 返回过来的list集合
-	List<Map<String, String>> licaiInfo_1 = null;
-	List<Map<String, String>> licaiInfo_2 = null;
+	// 返回过来的list集合
+	List<Map<String, String>> sanInfo_1 = new ArrayList<Map<String, String>>();
+	List<Map<String, String>> sanInfo_2 = new ArrayList<Map<String, String>>();
 
 	private Dialog juhua = null;
 
@@ -104,7 +112,7 @@ public class InvertInfoActivity extends BaseActivity implements
 		super.initView();
 
 		// 设置标题，从上个页面传过来
-		setTitle("上市能源公司资金周转");
+		setTitle(getIntent().getStringExtra("title"));
 		showBack();
 
 		juhua = new ProcessDialogUtil(InvertInfoActivity.this);
@@ -120,7 +128,7 @@ public class InvertInfoActivity extends BaseActivity implements
 
 		huakuai = (LinearLayout) findViewById(R.id.inert_layout_huakuan);
 		progress = (ProgressBar) findViewById(R.id.inert_info_progress);
-		
+
 		textViewhuan = (TextView) findViewById(R.id.inert_info_tvhuan);
 		textViewyue = (TextView) findViewById(R.id.inert_info_tvyue);
 		textViewtou = (TextView) findViewById(R.id.inert_info_tvtou);
@@ -135,11 +143,11 @@ public class InvertInfoActivity extends BaseActivity implements
 
 		button = (Button) findViewById(R.id.invert_info_btn);
 
-		//设置进度滑块，进图条，最大为100，
+		// 设置进度滑块，进图条，最大为100，
 		showProgress(80);
 		textView5.setText("80%");
 		progress.setProgress(80);
-		
+
 		if (!"".equals(pId)) {
 			// 调接口
 			loadHttp();
@@ -166,17 +174,17 @@ public class InvertInfoActivity extends BaseActivity implements
 		// 屏幕的高度和宽度
 		WindowManager m = getWindowManager();
 		Display d = m.getDefaultDisplay();
-		int width = d.getWidth();//获取当前屏幕宽度
-		int a = width/100*jindu;
-		int b = textView5.getMeasuredWidth()/2;
-		
-		//进度，滑块
-		if(a>b && a<(width-b)){
-			huakuai.setPadding(a-b, 0, 0, 0);
-		}else if(a>(width-20)){
-			huakuai.setPadding(width-b, 0, 0, 0);
+		int width = d.getWidth();// 获取当前屏幕宽度
+		int a = width / 100 * jindu;
+		int b = textView5.getMeasuredWidth() / 2;
+
+		// 进度，滑块
+		if (a > b && a < (width - b)) {
+			huakuai.setPadding(a - b, 0, 0, 0);
+		} else if (a > (width - 20)) {
+			huakuai.setPadding(width - b, 0, 0, 0);
 		}
-		
+
 	}
 
 	@Override
@@ -190,41 +198,58 @@ public class InvertInfoActivity extends BaseActivity implements
 			InvertInfoActivity.this.finish();
 			anim_right_out();
 			break;
-		//立即申请界面
+		// 立即投标
 		case R.id.invert_info_btn:
-			Intent intent = new Intent(InvertInfoActivity.this,
-					LiJiShenQingActivity.class);
-			intent.putExtra("pId", allLicai.getpId());
-			intent.putExtra("joinlimit", allLicai.getJoinLimit());
-			Log.v("quqian", "-----pid----" + allLicai.getpId());
-			if (mc != null) {
-				mc.cancel();
+			//进行跳转到投标的页面
+			UserMode user = Tool.getUser(InvertInfoActivity.this);
+			if (user == null) {
+				startActivity(new Intent(InvertInfoActivity.this,
+						LoginActivity.class));
+			} else {
+				Intent intent = new Intent(InvertInfoActivity.this,
+						LiJiTouBiaoActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putString("pId", allSan.getpId());
+				bundle.putString("shengyu", allSan.getSyje());// 剩余金额
+				bundle.putString("huankuanqixian", allSan.getHkqx());// 还款期限
+				bundle.putString("nianlilv", allSan.getNll());// 年利率
+				bundle.putString("jiangli", allSan.getJlll());// 奖励利率
+				bundle.putString("jiekuan", allSan.getJkfs());// 借款方式
+				bundle.putString("huankuanfangshi", allSan.getHkfs());// 还款方式
+				bundle.putString("bdtype", allSan.getBdtype());//标的类型
+				intent.putExtras(bundle);
+				startActivity(intent);
 			}
-			startActivity(intent);
+			//执行跳转
 			anim_right_in();
 			break;
-
-		//跳转到web页面，标的详情
+		// 跳转到web页面，标的详情
 		case R.id.invert_layout_biao:
 
+			Intent intent = new Intent(InvertInfoActivity.this,
+					MyWebViewActivity.class);
+			//intent.putExtra("title", urlTitle.get(position));
+			//intent.putExtra("url", urlList.get(position));
+			startActivity(intent);
 			anim_right_in();
+			 
 			break;
-		//审核材料
+		// 审核材料
 		case R.id.invert_layout_shen:
 
 			anim_right_in();
 			break;
-		//投标记录
+		// 投标记录
 		case R.id.invert_layout_tou:
 
 			anim_right_in();
 			break;
-		//还款记录
+		// 还款记录
 		case R.id.invert_layout_huan:
 
 			anim_right_in();
 			break;
-		//债券记录
+		// 债券记录
 		case R.id.invert_layout_zhai:
 
 			anim_right_in();
@@ -253,25 +278,28 @@ public class InvertInfoActivity extends BaseActivity implements
 			case 1:
 				// 停止菊花
 
+				sanInfo_1 = allSan.make_sanInfo_1();
+				sanInfo_2 = allSan.make_sanInfo_2();
+				// 设置信息
+				// doThing();
+				// 设置立即投标按钮
 				Map<String, String> map = juade();
 				button.setText(map.get("name"));
 				if (map.get("isTouch").equals("yes")) {
 					button.setEnabled(true);
-					// button.setBackgroundColor(getResources().getColor(
-					// R.color.main_blue));
+					// button.setBackgroundColor(R.color.main_blue);
 				} else {
 					button.setEnabled(false);
-					// button.setBackgroundColor(getResources().getColor(
-					// R.color.main_gray));
+					// button.setBackgroundColor(R.color.main_gray);
 				}
 				if (map.get("isQidong").equals("yes")) {
-					// 倒计时启动
-					if (!"".equals(allLicai.getFbsj())
-							&& allLicai.getFbsj() != null) {
-						Log.v("--是否启动倒计时--", allLicai.getFbsj());
+					// 启动倒计时
+					if (!"".equals(allSan.getFbsj())
+							&& allSan.getFbsj() != null) {
+						Log.v("--是否启动倒计时--", allSan.getFbsj());
 						try {
 							mc = new MyCountDownTimer(TimeUtil.stringToLong(
-									allLicai.getFbsj(), "yyyy-MM-dd HH:mm:ss")
+									allSan.getFbsj(), "yyyy-MM-dd HH:mm:ss")
 									- System.currentTimeMillis(), 1000);
 						} catch (ParseException e) {
 							// TODO Auto-generated catch block
@@ -324,11 +352,9 @@ public class InvertInfoActivity extends BaseActivity implements
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 		map.put("id", pId);// 0不锁，1是锁
-
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(12,
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(9,
 				map, InvertInfoActivity.this, mHandler);
 		RequestPool.execute(thread);
-
 	}
 
 	@Override
@@ -336,7 +362,7 @@ public class InvertInfoActivity extends BaseActivity implements
 			List<Object> list, Object jsonObj) {
 		// TODO Auto-generated method stub
 		if (list.size() == 1) {
-			allLicai = (TiYanProject) list.get(0);
+			allSan = (SanProject) list.get(0);
 			Message msg1 = new Message();
 			msg1.what = 1;
 			mHandler.sendMessage(msg1);
@@ -356,26 +382,145 @@ public class InvertInfoActivity extends BaseActivity implements
 	}
 
 	// 备注－－标的倒计时是否显示，且是否可以点击进入
+	// 备注－－标的倒计时是否显示，且是否可以点击进入
 	public Map<String, String> juade() {
 		Map<String, String> map = new HashMap<String, String>();
-		if (allLicai.getZt().equals("0")) {
-			map.put("name", "");
+		if (allSan.getZt().equals("预售中")) {
 			map.put("isTouch", "no");
 			map.put("isQidong", "yes");
-		} else if (allLicai.getZt().equals("1")) {
-			map.put("name", "立即申请");
+		} else if (allSan.getZt().equals("立即投标")) {
 			map.put("isTouch", "yes");
 			map.put("isQidong", "no");
-		} else if (allLicai.getZt().equals("2")) {
-			map.put("name", "已满额");
+		} else if (allSan.getZt().equals("敬请期待")) {
 			map.put("isTouch", "no");
-			map.put("isQidong", "no");
-		} else if (allLicai.getZt().equals("3")) {
-			map.put("name", "已截止");
+			map.put("isQidong", "yes");
+		} else {
 			map.put("isTouch", "no");
 			map.put("isQidong", "no");
 		}
+		map.put("name", allSan.getZt());
 		return map;
 	}
+
+	// private void doThing() {
+	//
+	// layout_mei.setVisibility(View.VISIBLE);
+	//
+	// tv_bdbt.setText(allSan.getBdbt());
+	// tv_bdbt.setVisibility(View.VISIBLE);
+	// tv_jllx.setText(allSan.getJllx());
+	// tv_jllx.setVisibility(View.VISIBLE);
+	//
+	// List<Map<String, String>> listMap = allSan.tuBiaoList();
+	// if (listMap.size() == 0) {
+	// tv_layout1.setVisibility(View.GONE);
+	// tv_layout1.setVisibility(View.GONE);
+	// } else if (listMap.size() == 1) {
+	// Map<String, String> a = listMap.get(0);
+	// tv_11.setText(a.get("sx"));
+	// tv_12.setText(a.get("xq"));
+	// tv_layout1.setVisibility(View.VISIBLE);
+	// tv_layout2.setVisibility(View.GONE);
+	// } else if (listMap.size() == 2) {
+	// Map<String, String> a = listMap.get(0);
+	// Map<String, String> a1 = listMap.get(1);
+	// tv_11.setText(a.get("sx"));
+	// tv_12.setText(a.get("xq"));
+	//
+	// tv_21.setText(a1.get("sx"));
+	// tv_22.setText(a1.get("xq"));
+	//
+	// tv_layout1.setVisibility(View.VISIBLE);
+	// tv_layout2.setVisibility(View.VISIBLE);
+	// }
+	//
+	// // 屏幕的高度和宽度
+	// WindowManager m = getWindowManager();
+	// Display d = m.getDefaultDisplay();
+	//
+	// for (int i = 0; i < sanInfo_1.size(); i++) {
+	//
+	// LinearLayout layoutH = new LinearLayout(SanInfoActivity.this);
+	// layoutH.setOrientation(LinearLayout.HORIZONTAL);
+	// TextView textView1 = new TextView(SanInfoActivity.this);
+	// textView1.setText(sanInfo_1.get(i).get("left"));
+	// textView1.setWidth(d.getWidth() / 3);
+	// textView1.setHeight(TimeUtil.dip2px(SanInfoActivity.this, 30));
+	// textView1.setGravity(Gravity.CENTER_VERTICAL);
+	// textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+	// textView1.setPadding(TimeUtil.dip2px(SanInfoActivity.this, 15), 0,
+	// 0, 0);
+	//
+	// layoutH.addView(textView1);
+	//
+	// TextView textView2 = new TextView(SanInfoActivity.this);
+	// textView2.setHeight(TimeUtil.dip2px(SanInfoActivity.this, 30));
+	// textView2.setGravity(Gravity.CENTER);
+	// textView2.setPadding(0, 0,
+	// TimeUtil.dip2px(SanInfoActivity.this, 15), 0);
+	//
+	// ProgressBar pbar = new ProgressBar(SanInfoActivity.this, null,
+	// android.R.attr.progressBarStyleHorizontal);
+	// if ("投标进度".equals(sanInfo_1.get(i).get("left"))) {
+	// pbar.setProgress(Integer.valueOf(sanInfo_1.get(i).get("right")));
+	// textView2.setText(sanInfo_1.get(i).get("right") + "%");
+	// textView2.setPadding(TimeUtil.dip2px(SanInfoActivity.this, 15),
+	// 0, TimeUtil.dip2px(SanInfoActivity.this, 15), 0);
+	// layoutH.addView(
+	// pbar,
+	// new LayoutParams(TimeUtil.dip2px(SanInfoActivity.this,
+	// 150), LayoutParams.WRAP_CONTENT));
+	// layoutH.setGravity(Gravity.CENTER_VERTICAL);
+	// layoutH.addView(textView2);
+	// } else {
+	// textView2.setText(Html.fromHtml(sanInfo_1.get(i).get("right")));
+	// textView2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+	// layoutH.addView(textView2);
+	// }
+	//
+	// layout1.addView(layoutH);
+	// }
+	//
+	// layout2.setPadding(TimeUtil.dip2px(SanInfoActivity.this, 15), 0, 0, 0);
+	// for (int i = 0; i < sanInfo_2.size(); i++) {
+	//
+	// LinearLayout layoutH = new LinearLayout(SanInfoActivity.this);
+	// layoutH.setOrientation(LinearLayout.HORIZONTAL);
+	// TextView textView1 = new TextView(SanInfoActivity.this);
+	// textView1.setText(sanInfo_2.get(i).get("left"));
+	// textView1.setWidth(d.getWidth() / 3);
+	// textView1.setHeight(TimeUtil.dip2px(SanInfoActivity.this, 40));
+	// textView1.setGravity(Gravity.CENTER_VERTICAL);
+	// textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+	//
+	// final String str1 = sanInfo_2.get(i).get("left");
+	// final String str2 = sanInfo_2.get(i).get("right");
+	//
+	// layoutH.setOnClickListener(new View.OnClickListener() {
+	//
+	// @Override
+	// public void onClick(View v) {
+	// // TODO Auto-generated method stub
+	// Intent intent = new Intent(SanInfoActivity.this,
+	// MyWebViewActivity.class);
+	// intent.putExtra("title", str1);
+	// intent.putExtra("url", str2 + "&" + Tool.timechuo());
+	// startActivity(intent);
+	// }
+	// });
+	// layoutH.addView(textView1);
+	// layout2.addView(layoutH);
+	//
+	// View line = new View(SanInfoActivity.this);
+	// line.setBackgroundColor(getResources().getColor(
+	// R.color.main_line_gray));
+	//
+	// if (i < sanInfo_2.size() - 1) {
+	// layout2.addView(line, new LayoutParams(
+	// LayoutParams.MATCH_PARENT, 1));
+	// }
+	// }
+	//
+	// }
 
 }

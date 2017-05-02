@@ -50,6 +50,7 @@ import com.quqian.activity.mine.MineActivity;
 import com.quqian.activity.mine.ZiJinGuanLiActivity;
 import com.quqian.activity.mine.xin.CGWebView;
 import com.quqian.activity.mine.xin.JiaoYIJiLu;
+import com.quqian.activity.mine.xin.NewChongZhi;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.SanProject;
 import com.quqian.been.UserMode;
@@ -248,21 +249,23 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 					+ suanfa(fenshu, 1) + "元");
 			break;
 		case R.id.main_mine_qianbanghzu_chongzhi:// 充值
-
+			Intent intent = new Intent(LiJiTouBiaoActivity.this,
+					NewChongZhi.class);
+			startActivity(intent);
+			anim_right_in();
 			break;
 		case R.id.main_index_lijitoubiao_jiaxika:// 获取加息卡的信息
-			showSpinnerActivity();
+			// showSpinnerActivity();
 
-			// juhua.show();
-			// // TODO Auto-generated method stub
-			// Map<String, String> map = new HashMap<String, String>();
-			// map.put("urlTag", "102");// 可不传（区分一个activity多个请求）
-			// map.put("isLock", "0");// 0不锁，1是锁
-			// // 请求的参数如下
-			// RequestThreadAbstract thread =
-			// RequestFactory.createRequestThread(
-			// 102, map, LiJiTouBiaoActivity.this, mHandler);
-			// RequestPool.execute(thread);
+			juhua.show();
+			// TODO Auto-generated method stub
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("urlTag", "102");// 可不传（区分一个activity多个请求）
+			map.put("isLock", "0");// 0不锁，1是锁
+			// 请求的参数如下
+			RequestThreadAbstract thread = RequestFactory.createRequestThread(
+					102, map, LiJiTouBiaoActivity.this, mHandler);
+			RequestPool.execute(thread);
 			break;
 		case R.id.main_index_lijitoubiao_jia:
 			jia();
@@ -444,7 +447,13 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 
 			switch (msg.what) {
 			case 102: // 获取加息卡
-				showSpinnerActivity();
+				if (jaxikalist.size() == 0) {
+					Toast.makeText(LiJiTouBiaoActivity.this, "暂无加息卡数据", 1000)
+							.show();
+					jiaxika.setText("暂无加息卡");
+				} else {
+					showSpinnerActivity();
+				}
 				break;
 			case 0:
 
@@ -615,6 +624,20 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 		} else if (map.get("urlTag").equals("102")) {
 			JSONObject json = (JSONObject) jsonObj;
 			// list 讲数据添加到☑列表中
+			JSONArray array;
+			try {
+				array = json.getJSONArray("rvalue");
+				for (int i = 0; i < array.length(); i++) {
+					JSONObject sjonon = (JSONObject) array.get(i);
+					String title = sjonon.getString("jxkNum");
+					jaxikalist.add(title);
+					sjonon.optString("title", title);
+					allDatalist.add(sjonon);
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			Message msg1 = new Message();
 			msg1.what = 102;
@@ -707,26 +730,15 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 
 	// private List<HashMap<String, String>> list = new
 	// ArrayList<HashMap<String, String>>();
-	private List<String> list = new ArrayList<String>();
+	private List<String> jaxikalist = new ArrayList<String>();
+	private List<JSONObject> allDatalist = new ArrayList<JSONObject>();
 	private Dialog dialog2 = null;
 
 	public void showSpinnerActivity() {
 
-		// HashMap<String, String> map1 = new HashMap<String, String>();
-		// map1.put("id", "3");
-		// map1.put("title", "JXK-b193654--1.00%     2017-03-29到期");
-		// list.add(map1);
-		// HashMap<String, String> map2 = new HashMap<String, String>();
-		// map2.put("id", "4");
-		// map2.put("title", "JXK-b193654--1.00%     2017-03-29到期");
-		// list.add(map2);
-
-		list.add("JXK-b193654--1.00%     2017-03-29到期");
-		list.add("JXK-b193654--1.00%     2017-03-29到期");
-		list.add("JXK-b193654--1.00%     2017-03-29到期");
-
 		dialog2 = new AlertDialog.Builder(LiJiTouBiaoActivity.this)
-				.setSingleChoiceItems(list.toArray(new String[list.size()]), 0,
+				.setSingleChoiceItems(
+						jaxikalist.toArray(new String[jaxikalist.size()]), 0,
 						new DialogInterface.OnClickListener() {
 
 							@Override
@@ -734,40 +746,24 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 								// TODO Auto-generated method stub
 								dialog2.cancel();
 								// 调接口，查询相应的数据
+								String jxkastring = jaxikalist.get(arg1);
+								jiaxika.setText(jaxikalist.get(arg1));
+								for (int i = 0; i < allDatalist.size(); i++) {
+									JSONObject onejson = allDatalist.get(i);
+									try {
+										if (jxkastring.endsWith(onejson
+												.getString("title"))) {
+											jxkid = onejson.getString("id");
+											break;
+										}
+									} catch (JSONException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+								}
 							}
+
 						}).create();
 		dialog2.show();
-		//
-		// //mySpinner = (Spinner) findViewById(R.id.Spinner_city);
-		// // 第二步：为下拉列表定义一个适配器，这里就用到里前面定义的list。
-		// adapter = new ArrayAdapter<HashMap<String, String>>(this,
-		// android.R.layout.simple_spinner_item, list);
-		// // 第三步：为适配器设置下拉列表下拉时的菜单样式。
-		// adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		// // 第四步：将适配器添加到下拉列表上
-		// mySpinner.setAdapter(adapter);
-		//
-		// // 第五步：为下拉列表设置各种事件的响应，这个事响应菜单被选中
-		// mySpinner
-		// .setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
-		// public void onItemSelected(AdapterView<?> arg0, View arg1,
-		// int arg2, long arg3) {
-		// // TODO Auto-generated method stub
-		// /* 将所选mySpinner 的值带入myTextView 中 */
-		// HashMap<String, String> map = (HashMap<String, String>) mySpinner
-		// .getSelectedItem();
-		// jxkid = map.get("id").toString();
-		//
-		// /* 将mySpinner 显示 */
-		// arg0.setVisibility(View.VISIBLE);
-		// }
-		//
-		// public void onNothingSelected(AdapterView<?> arg0) {
-		// // TODO Auto-generated method stub
-		//
-		// arg0.setVisibility(View.VISIBLE);
-		// }
-		// });
-
 	}
 }
