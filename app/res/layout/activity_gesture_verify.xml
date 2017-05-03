@@ -8,7 +8,7 @@
         android:id="@+id/gesture_tip_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical" >
 
         <ImageView
@@ -24,7 +24,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="songpeixin"
+            android:text=""
             android:layout_marginTop="10dp"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_36px" />
@@ -33,9 +33,11 @@
             android:id="@+id/text_tip"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center_horizontal"
             android:textColor="@color/white"
+            android:text=""
             android:textSize="@dimen/sp_28px"
             android:visibility="visible" />
     </LinearLayout>

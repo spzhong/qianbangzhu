@@ -178,7 +178,7 @@ public class WoDeJieKuan extends BaseActivity implements OnClickListener,
 			tvrb1.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb2.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
-			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
+			tvrb3.setBackgroundColor(getResources().getColor(R.color.white));
 
 			// 请求数据
 			curPage = 1;
@@ -190,14 +190,14 @@ public class WoDeJieKuan extends BaseActivity implements OnClickListener,
 			// 已过期
 			tvrb1.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
-			tvrb2.setBackgroundColor(getResources().getColor(
+			tvrb3.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
 
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter3);
 			// mAdapter2.notifyDataSetChanged();
-			loadHttp("1");
+			loadHttp("2");
 			break;
 		default:
 			break;
@@ -206,7 +206,8 @@ public class WoDeJieKuan extends BaseActivity implements OnClickListener,
 
 	/** 适配器 ---还款中 **/
 	class MyAdapter1 extends BaseAdapter {
-
+		private int currentItem = -1;
+		
 		@Override
 		public int getCount() {
 			return allList1 != null ? allList1.size() : 0;
@@ -271,17 +272,28 @@ public class WoDeJieKuan extends BaseActivity implements OnClickListener,
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
+			
+			holder.layoutbtn.setTag(position);
+			if (currentItem == position) {
+				holder.layout.setVisibility(View.VISIBLE);
+			} else {
+				holder.layout.setVisibility(View.GONE);
+			}
 			// 设置显示布局按钮事件
 			holder.layoutbtn.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					if (holder.layout.getVisibility() == View.GONE) {
-						holder.layout.setVisibility(View.VISIBLE);
+					int tag = (Integer) arg0.getTag();
+					if (tag == currentItem) { // 再次点击
+						currentItem = -1; // 给 currentItem 一个无效值
 					} else {
-						holder.layout.setVisibility(View.GONE);
+						currentItem = tag;
 					}
+					// 通知adapter数据改变需要重新加载
+					notifyDataSetChanged(); // 必须有的一步
+
 				}
 			});
 
@@ -340,6 +352,8 @@ public class WoDeJieKuan extends BaseActivity implements OnClickListener,
 	/** 适配器 ---已还清 **/
 	class MyAdapter2 extends BaseAdapter {
 
+		private int currentItem = -1;
+		
 		@Override
 		public int getCount() {
 			return allList1 != null ? allList1.size() : 0;
@@ -400,19 +414,31 @@ public class WoDeJieKuan extends BaseActivity implements OnClickListener,
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
+			
+			holder.layoutbtn.setTag(position);
+			if (currentItem == position) {
+				holder.layout.setVisibility(View.VISIBLE);
+			} else {
+				holder.layout.setVisibility(View.GONE);
+			}
 			// 设置显示布局按钮事件
 			holder.layoutbtn.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					if (holder.layout.getVisibility() == View.GONE) {
-						holder.layout.setVisibility(View.VISIBLE);
+					int tag = (Integer) arg0.getTag();
+					if (tag == currentItem) { // 再次点击
+						currentItem = -1; // 给 currentItem 一个无效值
 					} else {
-						holder.layout.setVisibility(View.GONE);
+						currentItem = tag;
 					}
+					// 通知adapter数据改变需要重新加载
+					notifyDataSetChanged(); // 必须有的一步
+
 				}
 			});
+
 
 			// 查看合同
 			holder.chakanhetong.setOnClickListener(new OnClickListener() {
@@ -456,6 +482,8 @@ public class WoDeJieKuan extends BaseActivity implements OnClickListener,
 	/** 适配器 ---借款申请 **/
 	class MyAdapter3 extends BaseAdapter {
 
+		private int currentItem = -1;
+		
 		@Override
 		public int getCount() {
 			return allList1 != null ? allList1.size() : 0;
@@ -517,19 +545,31 @@ public class WoDeJieKuan extends BaseActivity implements OnClickListener,
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
+			
+			holder.layoutbtn.setTag(position);
+			if (currentItem == position) {
+				holder.layout.setVisibility(View.VISIBLE);
+			} else {
+				holder.layout.setVisibility(View.GONE);
+			}
 			// 设置显示布局按钮事件
 			holder.layoutbtn.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					if (holder.layout.getVisibility() == View.GONE) {
-						holder.layout.setVisibility(View.VISIBLE);
+					int tag = (Integer) arg0.getTag();
+					if (tag == currentItem) { // 再次点击
+						currentItem = -1; // 给 currentItem 一个无效值
 					} else {
-						holder.layout.setVisibility(View.GONE);
+						currentItem = tag;
 					}
+					// 通知adapter数据改变需要重新加载
+					notifyDataSetChanged(); // 必须有的一步
+
 				}
 			});
+
 
 			// 查看合同
 			holder.queren.setOnClickListener(new OnClickListener() {

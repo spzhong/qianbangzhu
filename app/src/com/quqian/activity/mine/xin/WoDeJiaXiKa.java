@@ -176,7 +176,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 			tvrb1.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb2.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
-			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
+			tvrb3.setBackgroundColor(getResources().getColor(R.color.white));
 
 			// 请求数据
 			curPage = 1;
@@ -188,14 +188,14 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 			// 已过期
 			tvrb1.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
-			tvrb2.setBackgroundColor(getResources().getColor(
+			tvrb3.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
 
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter3);
 			// mAdapter2.notifyDataSetChanged();
-			loadHttp("1");
+			loadHttp("2");
 			break;
 		default:
 			break;

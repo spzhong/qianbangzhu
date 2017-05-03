@@ -175,7 +175,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			tvrb1.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb2.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
-			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
+			tvrb3.setBackgroundColor(getResources().getColor(R.color.white));
 
 			// 请求数据
 			curPage = 1;
@@ -187,7 +187,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			// 已过期
 			tvrb1.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
-			tvrb2.setBackgroundColor(getResources().getColor(
+			tvrb3.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
 
 			// 请求数据
@@ -203,6 +203,8 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 
 	/** 适配器 ---回收中 **/
 	class MyAdapter1 extends BaseAdapter {
+
+		private int currentItem = -1;
 
 		@Override
 		public int getCount() {
@@ -268,17 +270,28 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
+			
+			holder.layoutbtn.setTag(position);
+			if (currentItem == position) {
+				holder.layout.setVisibility(View.VISIBLE);
+			} else {
+				holder.layout.setVisibility(View.GONE);
+			}
+			
 			// 设置显示布局按钮事件
 			holder.layoutbtn.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					if (holder.layout.getVisibility() == View.GONE) {
-						holder.layout.setVisibility(View.VISIBLE);
+					int tag = (Integer) arg0.getTag();
+					if (tag == currentItem) { // 再次点击
+						currentItem = -1; // 给 currentItem 一个无效值
 					} else {
-						holder.layout.setVisibility(View.GONE);
+						currentItem = tag;
 					}
+					// 通知adapter数据改变需要重新加载
+					notifyDataSetChanged(); // 必须有的一步
 				}
 			});
 
@@ -342,6 +355,8 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 	/** 适配器 ---投标中 **/
 	class MyAdapter2 extends BaseAdapter {
 
+		private int currentItem = -1;
+		
 		@Override
 		public int getCount() {
 			return allList2 != null ? allList2.size() : 0;
@@ -402,17 +417,29 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
+			
+			holder.layoutbtn.setTag(position);
+			if (currentItem == position) {
+				holder.layout.setVisibility(View.VISIBLE);
+			} else {
+				holder.layout.setVisibility(View.GONE);
+			}
+			
 			// 设置显示布局按钮事件
 			holder.layoutbtn.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					if (holder.layout.getVisibility() == View.GONE) {
-						holder.layout.setVisibility(View.VISIBLE);
+					int tag = (Integer) arg0.getTag();
+					if (tag == currentItem) { // 再次点击
+						currentItem = -1; // 给 currentItem 一个无效值
 					} else {
-						holder.layout.setVisibility(View.GONE);
+						currentItem = tag;
 					}
+					// 通知adapter数据改变需要重新加载
+					notifyDataSetChanged(); // 必须有的一步
+
 				}
 			});
 
@@ -467,6 +494,8 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 	/** 适配器 ---存管理财 **/
 	class MyAdapter3 extends BaseAdapter {
 
+		private int currentItem = -1;
+		
 		@Override
 		public int getCount() {
 			return allList3 != null ? allList3.size() : 0;
@@ -526,17 +555,28 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
+			
+			holder.layoutbtn.setTag(position);
+			if (currentItem == position) {
+				holder.layout.setVisibility(View.VISIBLE);
+			} else {
+				holder.layout.setVisibility(View.GONE);
+			}
 			// 设置显示布局按钮事件
 			holder.layoutbtn.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					if (holder.layout.getVisibility() == View.GONE) {
-						holder.layout.setVisibility(View.VISIBLE);
+					int tag = (Integer) arg0.getTag();
+					if (tag == currentItem) { // 再次点击
+						currentItem = -1; // 给 currentItem 一个无效值
 					} else {
-						holder.layout.setVisibility(View.GONE);
+						currentItem = tag;
 					}
+					// 通知adapter数据改变需要重新加载
+					notifyDataSetChanged(); // 必须有的一步
+
 				}
 			});
 

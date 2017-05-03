@@ -125,6 +125,8 @@ public class GestureVerifyActivity extends BaseActivity implements android.view.
 		
 		
 		mTextTip = (TextView) findViewById(R.id.text_tip);
+		mTextTip.setTextColor(getResources().getColor(R.color.tip));
+		mTextTip.setText("请绘制手势密码");
 		mGestureContainer = (FrameLayout) findViewById(R.id.gesture_container);
 		mTextForget = (TextView) findViewById(R.id.text_forget_gesture);
 		mTextOther = (TextView) findViewById(R.id.text_other_account);
@@ -161,6 +163,7 @@ public class GestureVerifyActivity extends BaseActivity implements android.view.
 					@Override
 					public void checkedFail() {
 						mGestureContentView.clearDrawlineState(1300L);
+						
 						mTextTip.setVisibility(View.VISIBLE);
 					
 						UserMode user = Tool.getUser(GestureVerifyActivity.this);
@@ -183,7 +186,9 @@ public class GestureVerifyActivity extends BaseActivity implements android.view.
 							GestureVerifyActivity.this.finish();
 							anim_right_out();
 						}else{
-							Toast.makeText(GestureVerifyActivity.this, "密码错误,您还可以输入"+(4-cishu)+"次", Toast.LENGTH_SHORT).show();
+							mTextTip.setTextColor(getResources().getColor(R.color.shoushicuowuline));
+							mTextTip.setText("密码错误,您还可以输入"+(4-cishu)+"次");
+							//Toast.makeText(GestureVerifyActivity.this, "密码错误,您还可以输入"+(4-cishu)+"次", Toast.LENGTH_SHORT).show();
 							cishu++;
 							user.codeError = cishu+"";
 							user.saveUserToDB(GestureVerifyActivity.this);

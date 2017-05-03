@@ -40,6 +40,7 @@ import com.quqian.activity.mine.xin.TuiGuangJiLu;
 import com.quqian.activity.mine.xin.WoDeJiaXiKa;
 import com.quqian.activity.mine.xin.WoDeJieKuan;
 import com.quqian.activity.mine.xin.WoDeTouBiao;
+import com.quqian.activity.mine.xin.XiaoXiTongZhi;
 import com.quqian.activity.mine.xin.ZhangHuZongLan;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.Chongzhi;
@@ -271,7 +272,7 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
 		case R.id.mine_xiaoxi:// 消息
-			startActivity(new Intent(MineActivity.this, TongZhiActivity.class));
+			startActivity(new Intent(MineActivity.this, XiaoXiTongZhi.class));
 			anim_right_in();
 			break;
 		case R.id.mine_shezhi:// 设置

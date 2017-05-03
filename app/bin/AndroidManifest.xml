@@ -233,6 +233,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
+         <activity
+            android:name="com.quqian.activity.mine.xin.XiaoXiTongZhi"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
 
         <!-- 首页 -->
         <activity

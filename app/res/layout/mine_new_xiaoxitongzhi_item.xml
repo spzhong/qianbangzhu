@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:paddingLeft="15dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/xx_item_du"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:background="@drawable/xx_weidu" />
+
+            <TextView
+                android:id="@+id/xx_item_biaoti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:text="投资成功"
+                android:textColor="@color/text_tips"
+                android:textSize="@dimen/sp_24px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/xx_item_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:text="v"
+                android:textColor="@color/text_tips"
+                android:textSize="@dimen/sp_32px" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/main_line_gray" />
+
+    <LinearLayout
+        android:id="@+id/xx_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:visibility="visible" >
+
+        <TextView
+            android:id="@+id/xx_item_neirong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="尊敬的用户： 您好，您投的借款“500000”已流标,投标资金已解冻。 感谢您对我们的关注和支持！ [钱帮主]"
+            android:textColor="@color/text_tips"
+            android:textSize="@dimen/sp_24px" />
+    </LinearLayout>
+
+</LinearLayout>

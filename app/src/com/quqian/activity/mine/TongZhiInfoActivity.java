@@ -90,7 +90,7 @@ public class TongZhiInfoActivity extends BaseActivity implements
 		time.setText(str2);
 		content.setText(str3);
 
-		loadHttp2(pId);
+		//loadHttp2(pId);
 
 	}
 
@@ -108,8 +108,8 @@ public class TongZhiInfoActivity extends BaseActivity implements
 		case R.id.title_bar_back:
 			startActivity(new Intent(TongZhiInfoActivity.this,
 					TongZhiActivity.class));
-			TongZhiInfoActivity.this.finish();
-			anim_right_in();
+			//TongZhiInfoActivity.this.finish();
+			anim_right_out();
 			break;
 
 		default:
@@ -124,7 +124,7 @@ public class TongZhiInfoActivity extends BaseActivity implements
 		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
 			startActivity(new Intent(TongZhiInfoActivity.this,
 					TongZhiActivity.class));
-			finish();
+			//finish();
 			anim_right_out();
 		}
 		return false;
