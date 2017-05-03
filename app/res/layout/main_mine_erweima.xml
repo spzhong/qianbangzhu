@@ -44,7 +44,7 @@
                 android:textSize="@dimen/sp_26px" />
         </LinearLayout>
 
-        <ImageView
+        <com.loopj.android.image.SmartImageView
             android:id="@+id/erweima"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -97,7 +97,7 @@
             android:layout_marginTop="25dp"
             android:gravity="center"
             android:padding="5dp"
-            android:text="181818"
+            android:text=""
             android:textColor="#3597ee"
             android:textSize="36sp" />
 
@@ -156,7 +156,7 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:padding="5dp"
-            android:text="http://www.qbzvip.com/register.html?code=8888"
+            android:text=""
             android:textColor="#969696"
             android:textSize="@dimen/sp_24px" />
 

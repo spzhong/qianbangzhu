@@ -87,10 +87,10 @@ public class Tool {
 		oAuth_1.setShoushiCode(Tool.readData(ctx, "user", "shoushiCode"));
 		oAuth_1.setFwmlj(Tool.readData(ctx, "user", "fwmlj"));
 		oAuth_1.setZnxwdts(Tool.readData(ctx, "user", "znxwdts"));
-		oAuth_1.setZnxwdts(Tool.readData(ctx, "user", "cgkyye"));
-		oAuth_1.setZnxwdts(Tool.readData(ctx, "user", "cgdjje"));
-		oAuth_1.setZnxwdts(Tool.readData(ctx, "user", "cgyzze"));
-		oAuth_1.setZnxwdts(Tool.readData(ctx, "user", "cgzhze"));
+		oAuth_1.setCgkyye(Tool.readData(ctx, "user", "cgkyye"));
+		oAuth_1.setCgdjje(Tool.readData(ctx, "user", "cgdjje"));
+		oAuth_1.setCgyzze(Tool.readData(ctx, "user", "cgyzze"));
+		oAuth_1.setCgzhze(Tool.readData(ctx, "user", "cgzhze"));
 		return oAuth_1;
 	}
 
@@ -119,10 +119,10 @@ public class Tool {
 		oAuth_1.setShoushiCode(Tool.readData(ctx, "user", "shoushiCode"));
 		oAuth_1.setFwmlj(Tool.readData(ctx, "user", "fwmlj"));
 		oAuth_1.setZnxwdts(Tool.readData(ctx, "user", "znxwdts"));
-		oAuth_1.setZnxwdts(Tool.readData(ctx, "user", "cgkyye"));
-		oAuth_1.setZnxwdts(Tool.readData(ctx, "user", "cgdjje"));
-		oAuth_1.setZnxwdts(Tool.readData(ctx, "user", "cgyzze"));
-		oAuth_1.setZnxwdts(Tool.readData(ctx, "user", "cgzhze"));
+		oAuth_1.setCgkyye(Tool.readData(ctx, "user", "cgkyye"));
+		oAuth_1.setCgdjje(Tool.readData(ctx, "user", "cgdjje"));
+		oAuth_1.setCgyzze(Tool.readData(ctx, "user", "cgyzze"));
+		oAuth_1.setCgzhze(Tool.readData(ctx, "user", "cgzhze"));
 		return oAuth_1;
 	}
 

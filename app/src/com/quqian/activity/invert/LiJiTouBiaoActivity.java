@@ -262,6 +262,7 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("urlTag", "102");// 可不传（区分一个activity多个请求）
 			map.put("isLock", "0");// 0不锁，1是锁
+			map.put("id", pId);
 			// 请求的参数如下
 			RequestThreadAbstract thread = RequestFactory.createRequestThread(
 					102, map, LiJiTouBiaoActivity.this, mHandler);

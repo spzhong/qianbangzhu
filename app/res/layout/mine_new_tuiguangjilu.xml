@@ -53,7 +53,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="存管状态  v"
+                android:text="存管状态"
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_26px" />
         </LinearLayout>

@@ -70,6 +70,8 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 	private LinearLayout layout_cg = null;
 	private LinearLayout layout_pu = null;
 
+	private String zhlx = null;
+	
 	// 存管充值界面 组件
 	private TextView cg_tv_keyong = null;
 	private TextView cg_tv_zhanghu = null;
@@ -205,7 +207,7 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 				layout_pu.setVisibility(View.GONE);
 
 				// 设置开通存管账户数据 ,可用余额，华兴E账户
-				cg_tv_zhanghu.setText(cgkyye);
+				cg_tv_keyong.setText(cgkyye+"元");
 				cg_tv_zhanghu.setText(cgzh);
 
 			} else {
@@ -252,16 +254,15 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 				startActivity(intent);
 				anim_right_in();
 			} else {
-				// 前去绑定 普通账户
-				// 注意此地方确认判断普通用户还是，企业的用户
-				UserMode user = Tool.getUser(NewChongZhi.this);
-				// 判断是否是企业的用户
-
-				// 判断是否是普通的用户
-				Intent intent = new Intent(NewChongZhi.this,
-						BangDingYinHangKaActivity.class);
-				startActivity(intent);
-				anim_right_in();
+				// 前去绑定 普通账户 个人：GRKH 企业：QYKH
+				if (zhlx.equals("GRKH")) {
+					// 跳转到个人
+					startActivity(new Intent(NewChongZhi.this,BangDingYinHangKaActivity.class));
+				} else {
+					// 跳转到企业
+					startActivity(new Intent(NewChongZhi.this,
+							QiYeBangDingYinHangKaActivity.class));
+				}
 
 			}
 
@@ -329,9 +330,8 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 					layout_pu.setVisibility(View.GONE);
 
 					// 设置开通存管账户数据 ,可用余额，华兴E账户
-					cg_tv_zhanghu.setText(cgkyye + "元");
+					cg_tv_keyong.setText(cgkyye + "元");
 					cg_tv_zhanghu.setText(cgzh);
-
 				} else {
 					// 如果未开通，则隐藏存管充值界面，显示'未开通'布局
 					layout_weikaitong.setVisibility(View.VISIBLE);
@@ -418,6 +418,7 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 				ptzt = pt.getString("ptzt");
 				ptkyye = pt.getString("ptkyye");
 				yhkh = pt.getString("yhkh");
+				zhlx = pt.getString("zhlx");
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

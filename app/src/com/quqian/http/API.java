@@ -121,6 +121,12 @@ public class API {
 	//我的加息卡
 	public static String wodejiaxiak = HTTP + "user/jxk/list.htm";// 111
 	
+	//我的推广记录
+	public static String tggllist = HTTP + "user/tggl/list.htm";// 112
+	
+	//邀请好友接口
+	public static String tgglwytg = HTTP + "user/tggl/wytg.htm";// 113
+	
 	
 	
 	public API() {
@@ -589,12 +595,12 @@ public class API {
 			HttpResponseInterface activity) {
 		String jylx = map.get("jylx");
 		String jysj = map.get("jysj");
-		if (jylx.length() == 0) {
-			return "请上传交易类型";
-		}
-		if (jysj.length() == 0) {
-			return "请上传交易时间";
-		}
+//		if (jylx.length() == 0) {
+//			return "请上传交易类型";
+//		}
+//		if (jysj.length() == 0) {
+//			return "请上传交易时间";
+//		}
 		// 添加URL
 		map.put("url", USRJYJLLIST);
 		map.put("urlNum", "26");
@@ -986,6 +992,29 @@ public class API {
 		Http.POST(map, activity);
 		return "";
 	}
+	
+	//我的推广记录
+	public static String tggllist_112(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", tggllist);
+		map.put("urlNum", "112");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+	
+	//邀请好友接口
+	public static String tgglwytg_113(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", tgglwytg);
+		map.put("urlNum", "113");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+	
 	
 	
 }

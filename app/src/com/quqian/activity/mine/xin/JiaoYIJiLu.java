@@ -150,6 +150,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
  
 		loadHttp_config();
 		
+		loadHttp("1");
 	}
 
 	@Override
@@ -220,6 +221,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 									dialog1.cancel();
 									// 调接口，查询相应的数据
 									String jylxString = strItems[arg1];
+									leixing.setText(jylxString+"  v");
 									for (int i = 0; i < jylxlistAllData.size(); i++) {
 										JSONObject onejson = jylxlistAllData.get(i);
 										try {
@@ -250,6 +252,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 									// TODO Auto-generated method stub
 									dialog2.cancel();
 									String jysjString = strItems2[arg1];
+									shijian.setText(jysjString+"  v");
 									// 调接口，查询相应的数据String jylxString = strItems[arg1];
 									for (int i = 0; i < jysjlistAllData.size(); i++) {
 										JSONObject onejson = jysjlistAllData.get(i);
@@ -523,7 +526,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 				break;
 			case 3:
 				// diao接口
-				loadHttp("1");
+				
 				
 				 break;
 			default:
@@ -567,8 +570,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 			
 			ArrayList<Object> newlist = new ArrayList<Object>();
 			try {
-				JSONArray jsonArray = (JSONArray) json.getJSONObject("rvalue")
-						.getJSONArray("items");
+				JSONArray jsonArray = (JSONArray) json.getJSONArray("rvalue");
 				for (int i = 0; i < jsonArray.length(); i++) {
 					JSONObject noejson = jsonArray.getJSONObject(i);
 					newlist.add(noejson);// 加入list中
@@ -606,7 +608,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 					for (int i = 0; i < jylxArray.length(); i++) {
 						JSONObject oneJson = (JSONObject)jylxArray.get(i);
 						if(i==0){
-							jylx = oneJson.getString("key");
+							//jylx = oneJson.getString("key");
 						} 
 						jylxlist.add(oneJson.getString("value"));
 						jylxlistAllData.add(oneJson);
@@ -620,7 +622,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 					for (int i = 0; i < jysjArray.length(); i++) {
 						JSONObject oneJson = (JSONObject)jysjArray.get(i);
 						if(i==0){
-							jysj = oneJson.getString("key");
+							//jysj = oneJson.getString("key");
 						}
 						jysjlist.add(oneJson.getString("value"));
 						jysjlistAllData.add(oneJson);

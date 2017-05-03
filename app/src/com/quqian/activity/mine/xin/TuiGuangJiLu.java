@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -110,7 +111,7 @@ public class TuiGuangJiLu extends BaseActivity implements OnClickListener,
 		mListView.setAdapter(mAdapter1);
 
 		// diao接口
-		loadHttp("1");
+		loadHttp("");
 	}
 
 	@Override
@@ -138,20 +139,31 @@ public class TuiGuangJiLu extends BaseActivity implements OnClickListener,
 			anim_right_out();
 			break;
 		case R.id.tui_cunguanzhuangtai:
-			// 交易类型选择
-			dialog = new AlertDialog.Builder(TuiGuangJiLu.this)
-					.setSingleChoiceItems(strItems, 0,
-							new DialogInterface.OnClickListener() {
-
-								@Override
-								public void onClick(DialogInterface arg0,
-										int arg1) {
-									// TODO Auto-generated method stub
-									dialog.cancel();
-									// 调接口，查询相应的数据
-								}
-							}).create();
-			dialog.show();
+			 
+//			// 交易类型选择
+//			dialog = new AlertDialog.Builder(TuiGuangJiLu.this)
+//					.setSingleChoiceItems(strItems, 0,
+//							new DialogInterface.OnClickListener() {
+//
+//								@Override
+//								public void onClick(DialogInterface arg0,
+//										int arg1) {
+//									// TODO Auto-generated method stub
+//									dialog.cancel();
+//									// 调接口，查询相应的数据
+//									
+//									String tay = "";
+//									if(arg1==1){
+//										tay = "";
+//									}else if(arg1==2){
+//										tay = "";
+//									} 
+//									curPage = 1;
+//									loadHttp(tay);
+//									
+//								}
+//							}).create();
+//			dialog.show();
 			break;
 		default:
 			break;
@@ -200,10 +212,16 @@ public class TuiGuangJiLu extends BaseActivity implements OnClickListener,
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			holder.tv3.setText("2017-01-10 19:30:02");
-			holder.tv2.setText("10000000");
-			holder.tv1.setText("充值成功");
-
+			JSONObject json = (JSONObject) allList1.get(position);
+			try {
+				holder.tv1.setText(json.getString("sjh"));
+				holder.tv2.setText(json.getString("zcsj"));
+				holder.tv3.setText(json.getString("cgzt"));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+ 
 			return convertView;
 		}
 
@@ -245,10 +263,10 @@ public class TuiGuangJiLu extends BaseActivity implements OnClickListener,
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 		// 请求的参数如下
-		map.put("status", status);// 0精选理财，1是存管理财，
+		map.put("status", status);// 
 		map.put("page", curPage + "");// 当前页码
 
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(11,
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(112,
 				map, TuiGuangJiLu.this, mHandler);
 		RequestPool.execute(thread);
 
@@ -326,6 +344,20 @@ public class TuiGuangJiLu extends BaseActivity implements OnClickListener,
 
 		json = (JSONObject) jsonObj;
 
+		list = new ArrayList<Object>();
+		try {
+			JSONArray jsonArray = (JSONArray) json.getJSONObject("rvalue")
+					.getJSONArray("items");
+			for (int i = 0; i < jsonArray.length(); i++) {
+				JSONObject noejson = jsonArray.getJSONObject(i);
+				list.add(noejson);// 加入list中
+			}
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		Bundle b = new Bundle();
 		b.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) list);
 		// b.putParcelable("json", (Parcelable) json);

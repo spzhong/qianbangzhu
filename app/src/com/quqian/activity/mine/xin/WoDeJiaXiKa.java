@@ -169,7 +169,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 			curPage = 1;
 			mListView.setAdapter(mAdapter1);
 			// mAdapter1.notifyDataSetChanged();
-			loadHttp("0");
+			loadHttp("WSY");
 			break;
 		case R.id.wdjxk_rb2:
 			// 已使用
@@ -182,7 +182,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 			curPage = 1;
 			mListView.setAdapter(mAdapter2);
 			// mAdapter2.notifyDataSetChanged();
-			loadHttp("1");
+			loadHttp("YSY");
 			break;
 		case R.id.wdjxk_rb3:
 			// 已过期
@@ -195,7 +195,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 			curPage = 1;
 			mListView.setAdapter(mAdapter3);
 			// mAdapter2.notifyDataSetChanged();
-			loadHttp("2");
+			loadHttp("YGQ");
 			break;
 		default:
 			break;
@@ -249,10 +249,10 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-
+ 
 			JSONObject json = (JSONObject) allList1.get(position);
 			try {
-				holder.tv1.setText(json.getString("jxhhm"));
+				holder.tv1.setText(json.getString("jxkhm"));
 				holder.tv2.setText(json.getString("mz"));
 				holder.tv3.setText(json.getString("lqsj") + "至"
 						+ json.getString("dqsj"));
@@ -324,7 +324,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 
 			JSONObject json = (JSONObject) allList2.get(position);
 			try {
-				holder.tv1.setText(json.getString("jxhhm"));
+				holder.tv1.setText(json.getString("jxkhm"));
 				holder.tv2.setText(json.getString("mz"));
 				holder.tv3.setText(json.getString("sysj"));
 				holder.wdjxk_tv1.setText("使用事件");
@@ -395,7 +395,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 
 			JSONObject json = (JSONObject) allList3.get(position);
 			try {
-				holder.tv1.setText(json.getString("jxhhm"));
+				holder.tv1.setText(json.getString("jxkhm"));
 				holder.tv2.setText(json.getString("mz"));
 				holder.tv3.setText(json.getString("dqsj"));
 				holder.wdjxk_tv1.setText("过期时间");
@@ -570,7 +570,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 
 		list = new ArrayList<Object>();
 		try {
-			JSONArray jsonArray = (JSONArray) json.getJSONArray("rvalue");
+			JSONArray jsonArray = (JSONArray) json.getJSONObject("rvalue").getJSONArray("items");
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject noejson = jsonArray.getJSONObject(i);
 				list.add(noejson);// 加入list中
