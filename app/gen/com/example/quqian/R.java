@@ -292,18 +292,19 @@ public final class R {
         public static final int xx_gonggao=0x7f0200c4;
         public static final int xx_more=0x7f0200c5;
         public static final int xx_weidu=0x7f0200c6;
-        public static final int yindao1=0x7f0200c7;
-        public static final int yindao2=0x7f0200c8;
-        public static final int yindao3=0x7f0200c9;
-        public static final int yinhangcunguan=0x7f0200ca;
-        public static final int yinhangcunguananquanmoshi=0x7f0200cb;
-        public static final int yonghuxinxi=0x7f0200cc;
-        public static final int yunyingshuju=0x7f0200cd;
-        public static final int z_mima=0x7f0200ce;
-        public static final int z_shoujihao=0x7f0200cf;
-        public static final int z_shoujiyanzhengma=0x7f0200d0;
-        public static final int z_yanzhengma=0x7f0200d1;
-        public static final int zhucerenshu=0x7f0200d2;
+        public static final int yijingbangding=0x7f0200c7;
+        public static final int yindao1=0x7f0200c8;
+        public static final int yindao2=0x7f0200c9;
+        public static final int yindao3=0x7f0200ca;
+        public static final int yinhangcunguan=0x7f0200cb;
+        public static final int yinhangcunguananquanmoshi=0x7f0200cc;
+        public static final int yonghuxinxi=0x7f0200cd;
+        public static final int yunyingshuju=0x7f0200ce;
+        public static final int z_mima=0x7f0200cf;
+        public static final int z_shoujihao=0x7f0200d0;
+        public static final int z_shoujiyanzhengma=0x7f0200d1;
+        public static final int z_yanzhengma=0x7f0200d2;
+        public static final int zhucerenshu=0x7f0200d3;
     }
     public static final class id {
         public static final int action_settings=0x7f0b031f;

@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -261,7 +262,13 @@ public class AnQuanXinXiActivity extends BaseActivity implements
 
 	// 清除登录账户，仅仅是登录人的登录状态，
 	private void clearLogin() {
-		CommonUtil.clearByKey(AnQuanXinXiActivity.this, "loginState", "", "");
+		Tool.writeData(AnQuanXinXiActivity.this, "loginState", "zhanghu", "");
+		Tool.writeData(AnQuanXinXiActivity.this, "cooke", "cookieValue", "");
+		Intent intent3 = new Intent(this, MainActivity.class);
+		StaticVariable.put(StaticVariable.sv_toIndex, "1");
+		startActivity(intent3);
+		finish();
+		anim_right_out();
 	}
 
 	private Dialog dialog = null;

@@ -268,7 +268,7 @@
                 android:layout_height="wrap_content"
                 android:background="#fff"
                 android:orientation="horizontal"
-                android:visibility="visible" >
+                android:visibility="gone" >
 
                 <ImageView
                     android:id="@+id/index_meiyong_imageview1"

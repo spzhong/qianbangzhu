@@ -111,7 +111,7 @@ public class TuiGuangJiLu extends BaseActivity implements OnClickListener,
 		mListView.setAdapter(mAdapter1);
 
 		// diao接口
-		loadHttp("");
+		loadHttp("0");
 	}
 
 	@Override

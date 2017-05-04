@@ -368,7 +368,6 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 			
 			String path = API.HTTP_WEB + imageList.get(position).substring(4);
 			imageView.setImageUrl(path,0, 0);
-			 
 			
 			imageView.setOnClickListener(new View.OnClickListener() {
 

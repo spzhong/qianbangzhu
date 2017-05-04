@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:text="23456.00元"
+                android:text=""
                 android:textColor="@color/main_text_blue"
                 android:textSize="@dimen/sp_24px" >
             </TextView>
@@ -110,7 +110,7 @@
             android:gravity="center_vertical"
             android:paddingBottom="15dp"
             android:paddingLeft="30dp"
-            android:text="银行卡尾号：3075"
+            android:text="银行卡尾号："
             android:textColor="@color/main_invert_text_b"
             android:textSize="@dimen/sp_24px" >
         </TextView>
@@ -156,7 +156,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:paddingTop="5dp"
-                    android:text="温馨提示"
+                    android:text="1.签约充值无需输入卡号及验证码。"
                     android:textColor="@color/text_tips"
                     android:textSize="@dimen/sp_24px" >
                 </TextView>
@@ -168,7 +168,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:paddingTop="5dp"
-                    android:text="温馨提示"
+                    android:text="2.请注意您的银行卡充值限制，以免造成不便，具体银行卡限额"
                     android:textColor="@color/text_tips"
                     android:textSize="@dimen/sp_24px" >
                 </TextView>
@@ -206,7 +206,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:paddingTop="5dp"
-                    android:text="温馨提示"
+                    android:text="3.禁止洗钱、虚假交易等行为，一经发现并确认，将终止该账户的使用。"
                     android:textColor="@color/text_tips"
                     android:textSize="@dimen/sp_24px" >
                 </TextView>
@@ -218,7 +218,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:paddingTop="5dp"
-                    android:text="温馨提示"
+                    android:text="4.如果充值金额没有及时到账，请联系客服，400-8535-666"
                     android:textColor="@color/text_tips"
                     android:textSize="@dimen/sp_24px" >
                 </TextView>

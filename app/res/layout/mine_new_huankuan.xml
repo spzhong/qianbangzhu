@@ -46,7 +46,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_weight="1"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_invert_text_b"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -82,7 +82,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_weight="1"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_invert_text_b"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -118,7 +118,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_weight="1"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_invert_text_b"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -149,7 +149,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_weight="1"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_invert_text_b"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -186,7 +186,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_weight="1"
                     android:paddingRight="15dp"
-                    android:text="1,123,132.75元"
+                    android:text=""
                     android:textColor="@color/main_text_blue"
                     android:textSize="@dimen/sp_26px" >
                 </TextView>
@@ -227,7 +227,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:text="1,123,132.75元"
+                        android:text=""
                         android:textColor="@color/main_invert_text_b"
                         android:textSize="@dimen/sp_26px" >
                     </TextView>

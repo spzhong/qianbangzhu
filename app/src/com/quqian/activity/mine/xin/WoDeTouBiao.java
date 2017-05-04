@@ -271,6 +271,19 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				holder = (ViewHolder) convertView.getTag();
 			}
 			
+			
+			
+//			holder.touzijine
+//			holder.yuqinianhua
+//			holder.daishoubenxi
+//			holder.biaodeleixing
+//			holder.jiekuanbiaoti
+//			holder.shengyuqishu
+//			holder.kaishijixishijian
+//			holder.xiayigehuankuanri
+//			holder.huankuanzhuangtai
+			
+			
 			holder.layoutbtn.setTag(position);
 			if (currentItem == position) {
 				holder.layout.setVisibility(View.VISIBLE);
@@ -417,6 +430,17 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
+			
+			
+			
+//			holder.touzijine
+//			holder.yuqinianhua
+//			holder.qixian
+//			holder.biaodeleixing
+//			holder.jiekuanbiaoti
+//			holder.shengyuketou
+//			holder.toubiaojindu
+//			holder.toubiaoshijian
 			
 			holder.layoutbtn.setTag(position);
 			if (currentItem == position) {

@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="6236882280000375472"
+                android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >
             </TextView>
@@ -157,7 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="袁*"
+                android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >
             </TextView>
@@ -185,7 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="汕头分行营业部"
+                android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >
             </TextView>
@@ -230,7 +230,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/lingjikaitong"
+                android:background="@drawable/yijingbangding"
                 android:textSize="@dimen/sp_26px" />
 
             <TextView
@@ -278,7 +278,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="招商银行"
+                android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >
             </TextView>
@@ -306,7 +306,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="广东省深圳市"
+                android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >
             </TextView>
@@ -334,7 +334,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="6236882280000375472"
+                android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >
             </TextView>

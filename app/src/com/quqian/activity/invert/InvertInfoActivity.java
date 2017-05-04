@@ -144,9 +144,9 @@ public class InvertInfoActivity extends BaseActivity implements
 		button = (Button) findViewById(R.id.invert_info_btn);
 
 		// 设置进度滑块，进图条，最大为100，
-		showProgress(80);
-		textView5.setText("80%");
-		progress.setProgress(80);
+		//showProgress(80);
+		//textView5.setText("80%");
+		//progress.setProgress(80);
 
 		if (!"".equals(pId)) {
 			// 调接口
@@ -281,16 +281,14 @@ public class InvertInfoActivity extends BaseActivity implements
 				sanInfo_1 = allSan.make_sanInfo_1();
 				sanInfo_2 = allSan.make_sanInfo_2();
 				// 设置信息
-				// doThing();
+				doThing();
 				// 设置立即投标按钮
 				Map<String, String> map = juade();
 				button.setText(map.get("name"));
 				if (map.get("isTouch").equals("yes")) {
 					button.setEnabled(true);
-					// button.setBackgroundColor(R.color.main_blue);
 				} else {
 					button.setEnabled(false);
-					// button.setBackgroundColor(R.color.main_gray);
 				}
 				if (map.get("isQidong").equals("yes")) {
 					// 启动倒计时
@@ -402,6 +400,11 @@ public class InvertInfoActivity extends BaseActivity implements
 		return map;
 	}
 
+	//设置数据
+	private void doThing(){
+		
+	}
+	
 	// private void doThing() {
 	//
 	// layout_mei.setVisibility(View.VISIBLE);
