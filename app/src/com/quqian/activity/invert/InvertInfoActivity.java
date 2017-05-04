@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.R.integer;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -68,19 +69,23 @@ public class InvertInfoActivity extends BaseActivity implements
 	private LinearLayout huakuai = null;
 	private ProgressBar progress = null;
 
+	private LinearLayout tuijian = null;
+
 	// 还款方式，月还本息，投标限额，起息时间，剩余时间，
 	private TextView textViewhuan = null;
+	private TextView textViewhuan_left = null;
 	private TextView textViewyue = null;
+	private TextView textViewyue_left = null;
 	private TextView textViewtou = null;
+	private TextView textViewtou_left = null;
 	private TextView textViewqi = null;
+	private TextView textViewqi_left = null;
 	private TextView textViewsheng = null;
+	private TextView textViewsheng_left = null;
 
 	// 标的详情，审核材料，投标记录，还款记录，债券记录按钮，
-	private LinearLayout layout1 = null;
 	private LinearLayout layout2 = null;
-	private LinearLayout layout3 = null;
-	private LinearLayout layout4 = null;
-	private LinearLayout layout5 = null;
+
 	// 倒计时按钮
 	private Button button = null;
 
@@ -126,27 +131,39 @@ public class InvertInfoActivity extends BaseActivity implements
 		textView6 = (TextView) findViewById(R.id.inert_info_tv6);
 		textViewlogo = (TextView) findViewById(R.id.inert_info_img);
 
+		tuijian = (LinearLayout) findViewById(R.id.tuijian);
+
 		huakuai = (LinearLayout) findViewById(R.id.inert_layout_huakuan);
 		progress = (ProgressBar) findViewById(R.id.inert_info_progress);
 
+		// 1
 		textViewhuan = (TextView) findViewById(R.id.inert_info_tvhuan);
-		textViewyue = (TextView) findViewById(R.id.inert_info_tvyue);
-		textViewtou = (TextView) findViewById(R.id.inert_info_tvtou);
-		textViewqi = (TextView) findViewById(R.id.inert_info_tvqi);
-		textViewsheng = (TextView) findViewById(R.id.inert_info_tvsheng);
+		textViewhuan_left = (TextView) findViewById(R.id.inert_info_tvhuan_left);
 
-		layout1 = (LinearLayout) findViewById(R.id.invert_layout_biao);
-		layout2 = (LinearLayout) findViewById(R.id.invert_layout_shen);
-		layout3 = (LinearLayout) findViewById(R.id.invert_layout_tou);
-		layout4 = (LinearLayout) findViewById(R.id.invert_layout_huan);
-		layout5 = (LinearLayout) findViewById(R.id.invert_layout_zhai);
+		// 2
+		textViewyue = (TextView) findViewById(R.id.inert_info_tvyue);
+		textViewyue_left = (TextView) findViewById(R.id.inert_info_tvyue_left);
+
+		// 3
+		textViewtou = (TextView) findViewById(R.id.inert_info_tvtou);
+		textViewtou_left = (TextView) findViewById(R.id.inert_info_tvtou_left);
+
+		// 4-忽略
+		textViewqi = (TextView) findViewById(R.id.inert_info_tvqi);
+		textViewqi_left = (TextView) findViewById(R.id.inert_info_tvqi_left);
+
+		// 5
+		textViewsheng = (TextView) findViewById(R.id.inert_info_tvsheng);
+		textViewsheng_left = (TextView) findViewById(R.id.inert_info_tvsheng_left);
+
+		layout2 = (LinearLayout) findViewById(R.id.sanbiaoinfo_layout2);
 
 		button = (Button) findViewById(R.id.invert_info_btn);
 
 		// 设置进度滑块，进图条，最大为100，
-		//showProgress(80);
-		//textView5.setText("80%");
-		//progress.setProgress(80);
+		// showProgress(80);
+		// textView5.setText("80%");
+		// progress.setProgress(80);
 
 		if (!"".equals(pId)) {
 			// 调接口
@@ -159,12 +176,12 @@ public class InvertInfoActivity extends BaseActivity implements
 		// TODO Auto-generated method stub
 		super.initViewListener();
 		titleBarBack.setOnClickListener(this);
-
-		layout1.setOnClickListener(this);
-		layout2.setOnClickListener(this);
-		layout3.setOnClickListener(this);
-		layout4.setOnClickListener(this);
-		layout5.setOnClickListener(this);
+		//
+		// layout1.setOnClickListener(this);
+		// layout2.setOnClickListener(this);
+		// layout3.setOnClickListener(this);
+		// layout4.setOnClickListener(this);
+		// layout5.setOnClickListener(this);
 
 		button.setOnClickListener(this);
 
@@ -200,7 +217,7 @@ public class InvertInfoActivity extends BaseActivity implements
 			break;
 		// 立即投标
 		case R.id.invert_info_btn:
-			//进行跳转到投标的页面
+			// 进行跳转到投标的页面
 			UserMode user = Tool.getUser(InvertInfoActivity.this);
 			if (user == null) {
 				startActivity(new Intent(InvertInfoActivity.this,
@@ -216,42 +233,11 @@ public class InvertInfoActivity extends BaseActivity implements
 				bundle.putString("jiangli", allSan.getJlll());// 奖励利率
 				bundle.putString("jiekuan", allSan.getJkfs());// 借款方式
 				bundle.putString("huankuanfangshi", allSan.getHkfs());// 还款方式
-				bundle.putString("bdtype", allSan.getBdtype());//标的类型
+				bundle.putString("bdtype", allSan.getBdtype());// 标的类型
 				intent.putExtras(bundle);
 				startActivity(intent);
 			}
-			//执行跳转
-			anim_right_in();
-			break;
-		// 跳转到web页面，标的详情
-		case R.id.invert_layout_biao:
-
-			Intent intent = new Intent(InvertInfoActivity.this,
-					MyWebViewActivity.class);
-			//intent.putExtra("title", urlTitle.get(position));
-			//intent.putExtra("url", urlList.get(position));
-			startActivity(intent);
-			anim_right_in();
-			 
-			break;
-		// 审核材料
-		case R.id.invert_layout_shen:
-
-			anim_right_in();
-			break;
-		// 投标记录
-		case R.id.invert_layout_tou:
-
-			anim_right_in();
-			break;
-		// 还款记录
-		case R.id.invert_layout_huan:
-
-			anim_right_in();
-			break;
-		// 债券记录
-		case R.id.invert_layout_zhai:
-
+			// 执行跳转
 			anim_right_in();
 			break;
 		default:
@@ -380,7 +366,6 @@ public class InvertInfoActivity extends BaseActivity implements
 	}
 
 	// 备注－－标的倒计时是否显示，且是否可以点击进入
-	// 备注－－标的倒计时是否显示，且是否可以点击进入
 	public Map<String, String> juade() {
 		Map<String, String> map = new HashMap<String, String>();
 		if (allSan.getZt().equals("预售中")) {
@@ -400,11 +385,80 @@ public class InvertInfoActivity extends BaseActivity implements
 		return map;
 	}
 
-	//设置数据
-	private void doThing(){
-		
+	// 设置数据
+	private void doThing() {
+		if (allSan.getBdtype().endsWith("1")) {// 存管
+			textViewlogo.setVisibility(View.VISIBLE);
+		}
+		textView1.setText(allSan.getNll() + "%");
+		textView2.setText(allSan.show_my_list_one());
+		textView3.setText(allSan.getJkqx());
+		textView4.setText(allSan.getSyje());// 剩余可投
+		textView5.setText(allSan.getTbjd() + "%");// 进度
+		//progress.setProgress(Integer.valueOf(allSan.getTbjd()));// 进度条
+		if (allSan.getTjf().length()==0) {
+			tuijian.setVisibility(View.GONE);
+		} else {
+			textView6.setText(allSan.getTjf() + " 推荐");// 公司推荐
+		}
+		// 开始加载信息列表
+		textViewhuan.setText(sanInfo_1.get(0).get("right"));
+		textViewhuan_left.setText(sanInfo_1.get(0).get("left"));
+
+		textViewyue.setText(sanInfo_1.get(1).get("right"));
+		textViewyue_left.setText(sanInfo_1.get(1).get("left"));
+
+		textViewtou.setText(sanInfo_1.get(2).get("right"));
+		textViewtou_left.setText(sanInfo_1.get(2).get("left"));
+
+		textViewqi.setText(sanInfo_1.get(3).get("right"));
+		textViewqi_left.setText(sanInfo_1.get(3).get("left"));
+
+		textViewsheng.setText(sanInfo_1.get(4).get("right"));
+		textViewsheng_left.setText(sanInfo_1.get(4).get("left"));
+
+		// 开始加载跳转区域
+		WindowManager m = getWindowManager();
+		Display d = m.getDefaultDisplay();
+		for (int i = 0; i < sanInfo_2.size(); i++) {
+			LinearLayout layoutH = new LinearLayout(InvertInfoActivity.this);
+			layoutH.setOrientation(LinearLayout.HORIZONTAL);
+			TextView textView1 = new TextView(InvertInfoActivity.this);
+			textView1.setText("	"+sanInfo_2.get(i).get("left"));
+			textView1.setWidth(d.getWidth() / 3);
+			textView1.setHeight(TimeUtil.dip2px(InvertInfoActivity.this, 40));
+			textView1.setGravity(Gravity.CENTER_VERTICAL);
+			textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+
+			final String str1 = sanInfo_2.get(i).get("left");
+			final String str2 = sanInfo_2.get(i).get("right");
+
+			layoutH.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent(InvertInfoActivity.this,
+							MyWebViewActivity.class);
+					intent.putExtra("title", str1);
+					intent.putExtra("url", str2 + "&" + Tool.timechuo());
+					startActivity(intent);
+				}
+			});
+			layoutH.addView(textView1);
+			layout2.addView(layoutH);
+
+			View line = new View(InvertInfoActivity.this);
+			line.setBackgroundColor(getResources().getColor(
+					R.color.main_line_gray));
+
+			if (i < sanInfo_2.size() - 1) {
+				layout2.addView(line, new LayoutParams(
+						LayoutParams.MATCH_PARENT, 1));
+			}
+		}
+
 	}
-	
+
 	// private void doThing() {
 	//
 	// layout_mei.setVisibility(View.VISIBLE);

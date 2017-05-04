@@ -50,7 +50,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:text="10.0%"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="@dimen/sp_60px" />
 
@@ -72,7 +72,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_toRightOf="@+id/linearLayout1"
                         android:background="@drawable/invert_cunguantubiao"
-                        android:visibility="visible" />
+                        android:visibility="gone" />
                 </RelativeLayout>
 
                 <LinearLayout
@@ -97,7 +97,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:text="100.00万"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="@dimen/sp_28px" />
 
@@ -126,7 +126,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:text="1个月"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="@dimen/sp_28px" />
 
@@ -155,7 +155,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:text="100000.00元"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="@dimen/sp_26px" />
 
@@ -186,7 +186,7 @@
                     android:gravity="center"
                     android:paddingBottom="10dp"
                     android:paddingTop="10dp"
-                    android:text="100%"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="@dimen/sp_24px"
                     android:visibility="visible" />
@@ -199,10 +199,11 @@
                 android:layout_height="5dp"
                 android:background="#ffebcc"
                 android:max="100"
-                android:progress="80"
+                android:progress="0"
                 android:progressDrawable="@drawable/progressbarnew" />
 
             <LinearLayout
+                android:id="@+id/tuijian"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -228,7 +229,7 @@
                     android:layout_gravity="center_vertical"
                     android:gravity="center"
                     android:paddingLeft="10dp"
-                    android:text="东莞市广信商业保理有限公司 推荐"
+                    android:text=""
                     android:textColor="@color/main_invert_text"
                     android:textSize="@dimen/sp_24px" />
             </LinearLayout>
@@ -247,6 +248,7 @@
                 android:paddingTop="20dp" >
 
                 <TextView
+                    android:id="@+id/inert_info_tvhuan_left"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -258,7 +260,7 @@
                     android:id="@+id/inert_info_tvhuan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="到期一次性付清"
+                    android:text=""
                     android:textColor="@color/main_invert_text_b"
                     android:textSize="@dimen/sp_26px" />
             </LinearLayout>
@@ -270,6 +272,7 @@
                 android:paddingTop="15dp" >
 
                 <TextView
+                    android:id="@+id/inert_info_tvyue_left"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -281,7 +284,7 @@
                     android:id="@+id/inert_info_tvyue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100000.00元"
+                    android:text=""
                     android:textColor="@color/main_invert_text_b"
                     android:textSize="@dimen/sp_26px" />
             </LinearLayout>
@@ -293,6 +296,7 @@
                 android:paddingTop="15dp" >
 
                 <TextView
+                    android:id="@+id/inert_info_tvtou_left"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -304,7 +308,7 @@
                     android:id="@+id/inert_info_tvtou"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="不限"
+                    android:text=""
                     android:textColor="@color/main_invert_text_b"
                     android:textSize="@dimen/sp_26px" />
             </LinearLayout>
@@ -316,6 +320,7 @@
                 android:paddingTop="15dp" >
 
                 <TextView
+                    android:id="@+id/inert_info_tvqi_left"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -327,7 +332,7 @@
                     android:id="@+id/inert_info_tvqi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="满标后当日计息（天标）"
+                    android:text="满标后当日计息"
                     android:textColor="@color/main_invert_text_b"
                     android:textSize="@dimen/sp_26px" />
             </LinearLayout>
@@ -340,6 +345,7 @@
                 android:paddingTop="15dp" >
 
                 <TextView
+                    android:id="@+id/inert_info_tvsheng_left"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -351,156 +357,21 @@
                     android:id="@+id/inert_info_tvsheng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="05天01时24分"
+                    android:text=""
                     android:textColor="@color/main_invert_text_b"
                     android:textSize="@dimen/sp_26px" />
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="7dp"
-                android:background="#EBF3F6"
-                android:visibility="visible" />
-
+ 
+          
+            
             <LinearLayout
-                android:id="@+id/invert_layout_biao"
+                android:id="@+id/sanbiaoinfo_layout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/invert_biaodexiangqing" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:text="标的详情"
-                    android:textColor="@color/main_invert_text_b"
-                    android:textSize="@dimen/sp_26px" />
+                android:background="@color/white"
+                android:orientation="vertical" >
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/main_line_gray"
-                android:visibility="visible" />
-
-            <LinearLayout
-                android:id="@+id/invert_layout_shen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/invert_shenhecailiao" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:text="审核材料"
-                    android:textColor="@color/main_invert_text_b"
-                    android:textSize="@dimen/sp_26px" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/main_line_gray"
-                android:visibility="visible" />
-
-            <LinearLayout
-                android:id="@+id/invert_layout_tou"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/invert_toubiaojilu" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:text="投标记录"
-                    android:textColor="@color/main_invert_text_b"
-                    android:textSize="@dimen/sp_26px" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/main_line_gray"
-                android:visibility="visible" />
-
-            <LinearLayout
-                android:id="@+id/invert_layout_huan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/invert_huankuanjilu" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:text="还款记录"
-                    android:textColor="@color/main_invert_text_b"
-                    android:textSize="@dimen/sp_26px" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/main_line_gray"
-                android:visibility="visible" />
-
-            <LinearLayout
-                android:id="@+id/invert_layout_zhai"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/invert_zhaiquanxinxi" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:text="债券记录"
-                    android:textColor="@color/main_invert_text_b"
-                    android:textSize="@dimen/sp_26px" />
-            </LinearLayout>
-
+ 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="7dp"

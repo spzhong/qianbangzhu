@@ -44,6 +44,50 @@ public class SanProject implements Serializable {
 		this.jkqx = jkqx;
 	}
 
+	public String getDjs() {
+		return djs;
+	}
+
+	public void setDjs(String djs) {
+		this.djs = djs;
+	}
+
+	public String getDhbj() {
+		return dhbj;
+	}
+
+	public void setDhbj(String dhbj) {
+		this.dhbj = dhbj;
+	}
+
+	public String getHkr() {
+		return hkr;
+	}
+
+	public void setHkr(String hkr) {
+		this.hkr = hkr;
+	}
+
+	public String getYhbj() {
+		return yhbj;
+	}
+
+	public void setYhbj(String yhbj) {
+		this.yhbj = yhbj;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public String getHsje() {
+		return hsje;
+	}
+
+	public void setHsje(String hsje) {
+		this.hsje = hsje;
+	}
+
 	//
 	// @Override
 	// public Object clone() throws CloneNotSupportedException {
@@ -68,10 +112,8 @@ public class SanProject implements Serializable {
 	public String hkqx = "0"; // 还款期限
 	public String jkfs = ""; // 0是按月，1是按天，2是秒标
 	public String zt = ""; // 状态，（敬请期待、立即投标、已满标、还款中、已流标、已结清）
-	public String tjf = "";//推荐
-	public String bdtype = "";//标的类型，存管标：1普通标：0
-	
-	
+	public String tjf = "";// 推荐
+	public String bdtype = "";// 标的类型，存管标：1普通标：0
 
 	public String syje = "";// 剩余金额 （特殊处理，不要显示在详情列表中）
 
@@ -87,7 +129,7 @@ public class SanProject implements Serializable {
 	public String tbxe = ""; // 投标限额
 	public String fbsj = ""; // 发布时间
 	public String cbqx = ""; // 筹标期限（天）
-	public String mbsj = "";//满标用时
+	public String mbsj = "";// 满标用时
 	// public String zt; //状态，预售中、申请中、已满标、还款中、已结清
 	public String bdxq_url = ""; // 标的详情url
 	public String xgzl_url = ""; // 相关资料url
@@ -97,6 +139,17 @@ public class SanProject implements Serializable {
 	public String zqxx_url = ""; // 债权信息url
 	public String zrjl_url = ""; // 转让记录url
 	public String jlmd_url = ""; // 奖励名单url
+
+	/*
+	 * 新增属性（标的详情）5月4号
+	 */
+	public String djs = "";// 倒计时
+	public String dhbj = "";// 待还本金
+	public String hkr = "";// 下一个还款日
+	public String yhbj = "";// 已还本金
+	/*
+	 * 新增属性（标的详情）5月4号
+	 */
 
 	// 我的散标－－列表
 	public String dsbx = ""; // 待收本息
@@ -113,6 +166,8 @@ public class SanProject implements Serializable {
 	public String zczryk = ""; // 转出转让盈亏
 	public String jlje = ""; // 奖励金额
 	public String jkqx = ""; // 借款期限 【新增字段】
+	public String hsje = ""; // 回收金额 【新增字段】
+	
 
 	public SanProject() {
 		// TODO Auto-generated constructor stub
@@ -128,7 +183,7 @@ public class SanProject implements Serializable {
 			this.jllx = json.getString("jllx");
 			if (!type.equals("zhaiquan")) {
 				if (type.equals("liebiao")) {
-					this.rzjd = json.getInt("rzjd")+"";
+					this.rzjd = json.getInt("rzjd") + "";
 				} else {
 					this.tbjd = json.getString("tbjd");
 				}
@@ -138,7 +193,7 @@ public class SanProject implements Serializable {
 			this.jlll = json.getString("jlll");
 			this.hkqx = json.getString("hkqx");
 			this.zt = json.getString("zt");
-			this.tjf =  json.getString("tjf");
+			this.tjf = json.getString("tjf");
 			this.bdtype = json.getString("bdtype");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -175,6 +230,10 @@ public class SanProject implements Serializable {
 			this.zrjl_url = json.getString("zrjl_url");
 			this.jlmd_url = json.getString("jlmd_url");
 			this.bdtype = json.getString("bdtype");
+			this.djs = json.getString("djs");
+			this.dhbj = json.getString("dhbj");
+			this.hkr = json.getString("hkr");
+			this.yhbj = json.getString("yhbj");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -193,11 +252,10 @@ public class SanProject implements Serializable {
 			this.bdbt = json.getString("bdbt");
 			this.dsbx = json.getString("dsbx");
 			this.nll = json.getString("nll");
-			
-		 
+
 			this.hkqx = json.getString("hkqx");
 			this.rzjd = json.getString("rzjd");
-			
+
 			this.jllx = json.getString("jllx");
 			this.jlll = json.getString("jlll");
 			this.pId = json.getString("id");
@@ -209,7 +267,7 @@ public class SanProject implements Serializable {
 			this.syqs = json.getString("syqs");
 			this.jkfs = json.getString("jkfs");
 			this.xyhkr = json.getString("xyhkr");
-			//this.jd = json.getString("jd");
+			// this.jd = json.getString("jd");
 			this.tzje = json.getString("tzje");
 			this.yzje = json.getString("yzje");
 			this.jqrq = json.getString("jqrq");
@@ -217,9 +275,11 @@ public class SanProject implements Serializable {
 			this.zcsjsr = json.getString("zcsjsr");
 			this.zcjyfy = json.getString("zcjyfy");
 			this.zczryk = json.getString("zczryk");
-			
+
 			this.tzje = json.getString("tzje");
 			this.bdtype = json.getString("bdtype");
+			
+			this.hsje = json.getString("hsje");
 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -291,55 +351,55 @@ public class SanProject implements Serializable {
 
 	// 标的总额
 	public String show_list_one() {
-		if(this.getBdze().equals("")){
+		if (this.getBdze().equals("")) {
 			this.bdze = "0.00";
 		}
-	    //标的总额
-	    if (Double.valueOf(this.getBdze()) < 10000) {
-	    	return this.getBdze()+"元";
-	    }else if (Double.valueOf(this.getBdze()) > 1000000000){
-	        double zonge = Double.valueOf(this.getBdze())/1000000000;
-	        return zonge+""+"亿";
-	    }else{
-	        double zonge = Double.valueOf(this.getBdze())/10000;
-	        return  zonge+""+ "万";
-	    }
+		// 标的总额
+		if (Double.valueOf(this.getBdze()) < 10000) {
+			return this.getBdze() + "元";
+		} else if (Double.valueOf(this.getBdze()) > 1000000000) {
+			double zonge = Double.valueOf(this.getBdze()) / 1000000000;
+			return zonge + "" + "亿";
+		} else {
+			double zonge = Double.valueOf(this.getBdze()) / 10000;
+			return zonge + "" + "万";
+		}
 	}
 
 	// 我的投标
 	public String show_my_list_one() {
-		 
-		if(this.getTzje().equals("")){
+
+		if (this.getTzje().equals("")) {
 			this.tzje = "0.00";
 		}
-		//投资额
-	    if (Double.valueOf(this.getTzje()) < 10000) {
-	    	return exchangeStringToHtml_list(this.getTzje(), "元", "借款金额");
-	    }else if (Double.valueOf(this.getTzje()) > 1000000000){
-	        double zonge = Double.valueOf(this.getTzje())/1000000000;
-	        return exchangeStringToHtml_list(zonge+"", "亿", "借款金额");
-	    }else{
-	        double zonge = Double.valueOf(this.getTzje())/10000;
-	        return exchangeStringToHtml_list(zonge+"", "万", "借款金额");
-	    }
+		// 投资额
+		if (Double.valueOf(this.getTzje()) < 10000) {
+			return this.getTzje()+"元";
+		} else if (Double.valueOf(this.getTzje()) > 1000000000) {
+			double zonge = Double.valueOf(this.getTzje()) / 1000000000;
+			return zonge + "亿";
+		} else {
+			double zonge = Double.valueOf(this.getTzje()) / 10000;
+			return zonge + "万";
+		}
 	}
 
 	// 年利率
 	public String show_list_two() {
-		if(this.getJlll().equals("-1")){
-			return this.nll+"%";
+		if (this.getJlll().equals("-1")) {
+			return this.nll + "%";
 		}
-		return this.nll+"%";
+		return this.nll + "%";
 	}
 
 	// 还款期限
 	public String show_list_three() {
 		if (this.jkfs.equals("0"))
-			return this.hkqx+"个月";
+			return this.hkqx + "个月";
 		if (this.jkfs.equals("1"))
-			return  this.hkqx+"天";
+			return this.hkqx + "天";
 		if (this.jkfs.equals("2"))
-			return this.hkqx+"秒标";
+			return this.hkqx + "秒标";
 		return "";
 	}
 
@@ -352,10 +412,10 @@ public class SanProject implements Serializable {
 			strBuf.append("<div align='center'>");
 			strBuf.append(String.format(
 					"<font size=15 face='HelveticaNeue'>%s</font>", string));
-			
-			if(danwei.length()==0){
-				
-			}else{
+
+			if (danwei.length() == 0) {
+
+			} else {
 				strBuf.append(String
 						.format("<font size=12 color='#F2B008' face='HelveticaNeue'>+%s</font>",
 								danwei));
@@ -380,40 +440,72 @@ public class SanProject implements Serializable {
 
 	// 散标详情
 	public ArrayList<Map<String, String>> make_sanInfo_1() {
+
 		ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		make_map(list, this.bdze, "标的总额",
-				exchangeStringToHtml_info_2(this.bdze, "元"));
-		make_map(list, this.nll, "年利率", exchangeStringToHtml_info_1(this.nll
-				+ "％"));
-		// 还款期限
-		if (this.jkfs.equals("0"))
-			make_map(list, this.hkqx, "还款期限",
-					exchangeStringToHtml_info_2(this.hkqx, "个月"));
-		if (this.jkfs.equals("1"))
-			make_map(list, this.hkqx, "还款期限",
-					exchangeStringToHtml_info_2(this.hkqx, "天"));
-		if (this.jkfs.equals("2"))
-			make_map(list, this.hkqx, "还款期限",
-					exchangeStringToHtml_info_2(this.hkqx, "秒标"));
-		make_map(list, this.bzfs, "保障方式",
-				exchangeStringToHtml_info_1(this.bzfs));
-		make_map(list, this.tqhkfl, "提前还款费率",
-				exchangeStringToHtml_info_1(this.tqhkfl));
-		make_map(list, this.hkfs, "还款方式",
-				exchangeStringToHtml_info_1(this.hkfs));
-		make_map(list, this.yhbx, "月还本息",
-				exchangeStringToHtml_info_2(this.yhbx,"元"));
-		make_map(list, this.tbjd, "投标进度", this.tbjd);
-		make_map(list, this.jlll, "投标奖励",
-				exchangeStringToHtml_info_2(this.jlll+"%", this.jllx));
-		make_map(list, this.grtbdcs, "累计投标次数",
-				exchangeStringToHtml_info_2(this.grtbdcs, "次"));
-		make_map(list, this.rzsysj, "剩余时间",
-				exchangeStringToHtml_info_1(this.rzsysj));
-		make_map(list, this.mbsj, "满标用时",
-				exchangeStringToHtml_info_1(this.mbsj));
-		make_map(list, this.tbxe, "投标限额",
-				exchangeStringToHtml_info_1(this.tbxe));
+		if (this.getZt().endsWith("还款中")) {
+			make_map(list, this.hkfs, "还款方式", this.hkfs);
+			make_map(list, this.syqs, "剩余期数", this.syqs).put("yanse", "y");
+			make_map(list, this.dhbj, "待还本金总额", this.dhbj).put("yanse", "y");
+			;
+			String xiayigehuikuanri = "";
+			if (this.getXyhkr().length() > 11) {
+				xiayigehuikuanri = this.getXyhkr().substring(0, 11);
+			} else {
+				xiayigehuikuanri = this.getXyhkr();
+			}
+			make_map(list, xiayigehuikuanri, "下个还款日", xiayigehuikuanri).put(
+					"yanse", "y");
+			;
+			make_map(list, this.mbsj, "满标用时", this.mbsj);
+
+		} else if (this.getZt().endsWith("已经结清")) {
+			make_map(list, this.hkfs, "还款方式", this.hkfs);
+			make_map(list, this.syqs, "剩余期数", this.syqs).put("yanse", "y");
+			make_map(list, this.yhbj, "已还本金总额", this.yhbj).put("yanse", "y");
+			make_map(list, this.jqrq, "结清日期", this.jqrq).put("yanse", "y");
+			make_map(list, this.mbsj, "满标用时", this.mbsj);
+
+		} else {
+			make_map(list, this.hkfs, "还款方式", this.hkfs);
+			make_map(list, this.yhbx, "月还本息", this.yhbx + "元");
+			make_map(list, this.tbxe, "投标限额", this.tbxe);
+			make_map(list, "满标后当日计息", "起息时间", "满标后当日计息");
+			make_map(list, this.rzsysj, "剩余时间", this.rzsysj);
+		}
+
+//		make_map(list, this.bdze, "标的总额",
+//				exchangeStringToHtml_info_2(this.bdze, "元"));
+//		make_map(list, this.nll, "年利率", exchangeStringToHtml_info_1(this.nll
+//				+ "％"));
+//		// 还款期限
+//		if (this.jkfs.equals("0"))
+//			make_map(list, this.hkqx, "还款期限",
+//					exchangeStringToHtml_info_2(this.hkqx, "个月"));
+//		if (this.jkfs.equals("1"))
+//			make_map(list, this.hkqx, "还款期限",
+//					exchangeStringToHtml_info_2(this.hkqx, "天"));
+//		if (this.jkfs.equals("2"))
+//			make_map(list, this.hkqx, "还款期限",
+//					exchangeStringToHtml_info_2(this.hkqx, "秒标"));
+//		make_map(list, this.bzfs, "保障方式",
+//				exchangeStringToHtml_info_1(this.bzfs));
+//		make_map(list, this.tqhkfl, "提前还款费率",
+//				exchangeStringToHtml_info_1(this.tqhkfl));
+//		make_map(list, this.hkfs, "还款方式",
+//				exchangeStringToHtml_info_1(this.hkfs));
+//		make_map(list, this.yhbx, "月还本息",
+//				exchangeStringToHtml_info_2(this.yhbx, "元"));
+//		make_map(list, this.tbjd, "投标进度", this.tbjd);
+//		make_map(list, this.jlll, "投标奖励",
+//				exchangeStringToHtml_info_2(this.jlll + "%", this.jllx));
+//		make_map(list, this.grtbdcs, "累计投标次数",
+//				exchangeStringToHtml_info_2(this.grtbdcs, "次"));
+//		make_map(list, this.rzsysj, "剩余时间",
+//				exchangeStringToHtml_info_1(this.rzsysj));
+//		make_map(list, this.mbsj, "满标用时",
+//				exchangeStringToHtml_info_1(this.mbsj));
+//		make_map(list, this.tbxe, "投标限额",
+//				exchangeStringToHtml_info_1(this.tbxe));
 		return list;
 	}
 
@@ -432,17 +524,18 @@ public class SanProject implements Serializable {
 	}
 
 	// 创建map
-	private void make_map(List<Map<String, String>> list, String value,
-			String left, String right) {
+	private Map<String, String> make_map(List<Map<String, String>> list,
+			String value, String left, String right) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("left", left);
 		if (value == null) {
-			return;
+			return map;
 		}
 		if (!value.equals("-1")) {
 			map.put("right", right);
 			list.add(map);
 		}
+		return map;
 	}
 
 	private String exchangeStringToHtml_info_1(String name) {
@@ -469,14 +562,14 @@ public class SanProject implements Serializable {
 	// 我的散标投标--列表(回收中)
 	public Map<String, String> my_san_huishouzhong_list() {
 		String xiayigehuikuanri = "";
-		if(this.getXyhkr().length() > 11){
+		if (this.getXyhkr().length() > 11) {
 			xiayigehuikuanri = this.getXyhkr().substring(0, 11);
-		}else{
+		} else {
 			xiayigehuikuanri = this.getXyhkr();
 		}
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("1", my_exchage_html(this.dsbx, "待收本息"));
-		
+
 		StringBuffer strBuf = new StringBuffer();
 		strBuf.append("<div align='center'>");
 		strBuf.append(String.format(
@@ -485,8 +578,8 @@ public class SanProject implements Serializable {
 				.format("<br/><font size =10 face='HelveticaNeue' color='#8B8B8B'>%s</font>",
 						"年利率"));
 		strBuf.append("</div>");
-		 
-		map.put("2",  new String(strBuf));
+
+		map.put("2", new String(strBuf));
 		map.put("3", my_exchage_html(this.syqs, "剩余期数"));
 		map.put("4", my_exchage_html(xiayigehuikuanri, "下个还款日"));
 
@@ -882,5 +975,5 @@ public class SanProject implements Serializable {
 	public void setTbjd(String tbjd) {
 		this.tbjd = tbjd;
 	}
-	
+
 }
