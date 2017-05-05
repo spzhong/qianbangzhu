@@ -6,6 +6,7 @@
     android:orientation="vertical" >
 
     <RelativeLayout
+        android:id="@+id/xx_item_btn1"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:paddingLeft="15dp" >
@@ -25,7 +26,7 @@
                 android:background="@drawable/xx_gonggao" />
 
             <TextView
-                android:id="@+id/xx_item1_biaoti"
+                android:id="@+id/xx_item1_biaoti1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -37,7 +38,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/xx_item_btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

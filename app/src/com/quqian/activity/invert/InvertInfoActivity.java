@@ -160,7 +160,7 @@ public class InvertInfoActivity extends BaseActivity implements
 
 		button = (Button) findViewById(R.id.invert_info_btn);
 
-		// 设置进度滑块，进图条，最大为100，
+		// // 设置进度滑块，进图条，最大为100，
 		// showProgress(80);
 		// textView5.setText("80%");
 		// progress.setProgress(80);
@@ -394,9 +394,13 @@ public class InvertInfoActivity extends BaseActivity implements
 		textView2.setText(allSan.show_my_list_one());
 		textView3.setText(allSan.getJkqx());
 		textView4.setText(allSan.getSyje());// 剩余可投
-		textView5.setText(allSan.getTbjd() + "%");// 进度
-		//progress.setProgress(Integer.valueOf(allSan.getTbjd()));// 进度条
-		if (allSan.getTjf().length()==0) {
+
+		String sp = ("").equals(allSan.getTbjd())?"0":allSan.getTbjd();
+		showProgress(Integer.valueOf(sp));
+		textView5.setText(sp+"%");
+		progress.setProgress(Integer.valueOf(sp));
+		// progress.setProgress(Integer.valueOf(allSan.getTbjd()));// 进度条
+		if (allSan.getTjf().length() == 0) {
 			tuijian.setVisibility(View.GONE);
 		} else {
 			textView6.setText(allSan.getTjf() + " 推荐");// 公司推荐
@@ -424,7 +428,7 @@ public class InvertInfoActivity extends BaseActivity implements
 			LinearLayout layoutH = new LinearLayout(InvertInfoActivity.this);
 			layoutH.setOrientation(LinearLayout.HORIZONTAL);
 			TextView textView1 = new TextView(InvertInfoActivity.this);
-			textView1.setText("	"+sanInfo_2.get(i).get("left"));
+			textView1.setText("	" + sanInfo_2.get(i).get("left"));
 			textView1.setWidth(d.getWidth() / 3);
 			textView1.setHeight(TimeUtil.dip2px(InvertInfoActivity.this, 40));
 			textView1.setGravity(Gravity.CENTER_VERTICAL);

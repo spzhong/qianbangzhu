@@ -128,10 +128,11 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 		mAdapter1 = new MyAdapter1();
 		mAdapter2 = new MyAdapter2();
 
+		mListView.setXListViewListener(this);
 		mListView.setAdapter(mAdapter1);
 
 		// diao接口
-		loadHttp("WSY");
+		loadHttp0();
 	}
 
 	@Override
@@ -164,7 +165,7 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 
 			break;
 		case R.id.xxtz_rb1:
-			// 未使用
+			// 站内信
 			tvrb1.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
@@ -173,10 +174,10 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 			curPage = 1;
 			mListView.setAdapter(mAdapter1);
 			// mAdapter1.notifyDataSetChanged();
-			loadHttp("0");
+			loadHttp0();
 			break;
 		case R.id.xxtz_rb2:
-			// 已使用
+			// 平台公告
 			tvrb1.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb2.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
@@ -185,14 +186,14 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 			curPage = 1;
 			mListView.setAdapter(mAdapter2);
 			// mAdapter2.notifyDataSetChanged();
-			loadHttp("1");
+			loadHttp1();
 			break;
 		default:
 			break;
 		}
 	}
 
-	/** 适配器 ---精选理财 **/
+	/** 适配器 ---站内信 **/
 	class MyAdapter1 extends BaseAdapter {
 
 		private int currentItem = -1;
@@ -243,7 +244,7 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 
 			final Notification notify = (Notification) allList1.get(position);
 			holder.biaoti.setText(notify.getTitle());
-			holder.neirong.setText(notify.getSendTime());
+			holder.neirong.setText(notify.getContent());
 			if ("0".equals(notify.getStatus())) {
 				holder.tubiao.setVisibility(View.VISIBLE);
 			} else if ("1".equals(notify.getStatus())) {
@@ -272,12 +273,12 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 					}
 					// 通知adapter数据改变需要重新加载
 					notifyDataSetChanged(); // 必须有的一步
-					
-					//判读是否未读，
-					holder.tubiao.setVisibility(View.GONE);
-					if ("0".equals(notify.getStatus())) {
-						loadHttp2(notify.gettId());
-					}
+
+					// 判读是否未读，
+					// holder.tubiao.setVisibility(View.GONE);
+					// if ("0".equals(notify.getStatus())) {
+					// loadHttp2(notify.gettId());
+					// }
 				}
 			});
 
@@ -294,7 +295,7 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 		}
 	}
 
-	/** 适配器 ---平台公告**/
+	/** 适配器 ---平台公告 **/
 	class MyAdapter2 extends BaseAdapter {
 
 		@Override
@@ -326,9 +327,9 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 						R.layout.mine_new_xiaoxitongzhi1_item, null);
 
 				holder.tv1 = (TextView) convertView
-						.findViewById(R.id.xx_item1_biaoti);
+						.findViewById(R.id.xx_item1_biaoti1);
 
-				holder.btn = (LinearLayout) convertView
+				holder.btn = (RelativeLayout) convertView
 						.findViewById(R.id.xx_item_btn1);
 
 				convertView.setTag(holder);
@@ -336,41 +337,32 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			JSONObject json = (JSONObject) allList2.get(position);
-			try {
-				//设置标题
-				holder.tv1.setText(json.getString("jxhhm"));
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			final Notification notify = (Notification) allList2.get(position);
+				holder.tv1.setText(notify.getGgtitle());
 			holder.btn.setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					//跳转到详情信息页面
-					Notification notify = (Notification) allList2
-							.get(position - 1);
+					// 跳转到详情信息页面
 					Intent intent = new Intent(XiaoXiTongZhi.this,
 							TongZhiInfoActivity.class);
-					intent.putExtra("title", notify.getTitle());
-					intent.putExtra("time", notify.getSendTime());
-					intent.putExtra("content", notify.getContent());
-					intent.putExtra("pid", notify.gettId());
+					intent.putExtra("title", notify.getGgcontent());
+					intent.putExtra("time", notify.getGgcredittiem());
+					intent.putExtra("content", notify.getGgcontent());
 					startActivity(intent);
-					finish();
+					// finish();
 					anim_right_in();
 				}
 			});
-			
+
 			return convertView;
 		}
 
 		final class ViewHolder {
 
 			TextView tv1;
-			LinearLayout btn;
+			RelativeLayout btn;
 		}
 	}
 
@@ -386,9 +378,9 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		curPage = 1;
 		if (rb1.isChecked()) {
-			loadHttp("0");
+			loadHttp0();
 		} else if (rb2.isChecked()) {
-			loadHttp("1");
+			loadHttp1();
 		}
 	}
 
@@ -397,17 +389,17 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		if (rb1.isChecked()) {
 			curPage++;
-			loadHttp("WSY");
+			loadHttp0();
 		} else if (rb2.isChecked()) {
 			curPage++;
-			loadHttp("YSY");
+			loadHttp1();
 		}
 
 	}
 
-	private void loadHttp(String status) {
+	private void loadHttp0() {
 
-		// juhua.show();
+		juhua.show();
 
 		// TODO Auto-generated method stub
 		Map<String, String> map = new HashMap<String, String>();
@@ -418,6 +410,24 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 		map.put("page", curPage + "");
 
 		RequestThreadAbstract thread = RequestFactory.createRequestThread(29,
+				map, XiaoXiTongZhi.this, mHandler);
+		RequestPool.execute(thread);
+
+	}
+
+	private void loadHttp1() {
+
+		juhua.show();
+
+		// TODO Auto-generated method stub
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
+		map.put("isLock", "0");// 0不锁，1是锁
+		// 请求的参数如下
+
+		map.put("page", curPage + "");
+
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(371,
 				map, XiaoXiTongZhi.this, mHandler);
 		RequestPool.execute(thread);
 
@@ -448,7 +458,22 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 				allList1.addAll(list);
 				mAdapter1.notifyDataSetChanged();
 
-				Notification notify = (Notification) allList1.get(0);
+				//Notification notify = (Notification) allList1.get(0);
+				onStopLoad();
+				getPage();
+
+				break;
+			case 3:
+
+				// json = (JSONObject) msg.getData().get("json");
+				List<Object> list1 = (List<Object>) msg.getData().get("list");
+				if (curPage == 1) {
+					allList2.clear();
+				}
+				allList2.addAll(list1);
+				mAdapter2.notifyDataSetChanged();
+
+				//Notification notify1 = (Notification) allList2.get(0);
 				onStopLoad();
 				getPage();
 
@@ -494,15 +519,20 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 
 		json = (JSONObject) jsonObj;
-
 		Bundle b = new Bundle();
 		b.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) list);
 		// b.putParcelable("json", (Parcelable) json);
-		Message msg1 = new Message();
-		msg1.setData(b);
-		msg1.what = 1;
-		mHandler.sendMessage(msg1);
-
+		if (rb1.isChecked()) {
+			Message msg1 = new Message();
+			msg1.setData(b);
+			msg1.what = 1;
+			mHandler.sendMessage(msg1);
+		} else if (rb2.isChecked()) {
+			Message msg3 = new Message();
+			msg3.setData(b);
+			msg3.what = 3;
+			mHandler.sendMessage(msg3);
+		}
 	}
 
 	@Override

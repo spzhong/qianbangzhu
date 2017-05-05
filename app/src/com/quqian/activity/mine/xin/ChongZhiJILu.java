@@ -120,6 +120,7 @@ public class ChongZhiJILu extends BaseActivity implements OnClickListener,
 		mAdapter1 = new MyAdapter1();
 		mAdapter2 = new MyAdapter2();
 
+		mListView.setXListViewListener(this);
 		mListView.setAdapter(mAdapter1);
 
 		// diao接口

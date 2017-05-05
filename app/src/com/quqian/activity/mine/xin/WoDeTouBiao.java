@@ -126,6 +126,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 		mAdapter2 = new MyAdapter2();
 		mAdapter3 = new MyAdapter3();
 
+		mListView.setXListViewListener(this);
 		mListView.setAdapter(mAdapter1);
 
 		// diao接口

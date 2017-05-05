@@ -181,13 +181,13 @@ public class SanProject implements Serializable {
 			this.bdbt = json.getString("bdbt");
 			this.jkfs = json.getString("jkfs");
 			this.jllx = json.getString("jllx");
-			if (!type.equals("zhaiquan")) {
-				if (type.equals("liebiao")) {
-					this.rzjd = json.getInt("rzjd") + "";
-				} else {
-					this.tbjd = json.getString("tbjd");
-				}
-			}
+			//if (!type.equals("zhaiquan")) {
+			//	if (type.equals("liebiao")) {
+			//		this.rzjd = json.getInt("rzjd") + "";
+			//	} else {
+			this.tbjd = json.getString("tbjd");
+			//	}
+			//}
 			this.bdze = json.getString("bdze");
 			this.nll = json.getString("nll");
 			this.jlll = json.getString("jlll");

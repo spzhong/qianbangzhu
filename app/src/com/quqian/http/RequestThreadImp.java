@@ -358,6 +358,18 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				handler.sendMessage(msg);
 			}
 			break;
+		case 371:
+			String errMsg371 = API.API_USRXXGLLIST_371(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg371.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg371);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
 		case 33:
 			String errMsg33 = API.API_BANNERBOX_33(map, context);
 			// 说明有错误的信息－－网络没有发送

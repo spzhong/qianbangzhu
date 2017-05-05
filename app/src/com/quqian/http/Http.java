@@ -176,7 +176,7 @@ public class Http {
 
 		BufferedReader in = null;
 		HttpClient client = null;
-		
+
 		try {
 
 			client = new DefaultHttpClient();
@@ -232,13 +232,13 @@ public class Http {
 				makeDataToModel(resultStr, activity, map);
 
 				client.getConnectionManager().shutdown();
-				  
+
 			} else {
 
 				client.getConnectionManager().shutdown();
-				
+
 				if (activity != null) {
-					 activity.httpResponse_fail(map, "请求服务器端异常", null);
+					activity.httpResponse_fail(map, "请求服务器端异常", null);
 				}
 				Log.i(TAG_STRING, "求服务器端异常");
 			}
@@ -247,7 +247,7 @@ public class Http {
 			System.out.println("ConnectTimeoutException");
 			cte.printStackTrace();
 			client.getConnectionManager().shutdown();
-			
+
 			if (activity != null) {
 				activity.httpResponse_fail(map, "链接网络超时，请稍后再试", null);
 			}
@@ -262,11 +262,11 @@ public class Http {
 
 		} catch (Exception e) {
 			// Do something about exceptions
-			
+
 			client.getConnectionManager().shutdown();
-			
+
 			if (activity != null) {
-				 activity.httpResponse_fail(map, "请检查网络是否链接异常", null);
+				activity.httpResponse_fail(map, "请检查网络是否链接异常", null);
 			}
 			Log.i(TAG_STRING, "请检查网络是否链接异常");
 		}
@@ -316,7 +316,7 @@ public class Http {
 			Tool.writeData((Context) activity, "cooke", "cookieValue",
 					cookieValue);
 
-			//错误的判断
+			// 错误的判断
 			if (code > 0) {
 				activity.httpResponse_fail(map, msg, resultJson);
 				return;
@@ -333,8 +333,13 @@ public class Http {
 					|| urlNum == "37" || urlNum == "38" || urlNum == "39"
 					|| urlNum == "40" || urlNum == "41" || urlNum == "42"
 					|| urlNum == "43" || urlNum == "44" || urlNum == "45"
-					|| urlNum == "46" || urlNum == "47" || urlNum == "101" 
-					|| urlNum == "100" || urlNum == "102"|| urlNum == "103" ||  urlNum == "104" || urlNum == "105"|| urlNum == "106" || urlNum == "107"|| urlNum == "108"|| urlNum == "109"|| urlNum == "110"|| urlNum == "111" || urlNum == "112" || urlNum == "113" || urlNum == "114" || urlNum == "115" || urlNum == "116") {
+					|| urlNum == "46" || urlNum == "47" || urlNum == "101"
+					|| urlNum == "100" || urlNum == "102" || urlNum == "103"
+					|| urlNum == "104" || urlNum == "105" || urlNum == "106"
+					|| urlNum == "107" || urlNum == "108" || urlNum == "109"
+					|| urlNum == "110" || urlNum == "111" || urlNum == "112"
+					|| urlNum == "113" || urlNum == "114" || urlNum == "115"
+					|| urlNum == "116") {
 				// 成功的操作
 				if (code == 0) {
 					// 填充数据
@@ -347,12 +352,15 @@ public class Http {
 				// 特殊判断处理
 				if (resultObj == null) {
 					// 填充数据
-					
-					if(urlNum=="8" || urlNum=="11" || urlNum=="16" || urlNum=="27" || urlNum=="28" || urlNum=="29" || urlNum=="48"){
+
+					if (urlNum == "8" || urlNum == "11" || urlNum == "16"
+							|| urlNum == "27" || urlNum == "28"
+							|| urlNum == "29" || urlNum == "371"
+							|| urlNum == "48") {
 						activity.httpResponse_fail(map, "暂无数据", resultJson);
-					}else{
+					} else {
 						activity.httpResponse_fail(map, msg, resultJson);
-					} 
+					}
 					return;
 				}
 				// 组装数据

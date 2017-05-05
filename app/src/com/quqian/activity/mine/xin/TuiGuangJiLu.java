@@ -108,6 +108,7 @@ public class TuiGuangJiLu extends BaseActivity implements OnClickListener,
 		mListView = (XListView) findViewById(R.id.tui_listview);
 		mListView.setPullLoadEnable(false);
 		mAdapter1 = new MyAdapter1();
+		mListView.setXListViewListener(this);
 		mListView.setAdapter(mAdapter1);
 
 		// diao接口

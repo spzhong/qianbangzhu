@@ -50,10 +50,8 @@ public class TongZhiInfoActivity extends BaseActivity implements
 	private String str2 = null;
 	private String str3 = null;
 
-	private String pId = null;
-
 	private Dialog juhua = null;
-	
+
 	@Override
 	protected int layoutId() {
 		// TODO Auto-generated method stub
@@ -68,7 +66,6 @@ public class TongZhiInfoActivity extends BaseActivity implements
 			str1 = getIntent().getStringExtra("title");
 			str2 = getIntent().getStringExtra("time");
 			str3 = getIntent().getStringExtra("content");
-			pId = getIntent().getStringExtra("pid");
 		}
 
 	}
@@ -79,7 +76,7 @@ public class TongZhiInfoActivity extends BaseActivity implements
 		super.initView();
 		setTitle("消息详情");
 		showBack();
-		
+
 		juhua = new ProcessDialogUtil(TongZhiInfoActivity.this);
 
 		title = (TextView) findViewById(R.id.main_mine_tongzhiinfo_title);
@@ -90,7 +87,7 @@ public class TongZhiInfoActivity extends BaseActivity implements
 		time.setText(str2);
 		content.setText(str3);
 
-		//loadHttp2(pId);
+		// loadHttp2(pId);
 
 	}
 
@@ -106,9 +103,9 @@ public class TongZhiInfoActivity extends BaseActivity implements
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
 		case R.id.title_bar_back:
-			startActivity(new Intent(TongZhiInfoActivity.this,
-					TongZhiActivity.class));
-			//TongZhiInfoActivity.this.finish();
+			// startActivity(new Intent(TongZhiInfoActivity.this,
+			// TongZhiActivity.class));
+			TongZhiInfoActivity.this.finish();
 			anim_right_out();
 			break;
 
@@ -124,7 +121,7 @@ public class TongZhiInfoActivity extends BaseActivity implements
 		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
 			startActivity(new Intent(TongZhiInfoActivity.this,
 					TongZhiActivity.class));
-			//finish();
+			// finish();
 			anim_right_out();
 		}
 		return false;
@@ -155,7 +152,7 @@ public class TongZhiInfoActivity extends BaseActivity implements
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
-			
+
 			juhua.cancel();
 
 			switch (msg.what) {
@@ -165,7 +162,7 @@ public class TongZhiInfoActivity extends BaseActivity implements
 
 				break;
 			case 1:
-				
+
 				break;
 			case 2:
 				Toast.makeText(TongZhiInfoActivity.this,

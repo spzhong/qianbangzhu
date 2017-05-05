@@ -52,12 +52,13 @@ public class API {
 	public static String USRZHAxgtxmmyz = HTTP + "user/zhaq/xgtxmmYz.htm"; // 24,修改提现密码验证
 	// 用户交易记录FF
 	public static String USRJYJLPARAMETERS = HTTP + "user/jyjl/parameters.htm";// 25,获取交易类型和交易时间
-	public static String USRJYJLLIST = HTTP + "user/jyjl/list.htm"; // 26,获取交易列表 
+	public static String USRJYJLLIST = HTTP + "user/jyjl/list.htm"; // 26,获取交易列表
 	// 其它
 	public static String USRSBTZLIST = HTTP + "user/sbtz/list.htm"; // 27,我的散标投资列表
 	public static String USRSLCTYLIST = HTTP + "user/lcty/list.htm"; // 28,我的理财体验列表
 	public static String USRXXGLLIST = HTTP + "user/xxgl/list.htm"; // 29,我的消息列表
 	public static String USRXXGLINFO = HTTP + "user/xxgl/list.htm"; // 37,我的消息详情
+	public static String USRXXGLgonggao = HTTP + "user/xxgl/ptgg.htm"; // 371,我的消息详情
 
 	// public static String USRXXGLLIST = HTTP +"user/xxgl/list.htm"; //30,充值
 	// public static String USRXXGLLIST =HTTP + "user/xxgl/list.htm"; //31,提款
@@ -118,17 +119,15 @@ public class API {
 	// 账户总览
 	public static String jyjlzhzl = HTTP + "user/jyjl/zhzl.htm";// 110
 
-	//我的加息卡
+	// 我的加息卡
 	public static String wodejiaxiak = HTTP + "user/jxk/list.htm";// 111
-	
-	//我的推广记录
+
+	// 我的推广记录
 	public static String tggllist = HTTP + "user/tggl/list.htm";// 112
-	
-	//邀请好友接口
+
+	// 邀请好友接口
 	public static String tgglwytg = HTTP + "user/tggl/wytg.htm";// 113
-	
-	
-	
+
 	public API() {
 		// TODO Auto-generated constructor stub
 	}
@@ -595,12 +594,12 @@ public class API {
 			HttpResponseInterface activity) {
 		String jylx = map.get("jylx");
 		String jysj = map.get("jysj");
-//		if (jylx.length() == 0) {
-//			return "请上传交易类型";
-//		}
-//		if (jysj.length() == 0) {
-//			return "请上传交易时间";
-//		}
+		// if (jylx.length() == 0) {
+		// return "请上传交易类型";
+		// }
+		// if (jysj.length() == 0) {
+		// return "请上传交易时间";
+		// }
 		// 添加URL
 		map.put("url", USRJYJLLIST);
 		map.put("urlNum", "26");
@@ -664,6 +663,21 @@ public class API {
 		// 添加URL
 		map.put("url", USRXXGLINFO);
 		map.put("urlNum", "37");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 我的消息列表
+	public static String API_USRXXGLLIST_371(Map<String, String> map,
+			HttpResponseInterface activity) {
+		String page = map.get("page");
+		if (page.length() == 0) {
+			return "请上传页面";
+		}
+		// 添加URL
+		map.put("url", USRXXGLgonggao);
+		map.put("urlNum", "371");
 		// 发起网络请求
 		Http.POST(map, activity);
 		return "";
@@ -982,7 +996,7 @@ public class API {
 		return "";
 	}
 
-	//我的加息卡列表
+	// 我的加息卡列表
 	public static String wodejiaxiak_111(Map<String, String> map,
 			HttpResponseInterface activity) {
 		// 添加URL
@@ -992,8 +1006,8 @@ public class API {
 		Http.POST(map, activity);
 		return "";
 	}
-	
-	//我的推广记录
+
+	// 我的推广记录
 	public static String tggllist_112(Map<String, String> map,
 			HttpResponseInterface activity) {
 		// 添加URL
@@ -1003,8 +1017,8 @@ public class API {
 		Http.POST(map, activity);
 		return "";
 	}
-	
-	//邀请好友接口
+
+	// 邀请好友接口
 	public static String tgglwytg_113(Map<String, String> map,
 			HttpResponseInterface activity) {
 		// 添加URL
@@ -1014,7 +1028,5 @@ public class API {
 		Http.POST(map, activity);
 		return "";
 	}
-	
-	
-	
+
 }

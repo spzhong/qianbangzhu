@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ActionBar.LayoutParams;
@@ -30,12 +33,17 @@ import android.widget.Toast;
 
 import com.example.quqian.R;
 import com.quqian.activity.index.IndexActivity;
+import com.quqian.activity.mine.xin.CGWebView;
+import com.quqian.activity.mine.xin.KaiTongCunGuanActivity;
 import com.quqian.base.BaseActivity;
+import com.quqian.been.UserMode;
 import com.quqian.http.RequestFactory;
 import com.quqian.http.RequestPool;
 import com.quqian.http.RequestThreadAbstract;
+import com.quqian.lockq.GestureEditActivity;
 import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.ProcessDialogUtil;
+import com.quqian.util.StaticVariable;
 import com.quqian.util.Tool;
 
 public class ZhuCeChengGongActivity extends BaseActivity implements
@@ -108,13 +116,34 @@ public class ZhuCeChengGongActivity extends BaseActivity implements
 		case R.id.r_kaitong:
 			// 完成  应该记录登录状态，跳转到相应的界面，或者应该判断是否需要设置手势密码，进入首页
 			
-			//loadHttp_chongzhimima();
+			http();
 	
 			break;
 		case R.id.r_bukaitong:
 			// 完成  应该记录登录状态，跳转到相应的界面，或者应该判断是否需要设置手势密码，进入首页
+			UserMode user = Tool.getUser(ZhuCeChengGongActivity.this);
+			if (user.getShoushiCode().equals("")
+					|| user.getShoushiCode() == null) {
+				// 设置手势
+				Intent intent3 = new Intent(ZhuCeChengGongActivity.this,
+						GestureEditActivity.class);
+				// StaticVariable.put(StaticVariable.sv_toIndex, "1");
+
+				// type 0是设置手势密码，1是确认手势密码，3是验证手势密码
+				// fromActivity 上层来源
+				intent3.putExtra("type", "0");
+				intent3.putExtra("from", "login");
+
+				startActivity(intent3);
+
+			} else {
+				// 进入注册成功的页面
+				Intent intent3 = new Intent(ZhuCeChengGongActivity.this,
+						MainActivity.class);
+				StaticVariable.put(StaticVariable.sv_toIndex, "1");
+				startActivity(intent3);
+			}
 			
-			//loadHttp_chongzhimima();
 	
 			break;
 
@@ -122,11 +151,22 @@ public class ZhuCeChengGongActivity extends BaseActivity implements
 			break;
 		}
 	}
+	
+	private void http() {
+		juhua.show();
 
-	
-	
-	
-	
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
+		map.put("isLock", "0");// 0不锁，1是锁
+
+		map.put("realname", name.getText().toString());// 类型
+		map.put("idcard", cardID.getText().toString());// 手机号
+
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(106,
+				map, ZhuCeChengGongActivity.this, mHandler);
+		RequestPool.execute(thread);
+	}
+
 	// 登录--网络请求
 	private Handler mHandler = new Handler() {
 
@@ -134,23 +174,33 @@ public class ZhuCeChengGongActivity extends BaseActivity implements
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
-			
 			juhua.cancel();
-			
 			switch (msg.what) {
 			case 0:
-
 				Toast.makeText(ZhuCeChengGongActivity.this,
-						msg.getData().getString("errMsg"), 1000).show();
+						msg.getData().getString("msg"), 1000).show();
 
 				break;
-			case 1:
-				// 下一步
-				
-				Toast.makeText(ZhuCeChengGongActivity.this,"成功", 1000).show();
-				anim_right_out();
-				finish();
-				
+			case 3:// 跳转到开通存管账户的【H5页面】
+				// 存管投资--进入h5页面
+				Bundle bundle = msg.getData();
+				String sendUrl = (String) bundle.get("sendUrl");
+				String sendStr = (String) bundle.get("sendStr");
+				String transCode = (String) bundle.get("transCode");
+				if (sendUrl == null) {
+					Toast.makeText(ZhuCeChengGongActivity.this, "操作失败", 1000)
+							.show();
+					return;
+				}
+				Intent intent2 = new Intent(ZhuCeChengGongActivity.this,
+						CGWebView.class);
+				intent2.putExtra("sendUrl", sendUrl);
+				intent2.putExtra("sendStr", sendStr);
+				intent2.putExtra("transCode", transCode);
+				intent2.putExtra("title", "开通存管账户");
+				startActivity(intent2);
+				anim_right_in();
+
 				break;
 			case 2:
 				Toast.makeText(ZhuCeChengGongActivity.this,
@@ -163,35 +213,26 @@ public class ZhuCeChengGongActivity extends BaseActivity implements
 		}
 	};
 
-	// 找回密码
-	private void loadHttp_chongzhimima() {
-		// TODO Auto-generated method stub
-	
-		juhua.show();
-		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
-		map.put("isLock", "0");// 0不锁，1是锁
-		map.put("type", "1");//类型
-		map.put("phone",shoujihao);//手机号
-		try {
-			map.put("key",Tool.getMD5(shoujihao+"1" + key));
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}// key
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(34,
-				map, ZhuCeChengGongActivity.this, mHandler);
-		RequestPool.execute(thread);
-	}
-
- 
 	@Override
 	public void httpResponse_success(Map<String, String> map,
 			List<Object> list, Object jsonObj) {
 		// TODO Auto-generated method stub
+		JSONObject json = (JSONObject) jsonObj;
 		Message msg1 = new Message();
-		msg1.what = 1;
+		msg1.what = 3;
+		Bundle bundle = new Bundle();
+		try {
+			bundle.putString("transCode", json.getJSONObject("rvalue").getJSONObject("sdkParameter")
+					.getString("transCode"));
+			bundle.putString("sendUrl", json.getJSONObject("rvalue").getJSONObject("sdkParameter")
+					.getString("url"));
+			bundle.putString("sendStr", json.getJSONObject("rvalue").getJSONObject("sdkParameter")
+					.getString("requestData"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		msg1.setData(bundle);
 		mHandler.sendMessage(msg1);
 	}
 
@@ -206,6 +247,7 @@ public class ZhuCeChengGongActivity extends BaseActivity implements
 		msg2.setData(bundle);
 		mHandler.sendMessage(msg2);
 	}
+
 
 
 }

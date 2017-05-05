@@ -59,6 +59,8 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 	private ImageView back = null;
 	// 注册按钮
 	private Button register = null;
+	// 立即登录
+	private Button lijidenglu = null;
 
 	private UserMode allUser = null;
 
@@ -91,13 +93,14 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		et_tuijian = (EditText) findViewById(R.id.register_et_tuijianren);
 		huoqu = (Button) findViewById(R.id.register_tv_huoqu);
 		register = (Button) findViewById(R.id.register_register);
+		lijidenglu = (Button) findViewById(R.id.register_lijidenglu);
 
 		yanzhengmaimg = (ImageView) findViewById(R.id.register_iv_yanzhengma);
 		back = (ImageView) findViewById(R.id.zhuce_back);
 
 		yanzhengmaimg.setImageBitmap(Code.getInstance().createBitmap());
 		realCode = Code.getInstance().getCode().toLowerCase();
-		
+
 		xieyi = (TextView) findViewById(R.id.register_xieyi);
 
 	}
@@ -109,6 +112,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		titleBarBack.setOnClickListener(this);
 		huoqu.setOnClickListener(this);
 		register.setOnClickListener(this);
+		lijidenglu.setOnClickListener(this);
 
 		yanzhengmaimg.setOnClickListener(this);
 		back.setOnClickListener(this);
@@ -125,6 +129,10 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 			RegisterActivity.this.finish();
 			anim_right_out();
 			break;
+		case R.id.register_lijidenglu:
+			RegisterActivity.this.finish();
+			anim_right_out();
+			break;
 		case R.id.register_tv_huoqu:
 			// 弹出对话框提示验证码发送到手机号码， -------------有问题
 			if (!"".equals(et_phone) || !"".equals(et_pass)
@@ -137,20 +145,12 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 			// 注册成功直接登录，将 该用户的的信息标记为已登录，finish掉注册页面，加上动画 -----判断checkBox是否勾上
 			// Toast.makeText(RegisterActivity.this, "注册成功", 1000).show();
 			// 获取手机动态码
-			String yanzhengmatext = et_yanzhengma.getText().toString()
-					.toLowerCase();
-			if (yanzhengmatext.equals(realCode)) {
-				// 调接口获取手机动态码
-			} else {
-				Toast.makeText(RegisterActivity.this, "验证码错误",
-						Toast.LENGTH_SHORT).show();
-			}
 			loadHttp_zhuce();
 			break;
 		case R.id.register_xieyi:
 			Intent intent = new Intent(RegisterActivity.this,
 					MyWebViewActivity.class);
-			intent.putExtra("title", "趣钱注册协议");
+			intent.putExtra("title", "钱帮主注册协议");
 			intent.putExtra("url", API.HTTP_WEB + "/term/ZCXY.html");
 			startActivity(intent);
 
@@ -195,6 +195,9 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 
 				break;
 			case 1:
+				// 重置验证码
+				yanzhengmaimg.setImageBitmap(Code.getInstance().createBitmap());
+				realCode = Code.getInstance().getCode().toLowerCase();
 
 				Toast.makeText(RegisterActivity.this, "恭喜您，短信发送成功，请您注意查收。",
 						1000).show();
@@ -206,30 +209,34 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 					// 停止菊花
 				Toast.makeText(RegisterActivity.this, "注册成功!", 1000).show();
 				reviseLoginState();
+				// 跳转到注册成功页面
+				Intent intent3 = new Intent(RegisterActivity.this,
+						ZhuCeChengGongActivity.class);
+				startActivity(intent3);
 
-				UserMode user = Tool.getUser(RegisterActivity.this);
-
-				if (user.getShoushiCode().equals("")
-						|| user.getShoushiCode() == null) {
-					// 设置手势
-					Intent intent3 = new Intent(RegisterActivity.this,
-							GestureEditActivity.class);
-					// StaticVariable.put(StaticVariable.sv_toIndex, "1");
-
-					// type 0是设置手势密码，1是确认手势密码，3是验证手势密码
-					// fromActivity 上层来源
-					intent3.putExtra("type", "0");
-					intent3.putExtra("from", "login");
-
-					startActivity(intent3);
-
-				} else {
-					// 进入首页
-					Intent intent3 = new Intent(RegisterActivity.this,
-							MainActivity.class);
-					StaticVariable.put(StaticVariable.sv_toIndex, "1");
-					startActivity(intent3);
-				}
+				// 之前的逻辑
+				// UserMode user = Tool.getUser(RegisterActivity.this);
+				// if (user.getShoushiCode().equals("")
+				// || user.getShoushiCode() == null) {
+				// // 设置手势
+				// Intent intent3 = new Intent(RegisterActivity.this,
+				// GestureEditActivity.class);
+				// // StaticVariable.put(StaticVariable.sv_toIndex, "1");
+				//
+				// // type 0是设置手势密码，1是确认手势密码，3是验证手势密码
+				// // fromActivity 上层来源
+				// intent3.putExtra("type", "0");
+				// intent3.putExtra("from", "login");
+				//
+				// startActivity(intent3);
+				//
+				// } else {
+				// // 进入注册成功的页面
+				// Intent intent3 = new Intent(RegisterActivity.this,
+				// ZhuCeChengGongActivity.class);
+				// StaticVariable.put(StaticVariable.sv_toIndex, "1");
+				// startActivity(intent3);
+				// }
 
 				// 发送通知
 				Intent intent = new Intent();
@@ -292,20 +299,21 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
-			case 0: {
+			case 0:
 				String text = (String) msg.obj;
 				huoqu.setText(text);
 				huoqu.setTextSize(16);
 				huoqu.setEnabled(false);
-			}
 				break;
-			case 1: {
-				String text = (String) msg.obj;
+			case 1:
+				String text1 = (String) msg.obj;
 				canclTimer();
-				huoqu.setText(text);
+				huoqu.setText(text1);
 				huoqu.setTextSize(10);
 				huoqu.setEnabled(true);
-			}
+				break;
+			case 3:
+
 				break;
 			default:
 				break;
@@ -325,14 +333,15 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 	private void loadHttp_duanxinma() {
 
 		String password = et_pass.getText().toString();
-		String newPassword = et_yanzhengma.getText().toString();
 
 		if (password.length() < 6 || password.length() > 16) {
 			Toast.makeText(RegisterActivity.this, "密码长度为6-16个字符", 1000).show();
 			return;
 		}
-		if (!password.equals(newPassword)) {
-			Toast.makeText(RegisterActivity.this, "你两次输入的密码不一致", 1000).show();
+		String yanzhengmatext = et_yanzhengma.getText().toString()
+				.toLowerCase();
+		if (!yanzhengmatext.equals(realCode)) {
+			Toast.makeText(RegisterActivity.this, "验证码错误", 1000).show();
 			return;
 		}
 
@@ -361,7 +370,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		map.put("isLock", "0");// 0不锁，1是锁
 		map.put("phone", et_phone.getText().toString());// 手机号码
 		map.put("password", et_pass.getText().toString());
-		map.put("newPassword", et_yanzhengma.getText().toString());
+		// map.put("newPassword", et_yanzhengma.getText().toString());
 		map.put("verifyCode", et_dongtaima.getText().toString());
 		map.put("code", et_tuijian.getText().toString());// 服务码
 

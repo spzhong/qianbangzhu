@@ -1008,10 +1008,10 @@ public final class R {
         public static final int xlistview_header_time=0x7f0b0319;
         public static final int xx_bar_back=0x7f0b02d5;
         public static final int xx_bar_menu=0x7f0b02d6;
-        public static final int xx_item1_biaoti=0x7f0b02dd;
+        public static final int xx_item1_biaoti1=0x7f0b02de;
         public static final int xx_item_biaoti=0x7f0b02e0;
         public static final int xx_item_btn=0x7f0b02e1;
-        public static final int xx_item_btn1=0x7f0b02de;
+        public static final int xx_item_btn1=0x7f0b02dd;
         public static final int xx_item_du=0x7f0b02df;
         public static final int xx_item_layout=0x7f0b02e2;
         public static final int xx_item_neirong=0x7f0b02e3;

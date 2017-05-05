@@ -116,7 +116,7 @@ public class TongZhiActivity extends BaseActivity implements OnClickListener,
 					Intent intent = new Intent(TongZhiActivity.this,
 							TongZhiInfoActivity.class);
 					intent.putExtra("title", notify.getTitle());
-					intent.putExtra("time", notify.getSendTime());
+					intent.putExtra("time", notify.getSj());
 					intent.putExtra("content", notify.getContent());
 					intent.putExtra("pid", notify.gettId());
 					startActivity(intent);
@@ -205,7 +205,7 @@ public class TongZhiActivity extends BaseActivity implements OnClickListener,
 			}
 			final Notification notify = (Notification) allList.get(position);
 			holder.tv1.setText(notify.getTitle());
-			holder.tv2.setText(notify.getSendTime());
+			holder.tv2.setText(notify.getSj());
 			if ("0".equals(notify.getStatus())) {
 				holder.iv.setImageDrawable(getResources().getDrawable(
 						R.drawable.xiaoxi1));

@@ -146,6 +146,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 		mAdapter1 = new MyAdapter1();
 		mAdapter2 = new MyAdapter2();
 
+		mListView.setXListViewListener(this);
 		mListView.setAdapter(mAdapter1);
  
 		loadHttp_config();
@@ -496,7 +497,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 				if (msg.getData().get("jytype").equals("1")) {
 
 					List<Object> list = (List<Object>) msg.getData()
-							.get("list");
+							.get("type");
 					if (curPage == 1) {
 						allList1.clear();
 					}
@@ -506,7 +507,7 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 				} else if (msg.getData().get("jytype").equals("0")) {
 
 					List<Object> list = (List<Object>) msg.getData()
-							.get("list");
+							.get("type");
 					if (curPage == 1) {
 						allList2.clear();
 					}
