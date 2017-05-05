@@ -88,6 +88,38 @@ public class SanProject implements Serializable {
 		this.hsje = hsje;
 	}
 
+	public String getTbsj() {
+		return tbsj;
+	}
+
+	public void setTbsj(String tbsj) {
+		this.tbsj = tbsj;
+	}
+
+	public String getJyczurl() {
+		return jyczurl;
+	}
+
+	public void setJyczurl(String jyczurl) {
+		this.jyczurl = jyczurl;
+	}
+
+	public String getXmczurl() {
+		return xmczurl;
+	}
+
+	public void setXmczurl(String xmczurl) {
+		this.xmczurl = xmczurl;
+	}
+
+	public String getHkzt() {
+		return hkzt;
+	}
+
+	public void setHkzt(String hkzt) {
+		this.hkzt = hkzt;
+	}
+
 	//
 	// @Override
 	// public Object clone() throws CloneNotSupportedException {
@@ -116,6 +148,11 @@ public class SanProject implements Serializable {
 	public String bdtype = "";// 标的类型，存管标：1普通标：0
 
 	public String syje = "";// 剩余金额 （特殊处理，不要显示在详情列表中）
+
+	public String tbsj = "";// 投标时间
+	public String jyczurl = "";// 交易存在URL
+	public String xmczurl = "";// 项目存正URL
+	public String hkzt = "";// 还款状态
 
 	// 详情的信息
 	public String xydj = ""; // 信用等级（AA、A、B、C、D、E、HR）
@@ -167,7 +204,6 @@ public class SanProject implements Serializable {
 	public String jlje = ""; // 奖励金额
 	public String jkqx = ""; // 借款期限 【新增字段】
 	public String hsje = ""; // 回收金额 【新增字段】
-	
 
 	public SanProject() {
 		// TODO Auto-generated constructor stub
@@ -181,13 +217,13 @@ public class SanProject implements Serializable {
 			this.bdbt = json.getString("bdbt");
 			this.jkfs = json.getString("jkfs");
 			this.jllx = json.getString("jllx");
-			//if (!type.equals("zhaiquan")) {
-			//	if (type.equals("liebiao")) {
-			//		this.rzjd = json.getInt("rzjd") + "";
-			//	} else {
+			// if (!type.equals("zhaiquan")) {
+			// if (type.equals("liebiao")) {
+			// this.rzjd = json.getInt("rzjd") + "";
+			// } else {
 			this.tbjd = json.getString("tbjd");
-			//	}
-			//}
+			// }
+			// }
 			this.bdze = json.getString("bdze");
 			this.nll = json.getString("nll");
 			this.jlll = json.getString("jlll");
@@ -278,8 +314,12 @@ public class SanProject implements Serializable {
 
 			this.tzje = json.getString("tzje");
 			this.bdtype = json.getString("bdtype");
-			
 			this.hsje = json.getString("hsje");
+
+			this.tbsj = json.getString("tbsj");
+			this.jyczurl = json.getString("jyczurl");
+			this.xmczurl = json.getString("xmczurl");
+			this.hkzt = json.getString("hkzt");
 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -374,7 +414,7 @@ public class SanProject implements Serializable {
 		}
 		// 投资额
 		if (Double.valueOf(this.getTzje()) < 10000) {
-			return this.getTzje()+"元";
+			return this.getTzje() + "元";
 		} else if (Double.valueOf(this.getTzje()) > 1000000000) {
 			double zonge = Double.valueOf(this.getTzje()) / 1000000000;
 			return zonge + "亿";
@@ -386,8 +426,11 @@ public class SanProject implements Serializable {
 
 	// 年利率
 	public String show_list_two() {
-		if (this.getJlll().equals("-1")) {
-			return this.nll + "%";
+		// if (this.getJlll().equals("-1")) {
+		// return this.nll + "%";
+		// }
+		if (this.getJlll().length() > 0) {
+			return this.nll + "%+" + this.getJlll() + "%";
 		}
 		return this.nll + "%";
 	}
@@ -473,39 +516,39 @@ public class SanProject implements Serializable {
 			make_map(list, this.rzsysj, "剩余时间", this.rzsysj);
 		}
 
-//		make_map(list, this.bdze, "标的总额",
-//				exchangeStringToHtml_info_2(this.bdze, "元"));
-//		make_map(list, this.nll, "年利率", exchangeStringToHtml_info_1(this.nll
-//				+ "％"));
-//		// 还款期限
-//		if (this.jkfs.equals("0"))
-//			make_map(list, this.hkqx, "还款期限",
-//					exchangeStringToHtml_info_2(this.hkqx, "个月"));
-//		if (this.jkfs.equals("1"))
-//			make_map(list, this.hkqx, "还款期限",
-//					exchangeStringToHtml_info_2(this.hkqx, "天"));
-//		if (this.jkfs.equals("2"))
-//			make_map(list, this.hkqx, "还款期限",
-//					exchangeStringToHtml_info_2(this.hkqx, "秒标"));
-//		make_map(list, this.bzfs, "保障方式",
-//				exchangeStringToHtml_info_1(this.bzfs));
-//		make_map(list, this.tqhkfl, "提前还款费率",
-//				exchangeStringToHtml_info_1(this.tqhkfl));
-//		make_map(list, this.hkfs, "还款方式",
-//				exchangeStringToHtml_info_1(this.hkfs));
-//		make_map(list, this.yhbx, "月还本息",
-//				exchangeStringToHtml_info_2(this.yhbx, "元"));
-//		make_map(list, this.tbjd, "投标进度", this.tbjd);
-//		make_map(list, this.jlll, "投标奖励",
-//				exchangeStringToHtml_info_2(this.jlll + "%", this.jllx));
-//		make_map(list, this.grtbdcs, "累计投标次数",
-//				exchangeStringToHtml_info_2(this.grtbdcs, "次"));
-//		make_map(list, this.rzsysj, "剩余时间",
-//				exchangeStringToHtml_info_1(this.rzsysj));
-//		make_map(list, this.mbsj, "满标用时",
-//				exchangeStringToHtml_info_1(this.mbsj));
-//		make_map(list, this.tbxe, "投标限额",
-//				exchangeStringToHtml_info_1(this.tbxe));
+		// make_map(list, this.bdze, "标的总额",
+		// exchangeStringToHtml_info_2(this.bdze, "元"));
+		// make_map(list, this.nll, "年利率", exchangeStringToHtml_info_1(this.nll
+		// + "％"));
+		// // 还款期限
+		// if (this.jkfs.equals("0"))
+		// make_map(list, this.hkqx, "还款期限",
+		// exchangeStringToHtml_info_2(this.hkqx, "个月"));
+		// if (this.jkfs.equals("1"))
+		// make_map(list, this.hkqx, "还款期限",
+		// exchangeStringToHtml_info_2(this.hkqx, "天"));
+		// if (this.jkfs.equals("2"))
+		// make_map(list, this.hkqx, "还款期限",
+		// exchangeStringToHtml_info_2(this.hkqx, "秒标"));
+		// make_map(list, this.bzfs, "保障方式",
+		// exchangeStringToHtml_info_1(this.bzfs));
+		// make_map(list, this.tqhkfl, "提前还款费率",
+		// exchangeStringToHtml_info_1(this.tqhkfl));
+		// make_map(list, this.hkfs, "还款方式",
+		// exchangeStringToHtml_info_1(this.hkfs));
+		// make_map(list, this.yhbx, "月还本息",
+		// exchangeStringToHtml_info_2(this.yhbx, "元"));
+		// make_map(list, this.tbjd, "投标进度", this.tbjd);
+		// make_map(list, this.jlll, "投标奖励",
+		// exchangeStringToHtml_info_2(this.jlll + "%", this.jllx));
+		// make_map(list, this.grtbdcs, "累计投标次数",
+		// exchangeStringToHtml_info_2(this.grtbdcs, "次"));
+		// make_map(list, this.rzsysj, "剩余时间",
+		// exchangeStringToHtml_info_1(this.rzsysj));
+		// make_map(list, this.mbsj, "满标用时",
+		// exchangeStringToHtml_info_1(this.mbsj));
+		// make_map(list, this.tbxe, "投标限额",
+		// exchangeStringToHtml_info_1(this.tbxe));
 		return list;
 	}
 

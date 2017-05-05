@@ -269,7 +269,8 @@
                 android:paddingTop="5dp"
                 android:text="查看合同"
                 android:textColor="@color/main_text_blue"
-                android:textSize="@dimen/sp_24px" />
+                android:textSize="@dimen/sp_24px" 
+                android:visibility="gone" />"
 
             <TextView
                 android:id="@+id/wdtb_item3_jiaoyicunzheng"

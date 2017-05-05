@@ -130,7 +130,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 		mListView.setAdapter(mAdapter1);
 
 		// diao接口
-		loadHttp("0");
+		loadHttp("1");
 	}
 
 	@Override
@@ -169,7 +169,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			curPage = 1;
 			mListView.setAdapter(mAdapter1);
 			// mAdapter1.notifyDataSetChanged();
-			loadHttp("0");
+			loadHttp("1");
 			break;
 		case R.id.wdtb_rb2:
 			// 已使用
@@ -182,7 +182,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			curPage = 1;
 			mListView.setAdapter(mAdapter2);
 			// mAdapter2.notifyDataSetChanged();
-			loadHttp("1");
+			loadHttp("2");
 			break;
 		case R.id.wdtb_rb3:
 			// 已过期
@@ -195,7 +195,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			curPage = 1;
 			mListView.setAdapter(mAdapter3);
 			// mAdapter2.notifyDataSetChanged();
-			loadHttp("2");
+			loadHttp("3");
 			break;
 		default:
 			break;
@@ -271,27 +271,31 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-			
-			
-			
-//			holder.touzijine
-//			holder.yuqinianhua
-//			holder.daishoubenxi
-//			holder.biaodeleixing
-//			holder.jiekuanbiaoti
-//			holder.shengyuqishu
-//			holder.kaishijixishijian
-//			holder.xiayigehuankuanri
-//			holder.huankuanzhuangtai
-			
-			
+
+			SanProject san = (SanProject) allList1.get(position);
+
+			// 设置回收中值
+			holder.touzijine.setText(san.show_my_list_one());
+			holder.yuqinianhua.setText(san.show_list_two());
+			holder.daishoubenxi.setText(san.getDsbx()+"+"+san.getJlje());
+			if (san.getBdtype().endsWith("1")) {
+				holder.biaodeleixing.setText("存管标");
+			} else {
+				holder.biaodeleixing.setText("普通标");
+			}
+			holder.jiekuanbiaoti.setText(san.getBdbt());
+			holder.shengyuqishu.setText(san.getSyqs());
+			holder.kaishijixishijian.setText(san.getTbsj());
+			holder.xiayigehuankuanri.setText(san.getXyhkr());
+			holder.huankuanzhuangtai.setText(san.getHkzt());
+
 			holder.layoutbtn.setTag(position);
 			if (currentItem == position) {
 				holder.layout.setVisibility(View.VISIBLE);
 			} else {
 				holder.layout.setVisibility(View.GONE);
 			}
-			
+
 			// 设置显示布局按钮事件
 			holder.layoutbtn.setOnClickListener(new OnClickListener() {
 
@@ -309,7 +313,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				}
 			});
 
-			//查看合同按钮
+			// 查看合同按钮
 			holder.chakanhetong.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -317,8 +321,8 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 					// TODO Auto-generated method stub
 				}
 			});
-			
-			//交易存正
+
+			// 交易存正
 			holder.jiaoyicunzheng.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -326,7 +330,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 					// TODO Auto-generated method stub
 				}
 			});
-			//项目存正
+			// 项目存正
 			holder.xiangmucunzheng.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -334,11 +338,6 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 					// TODO Auto-generated method stub
 				}
 			});
-
-			//设置回收中值
-			holder.touzijine.setText("100000");
-			holder.yuqinianhua.setText("10000000");
-			holder.daishoubenxi.setText("充值成功");
 
 			return convertView;
 		}
@@ -370,7 +369,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 	class MyAdapter2 extends BaseAdapter {
 
 		private int currentItem = -1;
-		
+
 		@Override
 		public int getCount() {
 			return allList2 != null ? allList2.size() : 0;
@@ -431,25 +430,30 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-			
-			
-			
-//			holder.touzijine
-//			holder.yuqinianhua
-//			holder.qixian
-//			holder.biaodeleixing
-//			holder.jiekuanbiaoti
-//			holder.shengyuketou
-//			holder.toubiaojindu
-//			holder.toubiaoshijian
-			
+
+			// 投标中
+			SanProject san = (SanProject) allList2.get(position);
+
+			holder.touzijine.setText(san.show_my_list_one());
+			holder.yuqinianhua.setText(san.show_list_two());
+			holder.qixian.setText(san.getSyqs());
+			if (san.getBdtype().endsWith("1")) {
+				holder.biaodeleixing.setText("存管标");
+			} else {
+				holder.biaodeleixing.setText("普通标");
+			}
+			holder.jiekuanbiaoti.setText(san.getBdbt());
+			holder.shengyuketou.setText(san.getSyje() + "元");
+			holder.toubiaojindu.setText(san.getTbjd() + "%");
+			holder.toubiaoshijian.setText(san.getTbsj());
+
 			holder.layoutbtn.setTag(position);
 			if (currentItem == position) {
 				holder.layout.setVisibility(View.VISIBLE);
 			} else {
 				holder.layout.setVisibility(View.GONE);
 			}
-			
+
 			// 设置显示布局按钮事件
 			holder.layoutbtn.setOnClickListener(new OnClickListener() {
 
@@ -468,7 +472,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				}
 			});
 
-			//查看合同按钮
+			// 查看合同按钮
 			holder.jixutoubiao.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -476,8 +480,8 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 					// TODO Auto-generated method stub
 				}
 			});
-			
-			//交易存正
+
+			// 交易存正
 			holder.chakancunzheng.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -485,11 +489,6 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 					// TODO Auto-generated method stub
 				}
 			});
-
-			//设置回收中值
-			holder.touzijine.setText("100000");
-			holder.yuqinianhua.setText("10000000");
-			holder.qixian.setText("充值成功");
 
 			return convertView;
 		}
@@ -520,7 +519,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 	class MyAdapter3 extends BaseAdapter {
 
 		private int currentItem = -1;
-		
+
 		@Override
 		public int getCount() {
 			return allList3 != null ? allList3.size() : 0;
@@ -544,7 +543,6 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				ViewGroup parent) {
 
 			holder = new ViewHolder();
-
 
 			if (convertView == null) {
 				convertView = LayoutInflater.from(WoDeTouBiao.this).inflate(
@@ -580,13 +578,31 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-			
+
 			holder.layoutbtn.setTag(position);
 			if (currentItem == position) {
 				holder.layout.setVisibility(View.VISIBLE);
 			} else {
 				holder.layout.setVisibility(View.GONE);
 			}
+
+			// 投标中
+			SanProject san = (SanProject) allList3.get(position);
+
+			holder.touzijine.setText(san.show_my_list_one());
+			holder.yuqinianhua.setText(san.show_list_two());
+			
+			holder.huishoujine.setText(san.getHsje());
+			
+			if (san.getBdtype().endsWith("1")) {
+				holder.biaodeleixing.setText("存管标");
+			} else {
+				holder.biaodeleixing.setText("普通标");
+			}
+			holder.jiekuanbiaoti.setText(san.getBdbt());
+			holder.yizhuanjine.setText(san.getYzje() + "元");
+			holder.chakancunzheng.setText(san.getJqrq());
+
 			// 设置显示布局按钮事件
 			holder.layoutbtn.setOnClickListener(new OnClickListener() {
 
@@ -605,7 +621,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				}
 			});
 
-			//查看合同按钮
+			// 查看合同按钮
 			holder.jieqingriqi.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -613,8 +629,8 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 					// TODO Auto-generated method stub
 				}
 			});
-			
-			//交易存正
+
+			// 交易存正
 			holder.chakancunzheng.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -622,11 +638,6 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 					// TODO Auto-generated method stub
 				}
 			});
-
-			//设置回收中值
-			holder.touzijine.setText("100000");
-			holder.yuqinianhua.setText("10000000");
-			holder.huishoujine.setText("充值成功");
 
 			return convertView;
 		}
@@ -663,11 +674,11 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		curPage = 1;
 		if (rb1.isChecked()) {
-			loadHttp("0");
-		} else if (rb2.isChecked()) {
 			loadHttp("1");
-		} else if (rb3.isChecked()) {
+		} else if (rb2.isChecked()) {
 			loadHttp("2");
+		} else if (rb3.isChecked()) {
+			loadHttp("3");
 		}
 	}
 
@@ -676,13 +687,13 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		if (rb1.isChecked()) {
 			curPage++;
-			loadHttp("0");
+			loadHttp("1");
 		} else if (rb2.isChecked()) {
 			curPage++;
-			loadHttp("1");
+			loadHttp("2");
 		} else if (rb3.isChecked()) {
 			curPage++;
-			loadHttp("2");
+			loadHttp("3");
 		}
 
 	}
@@ -696,7 +707,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 		// 请求的参数如下
-		map.put("status", status);//0是回收中，1是投标中，2已结清
+		map.put("status", status);// 0是回收中，1是投标中，2已结清
 		map.put("page", curPage + "");// 当前页码
 
 		RequestThreadAbstract thread = RequestFactory.createRequestThread(27,
@@ -723,7 +734,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			case 1:
 
 				// json = (JSONObject) msg.getData().get("json");
-				if (msg.getData().get("status").equals("0")) {
+				if (msg.getData().get("status").equals("1")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -733,7 +744,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 					allList1.addAll(list);
 					mAdapter1.notifyDataSetChanged();
 
-				} else if (msg.getData().get("status").equals("1")) {
+				} else if (msg.getData().get("status").equals("2")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -743,7 +754,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 					allList2.addAll(list);
 					mAdapter2.notifyDataSetChanged();
 
-				} else if (msg.getData().get("status").equals("2")) {
+				} else if (msg.getData().get("status").equals("3")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -800,7 +811,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 
 		json = (JSONObject) jsonObj;
-		
+
 		Bundle b = new Bundle();
 		b.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) list);
 		// b.putParcelable("json", (Parcelable) json);
