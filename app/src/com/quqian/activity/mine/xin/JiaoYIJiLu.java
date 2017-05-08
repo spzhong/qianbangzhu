@@ -498,6 +498,11 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("type");
+					
+					if(list==null || list.size()==0){
+						return;
+					}
+					
 					if (curPage == 1) {
 						allList1.clear();
 					}
@@ -508,6 +513,9 @@ public class JiaoYIJiLu extends BaseActivity implements OnClickListener,
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("type");
+					if(list==null || list.size()==0){
+						return;
+					}
 					if (curPage == 1) {
 						allList2.clear();
 					}
