@@ -134,9 +134,10 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 			anim_right_out();
 			break;
 		case R.id.register_tv_huoqu:
-			// 弹出对话框提示验证码发送到手机号码， -------------有问题
-			if (!"".equals(et_phone) || !"".equals(et_pass)
-					|| !"".equals(et_yanzhengma)) {
+			// 弹出对话框提示验证码发送到手机号码，
+			if (!"".equals(et_phone.getText().toString())
+					|| !"".equals(et_pass.getText().toString())
+					|| !"".equals(et_yanzhengma.getText().toString())) {
 				loadHttp_duanxinma();
 			}
 
@@ -213,7 +214,8 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 				Intent intent3 = new Intent(RegisterActivity.this,
 						ZhuCeChengGongActivity.class);
 				startActivity(intent3);
-
+				anim_right_in();
+				finish();
 				// 之前的逻辑
 				// UserMode user = Tool.getUser(RegisterActivity.this);
 				// if (user.getShoushiCode().equals("")
@@ -239,13 +241,13 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 				// }
 
 				// 发送通知
-				Intent intent = new Intent();
-				intent.setAction("dengluhoushuaxinshuju");
-				sendBroadcast(intent);
+				//Intent intent = new Intent();
+				//intent.setAction("dengluhoushuaxinshuju");
+				//sendBroadcast(intent);
 
-				Toast.makeText(RegisterActivity.this, "登录成功", 1000).show();
-				anim_right_out();
-				finish();
+				//Toast.makeText(RegisterActivity.this, "登录成功", 1000).show();
+				//anim_right_out();
+				//finish();
 				break;
 			case 2:
 				Toast.makeText(RegisterActivity.this,
@@ -370,7 +372,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		map.put("isLock", "0");// 0不锁，1是锁
 		map.put("phone", et_phone.getText().toString());// 手机号码
 		map.put("password", et_pass.getText().toString());
-		// map.put("newPassword", et_yanzhengma.getText().toString());
+		map.put("newPassword", et_pass.getText().toString());
 		map.put("verifyCode", et_dongtaima.getText().toString());
 		map.put("code", et_tuijian.getText().toString());// 服务码
 

@@ -44,7 +44,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:orientation="vertical"
             android:paddingBottom="10dp"
             android:paddingTop="10dp" >
@@ -73,7 +73,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
             android:orientation="vertical"
             android:paddingBottom="10dp"
             android:paddingTop="10dp" >
@@ -109,11 +109,11 @@
             android:orientation="vertical" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="v"
+                android:drawableRight="@drawable/jiantou_d"
                 android:textColor="@color/text_tips"
                 android:textSize="@dimen/sp_32px" />
         </LinearLayout>

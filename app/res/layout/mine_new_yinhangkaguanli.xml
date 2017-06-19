@@ -116,7 +116,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="华兴E账户："
@@ -128,7 +128,7 @@
                 android:id="@+id/yhk_layout_cg_zhanghu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >
@@ -144,7 +144,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="开户人姓名："
@@ -156,7 +156,7 @@
                 android:id="@+id/yhk_layout_cg_kaihurenxingming"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >
@@ -172,7 +172,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="开户支行："
@@ -184,7 +184,7 @@
                 android:id="@+id/yhk_layout_cg_kaihuzhihang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >
@@ -265,7 +265,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="银行开户行："
@@ -277,7 +277,7 @@
                 android:id="@+id/yhk_layout_pu_yinhangkaihuhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >
@@ -293,7 +293,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="开户行地区："
@@ -305,7 +305,7 @@
                 android:id="@+id/yhk_layout_pu_kaihuhangdiqu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >
@@ -321,7 +321,7 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="银行卡号："
@@ -333,7 +333,7 @@
                 android:id="@+id/yhk_layout_pu_zhanghu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:text=""
                 android:textColor="@color/main_invert_text_b"
                 android:textSize="@dimen/sp_24px" >

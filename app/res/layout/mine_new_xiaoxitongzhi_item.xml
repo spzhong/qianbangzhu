@@ -38,7 +38,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/xx_item_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -48,15 +47,16 @@
             android:orientation="vertical" >
 
             <TextView
+                android:id="@+id/xx_item_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:drawableRight="@drawable/jiantou_d"
                 android:gravity="center"
                 android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="15dp"
                 android:paddingTop="10dp"
-                android:text="v"
                 android:textColor="@color/text_tips"
                 android:textSize="@dimen/sp_32px" />
         </LinearLayout>
@@ -71,8 +71,8 @@
         android:id="@+id/xx_item_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"

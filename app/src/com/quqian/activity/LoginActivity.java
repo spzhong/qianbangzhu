@@ -48,19 +48,17 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 	private TextView tv_wang = null;
 	// 忘记密码
 	private TextView tv_zhuce = null;
-	
+
 	private Boolean fangxiang = false;
 
-	//usermode
+	// usermode
 	private UserMode allUser = null;
-	
+
 	// list<object>集合
 	private List<Object> allList = new ArrayList<Object>();
 
-	
 	private Dialog jindu = null;
-	
-	
+
 	@Override
 	protected int layoutId() {
 		// TODO Auto-generated method stub
@@ -83,11 +81,11 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 		super.initView();
 		setTitle("登录");
 		showBack();
-		//showMenu();
-		//setMenu("注册");
+		// showMenu();
+		// setMenu("注册");
 
 		jindu = new ProcessDialogUtil(LoginActivity.this);
-		
+
 		login = (Button) findViewById(R.id.login_login);
 		et_name = (EditText) findViewById(R.id.login_et_name);
 		et_pass = (EditText) findViewById(R.id.login_et_pass);
@@ -138,7 +136,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 			break;
 		case R.id.login_wangjimima:
 			// 忘记密码
-			startActivity(new Intent(LoginActivity.this, ZhaoHuiMiMaActivity.class));
+			startActivity(new Intent(LoginActivity.this,
+					ZhaoHuiMiMaNEWActivity.class));
 			anim_right_in();
 			break;
 		default:
@@ -149,11 +148,13 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 
 	// 修改登录状态
 	private void reviseLoginState() {
-		//CommonUtil.addConfigInfo(LoginActivity.this, "loginState", "login", "",
-				//"");
-		//将当前用户保存到文件中
+		// CommonUtil.addConfigInfo(LoginActivity.this, "loginState", "login",
+		// "",
+		// "");
+		// 将当前用户保存到文件中
 		UserMode user = Tool.getUser(LoginActivity.this);
-		Tool.writeData(LoginActivity.this, "loginState", "zhanghu", allUser.getYhzh());
+		Tool.writeData(LoginActivity.this, "loginState", "zhanghu",
+				allUser.getYhzh());
 	}
 
 	// 返回键事件
@@ -162,10 +163,10 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 			Intent intent3 = new Intent(this, MainActivity.class);
 			StaticVariable.put(StaticVariable.sv_toIndex, "1");
 			startActivity(intent3);
-//			MainActivity parent = (MainActivity) this.getParent();
-//			if(parent!=null){
-//				parent.toTab(R.id.rbIndex,null,false);
-//			}
+			// MainActivity parent = (MainActivity) this.getParent();
+			// if(parent!=null){
+			// parent.toTab(R.id.rbIndex,null,false);
+			// }
 			finish();
 			anim_right_out();
 		} else {
@@ -189,9 +190,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
-			
+
 			jindu.cancel();
-			
+
 			switch (msg.what) {
 			case 0:
 				Toast.makeText(LoginActivity.this,
@@ -200,43 +201,43 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 				break;
 			case 1:
 
-				//登录成功之后，修改状态
+				// 登录成功之后，修改状态
 				reviseLoginState();
-				
+
 				UserMode user = Tool.getUser(LoginActivity.this);
-				
-				if(user.getShoushiCode().equals("") || user.getShoushiCode() == null ){
-					//设置手势
+
+				if (user.getShoushiCode().equals("")
+						|| user.getShoushiCode() == null) {
+					// 设置手势
 					Intent intent3 = new Intent(LoginActivity.this,
 							GestureEditActivity.class);
-					//StaticVariable.put(StaticVariable.sv_toIndex, "1");
-					
-					//type 0是设置手势密码，1是确认手势密码，3是验证手势密码
-					//fromActivity 上层来源
+					// StaticVariable.put(StaticVariable.sv_toIndex, "1");
+
+					// type 0是设置手势密码，1是确认手势密码，3是验证手势密码
+					// fromActivity 上层来源
 					intent3.putExtra("type", "0");
 					intent3.putExtra("from", "login");
-					
+
 					startActivity(intent3);
-					
-				}else{
-					//进入首页
+
+				} else {
+					// 进入首页
 					Intent intent3 = new Intent(LoginActivity.this,
 							MainActivity.class);
 					StaticVariable.put(StaticVariable.sv_toIndex, "1");
 					startActivity(intent3);
 
 				}
-				
-				
-				//发送通知
+
+				// 发送通知
 				Intent intent = new Intent();
 				intent.setAction("dengluhoushuaxinshuju");
-			    sendBroadcast(intent);
-				
+				sendBroadcast(intent);
+
 				Toast.makeText(LoginActivity.this, "登录成功", 1000).show();
-				
+
 				anim_right_out();
-				
+
 				finish();
 
 				break;
@@ -254,7 +255,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 	private void loadHttp() {
 
 		jindu.show();
-		
+
 		// TODO Auto-generated method stub
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
@@ -275,7 +276,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener,
 	public void httpResponse_success(Map<String, String> map,
 			List<Object> list, Object jsonObj) {
 		// TODO Auto-generated method stub
- 
+
 		if (list.size() == 1) {
 			allUser = (UserMode) list.get(0);
 			Message msg1 = new Message();

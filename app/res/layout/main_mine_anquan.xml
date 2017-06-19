@@ -41,7 +41,7 @@
                 android:padding="10dp"
                 android:text="@string/shimingrenzheng"
                 android:textColor="@color/main_text_black"
-                android:textSize="@dimen/sp_28px" />
+                android:textSize="@dimen/sp_24px" />
 
             <TextView
                 android:id="@+id/main_mine_anquan_card"
@@ -100,7 +100,7 @@
                 android:padding="10dp"
                 android:text="@string/xiugaishouji"
                 android:textColor="@color/main_text_black"
-                android:textSize="@dimen/sp_28px" />
+                android:textSize="@dimen/sp_24px" />
 
             <TextView
                 android:id="@+id/main_mine_anquan_shouji"
@@ -159,7 +159,7 @@
                 android:padding="10dp"
                 android:text="登录密码"
                 android:textColor="@color/main_text_black"
-                android:textSize="@dimen/sp_28px" />
+                android:textSize="@dimen/sp_24px" />
 
             <TextView
                 android:id="@+id/main_mine_anquan_shezhi"
@@ -218,7 +218,7 @@
                 android:padding="10dp"
                 android:text="风险测评"
                 android:textColor="@color/main_text_black"
-                android:textSize="@dimen/sp_28px" />
+                android:textSize="@dimen/sp_24px" />
 
             <TextView
                 android:id="@+id/main_mine_anquan_fengxianceping"
@@ -274,7 +274,7 @@
                 android:padding="10dp"
                 android:text="手势密码"
                 android:textColor="@color/main_text_black"
-                android:textSize="@dimen/sp_28px" />
+                android:textSize="@dimen/sp_24px" />
         </LinearLayout>
 
         <LinearLayout
@@ -331,7 +331,7 @@
                 android:padding="10dp"
                 android:text="修改手势密码"
                 android:textColor="@color/main_text_black"
-                android:textSize="@dimen/sp_28px" />
+                android:textSize="@dimen/sp_24px" />
         </LinearLayout>
 
         <LinearLayout
@@ -339,15 +339,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:orientation="horizontal"
-            android:padding="10dp" >
+            android:orientation="horizontal" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=">"
-                android:textColor="@color/main_text_black"
-                android:textSize="@dimen/sp_28px" />
+                android:drawableRight="@drawable/jiantou_r"
+                android:padding="10dp" />
         </LinearLayout>
     </RelativeLayout>
 

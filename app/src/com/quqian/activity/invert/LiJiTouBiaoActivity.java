@@ -474,6 +474,7 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 					String sendUrl = (String) bundle.get("sendUrl");
 					String sendStr = (String) bundle.get("sendStr");
 					String transCode = (String) bundle.get("transCode");
+					String seqNum = (String) bundle.get("seqNum");
 					if (sendUrl == null) {
 						Toast.makeText(LiJiTouBiaoActivity.this, "操作失败", 1000)
 								.show();
@@ -481,16 +482,18 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 					}
 					Intent intent2 = new Intent(LiJiTouBiaoActivity.this,
 							CGWebView.class);
+					intent2.putExtra("tag", "1");
 					intent2.putExtra("sendUrl", sendUrl);
 					intent2.putExtra("sendStr", sendStr);
 					intent2.putExtra("transCode", transCode);
+					intent2.putExtra("seqNum", seqNum);
 					intent2.putExtra("title", "投标确认");
 					startActivity(intent2);
 					anim_right_in();
-
+					LiJiTouBiaoActivity.this.finish();
+					
 				} else {
-					Toast.makeText(LiJiTouBiaoActivity.this,
-							msg.getData().getString("msg"), 1000).show();
+					Toast.makeText(LiJiTouBiaoActivity.this,"投标成功", 1000).show();
 					LiJiTouBiaoActivity.this.finish();
 					anim_right_out();
 				}
@@ -569,6 +572,31 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 		// TODO Auto-generated method stub
 
 		if (map.get("urlTag").equals("1")) {
+
+			if (san_toubiao.getBdtype().endsWith("0")) {
+
+				Message msg1 = new Message();
+				msg1.what = 1;
+				Bundle bundle = new Bundle();
+				try {
+
+					JSONObject json = (JSONObject) jsonObj;
+
+					UserMode user = Tool.getUser(LiJiTouBiaoActivity.this);
+					user.setKyye(json.getString("amount"));
+					user.saveUserToDB(LiJiTouBiaoActivity.this);
+					bundle.putString("msg", "投标成功");
+
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				msg1.setData(bundle);
+				mHandler.sendMessage(msg1);
+
+				return;
+			}
+
 			JSONObject jsonO = (JSONObject) jsonObj;
 			JSONArray jsonArray = null;
 			try {
@@ -596,7 +624,8 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 						.getString("sendUrl"));
 				bundle.putString("sendStr", json.getJSONObject("asydata")
 						.getString("sendStr"));
-
+				bundle.putString("seqNum", json.getJSONObject("asydata")
+						.getString("seqNum"));
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -618,6 +647,7 @@ public class LiJiTouBiaoActivity extends BaseActivity implements
 					e.printStackTrace();
 				}
 				san_toubiao = (SanProject) list.get(0);
+				bdtype = san_toubiao.getBdtype();
 				Message msg1 = new Message();
 				msg1.what = 3;
 				mHandler.sendMessage(msg1);

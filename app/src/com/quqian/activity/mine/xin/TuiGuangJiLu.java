@@ -291,10 +291,8 @@ public class TuiGuangJiLu extends BaseActivity implements OnClickListener,
 			case 1:
 
 				// json = (JSONObject) msg.getData().get("json");
+
 				List<Object> list = (List<Object>) msg.getData().get("list");
-				if(list.size()==0){
-					return;
-				}
 				if (curPage == 1) {
 					allList1.clear();
 				}

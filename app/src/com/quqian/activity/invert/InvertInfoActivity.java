@@ -391,13 +391,18 @@ public class InvertInfoActivity extends BaseActivity implements
 			textViewlogo.setVisibility(View.VISIBLE);
 		}
 		textView1.setText(allSan.getNll() + "%");
-		textView2.setText(allSan.show_my_list_one());
+		textView2.setText(allSan.show_list_one());
 		textView3.setText(allSan.getJkqx());
 		textView4.setText(allSan.getSyje());// 剩余可投
 
-		String sp = ("").equals(allSan.getTbjd())?"0":allSan.getTbjd();
+		String sp = "0";
+		if (!allSan.getTbjd().endsWith("")) {
+		}else{
+			sp = allSan.getTbjd();
+		}
+
 		showProgress(Integer.valueOf(sp));
-		textView5.setText(sp+"%");
+		textView5.setText(sp + "%");
 		progress.setProgress(Integer.valueOf(sp));
 		// progress.setProgress(Integer.valueOf(allSan.getTbjd()));// 进度条
 		if (allSan.getTjf().length() == 0) {
@@ -406,20 +411,61 @@ public class InvertInfoActivity extends BaseActivity implements
 			textView6.setText(allSan.getTjf() + " 推荐");// 公司推荐
 		}
 		// 开始加载信息列表
-		textViewhuan.setText(sanInfo_1.get(0).get("right"));
-		textViewhuan_left.setText(sanInfo_1.get(0).get("left"));
+		if (sanInfo_1.size() <= 3) {
+			textViewhuan.setText(sanInfo_1.get(0).get("right"));
+			textViewhuan_left.setText(sanInfo_1.get(0).get("left"));
 
-		textViewyue.setText(sanInfo_1.get(1).get("right"));
-		textViewyue_left.setText(sanInfo_1.get(1).get("left"));
+			textViewyue.setText(sanInfo_1.get(1).get("right"));
+			textViewyue_left.setText(sanInfo_1.get(1).get("left"));
 
-		textViewtou.setText(sanInfo_1.get(2).get("right"));
-		textViewtou_left.setText(sanInfo_1.get(2).get("left"));
+			textViewtou.setText(sanInfo_1.get(2).get("right"));
+			textViewtou_left.setText(sanInfo_1.get(2).get("left"));
 
-		textViewqi.setText(sanInfo_1.get(3).get("right"));
-		textViewqi_left.setText(sanInfo_1.get(3).get("left"));
+			textViewqi.setVisibility(View.GONE);
+			textViewqi_left.setVisibility(View.GONE);
 
-		textViewsheng.setText(sanInfo_1.get(4).get("right"));
-		textViewsheng_left.setText(sanInfo_1.get(4).get("left"));
+			textViewsheng.setVisibility(View.GONE);
+			textViewsheng_left.setVisibility(View.GONE);
+
+		} else if (sanInfo_1.size() == 4) {
+			textViewhuan.setText(sanInfo_1.get(0).get("right"));
+			textViewhuan_left.setText(sanInfo_1.get(0).get("left"));
+
+			textViewyue.setText(sanInfo_1.get(1).get("right"));
+			textViewyue_left.setText(sanInfo_1.get(1).get("left"));
+
+			textViewtou.setText(sanInfo_1.get(2).get("right"));
+			textViewtou_left.setText(sanInfo_1.get(2).get("left"));
+
+			textViewqi.setVisibility(View.VISIBLE);
+			textViewqi_left.setVisibility(View.VISIBLE);
+
+			textViewqi.setText(sanInfo_1.get(3).get("right"));
+			textViewqi_left.setText(sanInfo_1.get(3).get("left"));
+
+			textViewsheng.setVisibility(View.GONE);
+			textViewsheng_left.setVisibility(View.GONE);
+		} else if (sanInfo_1.size() == 5) {
+			textViewhuan.setText(sanInfo_1.get(0).get("right"));
+			textViewhuan_left.setText(sanInfo_1.get(0).get("left"));
+
+			textViewyue.setText(sanInfo_1.get(1).get("right"));
+			textViewyue_left.setText(sanInfo_1.get(1).get("left"));
+
+			textViewtou.setText(sanInfo_1.get(2).get("right"));
+			textViewtou_left.setText(sanInfo_1.get(2).get("left"));
+
+			textViewqi.setVisibility(View.VISIBLE);
+			textViewqi_left.setVisibility(View.VISIBLE);
+			textViewqi.setText(sanInfo_1.get(3).get("right"));
+			textViewqi_left.setText(sanInfo_1.get(3).get("left"));
+
+			textViewsheng.setVisibility(View.VISIBLE);
+			textViewqi_left.setVisibility(View.VISIBLE);
+			 
+			textViewsheng.setText(sanInfo_1.get(4).get("right"));
+			textViewsheng_left.setText(sanInfo_1.get(4).get("left"));
+		}
 
 		// 开始加载跳转区域
 		WindowManager m = getWindowManager();

@@ -1,9 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_settings1"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/action_settings"/>
+        android:title="全部删除"/>
+    <item
+        android:id="@+id/action_settings2"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="全部标记为已读"/>
 
 </menu>

@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,6 +78,10 @@ public class NewChongQianYuKuaiJie extends BaseActivity implements
 	private String signatureStr = null;
 	private String fyUrl = null;
 
+	//限额表url
+	private String qyxeurl = "";
+	private String kjxeurl = "";
+	
 	// 网络加载中
 	ProcessDialogUtil juhua = null;
 
@@ -93,6 +99,8 @@ public class NewChongQianYuKuaiJie extends BaseActivity implements
 			chongzhifangshi = getIntent().getStringExtra("chongzhifangshi");
 			ptkyye = getIntent().getStringExtra("ptkyye");
 			yhkh = getIntent().getStringExtra("yhkh");
+			qyxeurl = getIntent().getStringExtra("qyxeurl");
+			kjxeurl = getIntent().getStringExtra("kjxeurl");
 		}
 
 	}
@@ -145,6 +153,49 @@ public class NewChongQianYuKuaiJie extends BaseActivity implements
 			tv4.setText("3.如果充值金额没有及时到账，请联系客服，400-8535-666");
 		}
 
+		qk_chongzhijine.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int arg1, int arg2,
+					int arg3) {
+				// TODO Auto-generated method stub
+				if (s.toString().contains(".")) {
+					if (s.length() - 1 - s.toString().indexOf(".") > 2) {
+						s = s.toString().subSequence(0,
+								s.toString().indexOf(".") + 3);
+						qk_chongzhijine.setText(s);
+						qk_chongzhijine.setSelection(s.length());
+					}
+				}
+				if (s.toString().trim().substring(0).equals(".")) {
+					s = "0" + s;
+					qk_chongzhijine.setText(s);
+					qk_chongzhijine.setSelection(2);
+				}
+				if (s.toString().startsWith("0")
+						&& s.toString().trim().length() > 1) {
+					if (!s.toString().substring(1, 2).equals(".")) {
+						qk_chongzhijine.setText(s.subSequence(0, 1));
+						qk_chongzhijine.setSelection(1);
+						return;
+					}
+				}
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1,
+					int arg2, int arg3) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		
 		UserMode user = Tool.getUser(NewChongQianYuKuaiJie.this);
 		qk_keyongyue.setText(user.getKyye() + "元");
 		// 调用接口
@@ -217,7 +268,7 @@ public class NewChongQianYuKuaiJie extends BaseActivity implements
 				Intent intent = new Intent(NewChongQianYuKuaiJie.this,
 						MyWebViewActivity.class);
 				intent.putExtra("title", "签约充值限额表");
-				intent.putExtra("url", "");
+				intent.putExtra("url", qyxeurl);
 				startActivity(intent);
 				anim_right_in();
 			} else {
@@ -225,7 +276,7 @@ public class NewChongQianYuKuaiJie extends BaseActivity implements
 				Intent intent = new Intent(NewChongQianYuKuaiJie.this,
 						MyWebViewActivity.class);
 				intent.putExtra("title", "快捷充值限额表");
-				intent.putExtra("url", "");
+				intent.putExtra("url", kjxeurl);
 				startActivity(intent);
 				anim_right_in();
 			}

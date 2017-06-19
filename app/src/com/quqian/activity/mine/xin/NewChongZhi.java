@@ -16,6 +16,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,6 +96,8 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 	// 普通账户可用余额，银行卡尾号
 	private String ptkyye = "";
 	private String yhkh = "";
+	private String kjxeurl = "";
+	private String qyxeurl = "";
 
 	// 当前选中的radio button
 	private String myrb = "1";
@@ -143,6 +147,49 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 		cg_et_chongzhi = (EditText) findViewById(R.id.cz_layout_cg_chongzhi);
 		cg_btn = (Button) findViewById(R.id.cz_layout_cg_btn);
 
+		cg_et_chongzhi.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int arg1, int arg2,
+					int arg3) {
+				// TODO Auto-generated method stub
+				if (s.toString().contains(".")) {
+					if (s.length() - 1 - s.toString().indexOf(".") > 2) {
+						s = s.toString().subSequence(0,
+								s.toString().indexOf(".") + 3);
+						cg_et_chongzhi.setText(s);
+						cg_et_chongzhi.setSelection(s.length());
+					}
+				}
+				if (s.toString().trim().substring(0).equals(".")) {
+					s = "0" + s;
+					cg_et_chongzhi.setText(s);
+					cg_et_chongzhi.setSelection(2);
+				}
+				if (s.toString().startsWith("0")
+						&& s.toString().trim().length() > 1) {
+					if (!s.toString().substring(1, 2).equals(".")) {
+						cg_et_chongzhi.setText(s.subSequence(0, 1));
+						cg_et_chongzhi.setSelection(1);
+						return;
+					}
+				}
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1,
+					int arg2, int arg3) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		
 		// 普通充值布局 及组件
 		layout_pu = (LinearLayout) findViewById(R.id.cz_layout_pu);
 		pu_layout_qianyue = (LinearLayout) findViewById(R.id.cz_layout_pu_qianyue);
@@ -259,9 +306,10 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 					// 跳转到个人
 					startActivity(new Intent(NewChongZhi.this,BangDingYinHangKaActivity.class));
 				} else {
+					Toast.makeText(NewChongZhi.this,"移动端暂不支持企业账户绑卡，请前往PC端进行操作，不便之处，敬请谅解！", 1000).show();
 					// 跳转到企业
-					startActivity(new Intent(NewChongZhi.this,
-							QiYeBangDingYinHangKaActivity.class));
+					//startActivity(new Intent(NewChongZhi.this,
+						//	QiYeBangDingYinHangKaActivity.class));
 				}
 
 			}
@@ -289,6 +337,7 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 			Intent intent1 = new Intent();
 			intent1.putExtra("chongzhifangshi", "1");
 			intent1.putExtra("ptkyye", ptkyye);
+			intent1.putExtra("qyxeurl",qyxeurl);
 			intent1.putExtra("yhkh", yhkh);
 			intent1.setClass(NewChongZhi.this, NewChongQianYuKuaiJie.class);
 			startActivity(intent1);
@@ -298,6 +347,7 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 			Intent intent2 = new Intent();
 			intent2.putExtra("chongzhifangshi", "2");
 			intent2.putExtra("ptkyye", ptkyye);
+			intent2.putExtra("kjxeurl", kjxeurl);
 			intent2.putExtra("yhkh", yhkh);
 			intent2.setClass(NewChongZhi.this, NewChongQianYuKuaiJie.class);
 			startActivity(intent2);
@@ -343,7 +393,7 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 				break;
 			case 2:
 				Toast.makeText(NewChongZhi.this,
-						msg.getData().getString("msg"), 1000).show();
+ 						msg.getData().getString("msg"), 1000).show();
 
 				break;
 			case 3:// 存管充值
@@ -351,6 +401,7 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 				String sendUrl = (String) bundle.get("sendUrl");
 				String sendStr = (String) bundle.get("sendStr");
 				String transCode = (String) bundle.get("transCode");
+				String seqNum = (String) bundle.get("seqNum");
 				if (sendUrl == null) {
 					Toast.makeText(NewChongZhi.this, "操作失败", 1000).show();
 					return;
@@ -360,6 +411,7 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 				intent2.putExtra("sendStr", sendStr);
 				intent2.putExtra("transCode", transCode);
 				intent2.putExtra("title", "充值");
+				intent2.putExtra("seqNum", seqNum);
 				startActivity(intent2);
 				anim_right_in();
 				break;
@@ -419,6 +471,8 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 				ptkyye = pt.getString("ptkyye");
 				yhkh = pt.getString("yhkh");
 				zhlx = pt.getString("zhlx");
+				kjxeurl = pt.getString("kjxeurl");
+				qyxeurl = pt.getString("qyxeurl");
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -441,6 +495,9 @@ public class NewChongZhi extends BaseActivity implements OnClickListener,
 						.getString("sendUrl"));
 				bundle.putString("sendStr", asydataJson.getJSONObject("asydata")
 						.getString("sendStr"));
+				bundle.putString("seqNum", asydataJson.getJSONObject("asydata")
+						.getString("seqNum"));
+				
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

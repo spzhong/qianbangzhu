@@ -237,6 +237,12 @@
             android:name="com.quqian.activity.mine.xin.XiaoXiTongZhi"
             android:label="@string/bottom_bar_index"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat">
+        </activity>
+        <activity
+            android:name="com.quqian.activity.ZhaoHuiMiMaNEWActivity"
+            android:label="@string/bottom_bar_index"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
 
@@ -333,6 +339,13 @@
         </activity>
         <activity
             android:name="com.quqian.activity.mine.xin.WoDeJiaXiKa"
+            android:label="@string/bottom_bar_index"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+         <activity
+            android:name="com.quqian.activity.ZhuCeChengGongActivity"
             android:label="@string/bottom_bar_index"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"

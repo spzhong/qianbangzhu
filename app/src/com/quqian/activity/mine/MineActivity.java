@@ -99,7 +99,7 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 	// 返回过来的消息个数
 	private String xiaoxi = "";
 
-	//默认为存管账户
+	// 默认为存管账户
 	private Boolean changeTag = true;
 
 	@Override
@@ -195,18 +195,20 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 		mBroadcastReceiver = new BroadcastReceiver() {
 			@Override
 			public void onReceive(Context arg0, Intent arg1) {
-				// TODO Auto-generated method stub
-				// Intent intent = getIntent();
-				reload();
-				// 发送通知
-				Intent intent = new Intent();
-				intent.setAction("dengluhoushuaxinshuju");
-				sendBroadcast(intent);
+				// TODO Auto-generated method stu
+				loadHttp_getuserinof();
 			}
 		};
 		IntentFilter intentFilter = new IntentFilter();
-		intentFilter.addAction("dengluhoushuaxinshuju");
+		intentFilter.addAction("zhanghu_reloadata");
 		registerReceiver(mBroadcastReceiver, intentFilter);
+	}
+
+	// 每次进到这个activity都会进行刷新，需要调接口-获取用户信息
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
 
 	}
 
@@ -416,6 +418,18 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 				startActivity(intent3);
 
 				break;
+			case 5:
+				// Toast.makeText(MineActivity.this, "刷新用户数据成功", 1000).show();
+				// 重新获取的user数据，然后设置存管，普通，数据
+				user = Tool.getUser(MineActivity.this);
+				if (changeTag) {
+					tv_keyong.setText(user.getCgkyye());// 可用余额
+					tv_yizhuan.setText(user.getCgyzze());// 已赚取金额
+				} else {
+					tv_keyong.setText(user.getKyye());// 可用余额
+					tv_yizhuan.setText(user.getYzze());// 已赚取金额
+				}
+				break;
 			case 2:
 				Toast.makeText(MineActivity.this,
 						msg.getData().getString("msg"), 1000).show();
@@ -469,6 +483,20 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 		RequestPool.execute(thread);
 	}
 
+	//
+	private void loadHttp_getuserinof() {
+		// TODO Auto-generated method stub
+		juhua.show();
+
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("urlTag", "4");// 可不传（区分一个activity多个请求）
+		map.put("isLock", "0");// 0不锁，1是锁
+
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(2,
+				map, MineActivity.this, mHandler);
+		RequestPool.execute(thread);
+	}
+
 	@Override
 	public void httpResponse_success(Map<String, String> map,
 			List<Object> list, Object jsonObj) {
@@ -495,6 +523,11 @@ public class MineActivity extends BaseActivity implements OnClickListener,
 
 			Message msg1 = new Message();
 			msg1.what = 4;
+			mHandler.sendMessage(msg1);
+		} else if (map.get("urlTag").equals("4")) {// 获取用户
+
+			Message msg1 = new Message();
+			msg1.what = 5;
 			mHandler.sendMessage(msg1);
 		}
 

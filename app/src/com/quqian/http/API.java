@@ -9,15 +9,45 @@ import com.quqian.util.Tool;
 
 public class API {
 
+	// APP环境切换
+	//public static String domin = "192.168.1.87/app/";// 本地环境
+	public static String domin = "test.qbzvip.com/app/";// 测试环境
+	//public static String domin = "www.quqian.com/app/";// 正式环境
+
+	// APP_web环境切换
+	//public static String HTTP_WEB = "http://192.168.1.87";// 本地环境
+	public static String HTTP_WEB = "http://test.qbzvip.com";// 测试环境
+	// public static String HTTP_WEB = "http://wwww.quqian.com";//正式环境
+
+	public static String HTTP = "http://" + domin;
+
+	/*
+	 * 下面的信息不用管
+	 */
 	// 本地测试环境
-	// public static String HTTP = "http://192.168.1.87:9111/app/";
-
+	// public static String domin = "192.168.1.87/app/";
+	// public static String HTTP = "http://"+domin;
 	// 测试环境
-	public static String HTTP = "http://test.qbzvip.com/app/";
-
-	public static String HTTP_WEB = "http://test.qbzvip.com";
+	// public static String HTTP = "http://test.qbzvip.com/app/";
+	// public static String HTTP_WEB = "http://test.qbzvip.com";
 	// 正式环境
 	// public static String HTTP = "http://wwww.quqian.com/app/";
+
+	// 投资返回:sbtz/tbBack.htm
+	// 提现返回:user/deal/withCgBack.htm 
+	// 充值返回:user/deal/payCgBack.htm
+	// 开户返回:user/bankcard/regCgBack.htm
+	// 开户绑卡返回:user/bankcard/regCgBkBack.htm
+
+	public static String huaxing = "http://ptpuat.ghbank.com.cn:40013/extService/";
+	public static String huaxingHttp_payCgBack = domin
+			+ "user/deal/payCgBack.htm";
+	public static String huaxingHttp_withCgBak = domin
+			+ "user/deal/withCgBack.htm";
+	public static String huaxingHttp_tbBack = domin + "sbtz/tbBack.htm";
+	public static String huaxingHttp_bankcardregCgBack = "user/bankcard/regCgBack.htm";
+	public static String huaxingHttp_bankcardregCgBkBack = domin
+			+ "user/bankcard/regCgBkBack.htm";
 
 	// 我的账户
 	public static String LOGIN = HTTP + "login.htm"; // 1,登录
@@ -56,9 +86,9 @@ public class API {
 	// 其它
 	public static String USRSBTZLIST = HTTP + "user/sbtz/list.htm"; // 27,我的散标投资列表
 	public static String USRSLCTYLIST = HTTP + "user/lcty/list.htm"; // 28,我的理财体验列表
-	public static String USRXXGLLIST = HTTP + "user/xxgl/list.htm"; // 29,我的消息列表
-	public static String USRXXGLINFO = HTTP + "user/xxgl/list.htm"; // 37,我的消息详情
-	public static String USRXXGLgonggao = HTTP + "user/xxgl/ptgg.htm"; // 371,我的消息详情
+	public static String USRXXGLLIST = HTTP + "user/xxgl/list.htm"; // 29,站内信
+	public static String USRXXGLINFO = HTTP + "user/xxgl/updateStatus.htm"; // 37,我的消息站内信更新状态
+	public static String USRXXGLgonggao = HTTP + "user/xxgl/ptgg.htm"; // 371,平台公告
 
 	// public static String USRXXGLLIST = HTTP +"user/xxgl/list.htm"; //30,充值
 	// public static String USRXXGLLIST =HTTP + "user/xxgl/list.htm"; //31,提款
@@ -83,9 +113,7 @@ public class API {
 	public static String region = HTTP + "user/bankcard/region.htm";// 45,获取所有的银行区域
 	public static String addorupdate = HTTP + "user/bankcard/addorupdate.htm";// 46,绑定和修改银行信息
 
-	public static String androidRegion = HTTP
-			+ "user/bankcard/androidRegion.htm";// 47,获取省，市，区
-
+	public static String androidRegion = HTTP + "user/bankcard/region.htm";// 47,获取省，市，区
 	// 4月号新增
 	public static String YysjCount = HTTP + "yysjCount.htm";// 100,统计数据
 
@@ -127,6 +155,17 @@ public class API {
 
 	// 邀请好友接口
 	public static String tgglwytg = HTTP + "user/tggl/wytg.htm";// 113
+	// 邀请好友接口
+	public static String xgmmset = HTTP + "xgmmSet.htm";// 114
+
+	// 绑定银行卡
+	public static String userbankcardregCgBk = HTTP
+			+ "user/bankcard/regCgBk.htm";// 115
+
+	// 站内信-删除全部消息
+	public static String delAll = HTTP + "user/xxgl/delAll.htm";// 201
+	// 站内信-读取全部消息
+	public static String redAll = HTTP + "/user/xxgl/redAll.htm";// 202
 
 	public API() {
 		// TODO Auto-generated constructor stub
@@ -942,7 +981,7 @@ public class API {
 			return "请输入身份证号";
 		}
 		if (sfzh.length() != 18) {
-			return "身份证号错误";
+			// return "身份证号错误";
 		}
 		// 添加URL
 		map.put("url", BankcardRegCg);
@@ -1024,6 +1063,49 @@ public class API {
 		// 添加URL
 		map.put("url", tgglwytg);
 		map.put("urlNum", "113");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 邀请好友接口
+	public static String xgmmset_114(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", xgmmset);
+		map.put("urlNum", "114");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	public static String userbankcardregCgBk_115(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", userbankcardregCgBk);
+		map.put("urlNum", "115");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 删除全部信息
+	public static String delAll_201(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", delAll);
+		map.put("urlNum", "201");
+		// 发起网络请求
+		Http.POST(map, activity);
+		return "";
+	}
+
+	// 读取全部信息
+	public static String redAll_202(Map<String, String> map,
+			HttpResponseInterface activity) {
+		// 添加URL
+		map.put("url", redAll);
+		map.put("urlNum", "202");
 		// 发起网络请求
 		Http.POST(map, activity);
 		return "";

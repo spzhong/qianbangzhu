@@ -718,6 +718,54 @@ public class RequestThreadImp extends RequestThreadAbstract {
 				handler.sendMessage(msg);
 			}
 			break;
+		case 114:
+			String errMsg114 = API.xgmmset_114(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg114.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg114);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
+		case 115:
+			String errMsg115 = API.userbankcardregCgBk_115(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg115.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg115);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
+		case 201:
+			String errMsg201 = API.delAll_201(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg201.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg201);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
+		case 202:
+			String errMsg202 = API.redAll_202(map, context);
+			// 说明有错误的信息－－网络没有发送
+			if (errMsg202.length() > 0) {
+				Message msg = new Message();
+				msg.what = 0;
+				Bundle bundle = new Bundle();
+				bundle.putString("errMsg", errMsg202);
+				msg.setData(bundle);
+				handler.sendMessage(msg);
+			}
+			break;
 		default:
 			break;
 		}

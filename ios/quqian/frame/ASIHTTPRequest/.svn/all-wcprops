@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest
+END
+ASIHTTPRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIHTTPRequest.m
+END
+ASINetworkQueue.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASINetworkQueue.h
+END
+ASICacheDelegate.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASICacheDelegate.h
+END
+ASIProgressDelegate.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIProgressDelegate.h
+END
+ASIAuthenticationDialog.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIAuthenticationDialog.h
+END
+ASIDataDecompressor.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIDataDecompressor.h
+END
+ASIDownloadCache.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIDownloadCache.m
+END
+ASINetworkQueue.m
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASINetworkQueue.m
+END
+ASIAuthenticationDialog.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIAuthenticationDialog.m
+END
+ASIDataDecompressor.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIDataDecompressor.m
+END
+ASIFormDataRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIFormDataRequest.h
+END
+ASIFormDataRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIFormDataRequest.m
+END
+ASIInputStream.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIInputStream.h
+END
+ASIHTTPRequestConfig.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIHTTPRequestConfig.h
+END
+ASIInputStream.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIInputStream.m
+END
+ASIHTTPRequestDelegate.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIHTTPRequestDelegate.h
+END
+ASIDataCompressor.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIDataCompressor.h
+END
+ASIHTTPRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIHTTPRequest.h
+END
+ASIDownloadCache.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIDownloadCache.h
+END
+ASIDataCompressor.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/important/!svn/ver/14/wqkj/wqkj/comm/networkJson/ASIHTTPRequest/ASIDataCompressor.m
+END

@@ -249,7 +249,7 @@
 
                 <TextView
                     android:id="@+id/inert_info_tvhuan_left"
-                    android:layout_width="80dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:text="还款方式"
@@ -273,7 +273,7 @@
 
                 <TextView
                     android:id="@+id/inert_info_tvyue_left"
-                    android:layout_width="80dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:text="月还本息"
@@ -297,7 +297,7 @@
 
                 <TextView
                     android:id="@+id/inert_info_tvtou_left"
-                    android:layout_width="80dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:text="投标限额"
@@ -316,14 +316,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="15dp" >
+                android:orientation="horizontal" >
 
                 <TextView
                     android:id="@+id/inert_info_tvqi_left"
-                    android:layout_width="80dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
+                    android:paddingTop="15dp"
                     android:text="起息时间"
                     android:textColor="@color/main_invert_text"
                     android:textSize="@dimen/sp_26px" />
@@ -332,6 +332,7 @@
                     android:id="@+id/inert_info_tvqi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
                     android:text="满标后当日计息"
                     android:textColor="@color/main_invert_text_b"
                     android:textSize="@dimen/sp_26px" />
@@ -340,15 +341,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="20dp"
-                android:paddingTop="15dp" >
+                android:orientation="horizontal" >
 
                 <TextView
                     android:id="@+id/inert_info_tvsheng_left"
-                    android:layout_width="80dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
+                    android:paddingTop="15dp"
                     android:text="剩余时间"
                     android:textColor="@color/main_invert_text"
                     android:textSize="@dimen/sp_26px" />
@@ -357,21 +357,28 @@
                     android:id="@+id/inert_info_tvsheng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
                     android:text=""
                     android:textColor="@color/main_invert_text_b"
                     android:textSize="@dimen/sp_26px" />
             </LinearLayout>
- 
-          
-            
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:layout_marginTop="15dp"
+                android:background="#EBF3F6"
+                android:visibility="visible" />
+
             <LinearLayout
                 android:id="@+id/sanbiaoinfo_layout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:paddingLeft="10dp" >
             </LinearLayout>
- 
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="7dp"
@@ -385,7 +392,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/button"
+        android:background="@drawable/button_new_blue_f"
         android:text="倒计时：00:00:00"
         android:textColor="@color/btn_text_color_black" />
 

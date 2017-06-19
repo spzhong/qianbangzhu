@@ -52,7 +52,7 @@ import com.quqian.util.Tool;
 public class SelectInfoActivity extends BaseActivity implements
 		OnClickListener, HttpResponseInterface {
 
-	public ArrayList<Map<String, String>> mapList = null;
+	public ArrayList<Map<String, Object>> mapList = null;
 
 	public ArrayList<QuYu> mapList1 = null;
 
@@ -77,8 +77,9 @@ public class SelectInfoActivity extends BaseActivity implements
 
 	public String title = "";
 
-	ArrayList<Map<String, String>> arr_bank_map = new ArrayList<Map<String, String>>();
+	ArrayList<Map<String, Object>> arr_bank_map = new ArrayList<Map<String, Object>>();
 
+	@SuppressWarnings("unchecked")
 	protected void getIntentWord() {
 		// TODO Auto-generated method stub
 		super.getIntentWord();
@@ -91,19 +92,22 @@ public class SelectInfoActivity extends BaseActivity implements
 			if (type_1 == 0) {
 
 			} else if (type_1 == 1) {
-
 				sheng = intent.getStringExtra("sheng");
 				shengid = intent.getStringExtra("shengid");
+				arr_bank_map = (ArrayList<Map<String, Object>>) intent
+						.getSerializableExtra("arr_bank_map");
 
-			} else if (type_1 == 2) {
-
-				sheng = intent.getStringExtra("sheng");
-				shengid = intent.getStringExtra("shengid");
-				shi = intent.getStringExtra("shi");
-				shiid = intent.getStringExtra("shiid");
-			}
-		}else{
-			mapList = (ArrayList<Map<String, String>>) intent.getSerializableExtra("arr_bank_map");
+			} 
+			// else if (type_1 == 2) {
+			//
+			// sheng = intent.getStringExtra("sheng");
+			// shengid = intent.getStringExtra("shengid");
+			// shi = intent.getStringExtra("shi");
+			// shiid = intent.getStringExtra("shiid");
+			// }
+		} else {
+			mapList = (ArrayList<Map<String, Object>>) intent
+					.getSerializableExtra("arr_bank_map");
 		}
 	}
 
@@ -156,14 +160,14 @@ public class SelectInfoActivity extends BaseActivity implements
 				// TODO Auto-generated method stub
 
 				if (type == 0) {
-					Map<String, String> map = mapList.get(position);
+					Map<String, Object> map = mapList.get(position);
 
 					Intent intent = new Intent();
 					intent.setAction("xiugaiyinhanghangkashuxinshju");
 					Bundle bundle = new Bundle();
 					bundle.putString("type", "0");
-					bundle.putString("bankName", map.get("bankName"));
-					bundle.putString("bankId", map.get("bankId"));
+					bundle.putString("bankName", map.get("bankName").toString());
+					bundle.putString("bankId", map.get("bankId").toString());
 					intent.putExtras(bundle);
 					sendBroadcast(intent);
 
@@ -171,36 +175,56 @@ public class SelectInfoActivity extends BaseActivity implements
 					anim_right_out();
 
 				} else {
-					Map<String, String> map = arr_bank_map.get(position);
+					Map<String, Object> map = arr_bank_map.get(position);
 
 					if (type_1 == 0) {
+
+						ArrayList<Map<String, Object>> listcity = new ArrayList<Map<String, Object>>();
+						try {
+							JSONArray jsonArray = (JSONArray) arr_bank_map.get(
+									position).get("city");
+							for (int i = 0; i < jsonArray.length(); i++) {
+								JSONObject newjson = jsonArray.getJSONObject(i);
+								Map<String, Object> onemap = new HashMap<String, Object>();
+								onemap.put("id", newjson.getString("shiId"));
+								onemap.put("name", newjson.getString("shiName"));
+								listcity.add(onemap);
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+
 						Intent intent2 = new Intent(SelectInfoActivity.this,
 								SelectInfoActivity.class);
 						intent2.putExtra("title", "选择城市");
-						intent2.putExtra("shengid", map.get("id"));
-						intent2.putExtra("sheng", map.get("name"));
+						intent2.putExtra("arr_bank_map", listcity);
+						intent2.putExtra("shengid", map.get("id").toString());
+						intent2.putExtra("sheng", map.get("name").toString());
 						intent2.putExtra("type1", "1");
 						intent2.putExtra("type", "1");
 						SelectInfoActivity.this.finish();
 						startActivity(intent2);
 						anim_right_in();
 
-					} else if (type_1 == 1) {
-
-						Intent intent2 = new Intent(SelectInfoActivity.this,
-								SelectInfoActivity.class);
-						intent2.putExtra("title", "选择区县");
-						intent2.putExtra("sheng", sheng);
-						intent2.putExtra("shengid", shengid);
-						intent2.putExtra("shiid", map.get("id"));
-						intent2.putExtra("shi", map.get("name"));
-						intent2.putExtra("type1", "2");
-						intent2.putExtra("type", "1");
-						SelectInfoActivity.this.finish();
-						startActivity(intent2);
-						anim_right_in();
-
-					} else {
+					}
+					// else if (type_1 == 1) {
+					//
+					// Intent intent2 = new Intent(SelectInfoActivity.this,
+					// SelectInfoActivity.class);
+					// intent2.putExtra("title", "选择区县");
+					// intent2.putExtra("sheng", sheng);
+					// intent2.putExtra("shengid", shengid);
+					// intent2.putExtra("shiid", map.get("id").toString());
+					// intent2.putExtra("shi", map.get("name").toString());
+					// intent2.putExtra("type1", "2");
+					// intent2.putExtra("type", "1");
+					// SelectInfoActivity.this.finish();
+					// startActivity(intent2);
+					// anim_right_in();
+					//
+					// }
+					else {
 						// 返回，且加上通知
 
 						Intent intent = new Intent();
@@ -208,8 +232,8 @@ public class SelectInfoActivity extends BaseActivity implements
 						Bundle bundle = new Bundle();
 						bundle.putString("type", "1");
 						bundle.putString("city",
-								sheng + " " + shi + " " + map.get("name"));
-						bundle.putString("cityId", map.get("id"));
+								sheng + " " + map.get("name").toString());
+						bundle.putString("cityId", map.get("id").toString());
 						bundle.putString("shengid", shengid);
 						intent.putExtras(bundle);
 						sendBroadcast(intent);
@@ -228,11 +252,12 @@ public class SelectInfoActivity extends BaseActivity implements
 		if (type == 1) {
 			if (type_1 == 0) {
 				loadHttp_allYinhang("");
-			} else if (type_1 == 1) {
-				loadHttp_allYinhang(shengid);
-			} else if (type_1 == 2) {
-				loadHttp_allYinhang(shiid);
 			}
+			// else if (type_1 == 1) {
+			// loadHttp_allYinhang(shengid);
+			// } else if (type_1 == 2) {
+			// loadHttp_allYinhang(shiid);
+			// }
 		}
 
 	}
@@ -276,7 +301,7 @@ public class SelectInfoActivity extends BaseActivity implements
 						.findViewById(R.id.main_mine_jiaoyi_item2);
 				holder.tv3 = (TextView) convertView
 						.findViewById(R.id.main_mine_jiaoyi_item3);
-				 
+
 				holder.tv2.setVisibility(View.GONE);
 				holder.tv3.setVisibility(View.GONE);
 
@@ -284,15 +309,15 @@ public class SelectInfoActivity extends BaseActivity implements
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-
+			
 			if (type == 0) {
-				holder.tv1.setText(mapList.get(position).get("bankName"));
+				holder.tv1.setText(mapList.get(position).get("bankName").toString());
 			} else {
 
-				Map<String, String> map = arr_bank_map.get(position);
-				holder.tv1.setText(map.get("name"));
+				Map<String, Object> map = arr_bank_map.get(position);
+				holder.tv1.setText(map.get("name").toString());
 			}
-			
+
 			return convertView;
 		}
 
@@ -392,8 +417,8 @@ public class SelectInfoActivity extends BaseActivity implements
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
-		map.put("level", type_1 + "");
-		map.put("id", id);
+		// map.put("level", type_1 + "");
+		// map.put("id", id);
 		RequestThreadAbstract thread = RequestFactory.createRequestThread(47,
 				map, SelectInfoActivity.this, mHandler);
 		RequestPool.execute(thread);
@@ -404,16 +429,17 @@ public class SelectInfoActivity extends BaseActivity implements
 			List<Object> list, Object jsonObj) {
 		// TODO Auto-generated method stub
 
-		ArrayList<Map<String, String>> listnew = new ArrayList<Map<String, String>>();
+		ArrayList<Map<String, Object>> listnew = new ArrayList<Map<String, Object>>();
 
 		JSONObject json = (JSONObject) jsonObj;
 		try {
 			JSONArray jsonArray = json.getJSONArray("rvalue");
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject newjson = jsonArray.getJSONObject(i);
-				Map<String, String> onemap = new HashMap<String, String>();
-				onemap.put("id", newjson.getString("id"));
-				onemap.put("name", newjson.getString("name"));
+				Map<String, Object> onemap = new HashMap<String, Object>();
+				onemap.put("id", newjson.getString("shengId"));
+				onemap.put("name", newjson.getString("shengName"));
+				onemap.put("city", newjson.getJSONArray("city"));
 				listnew.add(onemap);
 			}
 		} catch (JSONException e) {

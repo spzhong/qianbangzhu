@@ -4,27 +4,28 @@
     android:layout_height="match_parent"
     android:background="@color/main_background"
     android:orientation="vertical" >
-      
+
     <include
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_96px"
-        layout="@layout/titlebar" 
-        android:visibility="gone"/>
-    
+        layout="@layout/titlebar"
+        android:visibility="gone" />
+
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_96px"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_96px"
+        android:layout_gravity="center"
+        android:background="#3C9AEB"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:background="#3C9AEB"
-            android:orientation="horizontal" >
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/indexlogo" />
+            android:src="@drawable/indexlogo" />
     </LinearLayout>
-    
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -70,19 +71,21 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:orientation="vertical">
+                    android:orientation="vertical" >
+
                     <ImageView
-	                   	android:layout_width="wrap_content"
-	                    android:layout_height="wrap_content"
-	                    android:layout_gravity="center"
-	                    android:src="@drawable/yunyingshuju" />
-					<TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/yunyingshuju" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
                         android:padding="2dp"
                         android:text="运营数据"
-                        android:layout_marginTop="10dp"
-                        android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textSize="@dimen/sp_28px" />
                 </LinearLayout>
@@ -93,41 +96,46 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:orientation="vertical">
+                    android:orientation="vertical" >
+
                     <ImageView
-	                   	android:layout_width="wrap_content"
-	                    android:layout_height="wrap_content"
-	                    android:layout_gravity="center"
-	                    android:src="@drawable/yinhangcunguan" />
-					<TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/yinhangcunguan" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
                         android:padding="2dp"
                         android:text="银行存管"
-                        android:layout_marginTop="10dp"
-                        android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textSize="@dimen/sp_28px" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/index_layout_wuyoucunzheng"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:orientation="vertical">
+                    android:orientation="vertical" >
+
                     <ImageView
-	                   	android:layout_width="wrap_content"
-	                    android:layout_height="wrap_content"
-	                    android:layout_gravity="center"
-	                    android:src="@drawable/wuyouchunzheng" />
-					<TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/wuyouchunzheng" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
                         android:padding="2dp"
                         android:text="无忧存证"
-                        android:layout_marginTop="10dp"
-                        android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textSize="@dimen/sp_28px" />
                 </LinearLayout>
@@ -135,9 +143,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#eee" />
-            
+                android:layout_height="10dp" />
+
             <!-- 第三块 -->
 
             <RelativeLayout
@@ -195,8 +202,8 @@
                     android:textSize="@dimen/sp_28px"
                     android:visibility="gone" />
             </RelativeLayout>
-            
-             <View
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="@color/main_line_gray" />
@@ -256,7 +263,7 @@
                     android:textSize="@dimen/sp_28px"
                     android:visibility="gone" />
             </RelativeLayout>
-            
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
@@ -268,7 +275,7 @@
                 android:layout_height="wrap_content"
                 android:background="#fff"
                 android:orientation="horizontal"
-                android:visibility="gone" >
+                android:visibility="visible" >
 
                 <ImageView
                     android:id="@+id/index_meiyong_imageview1"
@@ -321,9 +328,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#eee" />
-            
+                android:layout_height="10dp" />
         </LinearLayout>
     </ScrollView>
 

@@ -10,7 +10,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
@@ -76,6 +79,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 	private RadioButton rb1 = null;
 	// 参与中
 	private RadioButton rb2 = null;
+	private String Itemstatus = null;
 
 	// 记录当前刷新页
 	private int curPage = 1;
@@ -83,6 +87,8 @@ public class Invert extends BaseActivity implements OnClickListener,
 	ProcessDialogUtil juhua = null;
 
 	private String licaitab = null;
+
+	BroadcastReceiver mBroadcastReceiver = null;
 	
 	@Override
 	protected int layoutId() {
@@ -118,15 +124,14 @@ public class Invert extends BaseActivity implements OnClickListener,
 		mAdapter1 = new MyAdapter1();
 		mAdapter2 = new MyAdapter2();
 
-		if(licaitab == "2"){
+		if (licaitab == "2") {
 			rb2.setChecked(true);
 			mListView.setAdapter(mAdapter2);
-		}else{
+		} else {
 			rb1.setChecked(true);
 			mListView.setAdapter(mAdapter1);
 		}
-		
-		
+
 		mListView.setXListViewListener(this);
 
 		mListView.setOnItemClickListener(new OnItemClickListener() {
@@ -144,7 +149,16 @@ public class Invert extends BaseActivity implements OnClickListener,
 						startActivity(new Intent(Invert.this,
 								LoginActivity.class));
 					} else {
-						SanProject san = (SanProject) allList1.get(position - 1);
+						SanProject san = null;
+						if (Itemstatus == "1") {
+							san = (SanProject) allList2
+									.get(position - 1);
+						}else{
+							san = (SanProject) allList1
+									.get(position - 1);
+						}
+						
+						
 						Intent intent = new Intent(Invert.this,
 								InvertInfoActivity.class);
 						Bundle bundle = new Bundle();
@@ -156,28 +170,47 @@ public class Invert extends BaseActivity implements OnClickListener,
 						startActivity(intent);
 					}
 					anim_right_in();
-					
- 
+
 				} else {
 					return;
 				}
 			}
 		});
 		// diao接口
-		if(licaitab == "2"){
+		if (licaitab == "2") {
 			loadHttp("1");
-		}else{
+		} else {
 			loadHttp("0");
 		}
+
+		// 接受广播
+		mBroadcastReceiver = new BroadcastReceiver() {
+			@Override
+			public void onReceive(Context arg0, Intent arg1) {
+				// TODO Auto-generated method stub
+				// Intent intent = getIntent();
+				onRefresh();
+			}
+		};
+		IntentFilter intentFilter = new IntentFilter();
+		intentFilter.addAction("sanbiao_reloadata");
+		registerReceiver(mBroadcastReceiver, intentFilter);
 	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		unregisterReceiver(mBroadcastReceiver);
+	}
+	
 	
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		if(licaitab == "2"){
+		if (licaitab == "2") {
 			loadHttp("1");
-		}else{
+		} else {
 			loadHttp("0");
 		}
 	}
@@ -201,6 +234,8 @@ public class Invert extends BaseActivity implements OnClickListener,
 			anim_right_out();
 			break;
 		case R.id.mine_invert_rb1:
+			//隐藏其他页面的加载更多
+			mListView.setPullLoadEnable(false);
 			// 精选理财
 			curPage = 1;
 			mListView.setAdapter(mAdapter1);
@@ -208,6 +243,8 @@ public class Invert extends BaseActivity implements OnClickListener,
 			loadHttp("0");
 			break;
 		case R.id.mine_invert_rb2:
+			//隐藏其他页面的加载更多
+			mListView.setPullLoadEnable(false);
 			// 存管理财
 			curPage = 1;
 			mListView.setAdapter(mAdapter2);
@@ -247,8 +284,8 @@ public class Invert extends BaseActivity implements OnClickListener,
 			holder = new ViewHolder();
 
 			if (convertView == null) {
-				convertView = LayoutInflater.from(Invert.this)
-						.inflate(R.layout.main_invert_item, null);
+				convertView = LayoutInflater.from(Invert.this).inflate(
+						R.layout.main_invert_item, null);
 
 				holder.tv1 = (TextView) convertView
 						.findViewById(R.id.inert_licai_tv1);
@@ -261,7 +298,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 
 				holder.tv_btn = (TextView) convertView
 						.findViewById(R.id.inert_licai_tv4);
-				
+
 				holder.tv_i1 = (TextView) convertView
 						.findViewById(R.id.inert_licai_tv5);
 				holder.tv_i2 = (TextView) convertView
@@ -271,24 +308,23 @@ public class Invert extends BaseActivity implements OnClickListener,
 				holder.tv_i4 = (TextView) convertView
 						.findViewById(R.id.inert_licai_tv8);
 
-				holder.layout = (LinearLayout)  convertView
+				holder.layout = (LinearLayout) convertView
 						.findViewById(R.id.licai_layout_gongsi);
-				
+
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 			final SanProject san = (SanProject) allList1.get(position);
-			 
-			 			
-			if(san.bdtype == "0"){
-				holder.tv1.setVisibility(View.VISIBLE);	
-				holder.tv2.setVisibility(View.GONE);
-			}else{
-				holder.tv2.setVisibility(View.VISIBLE);
+
+			if (san.bdtype == "0") {
 				holder.tv1.setVisibility(View.GONE);
+				holder.tv2.setVisibility(View.VISIBLE);
+			} else {
+				holder.tv2.setVisibility(View.GONE);
+				holder.tv1.setVisibility(View.VISIBLE);
 			}
-			 
+
 			holder.tv3.setText(san.getBdbt());
 			if (san.isJudgment_bid_butonPress()) {
 				holder.tv_btn.setTextColor(getResources().getColor(
@@ -304,26 +340,23 @@ public class Invert extends BaseActivity implements OnClickListener,
 				holder.tv_btn.setEnabled(false);
 			}
 			holder.tv_btn.setText(san.getZt());
-  
-			
 
 			holder.tv_i1.setText(san.show_list_one());
 			holder.tv_i2.setText(san.show_list_two());
 			holder.tv_i3.setText(san.show_list_three());
-			if(san.tjf.length()==0){
+			if (san.tjf.length() == 0) {
 				holder.layout.setVisibility(View.GONE);
-			}else{
+			} else {
 				holder.layout.setVisibility(View.VISIBLE);
-				holder.tv_i4.setText(san.tjf +" 推荐");
+				holder.tv_i4.setText(san.tjf + " 推荐");
 			}
-			
-			
+
 			holder.tv_btn.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
- 
+
 					UserMode user = Tool.getUser(Invert.this);
 					if (user == null) {
 						startActivity(new Intent(Invert.this,
@@ -342,14 +375,13 @@ public class Invert extends BaseActivity implements OnClickListener,
 						bundle.putString("jiangli", san.getJlll());// 奖励利率
 						bundle.putString("jiekuan", san.getJkfs());// 借款方式
 						bundle.putString("huankuanfangshi", san.getHkfs());// 还款方式
-						bundle.putString("bdtype", san.getBdtype());//标的类型
+						bundle.putString("bdtype", san.getBdtype());// 标的类型
 						intent.putExtras(bundle);
 
 						startActivity(intent);
 					}
 					anim_right_in();
-					
-				
+
 				}
 			});
 
@@ -399,8 +431,8 @@ public class Invert extends BaseActivity implements OnClickListener,
 			holder = new ViewHolder();
 
 			if (convertView == null) {
-				convertView = LayoutInflater.from(Invert.this)
-						.inflate(R.layout.main_invert_item, null);
+				convertView = LayoutInflater.from(Invert.this).inflate(
+						R.layout.main_invert_item, null);
 
 				holder.tv1 = (TextView) convertView
 						.findViewById(R.id.inert_licai_tv1);
@@ -413,7 +445,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 
 				holder.tv_btn = (TextView) convertView
 						.findViewById(R.id.inert_licai_tv4);
-				
+
 				holder.tv_i1 = (TextView) convertView
 						.findViewById(R.id.inert_licai_tv5);
 				holder.tv_i2 = (TextView) convertView
@@ -422,26 +454,25 @@ public class Invert extends BaseActivity implements OnClickListener,
 						.findViewById(R.id.inert_licai_tv7);
 				holder.tv_i4 = (TextView) convertView
 						.findViewById(R.id.inert_licai_tv8);
-				holder.layout = (LinearLayout)  convertView
+				holder.layout = (LinearLayout) convertView
 						.findViewById(R.id.licai_layout_gongsi);
-				
+
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 			final SanProject san = (SanProject) allList2.get(position);
-			
-			 
-			if(san.bdtype == "0"){
-				holder.tv1.setVisibility(View.VISIBLE);	
+
+			if (san.bdtype == "0") {
+				holder.tv1.setVisibility(View.VISIBLE);
 				holder.tv2.setVisibility(View.GONE);
-			}else{
+			} else {
 				holder.tv2.setVisibility(View.VISIBLE);
 				holder.tv1.setVisibility(View.GONE);
 			}
-			
+
 			holder.tv3.setText(san.getBdbt());
-			 
+
 			if (san.isJudgment_bid_butonPress()) {
 				holder.tv_btn.setTextColor(getResources().getColor(
 						R.color.main_text_blue));
@@ -456,25 +487,23 @@ public class Invert extends BaseActivity implements OnClickListener,
 				holder.tv_btn.setEnabled(false);
 			}
 			holder.tv_btn.setText(san.getZt());
- 
-			
+
 			holder.tv_i1.setText(san.show_list_one());
 			holder.tv_i2.setText(san.show_list_two());
 			holder.tv_i3.setText(san.show_list_three());
-			if(san.tjf.length()==0){
+			if (san.tjf.length() == 0) {
 				holder.layout.setVisibility(View.GONE);
-			}else{
+			} else {
 				holder.layout.setVisibility(View.VISIBLE);
-				holder.tv_i4.setText(san.tjf +" 推荐");
+				holder.tv_i4.setText(san.tjf + " 推荐");
 			}
-			
-			
+
 			holder.tv_btn.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-				
+
 					UserMode user = Tool.getUser(Invert.this);
 					if (user == null) {
 						startActivity(new Intent(Invert.this,
@@ -493,14 +522,13 @@ public class Invert extends BaseActivity implements OnClickListener,
 						bundle.putString("jiangli", san.getJlll());// 奖励利率
 						bundle.putString("jiekuan", san.getJkfs());// 借款方式
 						bundle.putString("huankuanfangshi", san.getHkfs());// 还款方式
-						bundle.putString("bdtype", san.getBdtype());//标的类型
+						bundle.putString("bdtype", san.getBdtype());// 标的类型
 						intent.putExtras(bundle);
 
 						startActivity(intent);
 					}
 					anim_right_in();
-					
-				
+
 				}
 			});
 
@@ -520,7 +548,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 			LinearLayout layout;
 		}
 	}
-	
+
 	private void onStopLoad() {
 		mListView.stopRefresh();
 		mListView.stopLoadMore();
@@ -536,7 +564,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 			loadHttp("0");
 		} else if (rb2.isChecked()) {
 			loadHttp("1");
-		} 
+		}
 	}
 
 	@Override
@@ -548,7 +576,7 @@ public class Invert extends BaseActivity implements OnClickListener,
 		} else if (rb2.isChecked()) {
 			curPage++;
 			loadHttp("1");
-		} 
+		}
 	}
 
 	private void loadHttp(String status) {
@@ -560,7 +588,8 @@ public class Invert extends BaseActivity implements OnClickListener,
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
 		// 请求的参数如下
-		
+
+		Itemstatus =  status;
 		map.put("bdlx", status);// 0精选理财，1是存管理财，
 		map.put("page", curPage + "");// 当前页码
 
@@ -581,13 +610,13 @@ public class Invert extends BaseActivity implements OnClickListener,
 
 			switch (msg.what) {
 			case 0:
-				Toast.makeText(Invert.this,
-						msg.getData().getString("errMsg"), 1000).show();
+				Toast.makeText(Invert.this, msg.getData().getString("errMsg"),
+						1000).show();
 				onStopLoad();
 				break;
 			case 1:
 
-				//json = (JSONObject) msg.getData().get("json");
+				// json = (JSONObject) msg.getData().get("json");
 				if (msg.getData().get("bdlx").equals("0")) {
 
 					List<Object> list = (List<Object>) msg.getData()
@@ -615,8 +644,8 @@ public class Invert extends BaseActivity implements OnClickListener,
 
 				break;
 			case 2:
-				Toast.makeText(Invert.this,
-						msg.getData().getString("msg"), 1000).show();
+				Toast.makeText(Invert.this, msg.getData().getString("msg"),
+						1000).show();
 				onStopLoad();
 				break;
 			default:
@@ -654,11 +683,11 @@ public class Invert extends BaseActivity implements OnClickListener,
 			List<Object> list, Object jsonObj) {
 		// TODO Auto-generated method stub
 
-		json = (JSONObject)jsonObj;
-		
+		json = (JSONObject) jsonObj;
+
 		Bundle b = new Bundle();
 		b.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) list);
-		//b.putParcelable("json", (Parcelable) json);
+		// b.putParcelable("json", (Parcelable) json);
 		b.putString("bdlx", map.get("bdlx"));
 		Message msg1 = new Message();
 		msg1.setData(b);

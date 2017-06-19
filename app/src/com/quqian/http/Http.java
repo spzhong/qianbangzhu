@@ -209,10 +209,11 @@ public class Http {
 			}
 			// 实例化UrlEncodedFormEntity对象
 			UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(
-					postParameters);
+					postParameters, HTTP.UTF_8);
 
 			// 使用HttpPost对象来设置UrlEncodedFormEntity的Entity
 			request.setEntity(formEntity);
+
 			HttpResponse response = client.execute(request);
 
 			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -339,11 +340,17 @@ public class Http {
 					|| urlNum == "107" || urlNum == "108" || urlNum == "109"
 					|| urlNum == "110" || urlNum == "111" || urlNum == "112"
 					|| urlNum == "113" || urlNum == "114" || urlNum == "115"
-					|| urlNum == "116") {
+					|| urlNum == "116" || urlNum == "201" || urlNum == "202") {
 				// 成功的操作
 				if (code == 0) {
 					// 填充数据
-					activity.httpResponse_success(map, null, resultJson);
+					// 特殊判断处理
+					if (urlNum == "112" || urlNum == "26" || urlNum == "111" || urlNum == "112"
+							|| urlNum == "107"|| urlNum == "108") {
+						activity.httpResponse_fail(map, "暂无数据", resultJson);
+					} else {
+						activity.httpResponse_success(map, null, resultJson);
+					}
 				} else {
 					activity.httpResponse_fail(map, msg, resultJson);
 				}
@@ -353,10 +360,10 @@ public class Http {
 				if (resultObj == null) {
 					// 填充数据
 
-					if (urlNum == "8" || urlNum == "11" || urlNum == "16"
-							|| urlNum == "27" || urlNum == "28"
-							|| urlNum == "29" || urlNum == "371"
-							|| urlNum == "48") {
+					if (urlNum == "8" || urlNum == "9" || urlNum == "11"
+							|| urlNum == "16" || urlNum == "27"
+							|| urlNum == "28" || urlNum == "29"
+							|| urlNum == "371" || urlNum == "48") {
 						activity.httpResponse_fail(map, "暂无数据", resultJson);
 					} else {
 						activity.httpResponse_fail(map, msg, resultJson);

@@ -10,66 +10,77 @@
         android:layout_height="@dimen/dp_96px"
         layout="@layout/titlebar" />
 
-    <View
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginTop="7dp"
-        android:background="@color/main_line_gray" />
+        android:layout_height="match_parent" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="15dp"
-        android:visibility="visible" >
-
-        <TextView
-            android:id="@+id/main_mine_tongzhiinfo_title"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text=""
-            android:textColor="@color/main_invert_text_b"
-            android:textSize="@dimen/sp_28px" />
-    </LinearLayout>
+            android:layout_height="wrap_content" 
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:paddingLeft="15dp"
-        android:visibility="visible" >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/main_line_gray" />
 
-        <TextView
-            android:id="@+id/main_mine_tongzhiinfo_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text=""
-            android:textColor="#969696"
-            android:textSize="@dimen/sp_24px" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="15dp"
+                android:visibility="visible" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:paddingLeft="15dp"
-        android:paddingTop="23dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="30dp" >
+                <TextView
+                    android:id="@+id/main_mine_tongzhiinfo_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_28px" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/main_mine_tongzhiinfo_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text=""
-            android:textColor="@color/main_invert_text_b"
-            android:textSize="@dimen/sp_24px" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:visibility="visible" >
+
+                <TextView
+                    android:id="@+id/main_mine_tongzhiinfo_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
+                    android:textColor="#969696"
+                    android:textSize="@dimen/sp_24px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="30dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="23dp" >
+
+                <TextView
+                    android:id="@+id/main_mine_tongzhiinfo_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
+                    android:textColor="@color/main_invert_text_b"
+                    android:textSize="@dimen/sp_24px" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

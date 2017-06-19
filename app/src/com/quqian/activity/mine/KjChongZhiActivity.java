@@ -18,17 +18,19 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.example.quqian.R;
+import com.quqian.activity.MainActivity;
+import com.quqian.activity.mine.xin.CGWebView;
+import com.quqian.activity.mine.xin.KaiTongCunGuanActivity;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.UserMode;
 import com.quqian.util.HttpResponseInterface;
 import com.quqian.util.ProcessDialogUtil;
+import com.quqian.util.StaticVariable;
 import com.quqian.util.Tool;
 
-public class KjChongZhiActivity extends BaseActivity implements OnClickListener,
-		HttpResponseInterface {
+public class KjChongZhiActivity extends BaseActivity implements
+		OnClickListener, HttpResponseInterface {
 
-	
-	
 	private String mchnt_cd = null;
 	private String mchnt_txn_ssn = null;
 	private String amt = null;
@@ -50,44 +52,50 @@ public class KjChongZhiActivity extends BaseActivity implements OnClickListener,
 	protected void getIntentWord() {
 		// TODO Auto-generated method stub
 		super.getIntentWord();
-		
+
 	}
-	
+
 	/**
 	 * 接受页面参数类，用于跳转和数据核对
-	 * @author zhuming
-	 * add by zhuming at 2016-07-08 14:14
+	 * 
+	 * @author zhuming add by zhuming at 2016-07-08 14:14
 	 */
 	public class JavaScriptinterface {
-		
-		 @JavascriptInterface
-		 public void getCode(String code) {
-			  if(code.equals("0000")){
-				  UserMode user = Tool.getUser(KjChongZhiActivity.this);
-				  double money = Double.parseDouble(user.getKyye()) + Double.parseDouble(amt)/100;
-				  user.setKyye(String.valueOf(money));
-				  user.saveUserToDB(KjChongZhiActivity.this);
-				  Intent intent1 = new Intent(KjChongZhiActivity.this,
-						  MineActivity.class);
-				  startActivity(intent1);
-			  }
-		  }
+
+		@JavascriptInterface
+		public void getCode(String code) {
+			if (code.equals("0000")) {
+
+				// 通知刷新我的账户数据
+				Intent intent = new Intent();
+				intent.setAction("zhanghu_reloadata");
+				sendBroadcast(intent);
+
+				// 返回跳转到现有的我的账户
+				Intent intent1 = new Intent(KjChongZhiActivity.this, MainActivity.class);
+				StaticVariable.put(StaticVariable.sv_toMine, "2");
+				startActivity(intent1);
+				KjChongZhiActivity.this.finish();
+
+			} else {
+				finish();
+			}
+		}
 	}
 
 	@Override
 	protected void initView() {
 		// TODO Auto-generated method stub
 		super.initView();
-		
+
 		showBack();
-		webView =  (WebView) findViewById(R.id.kjczView);
-		webView.setWebViewClient(new WebViewClient()); 
+		webView = (WebView) findViewById(R.id.kjczView);
+		webView.setWebViewClient(new WebViewClient());
 		webView.setWebChromeClient(new WebChromeClient());
 		webView.getSettings().setJavaScriptEnabled(true);
-		webView.addJavascriptInterface(new JavaScriptinterface(),
-                "android");
+		webView.addJavascriptInterface(new JavaScriptinterface(), "android");
 		juhua = new ProcessDialogUtil(KjChongZhiActivity.this);
-		//上个页面传递过来的数据
+		// 上个页面传递过来的数据
 		Intent intent = getIntent();
 		setTitle(intent.getStringExtra("title"));
 		mchnt_cd = intent.getStringExtra("mchnt_cd");
@@ -96,13 +104,13 @@ public class KjChongZhiActivity extends BaseActivity implements OnClickListener,
 		login_id = intent.getStringExtra("login_id");
 		page_notify_url = intent.getStringExtra("page_notify_url");
 		back_notify_url = intent.getStringExtra("back_notify_url");
+		//
 		signatureStr = intent.getStringExtra("signatureStr");
 		fyUrl = intent.getStringExtra("fyUrl");
 		String postData = makePostHTML();
 		webView.loadData(postData, "text/html", "UTF-8");
-		//loadHttp_chongzhi();
 	}
-	
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
@@ -110,15 +118,15 @@ public class KjChongZhiActivity extends BaseActivity implements OnClickListener,
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
-	} 
-	
+	}
+
 	@Override
 	protected void initViewListener() {
 		// TODO Auto-generated method stub
 		super.initViewListener();
 		titleBarBack.setOnClickListener(this);
 	}
-	
+
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
@@ -131,21 +139,26 @@ public class KjChongZhiActivity extends BaseActivity implements OnClickListener,
 			break;
 		}
 	}
-	
 
+	private String makePostHTML() {
 
-	private String makePostHTML(){
-		 
-		String html = "<!DOCTYPE HTML><html><head><meta charset=\"UTF-8\"></head><body><form id='sbform' action='%s' method='post'>%s</form><script type='text/javascript'>document.getElementById('sbform').submit();</script></body></html>";;
-	    StringBuffer sb = new StringBuffer();
-	    sb.append("<input type='hidden' name='mchnt_cd' value='" + mchnt_cd + "'>\n");
-	    sb.append("<input type='hidden' name='mchnt_txn_ssn' value='" + mchnt_txn_ssn + "'>\n");
-	    sb.append("<input type='hidden' name='amt' value='" + amt + "'>\n");
-	    sb.append("<input type='hidden' name='login_id' value='" + login_id + "'>\n");
-	    sb.append("<input type='hidden' name='page_notify_url' value='" + page_notify_url + "'>\n");
-	    sb.append("<input type='hidden' name='back_notify_url' value='" + back_notify_url + "'>\n");
-	    sb.append("<input type='hidden' name='signature' value='" + signatureStr + "'>\n");
-	    return String.format(html, fyUrl, sb.toString());
+		String html = "<!DOCTYPE HTML><html><head><meta charset=\"UTF-8\"></head><body><form id='sbform' action='%s' method='post'>%s</form><script type='text/javascript'>document.getElementById('sbform').submit();</script></body></html>";
+		;
+		StringBuffer sb = new StringBuffer();
+		sb.append("<input type='hidden' name='mchnt_cd' value='" + mchnt_cd
+				+ "'>\n");
+		sb.append("<input type='hidden' name='mchnt_txn_ssn' value='"
+				+ mchnt_txn_ssn + "'>\n");
+		sb.append("<input type='hidden' name='amt' value='" + amt + "'>\n");
+		sb.append("<input type='hidden' name='login_id' value='" + login_id
+				+ "'>\n");
+		sb.append("<input type='hidden' name='page_notify_url' value='"
+				+ page_notify_url + "'>\n");
+		sb.append("<input type='hidden' name='back_notify_url' value='"
+				+ back_notify_url + "'>\n");
+		sb.append("<input type='hidden' name='signature' value='"
+				+ signatureStr + "'>\n");
+		return String.format(html, fyUrl, sb.toString());
 	}
 
 	private Handler mHandler = createHandler();
@@ -158,10 +171,12 @@ public class KjChongZhiActivity extends BaseActivity implements OnClickListener,
 				switch (msg.what) {
 
 				case 0:
-					//htmlValue.replace("<img src=\"", "<img src=\"" + baseUrl);
-					//webView.loadDataWithBaseURL(null, htmlValue, "text/html", "utf-8",null); 
-					//webView.loadData(htmlValue, "text/html", "utf-8");
-					WebSettings webSettings =   webView.getSettings();
+					// htmlValue.replace("<img src=\"", "<img src=\"" +
+					// baseUrl);
+					// webView.loadDataWithBaseURL(null, htmlValue, "text/html",
+					// "utf-8",null);
+					// webView.loadData(htmlValue, "text/html", "utf-8");
+					WebSettings webSettings = webView.getSettings();
 					break;
 				case 12:
 					Toast.makeText(KjChongZhiActivity.this,
@@ -174,7 +189,6 @@ public class KjChongZhiActivity extends BaseActivity implements OnClickListener,
 		};
 
 	}
-
 
 	@Override
 	public void httpResponse_success(Map<String, String> map,

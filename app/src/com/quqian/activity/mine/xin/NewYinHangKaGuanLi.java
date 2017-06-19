@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,6 +41,7 @@ import com.quqian.base.BaseActivity;
 import com.quqian.been.Chongzhi;
 import com.quqian.been.TiYanProject;
 import com.quqian.been.UserMode;
+import com.quqian.http.API;
 import com.quqian.http.RequestFactory;
 import com.quqian.http.RequestPool;
 import com.quqian.http.RequestThreadAbstract;
@@ -185,6 +187,8 @@ public class NewYinHangKaGuanLi extends BaseActivity implements
 		rb2.setOnClickListener(this);
 		// 尚未开通
 		btn_weikaitong.setOnClickListener(this);
+		// 未绑卡跳转到h5页面去
+		cg_weibangka.setOnClickListener(this);
 	}
 
 	@Override
@@ -285,13 +289,33 @@ public class NewYinHangKaGuanLi extends BaseActivity implements
 				// 前去绑定 普通账户 个人：GRKH 企业：QYKH
 				if (zhlx.equals("GRKH")) {
 					// 跳转到个人
-					startActivity(new Intent(NewYinHangKaGuanLi.this,BangDingYinHangKaActivity.class));
-				} else {
-					// 跳转到企业
 					startActivity(new Intent(NewYinHangKaGuanLi.this,
-							QiYeBangDingYinHangKaActivity.class));
+							BangDingYinHangKaActivity.class));
+				} else {
+
+					Toast.makeText(NewYinHangKaGuanLi.this,
+							"移动端暂不支持企业账户绑卡，请前往PC端进行操作，不便之处，敬请谅解！", 1000).show();
+
+					// 跳转到企业
+					// startActivity(new Intent(NewYinHangKaGuanLi.this,
+					// QiYeBangDingYinHangKaActivity.class));
 				}
 			}
+			break;
+		case R.id.yhk_layout_weikaitong2:
+			// 未绑卡按钮事件跳转到h5页面 ----存管账户账户绑卡
+
+			juhua.show();
+
+			// TODO Auto-generated method stub
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("urlTag", "115");// 可不传（区分一个activity多个请求）
+			map.put("isLock", "0");// 0不锁，1是锁
+			// 请求的参数如下
+			RequestThreadAbstract thread = RequestFactory.createRequestThread(
+					115, map, NewYinHangKaGuanLi.this, mHandler);
+			RequestPool.execute(thread);
+
 			break;
 		default:
 			break;
@@ -344,6 +368,27 @@ public class NewYinHangKaGuanLi extends BaseActivity implements
 						msg.getData().getString("msg"), 1000).show();
 
 				break;
+			case 115:
+
+				Bundle bundle = msg.getData();
+				String sendUrl = (String) bundle.get("sendUrl");
+				String sendStr = (String) bundle.get("sendStr");
+				String transCode = (String) bundle.get("transCode");
+				String seqNum = (String) bundle.get("seqNum");
+				if (sendUrl == null) {
+					Toast.makeText(NewYinHangKaGuanLi.this, "操作失败", 1000).show();
+					return;
+				}
+				Intent intent2 = new Intent(NewYinHangKaGuanLi.this, CGWebView.class);
+				intent2.putExtra("sendUrl", sendUrl);
+				intent2.putExtra("sendStr", sendStr);
+				intent2.putExtra("transCode", transCode);
+				intent2.putExtra("title", "存管账户绑卡");
+				intent2.putExtra("seqNum", seqNum);
+				startActivity(intent2);
+				anim_right_in();
+				NewYinHangKaGuanLi.this.finish();
+				break;
 			default:
 				break;
 			}
@@ -385,7 +430,7 @@ public class NewYinHangKaGuanLi extends BaseActivity implements
 				ptzt = json.getJSONObject("rvalue").getString("ptzt");
 				yhkhh = pt.getString("yhkhh");
 				khhdq = pt.getString("khhdq");
-				zhlx = pt.getString("zhlx");
+				zhlx = json.getJSONObject("rvalue").getString("zhlx");
 				yhkh = pt.getString("yhkh");
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -394,6 +439,27 @@ public class NewYinHangKaGuanLi extends BaseActivity implements
 
 			Message msg1 = new Message();
 			msg1.what = 1;
+			mHandler.sendMessage(msg1);
+		}else if(map.get("urlTag").equals("115")) {
+			JSONObject json = (JSONObject) jsonObj;
+			Message msg1 = new Message();
+			msg1.what = 115;
+			Bundle bundle = new Bundle();
+			try {
+				JSONObject asydataJson = json.getJSONObject("rvalue");
+				bundle.putString("transCode", asydataJson.getJSONObject("sdkParameter")
+						.getString("transCode"));
+				bundle.putString("sendUrl", asydataJson.getJSONObject("sdkParameter")
+						.getString("url"));
+				bundle.putString("sendStr", asydataJson.getJSONObject("sdkParameter")
+						.getString("requestData"));
+				bundle.putString("seqNum", asydataJson.getJSONObject("sdkParameter")
+						.getString("seqNum"));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			msg1.setData(bundle);
 			mHandler.sendMessage(msg1);
 		}
 	}

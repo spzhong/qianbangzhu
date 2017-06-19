@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="NoticeModel" representedClassName="NoticeModel" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isRead" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noticeId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="UserModel" representedClassName="UserModel" syncable="YES">
+        <attribute name="birthDay" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cardNum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cgdjje" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cgkyye" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cgyzze" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cgzhze" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="codeError" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="djje" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fwmlj" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isEnable" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="keyong_money" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nickName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sfzh" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sfzsfrz" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sjsfsz" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tikuanCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tongzhiweidu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trueName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="txmmsfsz" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tyjze" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wdfwm" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="xm" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="yjsfsz" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zhuanqu_money" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zhze" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="znxwdts" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="NoticeModel" positionX="-63" positionY="63" width="128" height="120"/>
+        <element name="UserModel" positionX="-63" positionY="-18" width="128" height="525"/>
+    </elements>
+</model>

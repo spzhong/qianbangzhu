@@ -166,6 +166,9 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb3.setBackgroundColor(getResources().getColor(R.color.white));
 
+			//隐藏其他页面的加载更多
+			mListView.setPullLoadEnable(false);
+			
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter1);
@@ -179,6 +182,9 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 					R.color.main_radio_blue));
 			tvrb3.setBackgroundColor(getResources().getColor(R.color.white));
 
+			//隐藏其他页面的加载更多
+			mListView.setPullLoadEnable(false);
+			
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter2);
@@ -192,6 +198,9 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 			tvrb3.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
 
+			//隐藏其他页面的加载更多
+			mListView.setPullLoadEnable(false);
+			
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter3);
@@ -328,7 +337,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 				holder.tv1.setText(json.getString("jxkhm"));
 				holder.tv2.setText(json.getString("mz"));
 				holder.tv3.setText(json.getString("sysj"));
-				holder.wdjxk_tv1.setText("使用事件");
+				holder.wdjxk_tv1.setText("使用时间");
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -339,7 +348,7 @@ public class WoDeJiaXiKa extends BaseActivity implements OnClickListener,
 
 		final class ViewHolder {
 
-			public TextView wdjxk_tv1;
+			TextView wdjxk_tv1;
 			TextView tv1;
 			TextView tv2;
 			TextView tv3;

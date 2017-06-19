@@ -372,9 +372,11 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 					// 跳转到个人
 					startActivity(new Intent(NewTiXian.this,BangDingYinHangKaActivity.class));
 				} else {
+					
+					Toast.makeText(NewTiXian.this,"移动端暂不支持企业账户绑卡，请前往PC端进行操作，不便之处，敬请谅解！", 1000).show();
 					// 跳转到企业
-					startActivity(new Intent(NewTiXian.this,
-							QiYeBangDingYinHangKaActivity.class));
+//					startActivity(new Intent(NewTiXian.this,
+//							QiYeBangDingYinHangKaActivity.class));
 				}
 			}
 
@@ -453,6 +455,7 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 				String sendUrl = (String) bundle.get("sendUrl");
 				String sendStr = (String) bundle.get("sendStr");
 				String transCode = (String) bundle.get("transCode");
+				String seqNum = (String) bundle.get("seqNum");
 				if (sendUrl == null) {
 					Toast.makeText(NewTiXian.this, "操作失败", 1000).show();
 					return;
@@ -462,6 +465,8 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 				intent2.putExtra("sendStr", sendStr);
 				intent2.putExtra("transCode", transCode);
 				intent2.putExtra("title", "提现");
+				intent2.putExtra("seqNum",seqNum);
+				
 				startActivity(intent2);
 				anim_right_in();
 				break;
@@ -522,7 +527,7 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("urlTag", "3");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
-		map.put("amount", tx_shijikouchujine.getText().toString());
+		map.put("amount", cg_et_chongzhi.getText().toString());
 		//map.put("amount", "129");
 		map.put("type", "CGTX");
 		// 请求的参数如下
@@ -540,7 +545,7 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("urlTag", "4");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
-		map.put("amount", "120");
+		map.put("amount", tx_tixianjine.getText().toString());
 		map.put("type", "PTTX");
 		// 请求的参数如下
 		RequestThreadAbstract thread = RequestFactory.createRequestThread(105,
@@ -591,6 +596,9 @@ public class NewTiXian extends BaseActivity implements OnClickListener,
 						.getString("sendUrl"));
 				bundle.putString("sendStr", json.getJSONObject("asydata")
 						.getString("sendStr"));
+				bundle.putString("seqNum", json.getJSONObject("asydata")
+						.getString("seqNum"));
+				
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

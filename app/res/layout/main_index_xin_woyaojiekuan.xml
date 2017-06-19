@@ -324,7 +324,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/button_new_blue"
+                    android:background="@drawable/button_new_blue_f"
                     android:text="立即申请"
                     android:textColor="@color/btn_text_color_black"
                     android:textSize="@dimen/sp_36px" />

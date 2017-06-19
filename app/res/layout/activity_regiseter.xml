@@ -139,7 +139,6 @@
                 android:hint="验证码"
                 android:lines="1"
                 android:paddingLeft="15dp"
-                android:password="true"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="@dimen/sp_28px" />

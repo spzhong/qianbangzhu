@@ -15,7 +15,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/licai_listview_item_tv_btn"
             android:orientation="vertical" >
 
             <RelativeLayout
@@ -55,7 +54,10 @@
             android:layout_centerInParent="true"
             android:layout_margin="5dp"
             android:gravity="center"
-            android:padding="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="立即投标"
             android:textColor="@color/main_text_blue"
             android:textSize="@dimen/sp_30px" />
@@ -64,7 +66,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/licai_listview_item_tv_btn"
             android:orientation="horizontal" >
 
             <TextView
@@ -74,7 +75,6 @@
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/licai_xin"
                 android:gravity="center"
-                android:padding="5dp"
                 android:textColor="@color/main_text_blue"
                 android:textSize="@dimen/sp_20px"
                 android:visibility="gone" />
@@ -213,7 +213,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:background="@color/main_line_gray"
         android:visibility="visible" />
@@ -223,6 +222,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginRight="15dp"
         android:orientation="horizontal" >
 
@@ -252,7 +253,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="7dp"
-        android:layout_marginTop="10dp"
         android:background="#EBF3F6"
         android:visibility="visible" />
 

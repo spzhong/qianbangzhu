@@ -119,9 +119,9 @@ public class TongZhiInfoActivity extends BaseActivity implements
 		// TODO Auto-generated method stub
 
 		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-			startActivity(new Intent(TongZhiInfoActivity.this,
-					TongZhiActivity.class));
-			// finish();
+			//startActivity(new Intent(TongZhiInfoActivity.this,
+				//	TongZhiActivity.class));
+			finish();
 			anim_right_out();
 		}
 		return false;

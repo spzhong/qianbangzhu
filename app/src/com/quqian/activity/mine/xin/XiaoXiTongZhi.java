@@ -17,9 +17,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
+import android.support.v7.widget.PopupMenu;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
@@ -162,7 +164,7 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 			break;
 		case R.id.xx_bar_menu:
 			// 弹出全部删除，全部已读
-
+			showPopupMenu(more);
 			break;
 		case R.id.xxtz_rb1:
 			// 站内信
@@ -170,6 +172,11 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 					R.color.main_radio_blue));
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
 
+			// 显示more
+			more.setVisibility(View.VISIBLE);
+
+			// 隐藏其他页面的加载更多
+			mListView.setPullLoadEnable(false);
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter1);
@@ -181,6 +188,12 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 			tvrb1.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb2.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
+
+			// 隐藏more
+			more.setVisibility(View.INVISIBLE);
+
+			// 隐藏其他页面的加载更多
+			mListView.setPullLoadEnable(false);
 
 			// 请求数据
 			curPage = 1;
@@ -230,7 +243,7 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 						.findViewById(R.id.xx_item_du);
 				holder.biaoti = (TextView) convertView
 						.findViewById(R.id.xx_item_biaoti);
-				holder.anniu = (LinearLayout) convertView
+				holder.anniu = (TextView) convertView
 						.findViewById(R.id.xx_item_btn);
 				holder.layout = (LinearLayout) convertView
 						.findViewById(R.id.xx_item_layout);
@@ -248,9 +261,9 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 			if ("0".equals(notify.getStatus())) {
 				holder.tubiao.setVisibility(View.VISIBLE);
 			} else if ("1".equals(notify.getStatus())) {
-				holder.tubiao.setVisibility(View.GONE);
+				holder.tubiao.setVisibility(View.INVISIBLE);
 			} else if ("".equals(notify.getStatus())) {
-				holder.tubiao.setVisibility(View.GONE);
+				holder.tubiao.setVisibility(View.INVISIBLE);
 			}
 
 			holder.anniu.setTag(position);
@@ -271,14 +284,17 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 					} else {
 						currentItem = tag;
 					}
+
 					// 通知adapter数据改变需要重新加载
 					notifyDataSetChanged(); // 必须有的一步
 
 					// 判读是否未读，
-					// holder.tubiao.setVisibility(View.GONE);
-					// if ("0".equals(notify.getStatus())) {
-					// loadHttp2(notify.gettId());
-					// }
+					holder.tubiao.setVisibility(View.INVISIBLE);
+					if ("0".equals(notify.getStatus())) {
+						loadHttp2(notify.gettId());
+						notify.setStatus("1");
+					}
+
 				}
 			});
 
@@ -289,7 +305,7 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 
 			TextView tubiao;
 			TextView biaoti;
-			LinearLayout anniu;
+			TextView anniu;
 			LinearLayout layout;
 			TextView neirong;
 		}
@@ -338,7 +354,7 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 			}
 
 			final Notification notify = (Notification) allList2.get(position);
-				holder.tv1.setText(notify.getGgtitle());
+			holder.tv1.setText(notify.getGgtitle());
 			holder.btn.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -347,7 +363,7 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 					// 跳转到详情信息页面
 					Intent intent = new Intent(XiaoXiTongZhi.this,
 							TongZhiInfoActivity.class);
-					intent.putExtra("title", notify.getGgcontent());
+					intent.putExtra("title", notify.getGgtitle());
 					intent.putExtra("time", notify.getGgcredittiem());
 					intent.putExtra("content", notify.getGgcontent());
 					startActivity(intent);
@@ -376,6 +392,8 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 	@Override
 	public void onRefresh() {
 		// TODO Auto-generated method stub
+		// 将标记置为false
+
 		curPage = 1;
 		if (rb1.isChecked()) {
 			loadHttp0();
@@ -387,6 +405,7 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 	@Override
 	public void onLoadMore() {
 		// TODO Auto-generated method stub
+
 		if (rb1.isChecked()) {
 			curPage++;
 			loadHttp0();
@@ -458,7 +477,7 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 				allList1.addAll(list);
 				mAdapter1.notifyDataSetChanged();
 
-				//Notification notify = (Notification) allList1.get(0);
+				// Notification notify = (Notification) allList1.get(0);
 				onStopLoad();
 				getPage();
 
@@ -473,7 +492,7 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 				allList2.addAll(list1);
 				mAdapter2.notifyDataSetChanged();
 
-				//Notification notify1 = (Notification) allList2.get(0);
+				// Notification notify1 = (Notification) allList2.get(0);
 				onStopLoad();
 				getPage();
 
@@ -482,6 +501,21 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 				Toast.makeText(XiaoXiTongZhi.this,
 						msg.getData().getString("msg"), 1000).show();
 				onStopLoad();
+				break;
+			case 5:
+				// Toast.makeText(XiaoXiTongZhi.this,
+				// "状态修改成功", 1000).show();
+				break;
+			case 6:
+				// 全部删除成功
+				// Toast.makeText(XiaoXiTongZhi.this, "全部删除成功", 1000).show();
+				allList1.clear();
+				mAdapter1.notifyDataSetChanged();
+				loadHttp0();
+				break;
+			case 7:
+				// Toast.makeText(XiaoXiTongZhi.this, "全部标记为已读", 1000).show();
+				loadHttp0();
 				break;
 			default:
 				break;
@@ -523,10 +557,28 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 		b.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) list);
 		// b.putParcelable("json", (Parcelable) json);
 		if (rb1.isChecked()) {
-			Message msg1 = new Message();
-			msg1.setData(b);
-			msg1.what = 1;
-			mHandler.sendMessage(msg1);
+			if (map.get("urlTag").equals("1")) {
+				Message msg1 = new Message();
+				msg1.setData(b);
+				msg1.what = 1;
+				mHandler.sendMessage(msg1);
+			} else if (map.get("urlTag").equals("2")) {
+				Message msg2 = new Message();
+				msg2.setData(b);
+				msg2.what = 5;
+				mHandler.sendMessage(msg2);
+			} else if (map.get("urlTag").equals("201")) {
+				Message msg6 = new Message();
+				msg6.setData(b);
+				msg6.what = 6;
+				mHandler.sendMessage(msg6);
+			} else if (map.get("urlTag").equals("202")) {
+				Message msg7 = new Message();
+				msg7.setData(b);
+				msg7.what = 7;
+				mHandler.sendMessage(msg7);
+			}
+
 		} else if (rb2.isChecked()) {
 			Message msg3 = new Message();
 			msg3.setData(b);
@@ -551,7 +603,7 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 	// 当点击每一条未读消息的时候，调接口通知该消息已读
 	private void loadHttp2(String pid) {
 
-		juhua.show();
+		// juhua.show();
 
 		// TODO Auto-generated method stub
 		Map<String, String> map = new HashMap<String, String>();
@@ -565,6 +617,78 @@ public class XiaoXiTongZhi extends BaseActivity implements OnClickListener,
 				map, XiaoXiTongZhi.this, mHandler);
 		RequestPool.execute(thread);
 
+	}
+
+	// 删除全部信息
+	private void loadHttp201(String page) {
+
+		// juhua.show();
+
+		// TODO Auto-generated method stub
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("urlTag", "201");// 可不传（区分一个activity多个请求）
+		map.put("isLock", "0");// 0不锁，1是锁
+		// 请求的参数如下
+
+		map.put("page", page);
+
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(201,
+				map, XiaoXiTongZhi.this, mHandler);
+		RequestPool.execute(thread);
+
+	}
+
+	// 全部标记为已读
+	private void loadHttp202(String page) {
+
+		// juhua.show();
+
+		// TODO Auto-generated method stub
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("urlTag", "202");// 可不传（区分一个activity多个请求）
+		map.put("isLock", "0");// 0不锁，1是锁
+		// 请求的参数如下
+
+		map.put("page", page);
+
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(202,
+				map, XiaoXiTongZhi.this, mHandler);
+		RequestPool.execute(thread);
+
+	}
+
+	// 弹出全部删除，全部标记已读菜单
+	private void showPopupMenu(View view) {
+		// View当前PopupMenu显示的相对View的位置
+		PopupMenu popupMenu = new PopupMenu(XiaoXiTongZhi.this, view);
+		// menu布局
+		popupMenu.getMenuInflater().inflate(R.menu.main, popupMenu.getMenu());
+		// menu的item点击事件
+		popupMenu
+				.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+					@Override
+					public boolean onMenuItemClick(MenuItem item) {
+						// Toast.makeText(getApplicationContext(),
+						// item.getTitle(), Toast.LENGTH_SHORT).show();
+						// 在这里调全部删除接口，全部标记已读接口，
+						if (item.getTitle().equals("全部删除")) {
+							loadHttp201(curPage + "");
+						} else {
+							loadHttp202(curPage + "");
+						}
+						return false;
+					}
+				});
+
+		// PopupMenu关闭事件
+		popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
+			@Override
+			public void onDismiss(PopupMenu menu) {
+				// Toast.makeText(getApplicationContext(), "关闭PopupMenu",
+				// Toast.LENGTH_SHORT).show();
+			}
+		});
+		popupMenu.show();
 	}
 
 }

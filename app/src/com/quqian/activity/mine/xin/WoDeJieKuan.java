@@ -168,6 +168,9 @@ public class WoDeJieKuan extends BaseActivity implements OnClickListener,
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb3.setBackgroundColor(getResources().getColor(R.color.white));
 
+			//隐藏其他页面的加载更多
+			mListView.setPullLoadEnable(false);
+			
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter1);
@@ -181,6 +184,9 @@ public class WoDeJieKuan extends BaseActivity implements OnClickListener,
 					R.color.main_radio_blue));
 			tvrb3.setBackgroundColor(getResources().getColor(R.color.white));
 
+			//隐藏其他页面的加载更多
+			mListView.setPullLoadEnable(false);
+			
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter2);
@@ -194,6 +200,9 @@ public class WoDeJieKuan extends BaseActivity implements OnClickListener,
 			tvrb3.setBackgroundColor(getResources().getColor(
 					R.color.main_radio_blue));
 
+			//隐藏其他页面的加载更多
+			mListView.setPullLoadEnable(false);
+			
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter3);

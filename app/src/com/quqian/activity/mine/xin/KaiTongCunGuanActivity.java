@@ -147,11 +147,12 @@ public class KaiTongCunGuanActivity extends BaseActivity implements
 
 				break;
 			case 3:// 跳转到开通存管账户的【H5页面】
-				// 存管投资--进入h5页面
+					// 存管投资--进入h5页面
 				Bundle bundle = msg.getData();
 				String sendUrl = (String) bundle.get("sendUrl");
 				String sendStr = (String) bundle.get("sendStr");
 				String transCode = (String) bundle.get("transCode");
+				String seqNum = (String) bundle.get("seqNum");
 				if (sendUrl == null) {
 					Toast.makeText(KaiTongCunGuanActivity.this, "操作失败", 1000)
 							.show();
@@ -163,8 +164,11 @@ public class KaiTongCunGuanActivity extends BaseActivity implements
 				intent2.putExtra("sendStr", sendStr);
 				intent2.putExtra("transCode", transCode);
 				intent2.putExtra("title", "开通存管账户");
+				intent2.putExtra("seqNum", seqNum);
+
 				startActivity(intent2);
 				anim_right_in();
+				KaiTongCunGuanActivity.this.finish();
 
 				break;
 			case 2:
@@ -187,12 +191,15 @@ public class KaiTongCunGuanActivity extends BaseActivity implements
 		msg1.what = 3;
 		Bundle bundle = new Bundle();
 		try {
-			bundle.putString("transCode", json.getJSONObject("rvalue").getJSONObject("sdkParameter")
-					.getString("transCode"));
-			bundle.putString("sendUrl", json.getJSONObject("rvalue").getJSONObject("sdkParameter")
-					.getString("url"));
-			bundle.putString("sendStr", json.getJSONObject("rvalue").getJSONObject("sdkParameter")
-					.getString("requestData"));
+			bundle.putString("transCode", json.getJSONObject("rvalue")
+					.getJSONObject("sdkParameter").getString("transCode"));
+			bundle.putString("sendUrl", json.getJSONObject("rvalue")
+					.getJSONObject("sdkParameter").getString("url"));
+			bundle.putString("sendStr", json.getJSONObject("rvalue")
+					.getJSONObject("sdkParameter").getString("requestData"));
+			bundle.putString("seqNum", json.getJSONObject("rvalue")
+					.getJSONObject("sdkParameter").getString("seqNum"));
+
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -47,7 +47,7 @@ public class XiuGaiDengLuMiMaActivity extends BaseActivity implements
 	private Button next = null;
 
 	private Dialog juhua = null;
-	
+
 	@Override
 	protected int layoutId() {
 		// TODO Auto-generated method stub
@@ -60,7 +60,7 @@ public class XiuGaiDengLuMiMaActivity extends BaseActivity implements
 		super.initView();
 		setTitle("修改登录密码");
 		showBack();
-		
+
 		juhua = new ProcessDialogUtil(XiuGaiDengLuMiMaActivity.this);
 
 		yuan = (EditText) findViewById(R.id.main_mine_xiugaitixianmima_yuan);
@@ -90,14 +90,13 @@ public class XiuGaiDengLuMiMaActivity extends BaseActivity implements
 		case R.id.main_mine_xiugaitixianmima_next:
 			// 下一步
 			loadHttp_finsh();
-			
+
 			break;
 
 		default:
 			break;
 		}
 	}
-
 
 	// 登录--网络请求
 	private Handler mHandler = new Handler() {
@@ -106,15 +105,17 @@ public class XiuGaiDengLuMiMaActivity extends BaseActivity implements
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
-			
+
 			juhua.cancel();
-			
+
 			switch (msg.what) {
 			case 0:
 				Toast.makeText(XiuGaiDengLuMiMaActivity.this,
 						msg.getData().getString("errMsg"), 1000).show();
 				break;
 			case 1:// 修改成功了
+				Toast.makeText(XiuGaiDengLuMiMaActivity.this, "密码修改成功", 1000)
+						.show();
 				finish();
 				anim_right_out();
 				break;
@@ -129,21 +130,51 @@ public class XiuGaiDengLuMiMaActivity extends BaseActivity implements
 		}
 	};
 
- 
 	// 完成
 	private void loadHttp_finsh() {
-	
+
+		String old = yuan.getText().toString();
+		String password = xin.getText().toString();
+		String newPassword = queren.getText().toString();
+
+		if ("".equals(old)) {
+			Toast.makeText(XiuGaiDengLuMiMaActivity.this, "请输入原密码", 1000)
+					.show();
+			return;
+		}
+		if ("".equals(password)) {
+			Toast.makeText(XiuGaiDengLuMiMaActivity.this, "请输入新密码", 1000)
+					.show();
+			return;
+		}
+		if ("".equals(newPassword)) {
+			Toast.makeText(XiuGaiDengLuMiMaActivity.this, "请输入确认密码", 1000)
+					.show();
+			return;
+		}
+
+		if (password.length() < 6 || password.length() > 16) {
+			Toast.makeText(XiuGaiDengLuMiMaActivity.this, "密码长度为6-16个字符", 1000)
+					.show();
+			return;
+		}
+		if (!password.equals(newPassword)) {
+			Toast.makeText(XiuGaiDengLuMiMaActivity.this, "你两次输入的密码不一致", 1000)
+					.show();
+			return;
+		}
+
 		juhua.show();
-		
+
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("urlTag", "1");// 可不传（区分一个activity多个请求）
 		map.put("isLock", "0");// 0不锁，1是锁
-		 
-		map.put("lmm", yuan.getText().toString());
-		map.put("xmm", xin.getText().toString());
-		map.put("cmm",queren.getText().toString());
-		
-		RequestThreadAbstract thread = RequestFactory.createRequestThread(23,
+
+		map.put("old", yuan.getText().toString());
+		map.put("new", xin.getText().toString());
+		map.put("news", queren.getText().toString());
+
+		RequestThreadAbstract thread = RequestFactory.createRequestThread(114,
 				map, XiuGaiDengLuMiMaActivity.this, mHandler);
 		RequestPool.execute(thread);
 	}
@@ -154,7 +185,7 @@ public class XiuGaiDengLuMiMaActivity extends BaseActivity implements
 		// TODO Auto-generated method stub
 		Message msg1 = new Message();
 		msg1.what = 1;
-		mHandler.sendMessage(msg1); 
+		mHandler.sendMessage(msg1);
 	}
 
 	@Override
@@ -168,6 +199,5 @@ public class XiuGaiDengLuMiMaActivity extends BaseActivity implements
 		msg2.setData(bundle);
 		mHandler.sendMessage(msg2);
 	}
-
 
 }

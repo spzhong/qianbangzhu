@@ -42,6 +42,8 @@ import com.quqian.activity.index.IndexActivity;
 import com.quqian.activity.index.LiCaiInfoActivity;
 import com.quqian.activity.index.LiCaiTiYanActivity;
 import com.quqian.activity.index.LiJiShenQingActivity;
+import com.quqian.activity.invert.Invert;
+import com.quqian.activity.invert.LiJiTouBiaoActivity;
 import com.quqian.base.BaseActivity;
 import com.quqian.been.SanProject;
 import com.quqian.been.TiYanProject;
@@ -53,6 +55,7 @@ import com.quqian.http.RequestThreadAbstract;
 import com.quqian.listview.XListView;
 import com.quqian.listview.XListView.IXListViewListener;
 import com.quqian.util.HttpResponseInterface;
+import com.quqian.util.MyWebViewActivity;
 import com.quqian.util.ProcessDialogUtil;
 import com.quqian.util.Tool;
 
@@ -130,7 +133,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 		mListView.setAdapter(mAdapter1);
 
 		// diao接口
-		loadHttp("1");
+		loadHttp("0");
 	}
 
 	@Override
@@ -165,11 +168,14 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			tvrb2.setBackgroundColor(getResources().getColor(R.color.white));
 			tvrb3.setBackgroundColor(getResources().getColor(R.color.white));
 
+			//隐藏其他页面的加载更多
+			mListView.setPullLoadEnable(false);
+			
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter1);
 			// mAdapter1.notifyDataSetChanged();
-			loadHttp("1");
+			loadHttp("0");
 			break;
 		case R.id.wdtb_rb2:
 			// 已使用
@@ -178,11 +184,14 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 					R.color.main_radio_blue));
 			tvrb3.setBackgroundColor(getResources().getColor(R.color.white));
 
+			//隐藏其他页面的加载更多
+			mListView.setPullLoadEnable(false);
+			
 			// 请求数据
 			curPage = 1;
 			mListView.setAdapter(mAdapter2);
 			// mAdapter2.notifyDataSetChanged();
-			loadHttp("2");
+			loadHttp("1");
 			break;
 		case R.id.wdtb_rb3:
 			// 已过期
@@ -195,7 +204,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			curPage = 1;
 			mListView.setAdapter(mAdapter3);
 			// mAdapter2.notifyDataSetChanged();
-			loadHttp("3");
+			loadHttp("2");
 			break;
 		default:
 			break;
@@ -260,8 +269,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				holder.huankuanzhuangtai = (TextView) convertView
 						.findViewById(R.id.wdtb_item_huankuanzhuangtai);
 
-				holder.chakanhetong = (TextView) convertView
-						.findViewById(R.id.wdtb_item_chakanhetong);
+				//
 				holder.jiaoyicunzheng = (TextView) convertView
 						.findViewById(R.id.wdtb_item_jiaoyicunzheng);
 				holder.xiangmucunzheng = (TextView) convertView
@@ -272,12 +280,12 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			SanProject san = (SanProject) allList1.get(position);
+			final SanProject san = (SanProject) allList1.get(position);
 
 			// 设置回收中值
 			holder.touzijine.setText(san.show_my_list_one());
 			holder.yuqinianhua.setText(san.show_list_two());
-			holder.daishoubenxi.setText(san.getDsbx()+"+"+san.getJlje());
+			holder.daishoubenxi.setText(san.getDsbx());
 			if (san.getBdtype().endsWith("1")) {
 				holder.biaodeleixing.setText("存管标");
 			} else {
@@ -285,7 +293,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			}
 			holder.jiekuanbiaoti.setText(san.getBdbt());
 			holder.shengyuqishu.setText(san.getSyqs());
-			holder.kaishijixishijian.setText(san.getTbsj());
+			holder.kaishijixishijian.setText(san.getKsjxsj());
 			holder.xiayigehuankuanri.setText(san.getXyhkr());
 			holder.huankuanzhuangtai.setText(san.getHkzt());
 
@@ -313,14 +321,17 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				}
 			});
 
-			// 查看合同按钮
-			holder.chakanhetong.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View arg0) {
-					// TODO Auto-generated method stub
-				}
-			});
+			// 判断是否存在交易存证url和项目存正的url，如果没有则隐藏相应按钮，否则跳转该url
+			if ("".equals(san.getJyczurl())) {
+				holder.jiaoyicunzheng.setVisibility(View.GONE);
+			} else {
+				holder.jiaoyicunzheng.setVisibility(View.VISIBLE);
+			}
+			if ("".equals(san.getXmczurl())) {
+				holder.xiangmucunzheng.setVisibility(View.GONE);
+			} else {
+				holder.xiangmucunzheng.setVisibility(View.VISIBLE);
+			}
 
 			// 交易存正
 			holder.jiaoyicunzheng.setOnClickListener(new OnClickListener() {
@@ -328,6 +339,13 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
+					//跳转的h5
+					Intent intent = new Intent(WoDeTouBiao.this,
+							MyWebViewActivity.class);
+					intent.putExtra("title", "交易存证");
+					intent.putExtra("url",san.getJyczurl() );
+					startActivity(intent);
+					anim_right_in();
 				}
 			});
 			// 项目存正
@@ -336,6 +354,13 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
+					//跳转的h5
+					Intent intent = new Intent(WoDeTouBiao.this,
+							MyWebViewActivity.class);
+					intent.putExtra("title", "项目存证");
+					intent.putExtra("url", san.getXmczurl());
+					startActivity(intent);
+					anim_right_in();
 				}
 			});
 
@@ -358,7 +383,6 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			TextView xiayigehuankuanri;
 			TextView huankuanzhuangtai;
 
-			TextView chakanhetong;
 			TextView jiaoyicunzheng;
 			TextView xiangmucunzheng;
 
@@ -432,11 +456,11 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			}
 
 			// 投标中
-			SanProject san = (SanProject) allList2.get(position);
+			final SanProject san = (SanProject) allList2.get(position);
 
 			holder.touzijine.setText(san.show_my_list_one());
 			holder.yuqinianhua.setText(san.show_list_two());
-			holder.qixian.setText(san.getSyqs());
+			holder.qixian.setText(san.getJkqx());
 			if (san.getBdtype().endsWith("1")) {
 				holder.biaodeleixing.setText("存管标");
 			} else {
@@ -444,7 +468,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			}
 			holder.jiekuanbiaoti.setText(san.getBdbt());
 			holder.shengyuketou.setText(san.getSyje() + "元");
-			holder.toubiaojindu.setText(san.getTbjd() + "%");
+			holder.toubiaojindu.setText(san.getRzjd() + "%");
 			holder.toubiaoshijian.setText(san.getTbsj());
 
 			holder.layoutbtn.setTag(position);
@@ -471,22 +495,56 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 
 				}
 			});
-
-			// 查看合同按钮
+			
+			//如果标的状态为0则显示继续投标，否则不显示
+			if(san.getBdzt().equals("0")){
+				holder.jixutoubiao.setVisibility(View.VISIBLE);
+			}else{
+				holder.jixutoubiao.setVisibility(View.GONE);
+			}
+			
+			// 继续投标
 			holder.jixutoubiao.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
+					Intent intent = new Intent(WoDeTouBiao.this,
+							LiJiTouBiaoActivity.class);
+					Bundle bundle = new Bundle();
+					bundle.putString("pId", san.getpId());
+					bundle.putString("shengyu", san.getSyje());// 剩余金额
+					bundle.putString("huankuanqixian", san.getHkqx());// 还款期限
+					bundle.putString("nianlilv", san.getNll());// 年利率
+					bundle.putString("jiangli", san.getJlll());// 奖励利率
+					bundle.putString("jiekuan", san.getJkfs());// 借款方式
+					bundle.putString("huankuanfangshi", san.getHkfs());// 还款方式
+					bundle.putString("bdtype", san.getBdtype());//标的类型
+					intent.putExtras(bundle);
+
+					startActivity(intent);
 				}
 			});
 
-			// 交易存正
+			//回收中，投标中，已结清，中的存证url是同一个
+			if ("".equals(san.getXmczurl())) {
+				holder.chakancunzheng.setVisibility(View.GONE);
+			} else {
+				holder.chakancunzheng.setVisibility(View.VISIBLE);
+			}
+			
+			// 查看存正
 			holder.chakancunzheng.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
+					Intent intent = new Intent(WoDeTouBiao.this,
+							MyWebViewActivity.class);
+					intent.putExtra("title", "项目存证");
+					intent.putExtra("url", san.getXmczurl());
+					startActivity(intent);
+					anim_right_in();
 				}
 			});
 
@@ -515,7 +573,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 
 	}
 
-	/** 适配器 ---存管理财 **/
+	/** 适配器 ---已结清 **/
 	class MyAdapter3 extends BaseAdapter {
 
 		private int currentItem = -1;
@@ -569,8 +627,6 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				holder.jieqingriqi = (TextView) convertView
 						.findViewById(R.id.wdtb_item3_huankuanzhuangtai);
 
-				holder.jieqingriqi = (TextView) convertView
-						.findViewById(R.id.wdtb_item3_chakanhetong);
 				holder.chakancunzheng = (TextView) convertView
 						.findViewById(R.id.wdtb_item3_jiaoyicunzheng);
 
@@ -586,14 +642,14 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				holder.layout.setVisibility(View.GONE);
 			}
 
-			// 投标中
-			SanProject san = (SanProject) allList3.get(position);
+			// 投标
+			final SanProject san = (SanProject) allList3.get(position);
 
 			holder.touzijine.setText(san.show_my_list_one());
 			holder.yuqinianhua.setText(san.show_list_two());
-			
+
 			holder.huishoujine.setText(san.getHsje());
-			
+
 			if (san.getBdtype().endsWith("1")) {
 				holder.biaodeleixing.setText("存管标");
 			} else {
@@ -601,7 +657,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			}
 			holder.jiekuanbiaoti.setText(san.getBdbt());
 			holder.yizhuanjine.setText(san.getYzje() + "元");
-			holder.chakancunzheng.setText(san.getJqrq());
+			holder.jieqingriqi.setText(san.getJqrq());
 
 			// 设置显示布局按钮事件
 			holder.layoutbtn.setOnClickListener(new OnClickListener() {
@@ -621,21 +677,25 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 				}
 			});
 
-			// 查看合同按钮
-			holder.jieqingriqi.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View arg0) {
-					// TODO Auto-generated method stub
-				}
-			});
-
-			// 交易存正
+			//回收中，投标中，已结清，中的存证url是同一个
+			if ("".equals(san.getXmczurl())) {
+				holder.chakancunzheng.setVisibility(View.GONE);
+			} else {
+				holder.chakancunzheng.setVisibility(View.VISIBLE);
+			}
+			
+			// 查看存正
 			holder.chakancunzheng.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
+					Intent intent = new Intent(WoDeTouBiao.this,
+							MyWebViewActivity.class);
+					intent.putExtra("title", "项目存证");
+					intent.putExtra("url", san.getXmczurl());
+					startActivity(intent);
+					anim_right_in();
 				}
 			});
 
@@ -656,7 +716,6 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			TextView yizhuanjine;
 			TextView jieqingriqi;
 
-			TextView chakanhetong;
 			TextView chakancunzheng;
 
 		}
@@ -674,11 +733,11 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		curPage = 1;
 		if (rb1.isChecked()) {
-			loadHttp("1");
+			loadHttp("0");
 		} else if (rb2.isChecked()) {
-			loadHttp("2");
+			loadHttp("1");
 		} else if (rb3.isChecked()) {
-			loadHttp("3");
+			loadHttp("2");
 		}
 	}
 
@@ -687,13 +746,13 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		if (rb1.isChecked()) {
 			curPage++;
-			loadHttp("1");
+			loadHttp("0");
 		} else if (rb2.isChecked()) {
 			curPage++;
-			loadHttp("2");
+			loadHttp("1");
 		} else if (rb3.isChecked()) {
 			curPage++;
-			loadHttp("3");
+			loadHttp("2");
 		}
 
 	}
@@ -734,7 +793,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 			case 1:
 
 				// json = (JSONObject) msg.getData().get("json");
-				if (msg.getData().get("status").equals("1")) {
+				if (msg.getData().get("status").equals("0")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -744,7 +803,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 					allList1.addAll(list);
 					mAdapter1.notifyDataSetChanged();
 
-				} else if (msg.getData().get("status").equals("2")) {
+				} else if (msg.getData().get("status").equals("1")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");
@@ -754,7 +813,7 @@ public class WoDeTouBiao extends BaseActivity implements OnClickListener,
 					allList2.addAll(list);
 					mAdapter2.notifyDataSetChanged();
 
-				} else if (msg.getData().get("status").equals("3")) {
+				} else if (msg.getData().get("status").equals("2")) {
 
 					List<Object> list = (List<Object>) msg.getData()
 							.get("list");

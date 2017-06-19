@@ -150,6 +150,8 @@ public class SanProject implements Serializable {
 	public String syje = "";// 剩余金额 （特殊处理，不要显示在详情列表中）
 
 	public String tbsj = "";// 投标时间
+	public String ksjxsj = "";// 开始计息时间------2017-0506-小猪
+	public String bdzt = "";// 标的状态，投标中0-显示继续投标，其他为1；
 	public String jyczurl = "";// 交易存在URL
 	public String xmczurl = "";// 项目存正URL
 	public String hkzt = "";// 还款状态
@@ -174,6 +176,7 @@ public class SanProject implements Serializable {
 	public String tbjl_url = ""; // 投标记录url
 	public String hkjl_url = ""; // 还款记录url
 	public String zqxx_url = ""; // 债权信息url
+	public String jkxy_url = ""; // 借款协议url
 	public String zrjl_url = ""; // 转让记录url
 	public String jlmd_url = ""; // 奖励名单url
 
@@ -212,25 +215,44 @@ public class SanProject implements Serializable {
 	// 散标-列表
 	public void initMakeData_list(JSONObject json, String type) {
 		try {
-			this.pId = json.getString("id");
-			this.tbArray = json.getJSONArray("tb");
-			this.bdbt = json.getString("bdbt");
-			this.jkfs = json.getString("jkfs");
-			this.jllx = json.getString("jllx");
-			// if (!type.equals("zhaiquan")) {
-			// if (type.equals("liebiao")) {
-			// this.rzjd = json.getInt("rzjd") + "";
-			// } else {
-			this.tbjd = json.getString("tbjd");
-			// }
-			// }
-			this.bdze = json.getString("bdze");
-			this.nll = json.getString("nll");
-			this.jlll = json.getString("jlll");
-			this.hkqx = json.getString("hkqx");
-			this.zt = json.getString("zt");
-			this.tjf = json.getString("tjf");
-			this.bdtype = json.getString("bdtype");
+
+			if (json.has("id")) {
+				this.pId = json.getString("id");
+			}
+			if (json.has("tb")) {
+				this.tbArray = json.getJSONArray("tb");
+			}
+			if (json.has("bdbt")) {
+				this.bdbt = json.getString("bdbt");
+			}
+			if (json.has("jkfs")) {
+				this.jkfs = json.getString("jkfs");
+			}
+			if (json.has("jllx")) {
+				this.jllx = json.getString("jllx");
+			}
+			if (json.has("bdze")) {
+				this.bdze = json.getString("bdze");
+			}
+			if (json.has("nll")) {
+				this.nll = json.getString("nll");
+			}
+			if (json.has("jlll")) {
+				this.jlll = json.getString("jlll");
+			}
+			if (json.has("hkqx")) {
+				this.hkqx = json.getString("hkqx");
+			}
+			if (json.has("zt")) {
+				this.zt = json.getString("zt");
+			}
+			if (json.has("tjf")) {
+				this.tjf = json.getString("tjf");
+			}
+			if (json.has("bdtype")) {
+				this.bdtype = json.getString("bdtype");
+			}
+
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -243,33 +265,124 @@ public class SanProject implements Serializable {
 			// 列表
 			initMakeData_list(json, type);
 			// 详情
-			this.tbxe = json.getString("tbxe");
-			this.syje = json.getString("syje");
-			this.xydj = json.getString("xydj");
-			this.bzfs = json.getString("bzfs");
-			this.tqhkfl = json.getString("tqhkfl");
-			this.hkfs = json.getString("hkfs");
-			this.yhbx = json.getString("yhbx");
-			this.tbjd = json.getString("tbjd");
-			this.grtbdcs = json.getString("grtbdcs");
-			this.rzsysj = json.getString("rzsysj");
-			this.tbxe = json.getString("tbxe");
-			this.fbsj = json.getString("fbsj");
-			this.cbqx = json.getString("cbqx");
-			this.mbsj = json.getString("mbsj");
-			this.bdxq_url = json.getString("bdxq_url");
-			this.xgzl_url = json.getString("xgzl_url");
-			this.jlgz_url = json.getString("jlgz_url");
-			this.tbjl_url = json.getString("tbjl_url");
-			this.hkjl_url = json.getString("hkjl_url");
-			this.zqxx_url = json.getString("zqxx_url");
-			this.zrjl_url = json.getString("zrjl_url");
-			this.jlmd_url = json.getString("jlmd_url");
-			this.bdtype = json.getString("bdtype");
-			this.djs = json.getString("djs");
-			this.dhbj = json.getString("dhbj");
-			this.hkr = json.getString("hkr");
-			this.yhbj = json.getString("yhbj");
+			if (json.has("tbxe")) {
+				this.tbxe = json.getString("tbxe");
+			}
+			if (json.has("syje")) {
+				this.syje = json.getString("syje");
+			}
+			if (json.has("xydj")) {
+				this.xydj = json.getString("xydj");
+			}
+			if (json.has("bzfs")) {
+				this.bzfs = json.getString("bzfs");
+			}
+			if (json.has("tqhkfl")) {
+				this.tqhkfl = json.getString("tqhkfl");
+			}
+			if (json.has("hkfs")) {
+				this.hkfs = json.getString("hkfs");
+			}
+			if (json.has("yhbx")) {
+				this.yhbx = json.getString("yhbx");
+			}
+			if (json.has("tbjd")) {
+				this.tbjd = json.getString("tbjd");
+			}
+			if (json.has("grtbdcs")) {
+				this.grtbdcs = json.getString("grtbdcs");
+			}
+			if (json.has("rzsysj")) {
+				this.rzsysj = json.getString("rzsysj");
+			}
+			if (json.has("tbxe")) {
+				this.tbxe = json.getString("tbxe");
+			}
+			if (json.has("fbsj")) {
+				this.fbsj = json.getString("fbsj");
+			}
+			if (json.has("cbqx")) {
+				this.cbqx = json.getString("cbqx");
+			}
+			if (json.has("mbsj")) {
+				this.mbsj = json.getString("mbsj");
+			}
+			if (json.has("bdxq_url")) {
+				this.bdxq_url = json.getString("bdxq_url");
+			}
+			if (json.has("xgzl_url")) {
+				this.xgzl_url = json.getString("xgzl_url");
+			}
+			if (json.has("jlgz_url")) {
+				this.jlgz_url = json.getString("jlgz_url");
+			}
+			if (json.has("tbjl_url")) {
+				this.tbjl_url = json.getString("tbjl_url");
+			}
+			if (json.has("hkjl_url")) {
+				this.hkjl_url = json.getString("hkjl_url");
+			}
+			if (json.has("zqxx_url")) {
+				this.zqxx_url = json.getString("zqxx_url");
+			}
+			if (json.has("jkxy_url")) {
+				this.jkxy_url = json.getString("jkxy_url");
+			}
+			if (json.has("zrjl_url")) {
+				this.zrjl_url = json.getString("zrjl_url");
+			}
+			if (json.has("jlmd_url")) {
+				this.jlmd_url = json.getString("jlmd_url");
+			}
+			if (json.has("bdtype")) {
+				this.bdtype = json.getString("bdtype");
+			}
+			if (json.has("djs")) {
+				this.djs = json.getString("djs");
+			}
+			if (json.has("dhbj")) {
+				this.dhbj = json.getString("dhbj");
+			}
+			if (json.has("hkr")) {
+				this.hkr = json.getString("hkr");
+			}
+			if (json.has("yhbj")) {
+				this.yhbj = json.getString("yhbj");
+			}
+			if (json.has("jkqx")) {
+				this.jkqx = json.getString("jkqx");
+			}
+			if (json.has("tjf")) {
+				this.tjf = json.getString("tjf");
+			}
+			if (json.has("zt")) {
+				this.zt = json.getString("zt");
+			}
+			if (json.has("rzjd")) {
+				this.rzjd = json.getString("rzjd");
+			}
+			if (json.has("rzsysj")) {
+				this.rzsysj = json.getString("rzsysj");
+			}
+			if (json.has("mbsj")) {
+				this.mbsj = json.getString("mbsj");
+			}
+			if (json.has("jkqx")) {
+				this.jkqx = json.getString("jkqx");
+			}
+			if (json.has("syqs")) {
+				this.syqs = json.getString("syqs");
+			}
+			if (json.has("xghkr")) {
+				this.xyhkr = json.getString("xghkr");
+			}
+			if (json.has("tbjd")) {
+				this.tbjd = json.getString("tbjd");
+			}
+			if (json.has("hkr")) {
+				this.hkr = json.getString("hkr");
+			}
+
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -283,43 +396,128 @@ public class SanProject implements Serializable {
 			// initMakeData_list(json, "");
 			// initMakeData_listInfo(json, "");
 
-			this.pId = json.getString("id");
-			this.tbArray = json.getJSONArray("tb");
-			this.bdbt = json.getString("bdbt");
-			this.dsbx = json.getString("dsbx");
-			this.nll = json.getString("nll");
+			if (json.has("id")) {
+				this.pId = json.getString("id");
+			}
+			if (json.has("tb")) {
+				this.tbArray = json.getJSONArray("tb");
+			}
 
-			this.hkqx = json.getString("hkqx");
-			this.rzjd = json.getString("rzjd");
+			if (json.has("bdbt")) {
+				this.bdbt = json.getString("bdbt");
+			}
 
-			this.jllx = json.getString("jllx");
-			this.jlll = json.getString("jlll");
-			this.pId = json.getString("id");
-			this.jkqx = json.getString("jkqx");
-			this.jlje = json.getString("jlje");
+			if (json.has("dsbx")) {
+				this.dsbx = json.getString("dsbx");
+			}
+
+			if (json.has("nll")) {
+				this.nll = json.getString("nll");
+			}
+
+			if (json.has("hkqx")) {
+				this.hkqx = json.getString("hkqx");
+			}
+
+			if (json.has("rzjd")) {
+				this.rzjd = json.getString("rzjd");
+			}
+
+			if (json.has("jllx")) {
+				this.jllx = json.getString("jllx");
+			}
+
+			if (json.has("jlll")) {
+				this.jlll = json.getString("jlll");
+			}
+
+			if (json.has("id")) {
+				this.pId = json.getString("id");
+			}
+
+			if (json.has("jkqx")) {
+				this.jkqx = json.getString("jkqx");// jiekuanqixian
+			}
+
+			if (json.has("jlje")) {
+				this.jlje = json.getString("jlje");
+			}
 
 			// 详情
-			this.dsbx = json.getString("dsbx");
-			this.syqs = json.getString("syqs");
-			this.jkfs = json.getString("jkfs");
-			this.xyhkr = json.getString("xyhkr");
-			// this.jd = json.getString("jd");
-			this.tzje = json.getString("tzje");
-			this.yzje = json.getString("yzje");
-			this.jqrq = json.getString("jqrq");
-			this.zccjfs = json.getString("zccjfs");
-			this.zcsjsr = json.getString("zcsjsr");
-			this.zcjyfy = json.getString("zcjyfy");
-			this.zczryk = json.getString("zczryk");
 
-			this.tzje = json.getString("tzje");
-			this.bdtype = json.getString("bdtype");
-			this.hsje = json.getString("hsje");
+			if (json.has("syqs")) {
+				this.syqs = json.getString("syqs");
+			}
 
-			this.tbsj = json.getString("tbsj");
-			this.jyczurl = json.getString("jyczurl");
-			this.xmczurl = json.getString("xmczurl");
-			this.hkzt = json.getString("hkzt");
+			if (json.has("syqs")) {
+				this.syqs = json.getString("syqs");
+			}
+
+			if (json.has("jkfs")) {
+				this.jkfs = json.getString("jkfs");
+			}
+
+			if (json.has("xyhkr")) {
+				this.xyhkr = json.getString("xyhkr");
+			}
+
+			if (json.has("ksjxsj")) {
+				this.ksjxsj = json.getString("ksjxsj");// ---2017-0506-小猪
+			}
+			if (json.has("bdzt")) {
+				this.bdzt = json.getString("bdzt");// ---2017-0506-小猪
+			}
+			if (json.has("tzje")) {
+				this.tzje = json.getString("tzje");
+			}
+			if (json.has("yzje")) {
+				this.yzje = json.getString("yzje");
+			}
+			if (json.has("jqrq")) {
+				this.jqrq = json.getString("jqrq");
+			}
+			if (json.has("zccjfs")) {
+				this.zccjfs = json.getString("zccjfs");
+			}
+			if (json.has("zcsjsr")) {
+				this.zcsjsr = json.getString("zcsjsr");
+			}
+			if (json.has("zcjyfy")) {
+				this.zcjyfy = json.getString("zcjyfy");
+			}
+			if (json.has("zczryk")) {
+				this.zczryk = json.getString("zczryk");
+			}
+			if (json.has("tzje")) {
+				this.tzje = json.getString("tzje");
+			}
+			if (json.has("bdtype")) {
+				this.bdtype = json.getString("bdtype");
+			}
+			if (json.has("hsje")) {
+				this.hsje = json.getString("hsje");
+			}
+			if (json.has("hkzt")) {
+				this.hkzt = json.getString("hkzt");
+			}
+			if (json.has("tbsj")) {
+				this.tbsj = json.getString("tbsj");
+			}
+			if (json.has("jyczurl")) {
+				this.jyczurl = json.getString("jyczurl");
+			}
+			if (json.has("jyczurl")) {
+				this.jyczurl = json.getString("jyczurl");
+			}
+			if (json.has("jkqx")) {
+				this.jkqx = json.getString("jkqx");
+			}
+			if (json.has("rzjd")) {
+				this.rzjd = json.getString("rzjd");
+			}
+			if (json.has("syje")) {
+				this.syje = json.getString("syje");
+			}
 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -328,6 +526,22 @@ public class SanProject implements Serializable {
 	}
 
 	// 一些特殊的方法处理
+
+	public String getKsjxsj() {
+		return ksjxsj;
+	}
+
+	public void setKsjxsj(String ksjxsj) {
+		this.ksjxsj = ksjxsj;
+	}
+
+	public String getBdzt() {
+		return bdzt;
+	}
+
+	public void setBdzt(String bdzt) {
+		this.bdzt = bdzt;
+	}
 
 	// 判断是否可以点击投标的按钮
 	public boolean isJudgment_bid_butonPress() {
@@ -429,9 +643,9 @@ public class SanProject implements Serializable {
 		// if (this.getJlll().equals("-1")) {
 		// return this.nll + "%";
 		// }
-		if (this.getJlll().length() > 0) {
-			return this.nll + "%+" + this.getJlll() + "%";
-		}
+		// if (this.getJlll().length() > 0) {
+		// return this.nll + "%+" + this.getJlll() + "%";
+		// }
 		return this.nll + "%";
 	}
 
@@ -492,15 +706,22 @@ public class SanProject implements Serializable {
 			;
 			String xiayigehuikuanri = "";
 			if (this.getXyhkr().length() > 11) {
-				xiayigehuikuanri = this.getXyhkr().substring(0, 11);
+				xiayigehuikuanri = this.getHkr().substring(0, 11);
 			} else {
-				xiayigehuikuanri = this.getXyhkr();
+				xiayigehuikuanri = this.getHkr();
 			}
 			make_map(list, xiayigehuikuanri, "下个还款日", xiayigehuikuanri).put(
 					"yanse", "y");
 			;
 			make_map(list, this.mbsj, "满标用时", this.mbsj);
-
+			 
+			
+		}else if (this.getZt().endsWith("已满标")) {
+			make_map(list, this.hkfs, "还款方式", this.hkfs);
+			make_map(list, this.yhbx, "月还本息", this.yhbx).put("yanse", "y");
+			make_map(list, this.tbxe, "投标限额", this.tbxe).put("yanse", "y");
+			make_map(list, this.mbsj, "满标用时", this.mbsj);
+			
 		} else if (this.getZt().endsWith("已经结清")) {
 			make_map(list, this.hkfs, "还款方式", this.hkfs);
 			make_map(list, this.syqs, "剩余期数", this.syqs).put("yanse", "y");
@@ -555,14 +776,23 @@ public class SanProject implements Serializable {
 	// URL介绍
 	public List<Map<String, String>> make_sanInfo_2() {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		make_map(list, this.bdxq_url, "标的详情", this.bdxq_url);
-		make_map(list, this.xgzl_url, "相关资料", this.xgzl_url);
-		make_map(list, this.jlgz_url, "奖励规则", this.jlgz_url);
-		make_map(list, this.tbjl_url, "投标记录", this.tbjl_url);
-		make_map(list, this.hkjl_url, "还款记录", this.hkjl_url);
-		make_map(list, this.zqxx_url, "债权信息", this.zqxx_url);
-		make_map(list, this.zrjl_url, "转让记录", this.zrjl_url);
-		make_map(list, this.jlmd_url, "奖励名单", this.jlmd_url);
+
+		if (this.getZt().endsWith("立即投标") || this.getZt().endsWith("已满标")
+				|| this.getZt().endsWith("已流标")) {
+			make_map(list, this.bdxq_url, "标的详情", this.bdxq_url);
+			make_map(list, this.xgzl_url, "相关资料", this.xgzl_url);
+			make_map(list, this.tbjl_url, "投标记录", this.tbjl_url);
+			make_map(list, this.jkxy_url, "借款协议", this.jkxy_url);
+
+		} else {
+			make_map(list, this.bdxq_url, "标的详情", this.bdxq_url);
+			make_map(list, this.xgzl_url, "相关资料", this.xgzl_url);
+			make_map(list, this.tbjl_url, "投标记录", this.tbjl_url);
+			make_map(list, this.hkjl_url, "还款记录", this.hkjl_url);
+			make_map(list, this.zqxx_url, "债权信息", this.zqxx_url);
+			make_map(list, this.jkxy_url, "借款协议", this.jkxy_url);
+		}
+
 		return list;
 	}
 
@@ -895,6 +1125,14 @@ public class SanProject implements Serializable {
 		return zqxx_url;
 	}
 
+	public String getJkxy_url() {
+		return jkxy_url;
+	}
+
+	public void setJkxy_url(String jkxy_url) {
+		this.jkxy_url = jkxy_url;
+	}
+
 	public void setZqxx_url(String zqxx_url) {
 		this.zqxx_url = zqxx_url;
 	}
@@ -1012,7 +1250,7 @@ public class SanProject implements Serializable {
 	}
 
 	public String getTbjd() {
-		return zczryk;
+		return tbjd;
 	}
 
 	public void setTbjd(String tbjd) {

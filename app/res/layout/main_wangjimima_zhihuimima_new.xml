@@ -18,7 +18,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@color/white" >
 
         <ImageView
@@ -31,7 +31,7 @@
             android:src="@drawable/z_shoujihao" />
 
         <EditText
-            android:id="@+id/main_zhaohuimima_shoujihao"
+            android:id="@+id/main_zhmm_shoujihao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -40,6 +40,7 @@
             android:ems="10"
             android:hint="手机号"
             android:lines="1"
+            android:inputType="phone"
             android:padding="10dp"
             android:textColor="@color/main_text_black"
             android:textSize="@dimen/sp_28px" />
@@ -52,27 +53,24 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
         android:background="@color/white" >
 
         <ImageView
-            android:id="@+id/main_zhaohuimima_yanzhenmaimg"
+            android:id="@+id/main_zhmm_yanzhenmaimg"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
             android:gravity="center"
-            android:text="@string/huoquyanzhengma"
-            android:textColor="@color/main_blue"
-            android:textSize="@dimen/sp_20px"
             android:visibility="visible" />
 
         <EditText
-            android:id="@+id/main_zhaohuimima_yanzhengma"
+            android:id="@+id/main_zhmm_yanzhengma"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -103,7 +101,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@color/white" >
 
         <ImageView
@@ -117,7 +115,7 @@
             android:src="@drawable/z_shoujiyanzhengma" />
 
         <Button
-            android:id="@+id/main_zhaohuimima_shoujiyanzhengma"
+            android:id="@+id/main_zhmm_shoujiyanzhengma"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -131,7 +129,7 @@
             android:visibility="visible" />
 
         <EditText
-            android:id="@+id/main_zhaohuimima_etshoujiyanzhengma"
+            android:id="@+id/main_zhmm_etshoujiyanzhengma"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -167,7 +165,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@color/white" >
 
         <ImageView
@@ -202,7 +200,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@color/white" >
 
         <ImageView
@@ -238,12 +236,11 @@
     <Button
         android:id="@+id/main_zhaohuimima_btn_n"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/button_new_blue"
-        android:enabled="false"
         android:gravity="center"
         android:text="提交"
         android:textColor="@color/btn_text_color_black"
