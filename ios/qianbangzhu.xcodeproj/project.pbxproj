@@ -24,7 +24,7 @@
 		180A35DD1ACE99230073BBC0 /* 72.png in Resources */ = {isa = PBXBuildFile; fileRef = 180A35D51ACE99230073BBC0 /* 72.png */; };
 		18156F091AFA07EB0055B474 /* BangYinHangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18156F081AFA07EB0055B474 /* BangYinHangViewController.m */; };
 		18156F111AFA148D0055B474 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18156F101AFA148D0055B474 /* CoreTelephony.framework */; };
-		182192711ADB680F00B06F77 /* de@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1821926D1ADB680F00B06F77 /* de@2x.png */; };
+		182192711ADB680F00B06F77 /* de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1821926D1ADB680F00B06F77 /* de.png */; };
 		182192B81ADBB28700B06F77 /* icon28.png in Resources */ = {isa = PBXBuildFile; fileRef = 182192B61ADBB28700B06F77 /* icon28.png */; };
 		182192B91ADBB28700B06F77 /* icon29.png in Resources */ = {isa = PBXBuildFile; fileRef = 182192B71ADBB28700B06F77 /* icon29.png */; };
 		1823A78C1AD787390020684E /* MyAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823A78B1AD787390020684E /* MyAlert.m */; };
@@ -668,16 +668,6 @@
 		6FFAA4991EE449D600453972 /* 我要借款banner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FFAA4981EE449D600453972 /* 我要借款banner.jpg */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		1864B4121AB7EE8100BC1455 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1864B3ED1AB7EE8000BC1455 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1864B3F41AB7EE8000BC1455;
-			remoteInfo = quqian;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		180A35BC1ACCE38E0073BBC0 /* NoticeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeInfoViewController.h; sourceTree = "<group>"; };
 		180A35BD1ACCE38E0073BBC0 /* NoticeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeInfoViewController.m; sourceTree = "<group>"; };
@@ -699,7 +689,7 @@
 		18156F071AFA07EB0055B474 /* BangYinHangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BangYinHangViewController.h; sourceTree = "<group>"; };
 		18156F081AFA07EB0055B474 /* BangYinHangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BangYinHangViewController.m; sourceTree = "<group>"; };
 		18156F101AFA148D0055B474 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		1821926D1ADB680F00B06F77 /* de@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "de@2x.png"; sourceTree = "<group>"; };
+		1821926D1ADB680F00B06F77 /* de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = de.png; sourceTree = "<group>"; };
 		182192B61ADBB28700B06F77 /* icon28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon28.png; sourceTree = "<group>"; };
 		182192B71ADBB28700B06F77 /* icon29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon29.png; sourceTree = "<group>"; };
 		1823A78A1AD787390020684E /* MyAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlert.h; sourceTree = "<group>"; };
@@ -778,7 +768,6 @@
 		1864B4061AB7EE8000BC1455 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1864B4081AB7EE8000BC1455 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1864B40B1AB7EE8000BC1455 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		1864B4111AB7EE8100BC1455 /* qianbangzhuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = qianbangzhuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1864B4211AB7EF7400BC1455 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		1864B4221AB7EF7400BC1455 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		1864B4271AB7EFFF00BC1455 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
@@ -1772,13 +1761,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1864B40E1AB7EE8100BC1455 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1788,7 +1770,7 @@
 				6FFAA4461EE061FA00453972 /* qidongpic1.jpg */,
 				6FFAA4471EE061FA00453972 /* qidongpic2.jpg */,
 				6FFAA4481EE061FA00453972 /* qidongpic3.jpg */,
-				1821926D1ADB680F00B06F77 /* de@2x.png */,
+				1821926D1ADB680F00B06F77 /* de.png */,
 				180A35CF1ACE99230073BBC0 /* 1024.png */,
 				180A35D01ACE99230073BBC0 /* 114.png */,
 				180A35D11ACE99230073BBC0 /* 120.png */,
@@ -1950,7 +1932,6 @@
 			isa = PBXGroup;
 			children = (
 				1864B3F51AB7EE8000BC1455 /* qianbangzhu.app */,
-				1864B4111AB7EE8100BC1455 /* qianbangzhuTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3709,24 +3690,6 @@
 			productReference = 1864B3F51AB7EE8000BC1455 /* qianbangzhu.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1864B4101AB7EE8100BC1455 /* qianbangzhuTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1864B41E1AB7EE8100BC1455 /* Build configuration list for PBXNativeTarget "qianbangzhuTests" */;
-			buildPhases = (
-				1864B40D1AB7EE8100BC1455 /* Sources */,
-				1864B40E1AB7EE8100BC1455 /* Frameworks */,
-				1864B40F1AB7EE8100BC1455 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1864B4131AB7EE8100BC1455 /* PBXTargetDependency */,
-			);
-			name = qianbangzhuTests;
-			productName = quqianTests;
-			productReference = 1864B4111AB7EE8100BC1455 /* qianbangzhuTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -3740,10 +3703,6 @@
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = WC7LZN7T9K;
 						ProvisioningStyle = Automatic;
-					};
-					1864B4101AB7EE8100BC1455 = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = 1864B3F41AB7EE8000BC1455;
 					};
 				};
 			};
@@ -3761,7 +3720,6 @@
 			projectRoot = "";
 			targets = (
 				1864B3F41AB7EE8000BC1455 /* qianbangzhu */,
-				1864B4101AB7EE8100BC1455 /* qianbangzhuTests */,
 			);
 		};
 /* End PBXProject section */
@@ -3976,7 +3934,7 @@
 				1823A79B1AD7A0D20020684E /* custom-cancel-normal.png in Resources */,
 				1864B8A11AB7F05B00BC1455 /* Expression_54@2x.png in Resources */,
 				1864B8D01AB7F05B00BC1455 /* Expression_97@2x.png in Resources */,
-				182192711ADB680F00B06F77 /* de@2x.png in Resources */,
+				182192711ADB680F00B06F77 /* de.png in Resources */,
 				1864B8CC1AB7F05B00BC1455 /* Expression_93@2x.png in Resources */,
 				6F9E957F1EF4F47100408674 /* 快捷充值.png in Resources */,
 				18A1B2111AC945F600C328A1 /* button4.png in Resources */,
@@ -4032,13 +3990,6 @@
 				180A35C91ACE33D50073BBC0 /* pic4.png in Resources */,
 				180A35CA1ACE33D50073BBC0 /* pic5.png in Resources */,
 				6FFAA4831EE3071E00453972 /* 累计成交.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1864B40F1AB7EE8100BC1455 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4436,22 +4387,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1864B40D1AB7EE8100BC1455 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		1864B4131AB7EE8100BC1455 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1864B3F41AB7EE8000BC1455 /* qianbangzhu */;
-			targetProxy = 1864B4121AB7EE8100BC1455 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1864B4051AB7EE8000BC1455 /* Main.storyboard */ = {
@@ -4571,6 +4507,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WC7LZN7T9K;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "quqian/deled-Prefix.pch";
@@ -4599,6 +4536,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WC7LZN7T9K;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "quqian/deled-Prefix.pch";
@@ -4620,42 +4558,6 @@
 			};
 			name = Release;
 		};
-		1864B41F1AB7EE8100BC1455 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = quqianTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "biz.chaping.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qianbangzhu.app/qianbangzhu";
-			};
-			name = Debug;
-		};
-		1864B4201AB7EE8100BC1455 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = quqianTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "biz.chaping.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qianbangzhu.app/qianbangzhu";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -4673,15 +4575,6 @@
 			buildConfigurations = (
 				1864B41C1AB7EE8100BC1455 /* Debug */,
 				1864B41D1AB7EE8100BC1455 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1864B41E1AB7EE8100BC1455 /* Build configuration list for PBXNativeTarget "qianbangzhuTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1864B41F1AB7EE8100BC1455 /* Debug */,
-				1864B4201AB7EE8100BC1455 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
