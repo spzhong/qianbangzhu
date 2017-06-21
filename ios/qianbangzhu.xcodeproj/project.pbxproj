@@ -592,6 +592,16 @@
 		18D95DEF1AE0EB84005AFE8E /* ChongZhiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D95DEE1AE0EB84005AFE8E /* ChongZhiTableViewController.m */; };
 		18D95DF11AE10367005AFE8E /* icon27.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D95DF01AE10367005AFE8E /* icon27.png */; };
 		18D95DF41AE108C5005AFE8E /* OkTiXianTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D95DF31AE108C5005AFE8E /* OkTiXianTableViewController.m */; };
+		6F01258D1EFA23BD00B72C86 /* ZhanghuzonglanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F01258B1EFA23BD00B72C86 /* ZhanghuzonglanViewController.m */; };
+		6F01258E1EFA23BD00B72C86 /* ZhanghuzonglanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F01258C1EFA23BD00B72C86 /* ZhanghuzonglanViewController.xib */; };
+		6F0125921EFA23D100B72C86 /* JiaoyijiluViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F0125901EFA23D100B72C86 /* JiaoyijiluViewController.m */; };
+		6F0125931EFA23D100B72C86 /* JiaoyijiluViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F0125911EFA23D100B72C86 /* JiaoyijiluViewController.xib */; };
+		6F0125971EFA23E800B72C86 /* WotoubiaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F0125951EFA23E800B72C86 /* WotoubiaoViewController.m */; };
+		6F0125981EFA23E800B72C86 /* WotoubiaoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F0125961EFA23E800B72C86 /* WotoubiaoViewController.xib */; };
+		6F01259C1EFA23FC00B72C86 /* YaoqinghaoyuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F01259A1EFA23FC00B72C86 /* YaoqinghaoyuViewController.m */; };
+		6F01259D1EFA23FC00B72C86 /* YaoqinghaoyuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F01259B1EFA23FC00B72C86 /* YaoqinghaoyuViewController.xib */; };
+		6F0125A11EFA241B00B72C86 /* WodejiaxikaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F01259F1EFA241B00B72C86 /* WodejiaxikaViewController.m */; };
+		6F0125A21EFA241B00B72C86 /* WodejiaxikaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F0125A01EFA241B00B72C86 /* WodejiaxikaViewController.xib */; };
 		6F4407761EF2924C0014FD65 /* PTWEBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4407751EF2924C0014FD65 /* PTWEBViewController.m */; };
 		6F6E54781EF37AB10000480A /* 广东华兴银行LOGO.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E54691EF37AB10000480A /* 广东华兴银行LOGO.png */; };
 		6F6E54791EF37AB10000480A /* 交易记录.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E546A1EF37AB10000480A /* 交易记录.png */; };
@@ -1646,6 +1656,21 @@
 		18D95DF01AE10367005AFE8E /* icon27.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon27.png; sourceTree = "<group>"; };
 		18D95DF21AE108C5005AFE8E /* OkTiXianTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OkTiXianTableViewController.h; sourceTree = "<group>"; };
 		18D95DF31AE108C5005AFE8E /* OkTiXianTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OkTiXianTableViewController.m; sourceTree = "<group>"; };
+		6F01258A1EFA23BD00B72C86 /* ZhanghuzonglanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhanghuzonglanViewController.h; sourceTree = "<group>"; };
+		6F01258B1EFA23BD00B72C86 /* ZhanghuzonglanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhanghuzonglanViewController.m; sourceTree = "<group>"; };
+		6F01258C1EFA23BD00B72C86 /* ZhanghuzonglanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZhanghuzonglanViewController.xib; sourceTree = "<group>"; };
+		6F01258F1EFA23D100B72C86 /* JiaoyijiluViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiaoyijiluViewController.h; sourceTree = "<group>"; };
+		6F0125901EFA23D100B72C86 /* JiaoyijiluViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiaoyijiluViewController.m; sourceTree = "<group>"; };
+		6F0125911EFA23D100B72C86 /* JiaoyijiluViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JiaoyijiluViewController.xib; sourceTree = "<group>"; };
+		6F0125941EFA23E800B72C86 /* WotoubiaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WotoubiaoViewController.h; sourceTree = "<group>"; };
+		6F0125951EFA23E800B72C86 /* WotoubiaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WotoubiaoViewController.m; sourceTree = "<group>"; };
+		6F0125961EFA23E800B72C86 /* WotoubiaoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WotoubiaoViewController.xib; sourceTree = "<group>"; };
+		6F0125991EFA23FC00B72C86 /* YaoqinghaoyuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YaoqinghaoyuViewController.h; sourceTree = "<group>"; };
+		6F01259A1EFA23FC00B72C86 /* YaoqinghaoyuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YaoqinghaoyuViewController.m; sourceTree = "<group>"; };
+		6F01259B1EFA23FC00B72C86 /* YaoqinghaoyuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YaoqinghaoyuViewController.xib; sourceTree = "<group>"; };
+		6F01259E1EFA241B00B72C86 /* WodejiaxikaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WodejiaxikaViewController.h; sourceTree = "<group>"; };
+		6F01259F1EFA241B00B72C86 /* WodejiaxikaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WodejiaxikaViewController.m; sourceTree = "<group>"; };
+		6F0125A01EFA241B00B72C86 /* WodejiaxikaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WodejiaxikaViewController.xib; sourceTree = "<group>"; };
 		6F4407741EF2924C0014FD65 /* PTWEBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTWEBViewController.h; sourceTree = "<group>"; };
 		6F4407751EF2924C0014FD65 /* PTWEBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTWEBViewController.m; sourceTree = "<group>"; };
 		6F6E54691EF37AB10000480A /* 广东华兴银行LOGO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "广东华兴银行LOGO.png"; sourceTree = "<group>"; };
@@ -3326,6 +3351,7 @@
 		1864BA091AB7F5B000BC1455 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6F0125891EFA239F00B72C86 /* 账户 */,
 				6F9E958D1EF5580400408674 /* 推广记录 */,
 				6F9E95711EF4D59500408674 /* 充值 */,
 				6F9E95721EF4D59500408674 /* 提现 */,
@@ -3600,6 +3626,28 @@
 			path = img;
 			sourceTree = "<group>";
 		};
+		6F0125891EFA239F00B72C86 /* 账户 */ = {
+			isa = PBXGroup;
+			children = (
+				6F01258A1EFA23BD00B72C86 /* ZhanghuzonglanViewController.h */,
+				6F01258B1EFA23BD00B72C86 /* ZhanghuzonglanViewController.m */,
+				6F01258C1EFA23BD00B72C86 /* ZhanghuzonglanViewController.xib */,
+				6F01258F1EFA23D100B72C86 /* JiaoyijiluViewController.h */,
+				6F0125901EFA23D100B72C86 /* JiaoyijiluViewController.m */,
+				6F0125911EFA23D100B72C86 /* JiaoyijiluViewController.xib */,
+				6F0125941EFA23E800B72C86 /* WotoubiaoViewController.h */,
+				6F0125951EFA23E800B72C86 /* WotoubiaoViewController.m */,
+				6F0125961EFA23E800B72C86 /* WotoubiaoViewController.xib */,
+				6F0125991EFA23FC00B72C86 /* YaoqinghaoyuViewController.h */,
+				6F01259A1EFA23FC00B72C86 /* YaoqinghaoyuViewController.m */,
+				6F01259B1EFA23FC00B72C86 /* YaoqinghaoyuViewController.xib */,
+				6F01259E1EFA241B00B72C86 /* WodejiaxikaViewController.h */,
+				6F01259F1EFA241B00B72C86 /* WodejiaxikaViewController.m */,
+				6F0125A01EFA241B00B72C86 /* WodejiaxikaViewController.xib */,
+			);
+			path = "账户";
+			sourceTree = "<group>";
+		};
 		6F9E95711EF4D59500408674 /* 充值 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3813,6 +3861,7 @@
 				1864B8C41AB7F05B00BC1455 /* Expression_86@2x.png in Resources */,
 				1864B8A91AB7F05B00BC1455 /* Expression_61@2x.png in Resources */,
 				180A35DB1ACE99230073BBC0 /* 57.png in Resources */,
+				6F0125981EFA23E800B72C86 /* WotoubiaoViewController.xib in Resources */,
 				1854FC671ACBE06B0022A1DC /* icon23.png in Resources */,
 				18A1B2211AC9770300C328A1 /* icon10.png in Resources */,
 				6FFAA4581EE0685000453972 /* cunguanlicai.png in Resources */,
@@ -3863,6 +3912,7 @@
 				1864B8921AB7F05B00BC1455 /* Expression_40@2x.png in Resources */,
 				188902DB1AC264840096DF3E /* ZhaiQuanViewCell.xib in Resources */,
 				188873491ACA8B6B00744021 /* icon18.png in Resources */,
+				6F01258E1EFA23BD00B72C86 /* ZhanghuzonglanViewController.xib in Resources */,
 				18A1B2271AC9770300C328A1 /* icon13-2.png in Resources */,
 				1888734C1ACA8FAE00744021 /* icon19-1.png in Resources */,
 				189EC2381AC3E068008EBEAA /* down_dark.png in Resources */,
@@ -3887,6 +3937,7 @@
 				6F6E547E1EF37AB10000480A /* 我的借款.png in Resources */,
 				1864B8871AB7F05B00BC1455 /* Expression_30@2x.png in Resources */,
 				18A33AFA1ACC13C500664ACB /* icon25.png in Resources */,
+				6F0125931EFA23D100B72C86 /* JiaoyijiluViewController.xib in Resources */,
 				1864B8CF1AB7F05B00BC1455 /* Expression_96@2x.png in Resources */,
 				6FFAA4901EE420DB00453972 /* 提现信息.png in Resources */,
 				18D95DF11AE10367005AFE8E /* icon27.png in Resources */,
@@ -3927,6 +3978,7 @@
 				6FFAA4661EE2F80600453972 /* wuyoucunzheng.png in Resources */,
 				18A1B2281AC9770300C328A1 /* icon14-1.png in Resources */,
 				1864B8B11AB7F05B00BC1455 /* Expression_69@2x.png in Resources */,
+				6F0125A21EFA241B00B72C86 /* WodejiaxikaViewController.xib in Resources */,
 				180A35D81ACE99230073BBC0 /* 114.png in Resources */,
 				6FFAA45F1EE2F46400453972 /* iconmore@2x.png in Resources */,
 				1854FC651ACBE06B0022A1DC /* icon21-2.png in Resources */,
@@ -3935,6 +3987,7 @@
 				1864B8A11AB7F05B00BC1455 /* Expression_54@2x.png in Resources */,
 				1864B8D01AB7F05B00BC1455 /* Expression_97@2x.png in Resources */,
 				182192711ADB680F00B06F77 /* de.png in Resources */,
+				6F01259D1EFA23FC00B72C86 /* YaoqinghaoyuViewController.xib in Resources */,
 				1864B8CC1AB7F05B00BC1455 /* Expression_93@2x.png in Resources */,
 				6F9E957F1EF4F47100408674 /* 快捷充值.png in Resources */,
 				18A1B2111AC945F600C328A1 /* button4.png in Resources */,
@@ -4012,6 +4065,7 @@
 				1864B83E1AB7F05B00BC1455 /* IQSongsListTableHeaderView.m in Sources */,
 				1864B8201AB7F05B00BC1455 /* ASIDataDecompressor.m in Sources */,
 				1864B9E11AB7F05B00BC1455 /* ZXErrors.m in Sources */,
+				6F0125A11EFA241B00B72C86 /* WodejiaxikaViewController.m in Sources */,
 				1864B9A51AB7F05B00BC1455 /* ZXUPCAWriter.m in Sources */,
 				1864B9E31AB7F05B00BC1455 /* ZXLuminanceSource.m in Sources */,
 				1864B9971AB7F05B00BC1455 /* ZXCode39Writer.m in Sources */,
@@ -4108,6 +4162,7 @@
 				1864B9261AB7F05B00BC1455 /* ZXSMSParsedResult.m in Sources */,
 				1864B83C1AB7F05B00BC1455 /* IQSongsAlbumViewCell.m in Sources */,
 				188902E61AC292510096DF3E /* BuyZhaiquanViewController.m in Sources */,
+				6F0125971EFA23E800B72C86 /* WotoubiaoViewController.m in Sources */,
 				1864B98C1AB7F05B00BC1455 /* ZXAbstractRSSReader.m in Sources */,
 				1864B9C71AB7F05B00BC1455 /* ZXFormatInformation.m in Sources */,
 				6FFAA4501EE0645100453972 /* TouziViewController.m in Sources */,
@@ -4153,6 +4208,7 @@
 				6F9E95831EF4F59B00408674 /* FYChongzhiViewController.m in Sources */,
 				1864B90F1AB7F05B00BC1455 /* ZXAztecReader.m in Sources */,
 				1864B9D01AB7F05B00BC1455 /* ZXFinderPatternFinder.m in Sources */,
+				6F0125921EFA23D100B72C86 /* JiaoyijiluViewController.m in Sources */,
 				1864B8321AB7F05B00BC1455 /* IQAlbumAssetsViewController.m in Sources */,
 				1853740A1ABBDB5B007ADA39 /* ZhaiQuanProject.m in Sources */,
 				1864B9A81AB7F05B00BC1455 /* ZXUPCEANExtensionSupport.m in Sources */,
@@ -4212,6 +4268,7 @@
 				18D95DF41AE108C5005AFE8E /* OkTiXianTableViewController.m in Sources */,
 				1864B9D61AB7F05B00BC1455 /* ZXEncoder.m in Sources */,
 				1864B9B91AB7F05B00BC1455 /* ZXPDF417Detector.m in Sources */,
+				6F01258D1EFA23BD00B72C86 /* ZhanghuzonglanViewController.m in Sources */,
 				1864B9391AB7F05B00BC1455 /* ZXWhiteRectangleDetector.m in Sources */,
 				1864B4531AB7EFFF00BC1455 /* KCTabBarViewController.m in Sources */,
 				1864B8F71AB7F05B00BC1455 /* SBJsonUTF8Stream.m in Sources */,
@@ -4381,6 +4438,7 @@
 				1864B9A71AB7F05B00BC1455 /* ZXUPCEANExtension5Support.m in Sources */,
 				185373FE1ABBDAC7007ADA39 /* SanProject.m in Sources */,
 				1864B8ED1AB7F05B00BC1455 /* NSObject+SBJson.m in Sources */,
+				6F01259C1EFA23FC00B72C86 /* YaoqinghaoyuViewController.m in Sources */,
 				1864B8D91AB7F05B00BC1455 /* TTTAttributedLabel.m in Sources */,
 				1864B9D81AB7F05B00BC1455 /* ZXMatrixUtil.m in Sources */,
 				1864B96C1AB7F05B00BC1455 /* ZXMaxiCodeBitMatrixParser.m in Sources */,

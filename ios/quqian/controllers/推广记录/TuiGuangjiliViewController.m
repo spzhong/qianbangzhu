@@ -70,6 +70,7 @@
 #pragma mark 开始进入刷新状态
 - (void)headerRereshing
 {
+    page=1;
     [self getData];
 }
 
@@ -107,8 +108,9 @@
                                     NSMutableDictionary *dic = [data JSONValue];
                                        if (![dic[@"rvalue"] isKindOfClass:[NSNull class]]) {
                                            [dataArray addObjectsFromArray:[data JSONValue][@"rvalue"][@"items"]];
+                                       }else{
+                                            [Tool myalter:@"暂无数据"];
                                        }
-  
                                    }
                                    [self.tableView headerEndRefreshing];
                                    [self.tableView footerEndRefreshing];

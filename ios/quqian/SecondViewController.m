@@ -33,8 +33,11 @@
 #import "TixianViewController.h"
 #import "YinhangkaViewController.h"
 #import "TuiGuangjiliViewController.h"
-
-
+#import "ZhanghuzonglanViewController.h"
+#import "YaoqinghaoyuViewController.h"
+#import "WotoubiaoViewController.h"
+#import "JiaoyijiluViewController.h"
+#import "WodejiaxikaViewController.h"
 
 
 @interface SecondViewController ()<LoginViewControllerDelegate>
@@ -44,6 +47,7 @@
     UIButton *but2;
     UILabel *lab1;
     UILabel *lab2;
+    UILabel *name;
 }
 @end
 
@@ -136,7 +140,7 @@
     UIImageView *head = [Tool ImgProductionFunctionFrame:CGRectMake(15, 7, 30, 30) bgImgName:@"用户头像.png"];
     [bg addSubview:head];
     
-    UILabel *name = [Tool LablelProductionFunction:[NSString stringWithFormat:@"您好,%@",user.name] Frame:CGRectMake(60, 0, 120, 44) Alignment:NSTextAlignmentLeft FontFl:15];
+    name = [Tool LablelProductionFunction:[NSString stringWithFormat:@"您好,%@",user.name] Frame:CGRectMake(60, 0, 120, 44) Alignment:NSTextAlignmentLeft FontFl:15];
     [bg addSubview:name];
     name.textColor = [UIColor whiteColor];
     
@@ -217,6 +221,9 @@
 
 
 -(void)tableviewHeadView{
+    
+    name.text = [NSString stringWithFormat:@"您好，%@",user.name];
+    
     UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 200+68*2)];
     [bg setBackgroundColor:KTHCOLOR];
     
@@ -397,8 +404,16 @@
         self.hidesBottomBarWhenPushed=NO;
         
     }else if (indexPath.row==1){//我的加息卡
-        
-        
+        WodejiaxikaViewController *wode = [[WodejiaxikaViewController alloc] init];
+        wode.title = @"我的加息卡";
+        //返回
+        UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
+        backItem.title=@"返回";
+        self.navigationItem.backBarButtonItem=backItem;
+        self.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:wode animated:YES];
+        self.hidesBottomBarWhenPushed=NO;
+
     }else if (indexPath.row==2){//银行卡管理
         YinhangkaViewController *bangding = [[YinhangkaViewController alloc] init];
         bangding.title = @"银行卡管理";
@@ -673,22 +688,56 @@
 
 //账户总览
 -(void)zhanghuzonglan{
-
+    ZhanghuzonglanViewController *za = [[ZhanghuzonglanViewController alloc]initWithNibName:@"ZhanghuzonglanViewController" bundle:nil];
+    za.title = @"账户总览";
+    //返回
+    UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
+    backItem.title=@"返回";
+    self.navigationItem.backBarButtonItem=backItem;
+    self.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:za animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
+ 
 }
 
 //交易记录
 -(void)jiaoyijilu{
-
+    JiaoyijiluViewController *jiaoyi = [[JiaoyijiluViewController alloc]init];
+    jiaoyi.title = @"交易记录";
+    //返回
+    UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
+    backItem.title=@"返回";
+    self.navigationItem.backBarButtonItem=backItem;
+    self.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:jiaoyi animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
 }
 
 //我的投标
 -(void)wodetoubiao{
+    WotoubiaoViewController *wode = [[WotoubiaoViewController alloc]init];
+    wode.title = @"我的投标";
+    //返回
+    UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
+    backItem.title=@"返回";
+    self.navigationItem.backBarButtonItem=backItem;
+    self.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:wode animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
 
 }
 
 //邀请好友
 -(void)yaoqinghaoyou{
-    
+    YaoqinghaoyuViewController *yaoqing = [[YaoqinghaoyuViewController alloc] init];
+    yaoqing.title = @"邀请好友";
+    //返回
+    UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
+    backItem.title=@"返回";
+    self.navigationItem.backBarButtonItem=backItem;
+    self.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:yaoqing animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
 }
 
 @end
