@@ -46,6 +46,19 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSURL *surl = request.URL;
     
+    NSString *lJs = @"document.documentElement.innerHTML";
+    NSString *lHtml1 = [webView stringByEvaluatingJavaScriptFromString:lJs];
+    NSLog(@"lHtml1 %@",lHtml1);
+    if ([lHtml1 containsString:@"onclick=\"sendCode('0000')"]) {
+        [Tool myalters:@"交易成功"];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadzhanghaoyuexinxi" object:nil];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+         
+    }else if ([lHtml1 containsString:@"onclick=\"sendCode('null')"]) {
+        [Tool myalter:@"交易失败"];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
     return YES;
 }
 
@@ -54,7 +67,7 @@
 //投资确认回调
 -(void)reloadweb_sbtz_tbBack:(NSString *)string{
     
-    
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadzhanghaoyuexinxi" object:nil];
 }
 
 

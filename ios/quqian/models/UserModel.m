@@ -74,7 +74,7 @@
 //组装数据
 -(void)makeInData:(NSMutableDictionary *)dic{
     
-    self.name =  [dic objectForKey:@"nc"];
+    self.name =  [dic objectForKey:@"xm"];
     self.userId = [dic objectForKey:@"yhzh"];
     self.keyong_money = [dic objectForKey:@"kyye"];
     //self.trueName = [Tool toString:[dic objectForKey:@"djje"]];

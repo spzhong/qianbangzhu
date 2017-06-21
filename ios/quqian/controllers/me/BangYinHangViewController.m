@@ -40,6 +40,9 @@
     NSString *iskexuanzeyinhang;
     
     
+    
+    NSString *realname;
+    NSString *shenfenId;
     NSString *banknumber;
     NSString *bankname;
 }
@@ -79,14 +82,14 @@
     
     user = [Tool getUser];
     
-   
-    if (typeTag==0) {//绑定银行卡
-        
-    }else if (typeTag==1){//修改银行卡信息
-        [self huoqubangdingdeyinghangka__startRequest];
-    }else if (typeTag==2){//完善银行卡信息
-        [self huoqubangdingdeyinghangka__startRequest];
-    }
+//   
+//    if (typeTag==0) {//绑定银行卡
+//        
+//    }else if (typeTag==1){//修改银行卡信息
+//        [self huoqubangdingdeyinghangka__startRequest];
+//    }else if (typeTag==2){//完善银行卡信息
+//        [self huoqubangdingdeyinghangka__startRequest];
+//    }
     
     
     //选择开户地址
@@ -186,44 +189,29 @@
             //lab123.text = @"开户名";
             //if (typeTag==0) {//绑定银行卡
                 UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(30,0,ScreenWidth-60,44)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-                textField.frame = CGRectMake(125,0, [Tool adaptation:170 with6:55 with6p:94], 45);
+                textField.frame = CGRectMake(30,0, [Tool adaptation:170 with6:55 with6p:94], 45);
                 [cell.contentView addSubview:textField];
                 textField.placeholder = @"银行卡开户姓名";
+            if (realname.length>0) {
+                textField.text = realname;
+            }
                 textField.tag = 100;
             //}
         }else if (row==1){
             //lab123.text = @"";
-            UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(22.5+42,8, [Tool adaptation:275-52 with6:55 with6p:94], 44)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-            textField.frame = CGRectMake(125,0, [Tool adaptation:170 with6:55 with6p:94], 45);
+            UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(30,8, [Tool adaptation:275-52 with6:55 with6p:94], 44)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+            textField.frame = CGRectMake(30,0, [Tool adaptation:170 with6:55 with6p:94], 45);
             [cell.contentView addSubview:textField];
             textField.placeholder = @"银行卡开户身份证号";
             textField.tag = 101;
-            textField.text = bankNum;
-            if ([iskeshuruyinhang isEqualToString:@"1"]) {
-                textField.enabled = NO;
-                cell.accessoryType = UITableViewCellAccessoryNone;
+            if (shenfenId.length>0) {
+                textField.text = shenfenId;
             }
-            
-        }else if (row==3){
-            //lab123.text = @"银行卡号";
-            UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(22.5+42,8, [Tool adaptation:275-52 with6:55 with6p:94], 44)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-            textField.frame = CGRectMake(125,0, [Tool adaptation:170 with6:55 with6p:94], 45);
-            [cell.contentView addSubview:textField];
-            textField.placeholder = @"请输入银行卡号";
-            textField.tag = 103;
-            textField.text = bankNum;
-            if ([iskeshuruyinhang isEqualToString:@"1"]) {
-                textField.enabled = NO;
-                cell.accessoryType = UITableViewCellAccessoryNone;
-            }
-            
-        }else if (row==2){
-           // lab123.text = @"选择银行";
-            
-            //if (typeTag==0) {//绑定银行卡
-                
-                UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(22.5+42,8, [Tool adaptation:275-52 with6:55 with6p:94], 44)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-                textField.frame = CGRectMake(125,0, [Tool adaptation:170 with6:55 with6p:94], 45);
+           
+        } else if (row==2){
+           
+                UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(30,8, [Tool adaptation:275-52 with6:55 with6p:94], 44)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+                textField.frame = CGRectMake(30,0, [Tool adaptation:170 with6:55 with6p:94], 45);
                 [cell.contentView addSubview:textField];
                 textField.placeholder = @"请选择银行卡";
                 textField.enabled = NO;
@@ -232,27 +220,34 @@
                 textField.text = bank;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
-                if ([iskexuanzeyinhang isEqualToString:@"1"]) {
-                    textField.enabled = NO;
-                    cell.accessoryType = UITableViewCellAccessoryNone;
-                }
             
-            
-            //}
-            
-        }else if (row==4){
-            //lab123.text = @"开户所在地";
-            //if (typeTag==0) {//绑定银行卡
+        }else if (row==3){
+        
                 UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(22.5+42,8, [Tool adaptation:275-52 with6:55 with6p:94], 44)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-                textField.frame = CGRectMake(125,0, [Tool adaptation:170 with6:55 with6p:94], 45);
+                textField.frame = CGRectMake(30,0, [Tool adaptation:170 with6:55 with6p:94], 45);
                 [cell.contentView addSubview:textField];
-                textField.placeholder = @"请请输入银行卡号";
+                textField.placeholder = @"请选择省市区";
                 textField.enabled = NO;
                 textField.userInteractionEnabled = NO;
-                textField.tag = 104;
-                textField.text = bankArdess;
+                textField.tag = 103;
+                if (bankArdess.length > 0) {
+                    textField.text = bankArdess;
+                }
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            //}
+            
+        }else if (row==4){
+            
+            UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(22.5+42,8, [Tool adaptation:275-52 with6:55 with6p:94], 44)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+            textField.frame = CGRectMake(30,0, [Tool adaptation:170 with6:55 with6p:94], 45);
+            [cell.contentView addSubview:textField];
+            textField.placeholder = @"请输入银行卡号";
+            textField.enabled = YES;
+            textField.userInteractionEnabled = YES;
+            textField.tag = 104;
+            if (banknumber.length > 0) {
+                textField.text = banknumber;
+            }
+            
         }
     }else if (section==1) {
         
@@ -286,28 +281,12 @@
                 
             }else{
                 
-                UITextField *khh = (UITextField *)[self getCellSubObjectwithTag:101 withIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
-                UITextField *card = (UITextField *)[self getCellSubObjectwithTag:100 withIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-                [khh resignFirstResponder];
-                [card resignFirstResponder];
-                
-                
-                bankKH = khh.text;
-                bankNum = card.text;
-                
                 [self huoquyinhangka__startRequest];
             }
             
         } else if (row==3){//选择开户所在地q
             
-            UITextField *khh = (UITextField *)[self getCellSubObjectwithTag:101 withIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
-            UITextField *card = (UITextField *)[self getCellSubObjectwithTag:100 withIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-            [khh resignFirstResponder];
-            [card resignFirstResponder];
-            
-            bankKH = khh.text;
-            bankNum = card.text;
-            
+          
             [self huoqusuozaidi__startRequest];
         }
     }else if (section==1){
@@ -332,24 +311,20 @@
 
 
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
+- (void)textFieldDidEndEditing:(UITextField *)textField{
     if (textField.tag==100) {
-        bankNum = textField.text;
-    }else{
-        bankKH = textField.text;
+        realname = textField.text;
+    }else if (textField.tag==101) {
+        shenfenId = textField.text;
+    }else if (textField.tag==104) {
+        banknumber = textField.text;
     }
 }
 
 //拖动键盘消失
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     
-    UITextField *khh = (UITextField *)[self getCellSubObjectwithTag:101 withIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
-    UITextField *card = (UITextField *)[self getCellSubObjectwithTag:100 withIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    [khh resignFirstResponder];
-    [card resignFirstResponder];
-    
-    bankKH = khh.text;
-    bankNum = card.text;
+    [self.view endEditing:YES];
 }
 
 
@@ -436,6 +411,8 @@
 //获取银行卡的接口
 -(void)huoquyinhangka__startRequest{
     
+    [self.view endEditing:YES];
+    
  
     //进行有效登录确认
     NSString *url =[NSString stringWithFormat:@"%@/user/bankcard/getbank.htm",BASE_URL];
@@ -483,6 +460,7 @@
 //获取开户行的所在地址
 -(void)huoqusuozaidi__startRequest{
     
+    [self.view endEditing:YES];
 
     if (bankId==nil || bankId.length==0) {
         [Tool myalter:@"请选择银行卡"];
@@ -492,9 +470,8 @@
 
     
     //进行有效登录确认
-    NSString *url =[NSString stringWithFormat:@"%@/user/bankcard/androidRegion.htm",BASE_URL];
+    NSString *url =[NSString stringWithFormat:@"%@/user/bankcard/region.htm",BASE_URL];
     NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
-    [postDic setObject:@"0" forKey:@"level"];
     
     [[HelpDownloader shared] startRequest:url withbody:postDic
                                    isType:[NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -535,14 +512,18 @@
 //绑定或修改银行卡信息
 -(void)bangdingandXiugai__startRequest{
  
+    [self.view endEditing:YES];
     
-    UITextField *khh = (UITextField *)[self getCellSubObjectwithTag:101 withIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
-    UITextField *card = (UITextField *)[self getCellSubObjectwithTag:100 withIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    [khh resignFirstResponder];
-    [card resignFirstResponder];
+ 
     
-    bankKH = khh.text;
-    bankNum = card.text;
+    if (realname == nil || realname.length==0) {
+        [Tool myalter:@"请输入真实姓名"];
+        return;
+    }
+    if (shenfenId == nil || shenfenId.length==0) {
+        [Tool myalter:@"请输入开户身份证号"];
+        return;
+    }
     
     
     if (bankId==nil || bankId.length==0) {
@@ -554,13 +535,6 @@
         [Tool myalter:@"请选择银行卡"];
         return;
     }
-    
-    if (bankKH.length==0) {
-        [Tool myalter:@"请输入开户行"];
-        return;
-    }
-    
- 
     
     //区域
     if (cityId.length==0) {
@@ -568,16 +542,11 @@
         return;
     }
     
-    
-    if (bankNum.length==0) {
+    if (banknumber.length==0) {
         [Tool myalter:@"请填写银行卡号"];
         return;
     }
 
-    if (bankKH.length==0) {
-        [Tool myalter:@"请填写开户行"];
-        return;
-    }
     
     
     
@@ -585,18 +554,14 @@
     NSString *url =[NSString stringWithFormat:@"%@/user/bankcard/regJin.htm",BASE_URL];
     NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
     
- 
     
-    [postDic setObject:[user new_trueName] forKey:@"realname"];
-    
-    
-    
-    [postDic setObject:bankNum forKey:@"banknumber"];
+    [postDic setObject:realname  forKey:@"realname"];
+    [postDic setObject:banknumber forKey:@"banknumber"];
     [postDic setObject:bankId forKey:@"bankname"];
     [postDic setObject:cityId forKey:@"shi"];
     [postDic setObject:shengId forKey:@"sheng"];
-    [postDic setObject:@"GRKH " forKey:@"type"];
-    
+    [postDic setObject:@"GRKH" forKey:@"type"];
+    [postDic setObject:shenfenId forKey:@"idcard"];
     
     
     
@@ -614,15 +579,7 @@
                                        if ([[dic objectForKey:@"code"] intValue]  == 0) {
                                            
                                            [MBProgressHUD showSuccess:[dic objectForKey:@"msg"] toView:nil];
-//                                           
-//                                           //银行的信息
-//                                           NSMutableDictionary *bankDic = [NSMutableDictionary dictionary];
-//                                           [bankDic setObject:[[dic objectForKey:@"rvalue"] objectForKey:@"bankCardId"] forKey:@"bankCardId"];
-//                                           [bankDic setObject:bank forKey:@"bankName"];
-//                                           [bankDic setObject:bankKH forKey:@"bankKH"];
-//                                           [bankDic setObject:bankNum forKey:@"bankNum"];
-//                                           [[NSNotificationCenter defaultCenter] postNotificationName:@"bangdingbankname" object:nil userInfo:bankDic];
-//                                           [self.navigationController popViewControllerAnimated:YES];
+ 
                                            
                                            [self.navigationController popToRootViewControllerAnimated:YES];
                                             

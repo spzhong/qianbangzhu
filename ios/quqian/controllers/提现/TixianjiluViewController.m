@@ -147,7 +147,9 @@
                                        if (page==1) {
                                            [dataArray removeAllObjects];
                                        }
-                                       [dataArray addObjectsFromArray:[data JSONValue][@"rvalue"][@"items"]];
+                                       if (![[data JSONValue][@"rvalue"] isKindOfClass:[NSNull class]]) {
+                                           [dataArray addObjectsFromArray:[data JSONValue][@"rvalue"][@"items"]];
+                                       }
                                    }
                                    [self.tableView headerEndRefreshing];
                                    [self.tableView footerEndRefreshing];

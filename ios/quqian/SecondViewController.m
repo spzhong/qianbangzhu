@@ -98,7 +98,8 @@
     }
     //self.tableView.alpha = 1.0;
     [self.tableView reloadData];
-   
+    [self tableviewHeadView];
+
 }
 
 
@@ -157,9 +158,62 @@
      
     
     self.navigationItem.titleView = bg;
-    
     [self tableviewHeadView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadzhanghaoyuexinxi) name:@"reloadzhanghaoyuexinxi" object:nil];
+    
 }
+
+
+//重新获取一下账户的余额
+-(void)reloadzhanghaoyuexinxi{
+    
+    //进行有效登录确认
+    NSString *url =[NSString stringWithFormat:@"%@/getUser.htm",BASE_URL];
+    NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
+     
+    [[HelpDownloader shared] startRequest:url withbody:postDic
+                                   isType:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                           @"yes",@"isConnectedToNetwork",
+                                           @"no",@"isshowHUD",
+                                           @"no",@"islockscreen",
+                                           @"post",@"isrequesType",
+                                           nil]
+                               completion:^void(id data,int kk){
+                                   
+                                   if (kk==0) {
+                                       
+                                       NSMutableDictionary *dic = [data JSONValue];
+                                       [self doSameThing:[dic objectForKey:@"rvalue"]];
+                                       [self tableviewHeadView];
+  
+                                   }
+                               }];
+   
+ 
+}
+
+//网络请求后的操作
+-(void)doSameThing:(NSMutableDictionary *)dic{
+    
+    NSString *where = [NSString stringWithFormat:@"userId='%@'",[dic objectForKey:@"yhzh"]];
+    UserModel *newUser = [Tool selcetOneData:@"UserModel" withWhere:where];
+    
+    if (newUser==nil) {
+        //创建一个user对象
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"UserModel"inManagedObjectContext:[Tool getDele].managedObjectContext];
+        UserModel *user1 = [[UserModel alloc]initWithEntity:entity insertIntoManagedObjectContext:[Tool getDele].managedObjectContext];
+        //进行赋予值
+        [user1 makeInData:dic];
+        
+    }else{
+        //进行更新数据
+        [newUser makeInData:dic];
+    }
+    [Tool savecoredata];
+ 
+}
+
 
 
 -(void)tableviewHeadView{

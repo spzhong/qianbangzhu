@@ -94,124 +94,62 @@
     
     NSMutableDictionary *dic = [self.dataArray objectAtIndex:row];
     
+    if ([self.typeString isEqualToString:@"0"]) {
+        lab123.text = [dic objectForKey:@"shengName"];
+    }else{
+        lab123.text = [dic objectForKey:@"shiName"];
+    }
     
-    lab123.text = [dic objectForKey:@"name"];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger row = indexPath.row;
-    NSInteger section = indexPath.section;
-
+ 
     NSMutableDictionary *dicone = [self.dataArray objectAtIndex:row];
-    NSString *name = [dicone objectForKey:@"name"];
+   
+    NSString *name = @"";
+    if ([self.typeString isEqualToString:@"0"]) {
+         name = [dicone objectForKey:@"shengName"];
+    }else{
+        name = [dicone objectForKey:@"shiName"];
+    }
+    
+   
     
     if ([self.typeString intValue] == 0) {
         
-        
-        //进行有效登录确认
-        NSString *url =[NSString stringWithFormat:@"%@/user/bankcard/androidRegion.htm",BASE_URL];
-        NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
-        [postDic setObject:@"1" forKey:@"level"];
-        [postDic setObject:dicone[@"id"] forKey:@"id"];
-        
-        [[HelpDownloader shared] startRequest:url withbody:postDic
-                                       isType:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                               @"yes",@"isConnectedToNetwork",
-                                               @"yes",@"isshowHUD",
-                                               @"no",@"islockscreen",
-                                               @"post",@"isrequesType",
-                                               nil]
-                                   completion:^void(id data,int kk){
-                                       
-                                       if (kk==0) {
-                                           NSMutableDictionary *dic = [data JSONValue];
-                                           if ([[dic objectForKey:@"code"] intValue]  == 0) {
-                                               
-                                               
-                                               BangKHAdressViewController *bang = [[BangKHAdressViewController alloc] init];
-                                               bang.title = @"选择城市";
-                                               bang.sheng = name;
-                                               bang.shengId = dicone[@"id"];
-                                               bang.typeString = @"1";
-                                               bang.dataArray = [dic objectForKey:@"rvalue"];
-                                               UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
-                                               backItem.title=@"返回";
-                                               self.navigationItem.backBarButtonItem=backItem;
-                                               self.hidesBottomBarWhenPushed=YES;
-                                               [self.navigationController pushViewController:bang animated:YES];
-                                               
-                                           }else{
-                                               
-                                               
-                                           }
-                                       }
-                                   }];
-        
+        BangKHAdressViewController *bang = [[BangKHAdressViewController alloc] init];
+        bang.title = @"选择城市";
+        bang.sheng = name;
+        bang.shengId = dicone[@"shengId"];
+        bang.typeString = @"1";
+        bang.dataArray = [dicone objectForKey:@"city"];
+        UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
+        backItem.title=@"返回";
+        self.navigationItem.backBarButtonItem=backItem;
+        self.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:bang animated:YES];
         
         
         
     }else if ([self.typeString intValue] == 1) {
         
-        //进行有效登录确认
-        NSString *url =[NSString stringWithFormat:@"%@/user/bankcard/androidRegion.htm",BASE_URL];
-        NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
-        [postDic setObject:@"2" forKey:@"level"];
-        [postDic setObject:dicone[@"id"] forKey:@"id"];
-        
-        [[HelpDownloader shared] startRequest:url withbody:postDic
-                                       isType:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                               @"yes",@"isConnectedToNetwork",
-                                               @"yes",@"isshowHUD",
-                                               @"no",@"islockscreen",
-                                               @"post",@"isrequesType",
-                                               nil]
-                                   completion:^void(id data,int kk){
-                                       
-                                       if (kk==0) {
-                                           NSMutableDictionary *dic = [data JSONValue];
-                                           if ([[dic objectForKey:@"code"] intValue]  == 0) {
-                                               
-                                               
-                                               BangKHAdressViewController *bang = [[BangKHAdressViewController alloc] init];
-                                               bang.title = @"选择区县";
-                                               bang.sheng = self.sheng;
-                                               bang.shengId = self.shengId;
-                                               bang.shi = name;
-                                               bang.cityId = dicone[@"id"];
-                                               bang.typeString = @"2";
-                                               bang.dataArray = [dic objectForKey:@"rvalue"];
-                                               UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
-                                               backItem.title=@"返回";
-                                               self.navigationItem.backBarButtonItem=backItem;
-                                               self.hidesBottomBarWhenPushed=YES;
-                                               [self.navigationController pushViewController:bang animated:YES];
-                                               
-                                           }else{
-                                               
-                                               
-                                           }
-                                       }
-                                   }];
-        
-        
-    }else{
-    
         self.quxian = name;
         NSMutableDictionary *dicNew = [[NSMutableDictionary alloc] init];
         
-        [dicNew setObject:[NSString stringWithFormat:@"%@ %@ %@",self.sheng,self.shi,self.quxian] forKey:@"title"];
-        [dicNew setObject:self.cityId forKey:@"cityId"];
+        [dicNew setObject:[NSString stringWithFormat:@"%@ %@",self.sheng,dicone[@"shiName"]] forKey:@"title"];
+        [dicNew setObject:dicone[@"shiId"] forKey:@"cityId"];
         [dicNew setObject:self.shengId forKey:@"shengId"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"xuanzekaihudi" object:nil userInfo:dicNew];
         
+        
         NSArray *array = self.navigationController.viewControllers;
-        UIViewController *con = [array objectAtIndex:[array count]-4];
+        UIViewController *con = [array objectAtIndex:[array count]-3];
         [self.navigationController popToViewController:con animated:YES];
         
     }
-    
 }
 
 

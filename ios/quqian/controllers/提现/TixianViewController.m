@@ -15,7 +15,7 @@
 #import "CGWebViewController.h"
 #import "PTWEBViewController.h"
 #import "CGkaitongViewController.h"
-#import "YinhangkaViewController.h"
+#import "BangYinHangViewController.h"
 
 
 @interface TixianViewController ()
@@ -242,7 +242,7 @@
         
     }else{
         UILabel *lab = [Tool LablelProductionFunction:@"您尚未完成普通账户绑定卡，现在去绑定？" Frame:CGRectMake(0, 100, ScreenWidth, 45) Alignment:NSTextAlignmentCenter  FontFl:14];
-        [cgView addSubview:lab];
+        [ptView addSubview:lab];
         
         UIButton *cgkaitong = [Tool ButtonProductionFunction:@"立即绑定" Frame:CGRectMake(80, 145, ScreenWidth-160, 45) bgImgName:nil FontFl:15];
         [cgkaitong addTarget:self action:@selector(lijibangding) forControlEvents:UIControlEventTouchUpInside];
@@ -333,13 +333,19 @@
 
 //立即绑定
 -(void)lijibangding{
-    YinhangkaViewController *bangding = [[YinhangkaViewController alloc] init];
-    bangding.title = @"绑定银行卡";
+    if ([alldic[@"zhlx"] isEqualToString:@"QYZH"]) {
+        [Tool myalter:@"企业账户请到web上进行绑定"];
+        return;
+    }
+    BangYinHangViewController *bangidng = [[BangYinHangViewController alloc] init];
+    bangidng.title = @"绑定银行卡";
+    //返回
     UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
     backItem.title=@"返回";
     self.navigationItem.backBarButtonItem=backItem;
     self.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:bangding animated:YES];
+    [self.navigationController pushViewController:bangidng animated:YES];
+
 }
 
 //立即提现--存管
@@ -441,7 +447,7 @@
                                        pt.login_id = dic[@"login_id"];
                                        pt.page_notify_url = dic[@"page_notify_url"];
                                        pt.back_notify_url = dic[@"back_notify_url"];
-                                       pt.signatureStr = dic[@"signatureStr"];
+                                       pt.signatureStr = dic[@"signature"];
                                        pt.fyUrl = dic[@"fyUrl"];
                                        
                                        //返回

@@ -39,6 +39,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>需要您同意访问图片</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>需要您同意访问图片</string>
 	<key>UILaunchImageFile~iphone</key>
 	<string>Default-568h@2x.png</string>
 	<key>UILaunchStoryboardName</key>

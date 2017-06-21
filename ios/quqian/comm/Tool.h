@@ -66,7 +66,7 @@
 
 
 /*实体工具*/
-
++(void)myalters:(NSString*)mes;
 // 根据文本得到大小
 +(CGSize)getTheTextSize:(NSString*)inString withFont:(UIFont*)font withRect:(CGSize)textSize;
 // X月x日 XX:XX

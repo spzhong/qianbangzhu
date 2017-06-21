@@ -101,6 +101,8 @@
                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"gengxinshuju" object:nil];
                                        }
                                        [self.navigationController popToRootViewControllerAnimated:YES];
+                                     
+                                       [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadzhanghaoyuexinxi" object:nil];
                                    }else{
                                        [self.navigationController popViewControllerAnimated:YES];
                                    }

@@ -894,6 +894,10 @@
 }
 
 
++(void)myalters:(NSString*)mes{
+    [MBProgressHUD  showSuccess:mes toView:nil];
+}
+
 +(NSMutableDictionary *)infoForDic:(NSString *)controller withTitle:(NSString *)title withIcon:(NSString *)icon withDescription:(NSString *)des{
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:controller forKey:@"controller"];

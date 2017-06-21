@@ -81,10 +81,10 @@
                                        //进入web的确认页面
                                        CGWebViewController *web = [[CGWebViewController alloc] init];
                                        web.title = @"开通存管账户";
-                                       web.sendUrl = dicData[@"asydata"][@"sendUrl"];
-                                       web.sendStr = dicData[@"asydata"][@"sendStr"];
-                                       web.transCode = dicData[@"asydata"][@"transCode"];
-                                       web.seqNum = dicData[@"asydata"][@"seqNum"];
+                                       web.sendUrl = dicData[@"sdkParameter"][@"url"];
+                                       web.sendStr = dicData[@"sdkParameter"][@"requestData"];
+                                       web.transCode = dicData[@"sdkParameter"][@"transCode"];
+                                       web.seqNum = dicData[@"sdkParameter"][@"seqNum"];
                                        UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
                                        backItem.title=@"返回";
                                        self.navigationItem.backBarButtonItem=backItem;

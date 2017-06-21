@@ -12,6 +12,7 @@
 #import "UtilityUI.h"
 #import "CGkaitongViewController.h"
 #import "BangYinHangViewController.h"
+#import "CGWebViewController.h"
 
 
 @interface YinhangkaViewController ()
@@ -123,10 +124,29 @@
         [labTile3 setBackgroundColor:[UIColor whiteColor]];
         [cgView addSubview:labTile3];
  
-        UILabel *labInfo = [Tool LablelProductionFunction:@"重要提示\n1. 华兴银行E账户即华兴银行电子账户，是用户在华兴银行实名开立的、用于办理钱帮主资金业务的账户；\n2.一个用户只能开立一个E账户，且只能绑定一张银行卡；\n3.如需更换绑定银行卡，请按实际情况选择更换；\n（1）E账户资产全部转出，登录华兴银行投融资平台进行更换；\n（2）绑定银行卡挂失或销户销卡，通过投融资APP申请人工审批换卡" Frame:CGRectMake(15, 150, ScreenWidth-30, 999)  Alignment:NSTextAlignmentLeft FontFl:14];
+        UILabel *labInfo = [Tool LablelProductionFunction:@"重要提示\n1. 华兴银行E账户即华兴银行电子账户，是用户在华兴银行实名开立的、用于办理钱帮主资金业务的账户；\n2.一个用户只能开立一个E账户，且只能绑定一张银行卡；\n3.如需更换绑定银行卡，请按实际情况选择更换；\n（1）E账户资产全部转出，登录华兴银行投融资平台进行更换；\n（2）绑定银行卡挂失或销户销卡，通过投融资APP申请人工审批换卡" Frame:CGRectMake(15, 220, ScreenWidth-30, 999)  Alignment:NSTextAlignmentLeft FontFl:14];
         [labInfo sizeToFit];
         labInfo.textColor = RGB(90, 90, 90);
         [cgView addSubview:labInfo];
+        
+        if ([dic[@"sfbk"] isEqualToString:@"F"]) {
+            UIButton *cgkaitong = [Tool ButtonProductionFunction:@"绑定银行卡" Frame:CGRectMake(80, 150, ScreenWidth-160, 45) bgImgName:nil FontFl:15];
+            [cgkaitong addTarget:self action:@selector(cunguanbangding) forControlEvents:UIControlEventTouchUpInside];
+            [cgkaitong setBackgroundColor:KTHCOLOR];
+            [cgView addSubview:cgkaitong];
+            [cgkaitong setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [UtilityUI setBorderOnView:cgkaitong borderColor:KTHCOLOR borderWidth:1 cornerRadius:4];
+            
+        }else{
+            
+            UIButton *cgkaitong = [Tool ButtonProductionFunction:@"已绑定银行卡" Frame:CGRectMake(80, 150, ScreenWidth-160, 45) bgImgName:nil FontFl:15];
+            [cgkaitong addTarget:self action:@selector(cunguanbangding) forControlEvents:UIControlEventTouchUpInside];
+            [cgkaitong setBackgroundColor:KTHCOLOR];
+            [cgView addSubview:cgkaitong];
+            [cgkaitong setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [UtilityUI setBorderOnView:cgkaitong borderColor:KTHCOLOR borderWidth:1 cornerRadius:4];
+            cgkaitong.enabled = NO;
+        }
         
     }else{
         
@@ -220,6 +240,42 @@
 }
 
 
+//存管绑定银行卡
+-(void)cunguanbangding{
+ 
+    //进行有效登录确认
+    NSString *url =[NSString stringWithFormat:@"%@/user/bankcard/regCgBk.htm",BASE_URL];
+    NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
+    [[HelpDownloader shared] startRequest:url withbody:postDic
+                                   isType:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                           @"yes",@"isConnectedToNetwork",
+                                           @"no",@"isshowHUD",
+                                           @"no",@"islockscreen",
+                                           @"post",@"isrequesType",
+                                           nil]
+                               completion:^void(id data,int kk){
+                                   if (kk==0) {
+                                       
+                                       NSMutableDictionary *dic = [data JSONValue];
+                                       
+                                       NSMutableDictionary *dicData = dic[@"rvalue"];
+                                        
+                                       [Tool savecoredata];
+                                       //进入web的确认页面
+                                       CGWebViewController *web = [[CGWebViewController alloc] init];
+                                       web.title = @"绑定银行卡";
+                                       web.sendUrl = dicData[@"sdkParameter"][@"url"];
+                                       web.sendStr = dicData[@"sdkParameter"][@"requestData"];
+                                       web.transCode = dicData[@"sdkParameter"][@"transCode"];
+                                       web.seqNum = dicData[@"sdkParameter"][@"seqNum"];
+                                       UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
+                                       backItem.title=@"返回";
+                                       self.navigationItem.backBarButtonItem=backItem;
+                                       self.hidesBottomBarWhenPushed=YES;
+                                       [self.navigationController pushViewController:web animated:YES];
+                                   }
+                               }];
+}
 
 /*
 #pragma mark - Navigation
