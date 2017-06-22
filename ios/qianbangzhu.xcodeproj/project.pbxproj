@@ -602,6 +602,9 @@
 		6F01259D1EFA23FC00B72C86 /* YaoqinghaoyuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F01259B1EFA23FC00B72C86 /* YaoqinghaoyuViewController.xib */; };
 		6F0125A11EFA241B00B72C86 /* WodejiaxikaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F01259F1EFA241B00B72C86 /* WodejiaxikaViewController.m */; };
 		6F0125A21EFA241B00B72C86 /* WodejiaxikaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F0125A01EFA241B00B72C86 /* WodejiaxikaViewController.xib */; };
+		6F25C4C81EFB6EFB00AFE670 /* 箭头D.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F25C4C51EFB6EFB00AFE670 /* 箭头D.png */; };
+		6F25C4C91EFB6EFB00AFE670 /* 箭头R.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F25C4C61EFB6EFB00AFE670 /* 箭头R.png */; };
+		6F25C4CA1EFB6EFB00AFE670 /* 箭头U.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F25C4C71EFB6EFB00AFE670 /* 箭头U.png */; };
 		6F4407761EF2924C0014FD65 /* PTWEBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4407751EF2924C0014FD65 /* PTWEBViewController.m */; };
 		6F6E54781EF37AB10000480A /* 广东华兴银行LOGO.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E54691EF37AB10000480A /* 广东华兴银行LOGO.png */; };
 		6F6E54791EF37AB10000480A /* 交易记录.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E546A1EF37AB10000480A /* 交易记录.png */; };
@@ -1671,6 +1674,9 @@
 		6F01259E1EFA241B00B72C86 /* WodejiaxikaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WodejiaxikaViewController.h; sourceTree = "<group>"; };
 		6F01259F1EFA241B00B72C86 /* WodejiaxikaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WodejiaxikaViewController.m; sourceTree = "<group>"; };
 		6F0125A01EFA241B00B72C86 /* WodejiaxikaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WodejiaxikaViewController.xib; sourceTree = "<group>"; };
+		6F25C4C51EFB6EFB00AFE670 /* 箭头D.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头D.png"; sourceTree = "<group>"; };
+		6F25C4C61EFB6EFB00AFE670 /* 箭头R.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头R.png"; sourceTree = "<group>"; };
+		6F25C4C71EFB6EFB00AFE670 /* 箭头U.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头U.png"; sourceTree = "<group>"; };
 		6F4407741EF2924C0014FD65 /* PTWEBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTWEBViewController.h; sourceTree = "<group>"; };
 		6F4407751EF2924C0014FD65 /* PTWEBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTWEBViewController.m; sourceTree = "<group>"; };
 		6F6E54691EF37AB10000480A /* 广东华兴银行LOGO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "广东华兴银行LOGO.png"; sourceTree = "<group>"; };
@@ -3523,6 +3529,9 @@
 		18CCC5971AC92F070087032C /* img */ = {
 			isa = PBXGroup;
 			children = (
+				6F25C4C51EFB6EFB00AFE670 /* 箭头D.png */,
+				6F25C4C61EFB6EFB00AFE670 /* 箭头R.png */,
+				6F25C4C71EFB6EFB00AFE670 /* 箭头U.png */,
 				6F9E957D1EF4F47100408674 /* 快捷充值.png */,
 				6F9E957E1EF4F47100408674 /* 签约充值.png */,
 				6F9E956B1EF4D28F00408674 /* 检查更新.png */,
@@ -3818,6 +3827,7 @@
 				1864B4071AB7EE8000BC1455 /* Main.storyboard in Resources */,
 				18CCC5B91AC930A60087032C /* icon6-2@2x.png in Resources */,
 				1864B8D61AB7F05B00BC1455 /* expressionImage.plist in Resources */,
+				6F25C4C91EFB6EFB00AFE670 /* 箭头R.png in Resources */,
 				180A35DD1ACE99230073BBC0 /* 72.png in Resources */,
 				1854FC681ACBE06B0022A1DC /* icon24.png in Resources */,
 				6F6E54811EF37AB10000480A /* 消息-已读.png in Resources */,
@@ -3906,6 +3916,7 @@
 				6FFAA4731EE2F9CA00453972 /* YinhangcunguanaViewController.xib in Resources */,
 				1888734D1ACA8FAE00744021 /* icon19-2.png in Resources */,
 				1864B8911AB7F05B00BC1455 /* Expression_3@2x.png in Resources */,
+				6F25C4CA1EFB6EFB00AFE670 /* 箭头U.png in Resources */,
 				6FFAA4591EE0685000453972 /* jingxuanlicai.png in Resources */,
 				1864B8D51AB7F05B00BC1455 /* expression_CH.plist in Resources */,
 				6FB3058A1EEC38250011E9E3 /* NewSanViewCell.xib in Resources */,
@@ -4035,6 +4046,7 @@
 				185373F71ABB07B4007ADA39 /* SanViewCell.xib in Resources */,
 				18A1B23C1ACA621600C328A1 /* line3-320.png in Resources */,
 				1864B8931AB7F05B00BC1455 /* Expression_41@2x.png in Resources */,
+				6F25C4C81EFB6EFB00AFE670 /* 箭头D.png in Resources */,
 				182192B81ADBB28700B06F77 /* icon28.png in Resources */,
 				1864B86B1AB7F05B00BC1455 /* Expression_100@2x.png in Resources */,
 				6F9E956E1EF4D28F00408674 /* 检查更新.png in Resources */,

@@ -39,6 +39,19 @@
     dataArray = [[NSMutableArray alloc] init];
     page = 1;
     [self.tableView headerBeginRefreshing];
+    
+    UIView *bgHead = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
+    [bgHead setBackgroundColor:[UIColor whiteColor]];
+    UILabel *lab1 = [Tool LablelProductionFunction:@"好友手机号" Frame:CGRectMake(0, 0, ScreenWidth/3, 44) Alignment:NSTextAlignmentCenter FontFl:15];
+    UILabel *lab2 = [Tool LablelProductionFunction:@"注册时间" Frame:CGRectMake(ScreenWidth/3, 0, ScreenWidth/3, 44) Alignment:NSTextAlignmentCenter FontFl:15];
+    UILabel *lab3 = [Tool LablelProductionFunction:@"存管状态" Frame:CGRectMake(2*ScreenWidth/3, 0, ScreenWidth/3, 44) Alignment:NSTextAlignmentCenter FontFl:15];
+    [bgHead addSubview:lab1];
+    [bgHead addSubview:lab2];
+    [bgHead addSubview:lab3];
+    
+    self.tableView.tableHeaderView = bgHead;
+    
+    
 }
 
 
@@ -139,7 +152,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [dataArray count]+1;
+    return [dataArray count];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -166,16 +179,11 @@
     [cell.contentView addSubview:lab2];
     [cell.contentView addSubview:lab3];
     
-    if (indexPath.row==0) {
-        lab1.text = @"好友手机号";
-        lab2.text = @"注册时间";
-        lab3.text = @"存管状态";
-    }else{
-        NSMutableDictionary *dic = dataArray[indexPath.row-1];
-        lab1.text = dic[@"time"];
-        lab2.text = dic[@"je"];
-        lab3.text = dic[@"zt"];
-    }
+    NSMutableDictionary *dic = dataArray[indexPath.row];
+    lab1.text = dic[@"time"];
+    lab2.text = dic[@"je"];
+    lab3.text = dic[@"zt"];
+    
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
