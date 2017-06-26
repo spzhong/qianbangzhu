@@ -539,13 +539,13 @@
 -(NSString *)exchage2:(NSString *)string withName:(NSString *)name{
     
     if ([string isEqualToString:@"标的类型"]) {
-        return [NSString stringWithFormat:@"<p align=left><font size=15 face='HelveticaNeue'>%@</font><font color='#3C9AEB' size=15 face='HelveticaNeue'>   %@</font></p>",string,name];
+        return [NSString stringWithFormat:@"<p align=left><font size=15 color='#969696'  face='HelveticaNeue'>%@</font><font color='#3C9AEB' size=15 face='HelveticaNeue'>   %@</font></p>",string,name];
     }
     if ([string isEqualToString:@"借款标题"]) {
-        return [NSString stringWithFormat:@"<p align=left><font size=15 face='HelveticaNeue'>%@</font><font size=15 color='#FD9622' face='HelveticaNeue'>   %@</font></p>",string,name];
+        return [NSString stringWithFormat:@"<p align=left><font color='#969696'  size=15 face='HelveticaNeue'>%@</font><font size=15 color='#FD9622' face='HelveticaNeue'>   %@</font></p>",string,name];
     }
     
-    return [NSString stringWithFormat:@"<p align=left><font size=15 face='HelveticaNeue'>%@</font><font size=15 face='HelveticaNeue'>   %@</font></p>",string,name];
+    return [NSString stringWithFormat:@"<p align=left><font size=15  color='#969696' face='HelveticaNeue'>%@</font><font size=15 face='HelveticaNeue'>   %@</font></p>",string,name];
 }
 
 

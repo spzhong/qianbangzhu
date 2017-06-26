@@ -10,6 +10,7 @@
 #import "UserModel.h"
 #import "EGOImageView.h"
 #import "MBProgressHUD+Add.h"
+#import "Zhucehoukaitongcunguanyinhang.h"
 
 @interface ReCodeTableViewController ()
 {

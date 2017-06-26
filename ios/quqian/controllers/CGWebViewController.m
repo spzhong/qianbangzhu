@@ -96,6 +96,12 @@
                                completion:^void(id data,int kk){
                                    NSString *ss = data;
                                    if ([ss containsString:@"sendCode('0000')"]) {
+                                       
+                                       if (self.tag==100) {
+                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"kaitoncungforzhuce" object:nil];
+                                           return;
+                                       }
+                                       
                                        if (self.tag==1) {
                                            //通知投资的列表刷新
                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"gengxinshuju" object:nil];

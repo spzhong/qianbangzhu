@@ -641,6 +641,11 @@
 		6FB305851EEC32660011E9E3 /* ptDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FB305831EEC32660011E9E3 /* ptDown.png */; };
 		6FB305891EEC38250011E9E3 /* NewSanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB305871EEC38250011E9E3 /* NewSanViewCell.m */; };
 		6FB3058A1EEC38250011E9E3 /* NewSanViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB305881EEC38250011E9E3 /* NewSanViewCell.xib */; };
+		6FE537F01F00EF300077B1D1 /* 登录背景.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FE537EC1F00EF300077B1D1 /* 登录背景.jpg */; };
+		6FE537F11F00EF300077B1D1 /* 广东华兴银行LOGO2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE537ED1F00EF300077B1D1 /* 广东华兴银行LOGO2.png */; };
+		6FE537F21F00EF300077B1D1 /* icon9.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE537EE1F00EF300077B1D1 /* icon9.png */; };
+		6FE537F31F00EF300077B1D1 /* LOGO.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE537EF1F00EF300077B1D1 /* LOGO.png */; };
+		6FE537F61F00FB4B0077B1D1 /* Zhucehoukaitongcunguanyinhang.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE537F51F00FB4B0077B1D1 /* Zhucehoukaitongcunguanyinhang.m */; };
 		6FFAA43F1EE05F0200453972 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFAA43E1EE05F0200453972 /* libz.tbd */; };
 		6FFAA4491EE061FA00453972 /* qidongpic1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FFAA4461EE061FA00453972 /* qidongpic1.jpg */; };
 		6FFAA44A1EE061FA00453972 /* qidongpic2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FFAA4471EE061FA00453972 /* qidongpic2.jpg */; };
@@ -1725,6 +1730,12 @@
 		6FB305861EEC38250011E9E3 /* NewSanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSanViewCell.h; sourceTree = "<group>"; };
 		6FB305871EEC38250011E9E3 /* NewSanViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSanViewCell.m; sourceTree = "<group>"; };
 		6FB305881EEC38250011E9E3 /* NewSanViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewSanViewCell.xib; sourceTree = "<group>"; };
+		6FE537EC1F00EF300077B1D1 /* 登录背景.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "登录背景.jpg"; sourceTree = "<group>"; };
+		6FE537ED1F00EF300077B1D1 /* 广东华兴银行LOGO2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "广东华兴银行LOGO2.png"; sourceTree = "<group>"; };
+		6FE537EE1F00EF300077B1D1 /* icon9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon9.png; sourceTree = "<group>"; };
+		6FE537EF1F00EF300077B1D1 /* LOGO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LOGO.png; sourceTree = "<group>"; };
+		6FE537F41F00FB4B0077B1D1 /* Zhucehoukaitongcunguanyinhang.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Zhucehoukaitongcunguanyinhang.h; sourceTree = "<group>"; };
+		6FE537F51F00FB4B0077B1D1 /* Zhucehoukaitongcunguanyinhang.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Zhucehoukaitongcunguanyinhang.m; sourceTree = "<group>"; };
 		6FFAA43E1EE05F0200453972 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		6FFAA4461EE061FA00453972 /* qidongpic1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qidongpic1.jpg; sourceTree = "<group>"; };
 		6FFAA4471EE061FA00453972 /* qidongpic2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qidongpic2.jpg; sourceTree = "<group>"; };
@@ -1858,6 +1869,8 @@
 				1874C1701AE74AF6008619F5 /* NewWangjiCode.m */,
 				1874C1721AE74CBC008619F5 /* NewWangjiCode2.h */,
 				1874C1731AE74CBC008619F5 /* NewWangjiCode2.m */,
+				6FE537F41F00FB4B0077B1D1 /* Zhucehoukaitongcunguanyinhang.h */,
+				6FE537F51F00FB4B0077B1D1 /* Zhucehoukaitongcunguanyinhang.m */,
 			);
 			path = loginRegister;
 			sourceTree = "<group>";
@@ -3529,6 +3542,10 @@
 		18CCC5971AC92F070087032C /* img */ = {
 			isa = PBXGroup;
 			children = (
+				6FE537EC1F00EF300077B1D1 /* 登录背景.jpg */,
+				6FE537ED1F00EF300077B1D1 /* 广东华兴银行LOGO2.png */,
+				6FE537EE1F00EF300077B1D1 /* icon9.png */,
+				6FE537EF1F00EF300077B1D1 /* LOGO.png */,
 				6F25C4C51EFB6EFB00AFE670 /* 箭头D.png */,
 				6F25C4C61EFB6EFB00AFE670 /* 箭头R.png */,
 				6F25C4C71EFB6EFB00AFE670 /* 箭头U.png */,
@@ -3800,6 +3817,7 @@
 				1864B87C1AB7F05B00BC1455 /* Expression_20@2x.png in Resources */,
 				1864B9661AB7F05B00BC1455 /* Main.storyboard in Resources */,
 				1864B88A1AB7F05B00BC1455 /* Expression_33@2x.png in Resources */,
+				6FE537F21F00EF300077B1D1 /* icon9.png in Resources */,
 				6FFAA48E1EE420DB00453972 /* 充值信息.png in Resources */,
 				1864B86E1AB7F05B00BC1455 /* Expression_103@2x.png in Resources */,
 				1864B8791AB7F05B00BC1455 /* Expression_18@2x.png in Resources */,
@@ -3814,6 +3832,7 @@
 				1864B8D41AB7F05B00BC1455 /* expression.plist in Resources */,
 				1864B89B1AB7F05B00BC1455 /* Expression_49@2x.png in Resources */,
 				1864B8781AB7F05B00BC1455 /* Expression_17@2x.png in Resources */,
+				6FE537F01F00EF300077B1D1 /* 登录背景.jpg in Resources */,
 				1864B8C31AB7F05B00BC1455 /* Expression_85@2x.png in Resources */,
 				6FFAA4811EE3071E00453972 /* 待还本金.png in Resources */,
 				18CCC5A91AC92F070087032C /* icon4.png in Resources */,
@@ -3919,6 +3938,8 @@
 				6F25C4CA1EFB6EFB00AFE670 /* 箭头U.png in Resources */,
 				6FFAA4591EE0685000453972 /* jingxuanlicai.png in Resources */,
 				1864B8D51AB7F05B00BC1455 /* expression_CH.plist in Resources */,
+				6FE537F31F00EF300077B1D1 /* LOGO.png in Resources */,
+				6FE537F11F00EF300077B1D1 /* 广东华兴银行LOGO2.png in Resources */,
 				6FB3058A1EEC38250011E9E3 /* NewSanViewCell.xib in Resources */,
 				1864B8921AB7F05B00BC1455 /* Expression_40@2x.png in Resources */,
 				188902DB1AC264840096DF3E /* ZhaiQuanViewCell.xib in Resources */,
@@ -4400,6 +4421,7 @@
 				1864B9711AB7F05B00BC1455 /* ZXMultiFinderPatternFinder.m in Sources */,
 				1864B9101AB7F05B00BC1455 /* ZXAztecWriter.m in Sources */,
 				1864B8F11AB7F05B00BC1455 /* SBJsonStreamParserAdapter.m in Sources */,
+				6FE537F61F00FB4B0077B1D1 /* Zhucehoukaitongcunguanyinhang.m in Sources */,
 				1864B9151AB7F05B00BC1455 /* ZXBizcardResultParser.m in Sources */,
 				6F4407761EF2924C0014FD65 /* PTWEBViewController.m in Sources */,
 				189EC23D1AC3EC45008EBEAA /* NoticeViewController.m in Sources */,

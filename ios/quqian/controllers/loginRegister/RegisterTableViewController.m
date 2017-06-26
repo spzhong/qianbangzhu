@@ -12,6 +12,7 @@
 #import "DemoViewController.h"
 #import "EGOImageView.h"
 #import "WebController.h"
+#import "Zhucehoukaitongcunguanyinhang.h"
 
 @interface RegisterTableViewController ()<DemoViewControllerDeleagete>
 {
@@ -54,7 +55,7 @@
     [super viewDidLoad];
     
     //设置状态栏目
-    [self setNavBarItemDIY];
+   // [self setNavBarItemDIY];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -62,18 +63,23 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    
+    self.title = @"快速注册";
+    
+    [self.tableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"登录背景.jpg"]]];
+    
+    
+    
     if ([from isEqualToString:@"FirstViewController"]) {
         
         UIBarButtonItem *rightBtnItem1 = [[UIBarButtonItem alloc] initWithTitle:@" 取消" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
         NSArray *buttonItemArray1 = [NSArray arrayWithObjects:rightBtnItem1, nil];
         self.navigationItem.leftBarButtonItems =buttonItemArray1;
     }
+     
     
-    
-    
-    [self.tableView setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1.0]];
-    [self.tableView setBackgroundColor:[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]];
-    
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+ 
     
     count = 60;
     isHuoqu = YES;
@@ -97,34 +103,52 @@
     
     //表的尾部
     [self makefootView];
+    
+    UILabel *lab = [Tool LablelProductionFunction:@"您的资金由广东华兴银行存管系统全程监管" Frame:CGRectMake(0, 0, ScreenWidth, 50) Alignment:NSTextAlignmentCenter FontFl:12];
+    [lab sizeToFit];
+    lab.textColor = [UIColor whiteColor];
+    lab.frame = CGRectMake((ScreenWidth-lab.frame.size.width)/2, ScreenHeight-64-30, lab.frame.size.width, lab.frame.size.height);
+    
+    
+    UIImageView *logoicn2 = [Tool ImgProductionFunctionFrame:CGRectMake(-20, 0, 16, 16) bgImgName:@"广东华兴银行LOGO2"];
+    [lab addSubview:logoicn2];
+    
+    
+    [self.view addSubview:lab];
+    lab.textColor = [UIColor whiteColor];
+
+    
 }
 
 
 //生称footview
 -(void)makefootView{
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 90)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 90)];
     
     //是否选中同意
-    UIButton *but1 = [Tool ButtonProductionFunction:@"" Frame:CGRectMake(15, 13, 13, 13) bgImgName:@"icon19-2.png" FontFl:15];
+    UIButton *but1 = [Tool ButtonProductionFunction:@"" Frame:CGRectMake(20, 13, 13, 13) bgImgName:@"icon19-2.png" FontFl:15];
     [bgView addSubview:but1];
     [but1 addTarget:self action:@selector(isSelect:) forControlEvents:UIControlEventTouchUpInside];
     
     //我同意
-    UILabel *lab = [Tool LablelProductionFunction:@"我同意" Frame:CGRectMake(38, 10, 80, 20)  Alignment:NSTextAlignmentLeft FontFl:13];
+    UILabel *lab = [Tool LablelProductionFunction:@"我同意" Frame:CGRectMake(43, 10, 80, 20)  Alignment:NSTextAlignmentLeft FontFl:13];
     [bgView addSubview:lab];
     
     //注册协议
-    UIButton *but2 = [Tool ButtonProductionFunction:@"《钱帮主注册协议》" Frame:CGRectMake(78, 10, 120, 20) bgImgName:@"" FontFl:15];
+    UIButton *but2 = [Tool ButtonProductionFunction:@"《钱帮主注册协议》" Frame:CGRectMake(83, 10, 150, 20) bgImgName:@"" FontFl:15];
     [bgView addSubview:but2];
     [but2 setTitleColor:[UIColor colorWithRed:2/255.0 green:160/255.0 blue:219/255.0 alpha:1] forState:UIControlStateNormal];
     [but2 addTarget:self action:@selector(quqianxieyi:) forControlEvents:UIControlEventTouchUpInside];
+    [but2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     //注册
-    UIButton *but3 = [Tool ButtonProductionFunction:@"注册" Frame:CGRectMake(0, 45, 320, 45) bgImgName:@"" FontFl:20];
+    UIButton *but3 = [Tool ButtonProductionFunction:@"注册" Frame:CGRectMake(20, 45, ScreenWidth-40, 45) bgImgName:@"" FontFl:20];
     [bgView addSubview:but3];
-    [but3 setBackgroundColor:[UIColor colorWithRed:2/255.0 green:160/255.0 blue:219/255.0 alpha:1]];
     [but3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [but3 addTarget:self action:@selector(zhuce) forControlEvents:UIControlEventTouchUpInside];
+    [but3 setBackgroundColor:[UIColor colorWithRed:249/255.0 green:85/255.0 blue:86/255.0 alpha:1]];
+    [but3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
     
     
     self.tableView.tableFooterView = bgView;
@@ -159,9 +183,8 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 45;
+    return 60;
 }
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -171,6 +194,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell==nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        [cell.contentView setBackgroundColor:[UIColor clearColor]];
+        [cell setBackgroundColor:[UIColor clearColor]];
         
     }
     NSInteger row = [indexPath row];
@@ -184,23 +210,20 @@
     
     EGOImageView*imgView =[[EGOImageView alloc] init];
     imgView.frame = CGRectMake(15, 10.5, 24, 24);
-    [cell.contentView addSubview:imgView];
+    //[cell.contentView addSubview:imgView];
     
-    UILabel *lab123 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(30, 0, [Tool adaptation:200 with6:55 with6p:94], 45) Alignment:NSTextAlignmentLeft  FontFl:15];
-    //lab123.font = FOUR_CONTROL_FONT;
-    UILabel *lab1234 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(76.5, 0, [Tool adaptation:280 with6:55 with6p:94], 45) Alignment:NSTextAlignmentLeft  FontFl:12];
-    [cell.contentView addSubview:lab123];
-    [cell.contentView addSubview:lab1234];
-    [lab1234 setTextColor:[UIColor darkGrayColor]];
     
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (section==0) {
         
-        UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(22.5+21,8, [Tool adaptation:275-52 with6:55 with6p:94], 44)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+        UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(20,8, ScreenWidth-40, 44)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
         [cell.contentView addSubview:textField];
-     
+        [textField setBackgroundColor:[UIColor colorWithRed:151/255.0 green:235/255.0 blue:236/255.0 alpha:1.0]];
+        textField.textColor = [UIColor whiteColor];
+        textField.textAlignment = NSTextAlignmentCenter;
+        
         
         if (row==0) {
             //lab123.text = @"手机号";
@@ -237,7 +260,7 @@
             
             UIButton *buton = [UIButton buttonWithType:UIButtonTypeCustom];
             buton.tag = 10005;
-            buton.frame = CGRectMake(210, 8.5, 91, 28);
+            buton.frame = CGRectMake(ScreenWidth-111, 8.5, 91, 28);
             buton.titleLabel.font = [UIFont systemFontOfSize:12];
             [buton setTitle:@"获取验证码" forState:UIControlStateNormal];
             [cell.contentView addSubview:buton];
@@ -247,7 +270,7 @@
                 
                 [buton setTitleColor:[UIColor colorWithRed:2/255.0 green:160/255.0 blue:219/255.0 alpha:1] forState:UIControlStateNormal];
                 buton.enabled = YES;
-                [buton setBackgroundImage:[UIImage imageNamed:@"button5.png"] forState:UIControlStateNormal];
+                [buton setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
             }else{
                 [buton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
                 buton.enabled = NO;
@@ -672,25 +695,11 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginAfterDoSometing" object:nil];
     
+    Zhucehoukaitongcunguanyinhang *zhanghu = [[Zhucehoukaitongcunguanyinhang alloc] init];
+    zhanghu.title = @"开通存管账户";
+    [self.navigationController pushViewController:zhanghu animated:YES];
     
     
-    //设置手势密码
-    if ([newUser.code length]==0) {
-        
-        DemoViewController *demo = [[DemoViewController alloc] init];
-        demo.title = @"输入密码";
-        demo.type = 0;
-        demo.doting = @"newCode";
-        demo.deleagete = self;
-        UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
-        backItem.title=@"返回";
-        self.navigationItem.backBarButtonItem=backItem;
-        [self.navigationController pushViewController:demo animated:YES];
-        
-    }else{
-        //离开登录
-        [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
-    }
 }
 
  

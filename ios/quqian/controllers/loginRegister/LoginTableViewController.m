@@ -67,12 +67,14 @@
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     
     
-    [self.tableView setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1.0]];
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
     [self.tableView setBackgroundColor:[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]];
+    
+    [self.tableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"登录背景.jpg"]]];
     
     
     //设置状态栏目
-    [self setNavBarItemDIY];
+    //[self setNavBarItemDIY];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -86,28 +88,67 @@
     
     UIBarButtonItem *rightBtnItem2 = [[UIBarButtonItem alloc] initWithTitle:@"注册 " style:UIBarButtonItemStylePlain target:self action:@selector(zhuce)];
     NSArray *buttonItemArray2 = [NSArray arrayWithObjects:rightBtnItem2, nil];
-    self.navigationItem.rightBarButtonItems=buttonItemArray2;
+    //self.navigationItem.rightBarButtonItems=buttonItemArray2;
   
     name = @"";
     code = @"";
     //self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //表的尾部
     [self makefootView];
+    
+    
+    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake((ScreenWidth-328/2)/2, 20, 328/2, 328/2)];
+    img.image = [UIImage imageNamed:@"LOGO.png"];
+    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 20+328/2)];
+    [bg addSubview:img];
+    self.tableView.tableHeaderView = bg;
+    
 }
 
 
 //生称footview
 -(void)makefootView{
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 45)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 90)];
 
      //登录
-    UIButton *but3 = [Tool ButtonProductionFunction:@"登录" Frame:CGRectMake(0, 0, ScreenWidth, 45) bgImgName:@"" FontFl:20];
+    UIButton *but3 = [Tool ButtonProductionFunction:@"登录" Frame:CGRectMake(20, 0, ScreenWidth-40, 45) bgImgName:@"" FontFl:20];
     [bgView addSubview:but3];
-    [but3 setBackgroundColor:[UIColor colorWithRed:2/255.0 green:160/255.0 blue:219/255.0 alpha:1]];
+    [but3 setBackgroundColor:[UIColor colorWithRed:249/255.0 green:85/255.0 blue:86/255.0 alpha:1]];
     [but3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [but3 addTarget:self action:@selector(denglu) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIButton *but4 = [Tool ButtonProductionFunction:@"忘记密码" Frame:CGRectMake(20, 45, 60, 45) bgImgName:@"" FontFl:14];
+    [bgView addSubview:but4];
+    [but4 setBackgroundColor:[UIColor clearColor]];
+    [but4 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [but4 addTarget:self action:@selector(wangjicode) forControlEvents:UIControlEventTouchUpInside];
+ 
+    
+    UIButton *but5 = [Tool ButtonProductionFunction:@"注册" Frame:CGRectMake(ScreenWidth-52-20, 45, 52, 45) bgImgName:@"" FontFl:14];
+    [bgView addSubview:but5];
+    [but5 setBackgroundColor:[UIColor clearColor]];
+    [but5 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [but5 addTarget:self action:@selector(zhuce) forControlEvents:UIControlEventTouchUpInside];
+
 
     self.tableView.tableFooterView = bgView;
+    
+    
+    UILabel *lab = [Tool LablelProductionFunction:@"您的资金由广东华兴银行存管系统全程监管" Frame:CGRectMake(0, 0, ScreenWidth, 50) Alignment:NSTextAlignmentCenter FontFl:12];
+    [lab sizeToFit];
+    lab.textColor = [UIColor whiteColor];
+    lab.frame = CGRectMake((ScreenWidth-lab.frame.size.width)/2, ScreenHeight-64-30, lab.frame.size.width, lab.frame.size.height);
+    
+    
+    UIImageView *logoicn2 = [Tool ImgProductionFunctionFrame:CGRectMake(-20, 0, 16, 16) bgImgName:@"广东华兴银行LOGO2"];
+    [lab addSubview:logoicn2];
+    
+    
+    [self.view addSubview:lab];
+    lab.textColor = [UIColor whiteColor];
+    
+    
 }
 
 
@@ -138,7 +179,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 45;
+    return 60;
 }
 
 
@@ -150,10 +191,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell==nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
+    
+        [cell setBackgroundColor:[UIColor clearColor]];
+        [cell.contentView setBackgroundColor:[UIColor clearColor]];
     }
     NSInteger row = [indexPath row];
     NSInteger section = [indexPath section];
+    
     
     NSArray *viewArray = [cell.contentView subviews];
     for (int i = 0; i < [viewArray count]; i++) {
@@ -161,52 +205,42 @@
         [view removeFromSuperview];view=nil;
     }
     
-    
-    EGOImageView*imgView =[[EGOImageView alloc] init];
-    imgView.frame = CGRectMake(15, 10.5, 24, 24);
-    [cell.contentView addSubview:imgView];
-    
-    UILabel *lab123 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(16.5, 0, [Tool adaptation:200 with6:55 with6p:94], 45) Alignment:NSTextAlignmentLeft  FontFl:15];
-    lab123.font = FOUR_CONTROL_FONT;
-    UILabel *lab1234 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(16.5, 0, [Tool adaptation:280 with6:55 with6p:94], 45) Alignment:NSTextAlignmentRight  FontFl:12];
-    [cell.contentView addSubview:lab123];
-    [cell.contentView addSubview:lab1234];
-    [lab1234 setTextColor:[UIColor darkGrayColor]];
-    
-    
+ 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (section==0) {
         
         UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(22.5+42,8, [Tool adaptation:275-52 with6:55 with6p:94], 44)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
         [cell.contentView addSubview:textField];
-         
+        [textField setBackgroundColor:[UIColor colorWithRed:151/255.0 green:235/255.0 blue:236/255.0 alpha:1.0]];
+        textField.textColor = [UIColor whiteColor];
+        textField.textAlignment = NSTextAlignmentCenter;
         
         if (row==0) {
             
-            imgView.image = [UIImage imageNamed:@"icon20.png"];
+            //imgView.image = [UIImage imageNamed:@"icon20.png"];
             //lab123.text = @"账号";
-            textField.frame = CGRectMake(55,0, [Tool adaptation:180 with6:55 with6p:94], 45);
+            textField.frame = CGRectMake(20,0, ScreenWidth-40, 45);
             textField.placeholder = @"用户名/手机号/邮箱";
             textField.tag = 100;
             textField.text = name;
             
         }else if (row==1){
             
-            imgView.image = [UIImage imageNamed:@"icon16.png"];
+            //imgView.image = [UIImage imageNamed:@"icon16.png"];
             //lab123.text = @"密码";
-            textField.frame = CGRectMake(55,0, [Tool adaptation:180 with6:55 with6p:94], 45);
+            textField.frame = CGRectMake(20,0, ScreenWidth-40, 45);
             textField.placeholder = @"登录密码";
             textField.tag = 101;
             textField.text = code;
             textField.secureTextEntry = YES;
             
-            UIControl *con = [[UIControl alloc] initWithFrame:CGRectMake(230, 0, 70, 45)];
-            //[con setBackgroundColor:[UIColor redColor]];
-            [con addTarget:self action:@selector(wangjicode) forControlEvents:UIControlEventTouchUpInside];
-            [cell.contentView addSubview:con];
-            lab1234.text = @"忘记密码?";
-            lab1234.textColor = [UIColor colorWithRed:2/255.0 green:160/255.0 blue:219/255.0 alpha:1];
+//            UIControl *con = [[UIControl alloc] initWithFrame:CGRectMake(230, 0, 70, 45)];
+//            //[con setBackgroundColor:[UIColor redColor]];
+//            [con addTarget:self action:@selector(wangjicode) forControlEvents:UIControlEventTouchUpInside];
+//            [cell.contentView addSubview:con];
+//            lab1234.text = @"忘记密码?";
+//            lab1234.textColor = [UIColor colorWithRed:2/255.0 green:160/255.0 blue:219/255.0 alpha:1];
             
         }
     }
