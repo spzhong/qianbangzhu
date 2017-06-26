@@ -141,13 +141,9 @@
     
     if (section==0) {
         if (row==0) {
-        
-            
-            
+         
             UIAlertView *al = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"是否拨打客服热线" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
             [al show];
-            
-          
             
         }else if (row==1){
          

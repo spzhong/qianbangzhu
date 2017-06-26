@@ -16,6 +16,7 @@
 #import "ChangeMoblieViewController.h"
 #import "ChangeTiKuanCodeViewController.h"
 #import "ReCodeTableViewController.h"
+#import "MBProgressHUD.h"
 
 
 @interface SaveInfoViewController ()<LXActionSheetDelegate>
@@ -52,7 +53,28 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
      user = [Tool getUser];
+    
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
+    UIButton *but = [Tool ButtonProductionFunction:@"退出" Frame:CGRectMake(15, 0, ScreenWidth-30, 50) bgImgName:nil FontFl:15];
+    [but setBackgroundColor:KTHCOLOR];
+    [bgView addSubview:but];
+    [but addTarget:self action:@selector(tuichu) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    self.tableView.tableFooterView = bgView;
+    
 }
+
+-(void)tuichu{
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"curLoginUserId"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [Tool myalters:@"成功退出"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginAfterDoSometing" object:nil];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -160,6 +182,8 @@
                 [lab1234 setTextColor:[UIColor darkGrayColor]];
                 [lab12345 setTextColor:[UIColor colorWithRed:0 green:130/255.0 blue:182/255.0 alpha:1.0]];
             }
+        }else if (row==2){
+            lab123.text = @"退出";
         }
         
     }
@@ -225,6 +249,16 @@
              LXActionSheet *actionSheet = [[LXActionSheet alloc]initWithTitle:@"修改/找回提现密码" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:[NSArray arrayWithObjects:@"修改",@"找回", nil]];
             [actionSheet showInView:self.view];
         }
+    }else if (row==3){
+    
+        
+        
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"curLoginUserId"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [Tool myalters:@"成功退出"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginAfterDoSometing" object:nil];
     }
     
 }

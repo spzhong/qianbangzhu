@@ -65,16 +65,16 @@
     UIView *bgHead = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
     [bgHead setBackgroundColor:[UIColor whiteColor]];
     
-    lab11 = [Tool LablelProductionFunction:@"交易类型" Frame:CGRectMake(0, 0, ScreenWidth/3, 44) Alignment:NSTextAlignmentCenter FontFl:15];
+    lab11 = [Tool LablelProductionFunction:@"交易类型" Frame:CGRectMake(0, 0, ScreenWidth/3-15, 44) Alignment:NSTextAlignmentCenter FontFl:15];
     UILabel *lab2 = [Tool LablelProductionFunction:@"交易金额" Frame:CGRectMake(ScreenWidth/3, 0, ScreenWidth/3, 44) Alignment:NSTextAlignmentCenter FontFl:15];
-    lab33 = [Tool LablelProductionFunction:@"时间" Frame:CGRectMake(2*ScreenWidth/3, 0, ScreenWidth/3, 44) Alignment:NSTextAlignmentCenter FontFl:15];
+    lab33 = [Tool LablelProductionFunction:@"时间" Frame:CGRectMake(2*ScreenWidth/3, 0, ScreenWidth/3-15, 44) Alignment:NSTextAlignmentCenter FontFl:15];
     [bgHead addSubview:lab11];
     [bgHead addSubview:lab2];
     [bgHead addSubview:lab33];
     
-    jiantou  = [Tool ImgProductionFunctionFrame:CGRectMake(ScreenWidth/3/2+40, 17, 9, 9) bgImgName:@"箭头D"];
+    jiantou  = [Tool ImgProductionFunctionFrame:CGRectMake(ScreenWidth/3-15, 17, 9, 9) bgImgName:@"箭头D"];
     [lab11 addSubview:jiantou];
-    jiantou2 = [Tool ImgProductionFunctionFrame:CGRectMake(ScreenWidth/3/2+25, 17, 9, 9) bgImgName:@"箭头D"];
+    jiantou2 = [Tool ImgProductionFunctionFrame:CGRectMake(ScreenWidth/3-15, 17, 9, 9) bgImgName:@"箭头D"];
     [lab33 addSubview:jiantou2];
     
     
@@ -332,14 +332,12 @@
         NSMutableDictionary *dicone = jiaoyileixing[buttonIndex];
         jylx = dicone[@"key"];
         lab11.text = dicone[@"value"];
-        [lab11 sizeToFit];
-        jiantou.frame = CGRectMake(lab11.frame.size.width+5, jiantou.frame.origin.y, jiantou.frame.size.width, jiantou.frame.size.height);
+        
     }else{
         NSMutableDictionary *dicone = jiayishijian[buttonIndex];
         jysj = dicone[@"key"];
         lab33.text = dicone[@"value"];
-        [lab33 sizeToFit];
-        jiantou2.frame = CGRectMake(lab33.frame.size.width+5, jiantou2.frame.origin.y, jiantou2.frame.size.width, jiantou2.frame.size.height);
+        
     }
 }
 

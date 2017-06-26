@@ -224,7 +224,7 @@
     
     name.text = [NSString stringWithFormat:@"您好，%@",user.name];
     
-    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 200+68*2)];
+    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 190+68*2)];
     [bg setBackgroundColor:KTHCOLOR];
     
     but1 =  [Tool ButtonProductionFunction:@"存管账户" Frame:CGRectMake(ScreenWidth/5, 30, ScreenWidth/5, 30) bgImgName:nil FontFl:15];
@@ -622,13 +622,31 @@
 
 //设置
 -(void)setView{
+    SaveInfoViewController *sa = [[SaveInfoViewController alloc] init];
+    sa.title = @"设置";
+    //返回
+    UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
+    backItem.title=@"返回";
+    self.navigationItem.backBarButtonItem=backItem;
+    self.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:sa animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
 
     
 }
 
 //消息
 -(void)xiaoxibut{
-
+    NoticeViewController *nob = [[NoticeViewController alloc] init];
+    nob.title = @"消息";
+    //返回
+    UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
+    backItem.title=@"返回";
+    self.navigationItem.backBarButtonItem=backItem;
+    self.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:nob animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
+    
 }
 
 

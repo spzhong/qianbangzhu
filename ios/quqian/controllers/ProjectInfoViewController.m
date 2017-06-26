@@ -88,6 +88,7 @@
         buy.title = @"立即投标";
         buy.allDic = allDic;
         buy.typeTag = @"1";
+        buy.iscunguan = [self.bdlx intValue];
         //返回
         UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
         backItem.title=@"返回";

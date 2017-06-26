@@ -1199,6 +1199,9 @@
     
     NSLog(@"----   %lf",app.window.screen.bounds.size.width);
     
+    
+    return ScreenWidth;
+    
     if (app.window.screen.bounds.size.width==375) {
         return fl + x6;
     }else if (app.window.screen.bounds.size.width==414){

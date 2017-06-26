@@ -27,8 +27,9 @@
     AHAlertView *alert;
     BOOL isArgee;
     RCLabel *rcLabjisuan;
-    
+    NSMutableArray *arrayJiaxika;
     int kegoumaifenshu;
+    NSString *jiaxikaId;
 }
 @end
 
@@ -52,6 +53,10 @@
     [super viewDidLoad];
     
     user = [Tool getUser];
+    jiaxikaId = @"";
+    
+    arrayJiaxika = [NSMutableArray arrayWithCapacity:0];
+    
     
     [self.tableView setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1.0]];
     [self.tableView setBackgroundColor:[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]];
@@ -200,7 +205,9 @@
 
 
 
-
+//
+//map.put("isLock", "0");// 0不锁，1是锁
+//map.put("id", pId);
 
 
 - (void)didReceiveMemoryWarning {
@@ -272,20 +279,23 @@
     [cell.contentView addSubview:rcLab];
     
     
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
     if (section==0) {
-        
         
             if (row==0) {
                 lab123.text = @"剩余金额";
                 rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15>%@</font></p>",[NSString stringWithFormat:@"%@",self.allDic[@"syje"]]]];
             }else if (row==1){
                 lab123.text = @"可用金额";
-                rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15 color='333333'>%@</font></p>",self.allDic[@"amount"]]];
+                rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15 color='333333'>%@</font>  充值</p>",self.allDic[@"amount"]]];
             }else if (row==2){
                 lab123.text = @"可购买份数";
                 rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15 color='333333'>%.0lf</font></p>",[self  kegoumai]]];
             }else if (row==3){
                 lab123.text = @"请选择加息卡";
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 
             }
 
@@ -296,8 +306,52 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row==3) {
+        NSString *url =[NSString stringWithFormat:@"%@/sbtz/getJxkList.htm",BASE_URL];
+        NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
+        [postDic setObject:[allDic objectForKey:@"id"] forKey:@"id"];
+        [[HelpDownloader shared] startRequest:url withbody:postDic
+                                       isType:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                               @"yes",@"isConnectedToNetwork",
+                                               @"yes",@"isshowHUD",
+                                               @"no",@"islockscreen",
+                                               @"post",@"isrequesType",
+                                               nil]
+                                   completion:^void(id data,int kk){
+                                       if (kk==0) {
+                                           
+                                           NSMutableDictionary *dic = [data JSONValue];
+                                           if (![dic[@"rvalue"] isKindOfClass:[NSNull class]]) {
+                                               [arrayJiaxika addObjectsFromArray: dic[@"rvalue"]];
+                                               //进行弹框
+                                               UIAlertView *al = [[UIAlertView alloc] init];
+                                               al.delegate = self;
+                                               al.tag = 101;
+                                               for (NSMutableDictionary *dicone in arrayJiaxika) {
+                                                                                              [al addButtonWithTitle:dicone[@"jxkNum"]];
+                                                   
+                                               }
+                                               [al addButtonWithTitle:@"取消"];
+                                               [al show];
+                                               
+                                           }else{
+                                               [Tool myalter:@"暂无加息卡"];
+                                           }
+                                       }
+                                   }];
+    }
 }
 
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==arrayJiaxika.count) {
+        return;
+    }
+    NSMutableDictionary *dic = arrayJiaxika[buttonIndex];
+    jiaxikaId = dic[@"id"];
+    
+}
 
 //获取输入框的tag值
 -(UIView *)getCellSubObjectwithTag:(int)tag withIndexPath:(NSIndexPath *)indexPath{
@@ -434,32 +488,7 @@
     [self makeAlter];
     
 }
-
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex==1) {
-        if (alertView.tag==900) {
-            TrueNameViewController *trueName = [[TrueNameViewController alloc] init];
-            trueName.title = @"实名认证";
-            //返回
-            UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
-            backItem.title=@"返回";
-            self.navigationItem.backBarButtonItem=backItem;
-            self.hidesBottomBarWhenPushed=YES;
-            [self.navigationController pushViewController:trueName animated:YES];
-        }else if (alertView.tag==901){
-            ReCodeTableViewController *queren = [[ReCodeTableViewController alloc] init];
-            queren.type = 1;
-            queren.title = @"设置提现密码";
-            UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
-            backItem.title=@"返回";
-            self.navigationItem.backBarButtonItem=backItem;
-            [self.navigationController pushViewController:queren animated:YES];
-        }
-    }
-}
-
-
+ 
 -(void)makeAlter{
     
     [textField resignFirstResponder];
@@ -685,6 +714,11 @@
     if (pid==nil) {
         return;
     }
+    
+    if ([jiaxikaId length]>0) {
+        [postDic setObject:jiaxikaId forKey:@"jxkid"];
+    }
+    
     [postDic setObject:pid forKey:@"id"];
     [postDic setObject:textField.text forKey:@"fs"];
      

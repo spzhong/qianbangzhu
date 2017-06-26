@@ -231,6 +231,7 @@
     project.projectId = [dic objectForKey:@"id"];
     project.projectTag = 0;
     project.title = dic[@"bdbt"];
+    project.bdlx = bdlx;
     //返回
     UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
     backItem.title=@"返回";

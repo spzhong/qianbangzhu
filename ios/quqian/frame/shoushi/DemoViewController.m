@@ -57,7 +57,7 @@
         la.textColor = [UIColor whiteColor];
         [self.view addSubview:la];
         
-        UIButton *but = [Tool ButtonProductionFunction:@"手势密码将在您开启程序时启动" Frame:CGRectMake(0,self.view.frame.size.height- (iPhone4 ? 50:80),320,30) bgImgName:nil FontFl:12];
+        UIButton *but = [Tool ButtonProductionFunction:@"手势密码将在您开启程序时启动" Frame:CGRectMake(0,self.view.frame.size.height- (iPhone4 ? 50:80),ScreenWidth,30) bgImgName:nil FontFl:12];
         [but setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.view addSubview:but];
         //[but addTarget:self action:@selector(wangjishoushimima) forControlEvents:UIControlEventTouchUpInside];
@@ -69,7 +69,7 @@
         [self.view addSubview:la];
 
         
-        UIButton *but = [Tool ButtonProductionFunction:@"重设手势密码" Frame:CGRectMake(0,self.view.frame.size.height-(iPhone4 ? 30:80),320,30) bgImgName:nil FontFl:12];
+        UIButton *but = [Tool ButtonProductionFunction:@"重设手势密码" Frame:CGRectMake(0,self.view.frame.size.height-(iPhone4 ? 30:80),ScreenWidth,30) bgImgName:nil FontFl:12];
         [but setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.view addSubview:but];
         [but addTarget:self action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
@@ -101,11 +101,13 @@
     
         }else{
             
+            
+            
             UILabel *la = [Tool LablelProductionFunction:@"输入手势密码" Frame:CGRectMake(0, (self.view.frame.size.height-90*3)/3-10, self.view.frame.size.width, 30) Alignment:NSTextAlignmentCenter FontFl:18];
             la.textColor = [UIColor whiteColor];
             [self.view addSubview:la];
             
-            UIButton *but = [Tool ButtonProductionFunction:@"取消修改手势密码" Frame:CGRectMake(0,self.view.frame.size.height-(iPhone4 ? 30:80),320,30) bgImgName:nil FontFl:12];
+            UIButton *but = [Tool ButtonProductionFunction:@"取消修改手势密码" Frame:CGRectMake(0,self.view.frame.size.height-(iPhone4 ? 30:80),ScreenWidth,30) bgImgName:nil FontFl:12];
             [but setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [but addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
             [self.view addSubview:but];
@@ -193,8 +195,7 @@
             user.codeError = [NSString stringWithFormat:@"%d",codeError];
             [Tool savecoredata];
             
-        }
-        
+        } 
     }
     
 }

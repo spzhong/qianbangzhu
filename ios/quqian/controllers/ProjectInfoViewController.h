@@ -19,4 +19,7 @@
 
 @property(nonatomic,retain)NSTimer *myTimer;
 
+@property(nonatomic,retain)NSString *bdlx;
+
+
 @end
