@@ -98,7 +98,7 @@
     
     
     UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake((ScreenWidth-328/2)/2, 20, 328/2, 328/2)];
-    img.image = [UIImage imageNamed:@"LOGO.png"];
+    img.image = [UIImage imageNamed:@"LOGO123.png"];
     UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 20+328/2)];
     [bg addSubview:img];
     self.tableView.tableHeaderView = bg;
@@ -135,7 +135,7 @@
     self.tableView.tableFooterView = bgView;
     
     
-    UILabel *lab = [Tool LablelProductionFunction:@"您的资金由广东华兴银行存管系统全程监管" Frame:CGRectMake(0, 0, ScreenWidth, 50) Alignment:NSTextAlignmentCenter FontFl:12];
+    UILabel *lab = [Tool LablelProductionFunction:@"您的资金由广东华兴银行直接存管" Frame:CGRectMake(0, 0, ScreenWidth, 50) Alignment:NSTextAlignmentCenter FontFl:12];
     [lab sizeToFit];
     lab.textColor = [UIColor whiteColor];
     lab.frame = CGRectMake((ScreenWidth-lab.frame.size.width)/2, ScreenHeight-64-30, lab.frame.size.width, lab.frame.size.height);

@@ -22,10 +22,20 @@
 
 @implementation FYChongzhiViewController
 
+
+-(void)enditNSUS{
+    [self.view endEditing:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:RGB(236, 243, 246)];
+    
+    UIControl *bgtcou = [[[UIControl alloc] init] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    [bgtcou addTarget:self action:@selector(enditNSUS) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:bgtcou];
+    
     
     user =  (UserModel *)[Tool getUser];
     
@@ -50,7 +60,14 @@
     textFile = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(30,40,ScreenWidth-60, 40) FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumberPad];
     [bg addSubview:textFile];
     textFile.textAlignment = NSTextAlignmentCenter;
-    textFile.placeholder = @"请输入充值金额 最少2000元";
+    
+    
+    if ([self.title isEqualToString:@"签约充值"]) {
+        textFile.placeholder = @"请输入充值金额 最少2000元";
+    }else{
+        textFile.placeholder = @"请输入充值金额 最少500元";
+    }
+    
     [textFile setBackgroundColor:RGB(236, 243, 246)];
     if ([self.title isEqualToString:@"签约充值"]) {
         bg.frame = CGRectMake(0, 45, ScreenWidth, 120);
@@ -133,11 +150,23 @@
         return;
     }
     double JINdd = [JIN doubleValue];
-    if(JINdd>=2000 && JINdd < 1000000){
-    } else{
-        [Tool myalter:@"充值金额必须大于2000"];
-        return;
+    
+    
+    if ([self.title isEqualToString:@"签约充值"]) {
+        if(JINdd>=2000 && JINdd < 1000000){
+        } else{
+            [Tool myalter:@"充值金额必须大于2000"];
+            return;
+        }
+    }else{
+        if(JINdd>=500 && JINdd < 1000000){
+        } else{
+            [Tool myalter:@"充值金额必须大于500"];
+            return;
+        }
     }
+    
+    
     NSString *url =[NSString stringWithFormat:@"%@/user/deal/pay.htm",BASE_URL];
     NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
     [postDic setObject:textFile.text forKey:@"amount"];

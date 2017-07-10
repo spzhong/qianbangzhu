@@ -33,10 +33,20 @@
 
 @implementation ChongzhiViewController
 
+
+-(void)enditNSUS{
+    [self.view endEditing:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:RGB(236, 243, 246)];
+    
+    UIControl *bg = [[[UIControl alloc] init] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    [bg addTarget:self action:@selector(enditNSUS) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:bg];
+    
     
     
     user =  (UserModel *)[Tool getUser];

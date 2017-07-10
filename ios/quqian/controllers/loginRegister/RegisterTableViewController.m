@@ -104,7 +104,7 @@
     //表的尾部
     [self makefootView];
     
-    UILabel *lab = [Tool LablelProductionFunction:@"您的资金由广东华兴银行存管系统全程监管" Frame:CGRectMake(0, 0, ScreenWidth, 50) Alignment:NSTextAlignmentCenter FontFl:12];
+    UILabel *lab = [Tool LablelProductionFunction:@"您的资金由广东华兴银行直接存管" Frame:CGRectMake(0, 0, ScreenWidth, 50) Alignment:NSTextAlignmentCenter FontFl:12];
     [lab sizeToFit];
     lab.textColor = [UIColor whiteColor];
     lab.frame = CGRectMake((ScreenWidth-lab.frame.size.width)/2, ScreenHeight-64-30, lab.frame.size.width, lab.frame.size.height);
@@ -230,7 +230,7 @@
             
             imgView.image = [UIImage imageNamed:@"icon15.png"];
             
-            textField.frame = CGRectMake(55,0, [Tool adaptation:190 with6:55 with6p:94], 45);
+            //textField.frame = CGRectMake(55,0, [Tool adaptation:190 with6:55 with6p:94], 45);
             textField.placeholder = @"手机号";
             textField.tag = 100;
             textField.text = moblie;
@@ -239,7 +239,7 @@
             imgView.image = [UIImage imageNamed:@"icon16.png"];
             
             //lab123.text = @"登录密码";
-            textField.frame = CGRectMake(55,0, [Tool adaptation:190 with6:55 with6p:94], 45);
+            //textField.frame = CGRectMake(55,0, [Tool adaptation:190 with6:55 with6p:94], 45);
             textField.placeholder = @"登录密码";
             textField.tag = 101;
             textField.text = code;
@@ -248,7 +248,7 @@
             imgView.image = [UIImage imageNamed:@"icon16.png"];
             
             //lab123.text = @"确认登录密码";
-            textField.frame = CGRectMake(55,0, [Tool adaptation:190 with6:55 with6p:94], 45);
+            //textField.frame = CGRectMake(55,0, [Tool adaptation:190 with6:55 with6p:94], 45);
             textField.placeholder = @"确认登录密码";
             textField.tag = 102;
             textField.text = reCode;
@@ -260,7 +260,7 @@
             
             UIButton *buton = [UIButton buttonWithType:UIButtonTypeCustom];
             buton.tag = 10005;
-            buton.frame = CGRectMake(ScreenWidth-111, 8.5, 91, 28);
+            buton.frame = CGRectMake(ScreenWidth-111, 10, 91, 44);
             buton.titleLabel.font = [UIFont systemFontOfSize:12];
             [buton setTitle:@"获取验证码" forState:UIControlStateNormal];
             [cell.contentView addSubview:buton];
@@ -277,7 +277,7 @@
                 [buton setBackgroundImage:[UIImage imageNamed:@"button6.png"] forState:UIControlStateNormal];
             }
             
-            textField.frame = CGRectMake(55,0, [Tool adaptation:150 with6:55 with6p:94], 45);
+            //textField.frame = CGRectMake(55,0, [Tool adaptation:150 with6:55 with6p:94], 45);
             textField.placeholder = @"短信验证码";
             textField.tag = 103;
             textField.text = messageCode;
@@ -286,7 +286,7 @@
             imgView.image = [UIImage imageNamed:@"icon18.png"];
             
             //lab123.text = @"服务码";
-            textField.frame = CGRectMake(55,0, [Tool adaptation:190 with6:55 with6p:94], 45);
+            //textField.frame = CGRectMake(55,0, [Tool adaptation:190 with6:55 with6p:94], 45);
             textField.placeholder = @"推荐人服务码（选填）";
             textField.tag = 104;
             textField.text = serviceCode;
@@ -309,7 +309,7 @@
 -(void)quqianxieyi:(UIButton *)bu{
     
     WebController *web = [[WebController alloc] init];
-    web.urlString = [NSString stringWithFormat:@"%@/term/ZCXY.html",web_URL];  
+    web.urlString = [NSString stringWithFormat:@"%@/term/ZCXY.html",web_URL];
     web.title = @"钱帮主注册协议";
     //返回
     UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
@@ -534,7 +534,7 @@
     
     
     //进行有效登录确认
-    NSString *url =[NSString stringWithFormat:@"%@/register.htm",BASE_URL];
+    NSString *url =[NSString stringWithFormat:@"%@/m/zcxy.html?f_app=app",BASE_URL_head];
     NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
     [postDic setObject:moblie forKey:@"phone"];
     [postDic setObject:code forKey:@"password"];
@@ -583,26 +583,10 @@
 #pragma startRequest
 //获取手机验证码
 -(void)getPhoneCode_startRequest:(UIButton *)button{
- 
-    
+  
     if (!isHuoqu) {
         return;
     }
-
-    
-    //密码
-    if (code.length<6 || code.length>16) {
-        [Tool myalter:@"密码长度为6-16个字符"];
-        return;
-    }
-    if (![code isEqualToString:reCode]) {
-        [Tool myalter:@"你两次输入的密码不一致"];
-        return;
-    }
-  
-
-    
-    
     UITextField *textField = (UITextField *)[self getCellSubObjectwithTag:100 withIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     UITextField *textField2 = (UITextField *)[self getCellSubObjectwithTag:101 withIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     UITextField *textField3 = (UITextField *)[self getCellSubObjectwithTag:102 withIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];

@@ -52,7 +52,7 @@
     jiayishijian = [NSMutableArray arrayWithCapacity:0];
     
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,50, ScreenWidth, ScreenHeight-64) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,55, ScreenWidth, ScreenHeight-64-55) style:UITableViewStyleGrouped];
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -74,7 +74,7 @@
     
     jiantou  = [Tool ImgProductionFunctionFrame:CGRectMake(ScreenWidth/3-15, 17, 9, 9) bgImgName:@"箭头D"];
     [lab11 addSubview:jiantou];
-    jiantou2 = [Tool ImgProductionFunctionFrame:CGRectMake(ScreenWidth/3-15, 17, 9, 9) bgImgName:@"箭头D"];
+    jiantou2 = [Tool ImgProductionFunctionFrame:CGRectMake(ScreenWidth/3-20, 17, 9, 9) bgImgName:@"箭头D"];
     [lab33 addSubview:jiantou2];
     
     
@@ -123,7 +123,18 @@
     
     
     
+    UILabel *lab = [Tool LablelProductionFunction:@"您的资金由广东华兴银行直接存管" Frame:CGRectMake(0, 0, ScreenWidth, 50) Alignment:NSTextAlignmentCenter FontFl:12];
+    [lab sizeToFit];
+    lab.textColor = [UIColor whiteColor];
+    lab.frame = CGRectMake((ScreenWidth-lab.frame.size.width)/2, ScreenHeight-64-30, lab.frame.size.width, lab.frame.size.height);
     
+    
+    UIImageView *logoicn2 = [Tool ImgProductionFunctionFrame:CGRectMake(-20, 0, 16, 16) bgImgName:@"广东华兴银行LOGO2"];
+    [lab addSubview:logoicn2];
+    
+    
+    [self.view addSubview:lab];
+    lab.textColor = [UIColor whiteColor];
     
 }
 
@@ -234,7 +245,7 @@
                                        
                                        NSMutableDictionary *dic = [data JSONValue];
                                        if (![dic[@"rvalue"] isKindOfClass:[NSNull class]]) {
-                                           [dataArray addObjectsFromArray:[data JSONValue][@"rvalue"][@"items"]];
+                                           [dataArray addObjectsFromArray:[data JSONValue][@"rvalue"]];
                                        }else{
                                            [Tool myalter:@"暂无数据"];
                                        }
@@ -337,8 +348,8 @@
         NSMutableDictionary *dicone = jiayishijian[buttonIndex];
         jysj = dicone[@"key"];
         lab33.text = dicone[@"value"];
-        
     }
+    [self headerRereshing];
 }
 
 

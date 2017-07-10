@@ -241,16 +241,13 @@
         [dic2 setObject:@"月还本息" forKey:@"left"];
         [dic2 setObject:[self reLabWith:[NSString stringWithFormat:@"%@",[dic objectForKey:@"yhbx"]]] forKey:@"right"];
         
-        NSMutableDictionary *dic3 = [NSMutableDictionary dictionary];
-        [dic3 setObject:@"月还本息" forKey:@"left"];
-        [dic3 setObject:[self reLabWith:[NSString stringWithFormat:@"%@元",[dic objectForKey:@"yhbx"]]] forKey:@"right"];
         
         NSMutableDictionary *dic4 = [NSMutableDictionary dictionary];
         [dic4 setObject:@"投标限额" forKey:@"left"];
-        [dic4 setObject:[self reLabWith:[NSString stringWithFormat:@"%@元",[dic objectForKey:@"tbxe"]]] forKey:@"right"];
+        [dic4 setObject:[self reLabWith:[NSString stringWithFormat:@"%@",[dic objectForKey:@"tbxe"]]] forKey:@"right"];
         
         NSMutableDictionary *dic5 = [NSMutableDictionary dictionary];
-        [dic5 setObject:@"满标后当日计息" forKey:@"left"];
+        [dic5 setObject:@"起息时间" forKey:@"left"];
         [dic5 setObject:[self reLabWith:@"满标后当日计息"] forKey:@"right"];
         
         NSMutableDictionary *dic6 = [NSMutableDictionary dictionary];
@@ -259,7 +256,6 @@
         
         [array addObject:dic1];
         [array addObject:dic2];
-        [array addObject:dic3];
         [array addObject:dic4];
         [array addObject:dic5];
         [array addObject:dic6];

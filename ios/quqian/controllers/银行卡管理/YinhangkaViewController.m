@@ -109,7 +109,7 @@
     //开通了存管账户
     if ([alldic[@"cgzt"] isEqualToString:@"S"]) {
         
-        UILabel *labTile1 = [Tool LablelProductionFunction:@"      华兴E账户：6236882280000375472" Frame:CGRectMake(0, 0, ScreenWidth,40) Alignment:NSTextAlignmentLeft  FontFl:14];
+        UILabel *labTile1 = [Tool LablelProductionFunction:[NSString stringWithFormat:@"      华兴E账户：%@",dic[@"hxzh"]] Frame:CGRectMake(0, 0, ScreenWidth,40) Alignment:NSTextAlignmentLeft  FontFl:14];
         labTile1.textColor = RGB(51, 51, 51);
         [labTile1 setBackgroundColor:[UIColor whiteColor]];
         [cgView addSubview:labTile1];
@@ -171,6 +171,8 @@
         return;
     }
     
+ 
+    
     ptView = [[UIView alloc] initWithFrame:CGRectMake(0, 50, ScreenWidth, ScreenHeight)];
     //开通了富有
     if ([alldic[@"ptzt"] isEqualToString:@"S"]) {
@@ -225,7 +227,7 @@
 
 -(void)lijibangding{
     
-    if ([alldic[@"zhlx"] isEqualToString:@"QYZH"]) {
+    if ([alldic[@"zhlx"] isEqualToString:@"QYKH"]) {
         [Tool myalter:@"企业账户请到web上进行绑定"];
         return;
     }
@@ -242,7 +244,7 @@
 
 //存管绑定银行卡
 -(void)cunguanbangding{
- 
+
     //进行有效登录确认
     NSString *url =[NSString stringWithFormat:@"%@/user/bankcard/regCgBk.htm",BASE_URL];
     NSMutableDictionary *postDic = [NSMutableDictionary dictionary];

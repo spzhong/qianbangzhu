@@ -67,6 +67,8 @@
 
 
 
+
+
 //登录成功的回调
 -(void)loginSuccess{
    
@@ -104,6 +106,7 @@
     [self.tableView reloadData];
     [self tableviewHeadView];
 
+    [self setbheadvue];
 }
 
 
@@ -134,38 +137,43 @@
     [self.tableView setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1.0]];
     [self.tableView setBackgroundColor:[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]];
     
+    [self setbheadvue];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadzhanghaoyuexinxi) name:@"reloadzhanghaoyuexinxi" object:nil];
+    
+}
+
+
+-(void)setbheadvue{
     UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
     [bg setBackgroundColor:[UIColor clearColor]];
     UIImageView *head = [Tool ImgProductionFunctionFrame:CGRectMake(15, 7, 30, 30) bgImgName:@"用户头像.png"];
     [bg addSubview:head];
     
-    name = [Tool LablelProductionFunction:[NSString stringWithFormat:@"您好,%@",user.name] Frame:CGRectMake(60, 0, 120, 44) Alignment:NSTextAlignmentLeft FontFl:15];
+    name = [Tool LablelProductionFunction:[NSString stringWithFormat:@"您好%@",user.name] Frame:CGRectMake(60, 0, 120, 44) Alignment:NSTextAlignmentLeft FontFl:15];
     [bg addSubview:name];
     name.textColor = [UIColor whiteColor];
     
-    UIButton *setbut =  [Tool ButtonProductionFunction:nil Frame:CGRectMake(ScreenWidth-40, (44-16)/2, 16, 16) bgImgName:@"设置" FontFl:0];
+    UIButton *setbut =  [Tool ButtonProductionFunction:nil Frame:CGRectMake(ScreenWidth-50, (44-16)/2, 20, 20) bgImgName:@"设置" FontFl:0];
     [setbut addTarget:self action:@selector(setView) forControlEvents:UIControlEventTouchUpInside];
     [bg addSubview:setbut];
     
     
     
     if ([user.znxwdts intValue] > 0) {
-        UIButton *xiaoxibut =  [Tool ButtonProductionFunction:nil Frame:CGRectMake(ScreenWidth-40-35, (44-16)/2, 21, 16) bgImgName:@"消息-未读" FontFl:0];
+        UIButton *xiaoxibut =  [Tool ButtonProductionFunction:nil Frame:CGRectMake(ScreenWidth-56-35, (44-16)/2, 21*1.2, 16*1.2) bgImgName:@"消息-未读" FontFl:0];
         [xiaoxibut addTarget:self action:@selector(xiaoxibut) forControlEvents:UIControlEventTouchUpInside];
         [bg addSubview:xiaoxibut];
     }else{
-        UIButton *xiaoxibut =  [Tool ButtonProductionFunction:nil Frame:CGRectMake(ScreenWidth-40-35, (44-16)/2, 21, 16) bgImgName:@"消息-已读" FontFl:0];
+        UIButton *xiaoxibut =  [Tool ButtonProductionFunction:nil Frame:CGRectMake(ScreenWidth-56-35, (44-16)/2, 21*1.2, 16*1.2) bgImgName:@"消息-已读" FontFl:0];
         [xiaoxibut addTarget:self action:@selector(xiaoxibut) forControlEvents:UIControlEventTouchUpInside];
         [bg addSubview:xiaoxibut];
     }
-     
+    
     
     self.navigationItem.titleView = bg;
     [self tableviewHeadView];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadzhanghaoyuexinxi) name:@"reloadzhanghaoyuexinxi" object:nil];
-    
+
 }
 
 
@@ -273,7 +281,7 @@
     [bg addSubview:line];
     
     //200的高度
-    [self makecre:0 withName:@"账户总额" withPic:@"账户总额" withSup:bg];
+    [self makecre:0 withName:@"账户总览" withPic:@"账户总额" withSup:bg];
     [self makecre:1 withName:@"交易记录" withPic:@"交易记录" withSup:bg];
     
     [self makecre:2 withName:@"我的投标" withPic:@"我的投标" withSup:bg];

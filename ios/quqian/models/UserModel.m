@@ -54,7 +54,7 @@
 @dynamic cgdjje;//存管账户冻结金额
 @dynamic cgyzze;//存管账户已赚总额
 @dynamic cgzhze;//存管账户总额
- 
+@dynamic iscloseshoushimia;
 
 
 - (instancetype)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context{

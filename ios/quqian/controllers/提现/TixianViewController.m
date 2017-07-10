@@ -34,11 +34,19 @@
 
 @implementation TixianViewController
 
+
+-(void)enditNSUS{
+    [self.view endEditing:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [self.view setBackgroundColor:RGB(236, 243, 246)];
+    
+    UIControl *bg = [[[UIControl alloc] init] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    [bg addTarget:self action:@selector(enditNSUS) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:bg];
     
     
     user =  (UserModel *)[Tool getUser];
@@ -359,12 +367,12 @@
         [Tool myalter:@"请输入提现金额"];
         return;
     }
-    double JINdd = [JIN doubleValue];
-    if(JINdd>=100 && JINdd < 1000000){
-    } else{
-        [Tool myalter:@"提现金额必须大于100"];
-        return;
-    }
+//    double JINdd = [JIN doubleValue];
+//    if(JINdd>=100 && JINdd < 1000000){
+//    } else{
+//        [Tool myalter:@"提现金额必须大于100"];
+//        return;
+//    }
     NSString *url =[NSString stringWithFormat:@"%@/user/deal/withdraw.htm",BASE_URL];
     NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
     
@@ -413,12 +421,12 @@
         [Tool myalter:@"请输入提现金额"];
         return;
     }
-    double JINdd = [JIN doubleValue];
-    if(JINdd>=100 && JINdd < 1000000){
-    } else{
-        [Tool myalter:@"提现金额必须大于100"];
-        return;
-    }
+//    double JINdd = [JIN doubleValue];
+//    if(JINdd>=100 && JINdd < 1000000){
+//    } else{
+//        [Tool myalter:@"提现金额必须大于100"];
+//        return;
+//    }
     NSString *url =[NSString stringWithFormat:@"%@/user/deal/withdraw.htm",BASE_URL];
     NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
     

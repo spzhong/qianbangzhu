@@ -46,6 +46,8 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSURL *surl = request.URL;
     
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    
     NSString *lJs = @"document.documentElement.innerHTML";
     NSString *lHtml1 = [webView stringByEvaluatingJavaScriptFromString:lJs];
     NSLog(@"lHtml1 %@",lHtml1);
@@ -54,7 +56,7 @@
          [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadzhanghaoyuexinxi" object:nil];
         [self.navigationController popToRootViewControllerAnimated:YES];
          
-    }else if ([lHtml1 containsString:@"onclick=\"sendCode('null')"]) {
+    }else if ([lHtml1 containsString:@"onclick=\"sendCode("]) {
         [Tool myalter:@"交易失败"];
         [self.navigationController popViewControllerAnimated:YES];
     }

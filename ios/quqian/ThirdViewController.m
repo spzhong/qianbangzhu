@@ -104,7 +104,7 @@
     
     EGOImageView*imgView =[[EGOImageView alloc] init];
     imgView.frame = CGRectMake(15, 12.5, 20, 20);
-    UILabel *lab123 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(50, 0, [Tool adaptation:200 with6:55 with6p:94], 45) Alignment:NSTextAlignmentLeft  FontFl:15];
+    UILabel *lab123 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(50, 0,200, 45) Alignment:NSTextAlignmentLeft  FontFl:15];
     lab123.textColor = RGB(150, 150, 150);
     
     UILabel *lab1234 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(0, 0, ScreenWidth, 45) Alignment:NSTextAlignmentCenter  FontFl:14];
@@ -120,8 +120,8 @@
     if (row==0) {
         imgView.image = [UIImage imageNamed:@"客服热线"];
         lab123.text = @"客服热线";
-        lab1234.text = @"400-880-5306";
-        lab122.text = @"客服工作时间\n09:00-21:00";
+        lab1234.text = @"400-8535-666";
+        lab122.text = @"客服工作时间\n09:00-18:00";
         
     }else if (row==1){
         lab123.text = @"意见反馈";
@@ -170,7 +170,7 @@
         
     }else{
         
-        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",@"400-880-5306"];
+        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",@"400-8535-666"];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
         
     }

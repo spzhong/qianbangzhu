@@ -24,7 +24,6 @@
 		180A35DD1ACE99230073BBC0 /* 72.png in Resources */ = {isa = PBXBuildFile; fileRef = 180A35D51ACE99230073BBC0 /* 72.png */; };
 		18156F091AFA07EB0055B474 /* BangYinHangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18156F081AFA07EB0055B474 /* BangYinHangViewController.m */; };
 		18156F111AFA148D0055B474 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18156F101AFA148D0055B474 /* CoreTelephony.framework */; };
-		182192711ADB680F00B06F77 /* de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1821926D1ADB680F00B06F77 /* de.png */; };
 		182192B81ADBB28700B06F77 /* icon28.png in Resources */ = {isa = PBXBuildFile; fileRef = 182192B61ADBB28700B06F77 /* icon28.png */; };
 		182192B91ADBB28700B06F77 /* icon29.png in Resources */ = {isa = PBXBuildFile; fileRef = 182192B71ADBB28700B06F77 /* icon29.png */; };
 		1823A78C1AD787390020684E /* MyAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823A78B1AD787390020684E /* MyAlert.m */; };
@@ -622,7 +621,17 @@
 		6F6E54851EF37AB10000480A /* 用户头像.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E54761EF37AB10000480A /* 用户头像.png */; };
 		6F6E54861EF37AB10000480A /* 账户总额.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E54771EF37AB10000480A /* 账户总额.png */; };
 		6F6E548B1EF3A8010000480A /* UtilityUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6E548A1EF3A8010000480A /* UtilityUI.m */; };
+		6F833EF21F13ADC400F2A579 /* 登录密码.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833EEE1F13ADC400F2A579 /* 登录密码.png */; };
+		6F833EF31F13ADC400F2A579 /* 风险测评.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833EEF1F13ADC400F2A579 /* 风险测评.png */; };
+		6F833EF41F13ADC400F2A579 /* 实名认证.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833EF01F13ADC400F2A579 /* 实名认证.png */; };
+		6F833EF51F13ADC400F2A579 /* 手机号码.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833EF11F13ADC400F2A579 /* 手机号码.png */; };
+		6F833EF81F13B2B900F2A579 /* shoushi未选择.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833EF61F13B2B900F2A579 /* shoushi未选择.png */; };
+		6F833EF91F13B2B900F2A579 /* shoushi选中状态.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833EF71F13B2B900F2A579 /* shoushi选中状态.png */; };
+		6F833EFB1F13B38200F2A579 /* 设置手势密码图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833EFA1F13B38200F2A579 /* 设置手势密码图标.png */; };
+		6F833EFD1F13B67200F2A579 /* 修改手机号图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833EFC1F13B67200F2A579 /* 修改手机号图标.png */; };
+		6F833F001F13BA4A00F2A579 /* XiugaidenglumimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F833EFF1F13BA4A00F2A579 /* XiugaidenglumimViewController.m */; };
 		6F861DA51EF17AFF00147EB0 /* CGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F861DA41EF17AFF00147EB0 /* CGWebViewController.m */; };
+		6F9519321F067DA100429B03 /* FilteredProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9519311F067DA100429B03 /* FilteredProtocol.m */; };
 		6F9CBA421EEED911009B4438 /* 信-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9CBA411EEED911009B4438 /* 信-logo.png */; };
 		6F9E956E1EF4D28F00408674 /* 检查更新.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9E956B1EF4D28F00408674 /* 检查更新.png */; };
 		6F9E956F1EF4D28F00408674 /* 客服热线.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9E956C1EF4D28F00408674 /* 客服热线.png */; };
@@ -644,8 +653,10 @@
 		6FE537F01F00EF300077B1D1 /* 登录背景.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FE537EC1F00EF300077B1D1 /* 登录背景.jpg */; };
 		6FE537F11F00EF300077B1D1 /* 广东华兴银行LOGO2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE537ED1F00EF300077B1D1 /* 广东华兴银行LOGO2.png */; };
 		6FE537F21F00EF300077B1D1 /* icon9.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE537EE1F00EF300077B1D1 /* icon9.png */; };
-		6FE537F31F00EF300077B1D1 /* LOGO.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE537EF1F00EF300077B1D1 /* LOGO.png */; };
+		6FE537F31F00EF300077B1D1 /* LOGO123.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE537EF1F00EF300077B1D1 /* LOGO123.png */; };
 		6FE537F61F00FB4B0077B1D1 /* Zhucehoukaitongcunguanyinhang.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE537F51F00FB4B0077B1D1 /* Zhucehoukaitongcunguanyinhang.m */; };
+		6FECE4901F025EFD002A0CE6 /* de@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FECE48E1F025EFD002A0CE6 /* de@3x.png */; };
+		6FECE4911F025EFD002A0CE6 /* de@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FECE48F1F025EFD002A0CE6 /* de@2x.png */; };
 		6FFAA43F1EE05F0200453972 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFAA43E1EE05F0200453972 /* libz.tbd */; };
 		6FFAA4491EE061FA00453972 /* qidongpic1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FFAA4461EE061FA00453972 /* qidongpic1.jpg */; };
 		6FFAA44A1EE061FA00453972 /* qidongpic2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FFAA4471EE061FA00453972 /* qidongpic2.jpg */; };
@@ -707,7 +718,6 @@
 		18156F071AFA07EB0055B474 /* BangYinHangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BangYinHangViewController.h; sourceTree = "<group>"; };
 		18156F081AFA07EB0055B474 /* BangYinHangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BangYinHangViewController.m; sourceTree = "<group>"; };
 		18156F101AFA148D0055B474 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		1821926D1ADB680F00B06F77 /* de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = de.png; sourceTree = "<group>"; };
 		182192B61ADBB28700B06F77 /* icon28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon28.png; sourceTree = "<group>"; };
 		182192B71ADBB28700B06F77 /* icon29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon29.png; sourceTree = "<group>"; };
 		1823A78A1AD787390020684E /* MyAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlert.h; sourceTree = "<group>"; };
@@ -1701,8 +1711,20 @@
 		6F6E54771EF37AB10000480A /* 账户总额.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "账户总额.png"; sourceTree = "<group>"; };
 		6F6E54891EF3A8010000480A /* UtilityUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityUI.h; sourceTree = "<group>"; };
 		6F6E548A1EF3A8010000480A /* UtilityUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityUI.m; sourceTree = "<group>"; };
+		6F833EEE1F13ADC400F2A579 /* 登录密码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录密码.png"; sourceTree = "<group>"; };
+		6F833EEF1F13ADC400F2A579 /* 风险测评.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "风险测评.png"; sourceTree = "<group>"; };
+		6F833EF01F13ADC400F2A579 /* 实名认证.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "实名认证.png"; sourceTree = "<group>"; };
+		6F833EF11F13ADC400F2A579 /* 手机号码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "手机号码.png"; sourceTree = "<group>"; };
+		6F833EF61F13B2B900F2A579 /* shoushi未选择.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shoushi未选择.png"; sourceTree = "<group>"; };
+		6F833EF71F13B2B900F2A579 /* shoushi选中状态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shoushi选中状态.png"; sourceTree = "<group>"; };
+		6F833EFA1F13B38200F2A579 /* 设置手势密码图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设置手势密码图标.png"; sourceTree = "<group>"; };
+		6F833EFC1F13B67200F2A579 /* 修改手机号图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "修改手机号图标.png"; sourceTree = "<group>"; };
+		6F833EFE1F13BA4A00F2A579 /* XiugaidenglumimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XiugaidenglumimViewController.h; sourceTree = "<group>"; };
+		6F833EFF1F13BA4A00F2A579 /* XiugaidenglumimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XiugaidenglumimViewController.m; sourceTree = "<group>"; };
 		6F861DA31EF17AFF00147EB0 /* CGWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGWebViewController.h; sourceTree = "<group>"; };
 		6F861DA41EF17AFF00147EB0 /* CGWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGWebViewController.m; sourceTree = "<group>"; };
+		6F9519301F067DA100429B03 /* FilteredProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteredProtocol.h; sourceTree = "<group>"; };
+		6F9519311F067DA100429B03 /* FilteredProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteredProtocol.m; sourceTree = "<group>"; };
 		6F9CBA411EEED911009B4438 /* 信-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "信-logo.png"; sourceTree = "<group>"; };
 		6F9E956B1EF4D28F00408674 /* 检查更新.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "检查更新.png"; sourceTree = "<group>"; };
 		6F9E956C1EF4D28F00408674 /* 客服热线.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "客服热线.png"; sourceTree = "<group>"; };
@@ -1733,9 +1755,11 @@
 		6FE537EC1F00EF300077B1D1 /* 登录背景.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "登录背景.jpg"; sourceTree = "<group>"; };
 		6FE537ED1F00EF300077B1D1 /* 广东华兴银行LOGO2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "广东华兴银行LOGO2.png"; sourceTree = "<group>"; };
 		6FE537EE1F00EF300077B1D1 /* icon9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon9.png; sourceTree = "<group>"; };
-		6FE537EF1F00EF300077B1D1 /* LOGO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LOGO.png; sourceTree = "<group>"; };
+		6FE537EF1F00EF300077B1D1 /* LOGO123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LOGO123.png; sourceTree = "<group>"; };
 		6FE537F41F00FB4B0077B1D1 /* Zhucehoukaitongcunguanyinhang.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Zhucehoukaitongcunguanyinhang.h; sourceTree = "<group>"; };
 		6FE537F51F00FB4B0077B1D1 /* Zhucehoukaitongcunguanyinhang.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Zhucehoukaitongcunguanyinhang.m; sourceTree = "<group>"; };
+		6FECE48E1F025EFD002A0CE6 /* de@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "de@3x.png"; sourceTree = "<group>"; };
+		6FECE48F1F025EFD002A0CE6 /* de@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "de@2x.png"; sourceTree = "<group>"; };
 		6FFAA43E1EE05F0200453972 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		6FFAA4461EE061FA00453972 /* qidongpic1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qidongpic1.jpg; sourceTree = "<group>"; };
 		6FFAA4471EE061FA00453972 /* qidongpic2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qidongpic2.jpg; sourceTree = "<group>"; };
@@ -1812,7 +1836,6 @@
 				6FFAA4461EE061FA00453972 /* qidongpic1.jpg */,
 				6FFAA4471EE061FA00453972 /* qidongpic2.jpg */,
 				6FFAA4481EE061FA00453972 /* qidongpic3.jpg */,
-				1821926D1ADB680F00B06F77 /* de.png */,
 				180A35CF1ACE99230073BBC0 /* 1024.png */,
 				180A35D01ACE99230073BBC0 /* 114.png */,
 				180A35D11ACE99230073BBC0 /* 120.png */,
@@ -1897,6 +1920,8 @@
 				18156F081AFA07EB0055B474 /* BangYinHangViewController.m */,
 				189EC79C1B01A39F003F5464 /* BangKHAdressViewController.h */,
 				189EC79D1B01A39F003F5464 /* BangKHAdressViewController.m */,
+				6F833EFE1F13BA4A00F2A579 /* XiugaidenglumimViewController.h */,
+				6F833EFF1F13BA4A00F2A579 /* XiugaidenglumimViewController.m */,
 			);
 			path = me;
 			sourceTree = "<group>";
@@ -3392,6 +3417,8 @@
 				6F861DA41EF17AFF00147EB0 /* CGWebViewController.m */,
 				6F4407741EF2924C0014FD65 /* PTWEBViewController.h */,
 				6F4407751EF2924C0014FD65 /* PTWEBViewController.m */,
+				6F9519301F067DA100429B03 /* FilteredProtocol.h */,
+				6F9519311F067DA100429B03 /* FilteredProtocol.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -3436,6 +3463,7 @@
 		1864BA0F1AB826C500BC1455 /* shoushi */ = {
 			isa = PBXGroup;
 			children = (
+				6F833EFA1F13B38200F2A579 /* 设置手势密码图标.png */,
 				6FB305821EEC32660011E9E3 /* pt.png */,
 				6FB305831EEC32660011E9E3 /* ptDown.png */,
 				188873501ACAA61400744021 /* ptbg.png */,
@@ -3542,10 +3570,19 @@
 		18CCC5971AC92F070087032C /* img */ = {
 			isa = PBXGroup;
 			children = (
+				6F833EFC1F13B67200F2A579 /* 修改手机号图标.png */,
+				6F833EEE1F13ADC400F2A579 /* 登录密码.png */,
+				6F833EF61F13B2B900F2A579 /* shoushi未选择.png */,
+				6F833EF71F13B2B900F2A579 /* shoushi选中状态.png */,
+				6F833EEF1F13ADC400F2A579 /* 风险测评.png */,
+				6F833EF01F13ADC400F2A579 /* 实名认证.png */,
+				6F833EF11F13ADC400F2A579 /* 手机号码.png */,
+				6FECE48E1F025EFD002A0CE6 /* de@3x.png */,
+				6FECE48F1F025EFD002A0CE6 /* de@2x.png */,
 				6FE537EC1F00EF300077B1D1 /* 登录背景.jpg */,
 				6FE537ED1F00EF300077B1D1 /* 广东华兴银行LOGO2.png */,
 				6FE537EE1F00EF300077B1D1 /* icon9.png */,
-				6FE537EF1F00EF300077B1D1 /* LOGO.png */,
+				6FE537EF1F00EF300077B1D1 /* LOGO123.png */,
 				6F25C4C51EFB6EFB00AFE670 /* 箭头D.png */,
 				6F25C4C61EFB6EFB00AFE670 /* 箭头R.png */,
 				6F25C4C71EFB6EFB00AFE670 /* 箭头U.png */,
@@ -3775,8 +3812,8 @@
 				TargetAttributes = {
 					1864B3F41AB7EE8000BC1455 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = WC7LZN7T9K;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = RA3S34K4EA;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -3821,6 +3858,7 @@
 				6FFAA48E1EE420DB00453972 /* 充值信息.png in Resources */,
 				1864B86E1AB7F05B00BC1455 /* Expression_103@2x.png in Resources */,
 				1864B8791AB7F05B00BC1455 /* Expression_18@2x.png in Resources */,
+				6F833EF91F13B2B900F2A579 /* shoushi选中状态.png in Resources */,
 				18CCC5BA1AC930A60087032C /* icon7-1@2x.png in Resources */,
 				1864B8851AB7F05B00BC1455 /* Expression_29@2x.png in Resources */,
 				6F9E95801EF4F47100408674 /* 签约充值.png in Resources */,
@@ -3902,8 +3940,10 @@
 				188873631ACACA8000744021 /* MJRefresh.bundle in Resources */,
 				1864B8941AB7F05B00BC1455 /* Expression_42@2x.png in Resources */,
 				1864B86D1AB7F05B00BC1455 /* Expression_102@2x.png in Resources */,
+				6F833EF81F13B2B900F2A579 /* shoushi未选择.png in Resources */,
 				1864B8A61AB7F05B00BC1455 /* Expression_59@2x.png in Resources */,
 				18AB823D1B0051AA0062DCEF /* walletResources.bundle in Resources */,
+				6F833EF31F13ADC400F2A579 /* 风险测评.png in Resources */,
 				6FFAA4861EE3071E00453972 /* 注册人数.png in Resources */,
 				6F6E547A1EF37AB10000480A /* 设置.png in Resources */,
 				18CCC5A41AC92F070087032C /* button01.png in Resources */,
@@ -3926,6 +3966,7 @@
 				6FFAA4491EE061FA00453972 /* qidongpic1.jpg in Resources */,
 				1864B8731AB7F05B00BC1455 /* Expression_12@2x.png in Resources */,
 				1823A79C1AD7A0D20020684E /* custom-cancel-normal@2x.png in Resources */,
+				6F833EF21F13ADC400F2A579 /* 登录密码.png in Resources */,
 				18A1B22A1AC9770300C328A1 /* pic.png in Resources */,
 				6F6E54791EF37AB10000480A /* 交易记录.png in Resources */,
 				188873441ACA8B6B00744021 /* button5.png in Resources */,
@@ -3937,8 +3978,9 @@
 				1864B8911AB7F05B00BC1455 /* Expression_3@2x.png in Resources */,
 				6F25C4CA1EFB6EFB00AFE670 /* 箭头U.png in Resources */,
 				6FFAA4591EE0685000453972 /* jingxuanlicai.png in Resources */,
+				6FECE4901F025EFD002A0CE6 /* de@3x.png in Resources */,
 				1864B8D51AB7F05B00BC1455 /* expression_CH.plist in Resources */,
-				6FE537F31F00EF300077B1D1 /* LOGO.png in Resources */,
+				6FE537F31F00EF300077B1D1 /* LOGO123.png in Resources */,
 				6FE537F11F00EF300077B1D1 /* 广东华兴银行LOGO2.png in Resources */,
 				6FB3058A1EEC38250011E9E3 /* NewSanViewCell.xib in Resources */,
 				1864B8921AB7F05B00BC1455 /* Expression_40@2x.png in Resources */,
@@ -3947,6 +3989,7 @@
 				6F01258E1EFA23BD00B72C86 /* ZhanghuzonglanViewController.xib in Resources */,
 				18A1B2271AC9770300C328A1 /* icon13-2.png in Resources */,
 				1888734C1ACA8FAE00744021 /* icon19-1.png in Resources */,
+				6F833EFB1F13B38200F2A579 /* 设置手势密码图标.png in Resources */,
 				189EC2381AC3E068008EBEAA /* down_dark.png in Resources */,
 				1864B8891AB7F05B00BC1455 /* Expression_32@2x.png in Resources */,
 				1864B8A81AB7F05B00BC1455 /* Expression_60@2x.png in Resources */,
@@ -3983,6 +4026,7 @@
 				1864B88F1AB7F05B00BC1455 /* Expression_38@2x.png in Resources */,
 				1864B89F1AB7F05B00BC1455 /* Expression_52@2x.png in Resources */,
 				18A1B2121AC945F600C328A1 /* line2-56.png in Resources */,
+				6F833EFD1F13B67200F2A579 /* 修改手机号图标.png in Resources */,
 				6FFAA4621EE2F4B700453972 /* logo@2x.png in Resources */,
 				1864B8C01AB7F05B00BC1455 /* Expression_82@2x.png in Resources */,
 				1864B8C51AB7F05B00BC1455 /* Expression_87@2x.png in Resources */,
@@ -4014,11 +4058,11 @@
 				180A35D81ACE99230073BBC0 /* 114.png in Resources */,
 				6FFAA45F1EE2F46400453972 /* iconmore@2x.png in Resources */,
 				1854FC651ACBE06B0022A1DC /* icon21-2.png in Resources */,
+				6FECE4911F025EFD002A0CE6 /* de@2x.png in Resources */,
 				1864B8C91AB7F05B00BC1455 /* Expression_90@2x.png in Resources */,
 				1823A79B1AD7A0D20020684E /* custom-cancel-normal.png in Resources */,
 				1864B8A11AB7F05B00BC1455 /* Expression_54@2x.png in Resources */,
 				1864B8D01AB7F05B00BC1455 /* Expression_97@2x.png in Resources */,
-				182192711ADB680F00B06F77 /* de.png in Resources */,
 				6F01259D1EFA23FC00B72C86 /* YaoqinghaoyuViewController.xib in Resources */,
 				1864B8CC1AB7F05B00BC1455 /* Expression_93@2x.png in Resources */,
 				6F9E957F1EF4F47100408674 /* 快捷充值.png in Resources */,
@@ -4034,6 +4078,7 @@
 				1864B8761AB7F05B00BC1455 /* Expression_15@2x.png in Resources */,
 				6FFAA45A1EE0685000453972 /* woyaojiekuan.png in Resources */,
 				1864B8951AB7F05B00BC1455 /* Expression_43@2x.png in Resources */,
+				6F833EF51F13ADC400F2A579 /* 手机号码.png in Resources */,
 				1864B8AD1AB7F05B00BC1455 /* Expression_65@2x.png in Resources */,
 				1864B8BE1AB7F05B00BC1455 /* Expression_80@2x.png in Resources */,
 				18CCC5B61AC930A60087032C /* icon5-1@2x.png in Resources */,
@@ -4062,6 +4107,7 @@
 				1864B8991AB7F05B00BC1455 /* Expression_47@2x.png in Resources */,
 				1864B8831AB7F05B00BC1455 /* Expression_27@2x.png in Resources */,
 				1864B8A51AB7F05B00BC1455 /* Expression_58@2x.png in Resources */,
+				6F833EF41F13ADC400F2A579 /* 实名认证.png in Resources */,
 				18A33AFB1ACC13C500664ACB /* icon26-1.png in Resources */,
 				18CCC5BD1AC93A700087032C /* line.png in Resources */,
 				185373F71ABB07B4007ADA39 /* SanViewCell.xib in Resources */,
@@ -4152,6 +4198,7 @@
 				1864B4511AB7EFFF00BC1455 /* InputGeneralViewController.m in Sources */,
 				1864B9D11AB7F05B00BC1455 /* ZXFinderPatternInfo.m in Sources */,
 				1864B8331AB7F05B00BC1455 /* IQAssetsAlbumViewCell.m in Sources */,
+				6F9519321F067DA100429B03 /* FilteredProtocol.m in Sources */,
 				1864B9B51AB7F05B00BC1455 /* ZXPDF417DetectionResult.m in Sources */,
 				1864B4501AB7EFFF00BC1455 /* HelpDownloader.m in Sources */,
 				1864B9B21AB7F05B00BC1455 /* ZXPDF417Codeword.m in Sources */,
@@ -4335,6 +4382,7 @@
 				1864B9761AB7F05B00BC1455 /* ZXAI013103decoder.m in Sources */,
 				185373FA1ABBD9E7007ADA39 /* ProjectViewController.m in Sources */,
 				180A35BE1ACCE38E0073BBC0 /* NoticeInfoViewController.m in Sources */,
+				6F833F001F13BA4A00F2A579 /* XiugaidenglumimViewController.m in Sources */,
 				1864B9741AB7F05B00BC1455 /* ZXGenericMultipleBarcodeReader.m in Sources */,
 				1864B93E1AB7F05B00BC1455 /* ZXBitArray.m in Sources */,
 				1864B95F1AB7F05B00BC1455 /* ZXDataMatrixWriter.m in Sources */,
@@ -4597,8 +4645,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = WC7LZN7T9K;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = RA3S34K4EA;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4614,10 +4662,10 @@
 					"$(PROJECT_DIR)/quqian/frame/LLPay_iOS_SDK_V2.4",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.song.dc1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dachen.eMDTs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8b9c41e6-d50a-4b86-ad9c-ee9dea59f13f";
+				PROVISIONING_PROFILE_SPECIFIER = DCeMDT;
 			};
 			name = Debug;
 		};
@@ -4626,8 +4674,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = WC7LZN7T9K;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = RA3S34K4EA;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4643,10 +4691,10 @@
 					"$(PROJECT_DIR)/quqian/frame/LLPay_iOS_SDK_V2.4",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.song.dc1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dachen.eMDTs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8b9c41e6-d50a-4b86-ad9c-ee9dea59f13f";
+				PROVISIONING_PROFILE_SPECIFIER = DCeMDT;
 			};
 			name = Release;
 		};

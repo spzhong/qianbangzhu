@@ -832,16 +832,8 @@
         return NO;
     }
     
-    NSString *regex = @"^((13[0-9])|(147)|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    BOOL isMatch = [pred evaluateWithObject:phone];
-    if (!isMatch) {
-//        UIAlertView* alert12 = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入正确的手机号码" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil, nil];
-//        [alert12 show];
-//        [alert12 release];
-    
+    if (phone.length!=11) {
         [Tool myalter:@"手机号错误"];
-        
         return NO;
     }
     return YES;
@@ -1198,9 +1190,6 @@
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSLog(@"----   %lf",app.window.screen.bounds.size.width);
-    
-    
-    return ScreenWidth;
     
     if (app.window.screen.bounds.size.width==375) {
         return fl + x6;

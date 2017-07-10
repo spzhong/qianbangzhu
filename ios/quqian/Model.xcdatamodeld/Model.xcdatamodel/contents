@@ -19,6 +19,7 @@
         <attribute name="djje" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fwmlj" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iscloseshoushimia" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isEnable" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="keyong_money" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
@@ -43,6 +44,6 @@
     </entity>
     <elements>
         <element name="NoticeModel" positionX="-63" positionY="63" width="128" height="120"/>
-        <element name="UserModel" positionX="-63" positionY="-18" width="128" height="525"/>
+        <element name="UserModel" positionX="-63" positionY="-18" width="128" height="540"/>
     </elements>
 </model>

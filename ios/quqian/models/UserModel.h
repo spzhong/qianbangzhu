@@ -57,7 +57,8 @@
 @property(nonatomic,retain)NSString *cgdjje;//存管账户冻结金额
 @property(nonatomic,retain)NSString *cgyzze;//存管账户已赚总额
 @property(nonatomic,retain)NSString *cgzhze;//存管账户总额
- 
+
+@property(nonatomic,retain)NSString *iscloseshoushimia;//是否关闭手势密码
 
 
 -(NSString *)new_cardNum;

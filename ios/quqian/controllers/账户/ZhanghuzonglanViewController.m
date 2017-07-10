@@ -70,6 +70,21 @@
     [myTabview setBackgroundColor:RGB(242, 242, 242)];
     
     [self cgkaitong_but_p];
+    
+    
+    
+    UILabel *lab = [Tool LablelProductionFunction:@"您的资金由广东华兴银行直接存管" Frame:CGRectMake(0, 0, ScreenWidth, 50) Alignment:NSTextAlignmentCenter FontFl:12];
+    [lab sizeToFit];
+    lab.textColor = [UIColor whiteColor];
+    lab.frame = CGRectMake((ScreenWidth-lab.frame.size.width)/2, ScreenHeight-64-30, lab.frame.size.width, lab.frame.size.height);
+    
+    
+    UIImageView *logoicn2 = [Tool ImgProductionFunctionFrame:CGRectMake(-20, 0, 16, 16) bgImgName:@"广东华兴银行LOGO2"];
+    [lab addSubview:logoicn2];
+    
+    
+    [self.view addSubview:lab];
+    lab.textColor = [UIColor whiteColor];
 }
 
 -(void)cgkaitong_but_p{

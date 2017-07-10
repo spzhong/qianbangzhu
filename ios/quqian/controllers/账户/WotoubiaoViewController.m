@@ -272,19 +272,19 @@
         planAllMoney.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:[NSString stringWithFormat:@"%0.2lf",zonge] withDanwei:@"万" withName:@"投标金额"]];
     }
     
-    yearlilv.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:dicdata[@"nll"]  withDanwei:@"%" withName:@"预期年化收益"]];
+    yearlilv.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:dicdata[@"nll"]  withDanwei:@"" withName:@"预期年化收益"]];
     
     if(tag==0){
         lastTime.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:dicdata[@"dsbx"]  withDanwei:@"" withName:@"待收本息"]];
    
         if ([dicdata[@"isopen"] isEqualToString:@"y"]) {
             
-            RCLabel *bdlx = [[RCLabel alloc] initWithFrame:CGRectMake(15, 60, ScreenWidth-30, 40)];
-            [cell.contentView addSubview:bdlx];
-            if ([dicdata[@"bdlx"] isEqualToString:@"1"]) {
-                bdlx.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"标的类型" withName:@"存管标"]];
+            RCLabel *bdtype = [[RCLabel alloc] initWithFrame:CGRectMake(15, 60, ScreenWidth-30, 40)];
+            [cell.contentView addSubview:bdtype];
+            if ([dicdata[@"bdtype"] isEqualToString:@"1"]) {
+                bdtype.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"标的类型" withName:@"存管标"]];
             }else{
-                bdlx.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"标的类型" withName:@"普通标"]];
+                bdtype.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"标的类型" withName:@"普通标"]];
             }
             
             RCLabel *jiekuanbiaoti = [[RCLabel alloc] initWithFrame:CGRectMake(15, 60+40, ScreenWidth-30, 40)];
@@ -294,16 +294,13 @@
             RCLabel *shengyuqishu = [[RCLabel alloc] initWithFrame:CGRectMake(15, 60+80, ScreenWidth-30, 40)];
             [cell.contentView addSubview:shengyuqishu];
             shengyuqishu.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"剩余期数" withName:[NSString stringWithFormat:@"%@",dicdata[@"syqs"]]]];
+           
             
-            RCLabel *kaishijixishijian = [[RCLabel alloc] initWithFrame:CGRectMake(15, 180, ScreenWidth-30, 40)];
-            [cell.contentView addSubview:kaishijixishijian];
-            kaishijixishijian.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"开始时间" withName:[NSString stringWithFormat:@"%@",dicdata[@"ksjxsj"]]]];
-            
-            RCLabel *xiayigehuankuanri = [[RCLabel alloc] initWithFrame:CGRectMake(15, 220, ScreenWidth-30, 40)];
+            RCLabel *xiayigehuankuanri = [[RCLabel alloc] initWithFrame:CGRectMake(15, 180, ScreenWidth-30, 40)];
             [cell.contentView addSubview:xiayigehuankuanri];
             xiayigehuankuanri.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"下个还款日" withName:[NSString stringWithFormat:@"%@",dicdata[@"xyhkr"]]]];
             
-            RCLabel *huankuanzhuangtai = [[RCLabel alloc] initWithFrame:CGRectMake(15, 260, ScreenWidth-30, 40)];
+            RCLabel *huankuanzhuangtai = [[RCLabel alloc] initWithFrame:CGRectMake(15, 220, ScreenWidth-30, 40)];
             [cell.contentView addSubview:huankuanzhuangtai];
             huankuanzhuangtai.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"还款状态" withName:[NSString stringWithFormat:@"%@",dicdata[@"hkzt"]]]];
             
@@ -313,7 +310,7 @@
                 if (dicdata[@"xmczur"]== nil || [dicdata[@"xmczur"] isEqualToString:@""]) {
                     
                 }else{
-                    UIButton *but1 =  [Tool ButtonProductionFunction:@"项目存证" Frame:CGRectMake(15, 300, 90, 30) bgImgName:nil FontFl:15];
+                    UIButton *but1 =  [Tool ButtonProductionFunction:@"项目存证" Frame:CGRectMake(15, 260, 90, 30) bgImgName:nil FontFl:15];
                     [but1 addTarget:self action:@selector(xiangmucunzheng:) forControlEvents:UIControlEventTouchUpInside];
                     [cell.contentView addSubview:but1];
                     [but1 setBackgroundColor:[UIColor whiteColor]];
@@ -324,7 +321,7 @@
                 
             }else{
             
-                UIButton *but1 =  [Tool ButtonProductionFunction:@"交易存证" Frame:CGRectMake(15, 300, 90, 30) bgImgName:nil FontFl:15];
+                UIButton *but1 =  [Tool ButtonProductionFunction:@"交易存证" Frame:CGRectMake(15, 260, 90, 30) bgImgName:nil FontFl:15];
                 [but1 addTarget:self action:@selector(jiaoyoyicunzh:) forControlEvents:UIControlEventTouchUpInside];
                 [cell.contentView addSubview:but1];
                 [but1 setBackgroundColor:[UIColor whiteColor]];
@@ -335,7 +332,7 @@
                 if (dicdata[@"xmczur"]== nil || [dicdata[@"xmczur"] isEqualToString:@""]) {
                     
                 }else{
-                    UIButton *but1 =  [Tool ButtonProductionFunction:@"项目存证" Frame:CGRectMake(120, 340, 90, 30) bgImgName:nil FontFl:15];
+                    UIButton *but1 =  [Tool ButtonProductionFunction:@"项目存证" Frame:CGRectMake(120, 300, 90, 30) bgImgName:nil FontFl:15];
                     [but1 addTarget:self action:@selector(xiangmucunzheng:) forControlEvents:UIControlEventTouchUpInside];
                     [cell.contentView addSubview:but1];
                     [but1 setBackgroundColor:[UIColor whiteColor]];
@@ -359,12 +356,12 @@
     
         if ([dicdata[@"isopen"] isEqualToString:@"y"]) {
             
-            RCLabel *bdlx = [[RCLabel alloc] initWithFrame:CGRectMake(15, 60, ScreenWidth-30, 40)];
-            [cell.contentView addSubview:bdlx];
-            if ([dicdata[@"bdlx"] isEqualToString:@"1"]) {
-                bdlx.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"标的类型" withName:@"存管标"]];
+            RCLabel *bdtype = [[RCLabel alloc] initWithFrame:CGRectMake(15, 60, ScreenWidth-30, 40)];
+            [cell.contentView addSubview:bdtype];
+            if ([dicdata[@"bdtype"] isEqualToString:@"1"]) {
+                bdtype.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"标的类型" withName:@"存管标"]];
             }else{
-                bdlx.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"标的类型" withName:@"普通标"]];
+                bdtype.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"标的类型" withName:@"普通标"]];
             }
             
             RCLabel *jiekuanbiaoti = [[RCLabel alloc] initWithFrame:CGRectMake(15, 60+40, ScreenWidth-30, 40)];
@@ -437,12 +434,12 @@
         
         if ([dicdata[@"isopen"] isEqualToString:@"y"]) {
             
-            RCLabel *bdlx = [[RCLabel alloc] initWithFrame:CGRectMake(15, 60, ScreenWidth-30, 40)];
-            [cell.contentView addSubview:bdlx];
-            if ([dicdata[@"bdlx"] isEqualToString:@"1"]) {
-                bdlx.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"标的类型" withName:@"存管标"]];
+            RCLabel *bdtype = [[RCLabel alloc] initWithFrame:CGRectMake(15, 60, ScreenWidth-30, 40)];
+            [cell.contentView addSubview:bdtype];
+            if ([dicdata[@"bdtype"] isEqualToString:@"1"]) {
+                bdtype.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"标的类型" withName:@"存管标"]];
             }else{
-                bdlx.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"标的类型" withName:@"普通标"]];
+                bdtype.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage2:@"标的类型" withName:@"普通标"]];
             }
             
             RCLabel *jiekuanbiaoti = [[RCLabel alloc] initWithFrame:CGRectMake(15, 60+40, ScreenWidth-30, 40)];
@@ -515,13 +512,13 @@
                 
                 if (dicdata[@"xmczur"]== nil || [dicdata[@"xmczur"] isEqualToString:@""]) {
                     
-                    [dicdata setObject:[NSString stringWithFormat:@"%d",340] forKey:@"cellH"];
+                    [dicdata setObject:[NSString stringWithFormat:@"%d",300] forKey:@"cellH"];
                 }else{
-                     [dicdata setObject:[NSString stringWithFormat:@"%d",300] forKey:@"cellH"];
+                     [dicdata setObject:[NSString stringWithFormat:@"%d",260] forKey:@"cellH"];
                 }
             
             }else{
-                [dicdata setObject:[NSString stringWithFormat:@"%d",340] forKey:@"cellH"];
+                [dicdata setObject:[NSString stringWithFormat:@"%d",300] forKey:@"cellH"];
             } 
         }
         
@@ -532,7 +529,7 @@
 
 //转换
 -(NSString *)exchage:(NSString *)string withDanwei:(NSString *)danwei withName:(NSString *)name{
-    return [NSString stringWithFormat:@"<p align=center><font size=15 face='HelveticaNeue'>%@</font><font size=12 face='HelveticaNeue'>%@</font>\n<font size =11 color='#8B8B8B' face='HelveticaNeue'>%@</font></p>",string,danwei,name];
+    return [NSString stringWithFormat:@"<p align=center><font size=15 face='HelveticaNeue'>%@</font><font size=15 face='HelveticaNeue'>%@</font>\n<font size =15 color='#8B8B8B' face='HelveticaNeue'>%@</font></p>",string,danwei,name];
 }
 
 //转换
@@ -572,10 +569,10 @@
     buy.title = @"立即投标";
     buy.allDic = dicdata;
     buy.typeTag = @"1";
-    if ([dicdata[@"bdlx"] isEqualToString:@"0"]) {
-        buy.iscunguan = 0;
-    }else{
+    if ([dicdata[@"bdtype"] isEqualToString:@"1"]) {
         buy.iscunguan = 1;
+    }else{
+        buy.iscunguan = 0;
     }
     //返回
     UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];

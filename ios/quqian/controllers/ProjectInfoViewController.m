@@ -140,12 +140,8 @@
     
     RCLabel *yearlilv = [[RCLabel alloc] initWithFrame:CGRectMake(0, 30, ScreenWidth, 80)];
     [bgView addSubview:yearlilv];
-    if ([[san objectForKey:@"jlll"] isEqualToString:@"-1"]) {
-        yearlilv.componentsAndPlainText = [RCLabel extractTextStyle:[Tool exchage:[NSString stringWithFormat:@"%@%%",[san objectForKey:@"nll"]] withDanwei:@"" withName:@"年利率"]];
-    }else{
-        yearlilv.componentsAndPlainText = [RCLabel extractTextStyle:[Tool exchage:[NSString stringWithFormat:@"%@％+",[san objectForKey:@"nll"]] withDanwei:[NSString stringWithFormat:@"%@％",[san objectForKey:@"jlll"]] withName:@"年利率"]];
-    }
     
+    yearlilv.componentsAndPlainText = [RCLabel extractTextStyle:[Tool exchage:[NSString stringWithFormat:@"%@%%",[san objectForKey:@"nll"]] withDanwei:@"" withName:@"预期年化利率"]];
     
     
     RCLabel *planAllMoney = [[RCLabel alloc] initWithFrame:CGRectMake(0, 130, ScreenWidth/3, 60)];
@@ -156,9 +152,9 @@
         if ([san[@"bdze"] doubleValue] < 10000) {
             planAllMoney.componentsAndPlainText = [RCLabel extractTextStyle:[Tool exchage:san[@"bdze"] withDanwei:@"元" withName:@"借款金额"]];
         }else if ([san[@"bdze"] doubleValue] > 1000000000) {
-            planAllMoney.componentsAndPlainText = [RCLabel extractTextStyle:[Tool exchage:[NSString stringWithFormat:@"%lf",[san[@"bdze"] doubleValue]/1000000000] withDanwei:@"亿" withName:@"借款金额"]];
+            planAllMoney.componentsAndPlainText = [RCLabel extractTextStyle:[Tool exchage:[NSString stringWithFormat:@"%0.2lf",[san[@"bdze"] doubleValue]/1000000000] withDanwei:@"亿" withName:@"借款金额"]];
         }else {
-            planAllMoney.componentsAndPlainText = [RCLabel extractTextStyle:[Tool exchage:[NSString stringWithFormat:@"%lf",[san[@"bdze"] doubleValue]/10000] withDanwei:@"万" withName:@"借款金额"]];
+            planAllMoney.componentsAndPlainText = [RCLabel extractTextStyle:[Tool exchage:[NSString stringWithFormat:@"%.2lf",[san[@"bdze"] doubleValue]/10000] withDanwei:@"万" withName:@"借款金额"]];
         }
     }
      
@@ -633,7 +629,7 @@
             NSMutableDictionary *dic = [secondArray objectAtIndex:row];
             lab123.text = [dic objectForKey:@"left"];
             lab123.font = [UIFont systemFontOfSize:15];
-            lab123.frame = CGRectMake(15, 0, 320, 45);
+            lab123.frame = CGRectMake(15, 0, 320+60, 45);
             
             //边线
             if (row != 0) {

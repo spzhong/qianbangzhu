@@ -97,28 +97,23 @@
         
         NSString *bdze = [san objectForKey:@"bdze"];
         double zonge = [bdze doubleValue]/1000000000;
-        self.planAllMoney.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:[NSString stringWithFormat:@"%0.2lf",zonge] withDanwei:@"亿" withName:@"标的总额"]];
+        self.planAllMoney.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:[NSString stringWithFormat:@"%0.2lf",zonge] withDanwei:@"亿" withName:@"借款金额"]];
     }else{
         
         NSString *bdze = [san objectForKey:@"bdze"];
         double zonge = [bdze doubleValue]/10000;
-        self.planAllMoney.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:[NSString stringWithFormat:@"%0.2lf",zonge] withDanwei:@"万" withName:@"标的总额"]];
+        self.planAllMoney.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:[NSString stringWithFormat:@"%0.2lf",zonge] withDanwei:@"万" withName:@"借款金额"]];
     }
     
     
     //年利率
     //无奖励
-    if ([[san objectForKey:@"jlll"] isEqualToString:@"-1"]) {
-        self.yearlilv.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:[NSString stringWithFormat:@"%@%%",[san objectForKey:@"nll"]] withDanwei:@"" withName:@"年利率"]];
-    }else{
-        self.yearlilv.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:[NSString stringWithFormat:@"%@％+",[san objectForKey:@"nll"]] withDanwei:[NSString stringWithFormat:@"%@％",[san objectForKey:@"jlll"]] withName:@"年利率"]];
-    }
-    
+    self.yearlilv.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:[NSString stringWithFormat:@"%@",[san objectForKey:@"nll"]] withDanwei:@"" withName:@"预期年化利率"]];
     
     
     
     //剩余还款期限 public String hkqx; // 还款期限
-    self.lastTime.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:[san objectForKey:@"hkqx"] withDanwei:[self huankuanfangshi:[san objectForKey:@"jkfs"]] withName:@"还款期限"]];
+    self.lastTime.componentsAndPlainText = [RCLabel extractTextStyle:[self exchage:[san objectForKey:@"hkqx"] withDanwei:[self huankuanfangshi:[san objectForKey:@"jkfs"]] withName:@"借款期限"]];
     
     
     //按钮的选项

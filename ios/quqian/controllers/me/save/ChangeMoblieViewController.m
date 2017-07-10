@@ -36,7 +36,7 @@
     [super viewDidLoad];
     
     
-    [self.tableView setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1.0]];
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
     [self.tableView setBackgroundColor:[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]];
     
     
@@ -48,6 +48,7 @@
     user = [Tool getUser];
     isHuoqu = YES;
     count = 60;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,6 +79,9 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section==0) {
+        return 100;
+    }
     return 45;
 }
 
@@ -104,38 +108,48 @@
     }
     
     EGOImageView*imgView =[[EGOImageView alloc] init];
-    imgView.frame = CGRectMake(15, 10.5, 24, 24);
+    imgView.frame = CGRectMake(ScreenWidth/2-57, 14, 37, 37);
     [cell.contentView addSubview:imgView];
     
-    UILabel *lab123 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(0, 0, [Tool adaptation:320 with6:55 with6p:94], 45) Alignment:NSTextAlignmentCenter  FontFl:15];
+    [cell.contentView setBackgroundColor:[UIColor clearColor]];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    
+    
+    UILabel *lab123 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(-10+ScreenWidth/2, 10,ScreenWidth/2, 45) Alignment:NSTextAlignmentLeft  FontFl:15];
     lab123.font = FOUR_CONTROL_FONT;
     [cell.contentView addSubview:lab123];
     
     
+    UILabel *lab1234 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(15, 80,ScreenWidth-30, 45) Alignment:NSTextAlignmentCenter  FontFl:12];
+    [lab1234 setTextColor:RGB(150, 150, 150)];
+    [cell.contentView addSubview:lab1234];
+    
     if (section==0) {
+        
+        imgView.image = [UIImage imageNamed:@"修改手机号图标.png"];
         
         if (type==1) {
             
-            lab123.text = [NSString stringWithFormat:@"您绑定的手机号码%@", [user new_mobile]];
+            lab123.text = [NSString stringWithFormat:@"%@", [user new_mobile]];
             
         }else{
-            lab123.text = [NSString stringWithFormat:@"原手机号码%@", [user new_mobile]];
+            lab123.text = [NSString stringWithFormat:@"%@", [user new_mobile]];
         }
         
+        lab1234.text = @"如您更换了手机号，请及时修改，以保证账户安全";
+        
     }else if(section==1){
-        
-        imgView.image = [UIImage imageNamed:@"icon15.png"];
-        
-        
-        UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(60,0, [Tool adaptation:120 with6:55 with6p:94], 45)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+    
+        UITextField *textField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(15, 2.5, ScreenWidth-30, 40)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
         [cell.contentView addSubview:textField];
         textField.placeholder = @"请输入验证码";
+        [textField setBackgroundColor:[UIColor whiteColor]];
         textField.tag = 100;
         textField.text = code;
      
         UIButton *buton = [UIButton buttonWithType:UIButtonTypeCustom];
         buton.tag = 10005;
-        buton.frame = CGRectMake(210, 8.5, 91, 28);
+        buton.frame = CGRectMake(ScreenWidth-116, 8.5, 91, 28);
         buton.titleLabel.font = [UIFont systemFontOfSize:12];
         [buton setTitle:@"获取验证码" forState:UIControlStateNormal];
         [cell.contentView addSubview:buton];
@@ -158,7 +172,7 @@
         lab123.textColor = [UIColor whiteColor];
         [lab123 setBackgroundColor:[UIColor colorWithRed:2/255.0 green:160/255.0 blue:219/255.0 alpha:1]];
         lab123.textAlignment = NSTextAlignmentCenter;
-        lab123.frame = CGRectMake(0, 0, [Tool adaptation:320 with6:55 with6p:94], 45);
+        lab123.frame = CGRectMake(15, 0, ScreenWidth-30, 45);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     

@@ -287,6 +287,7 @@ static HelpDownloader *sharedDownloader = nil;
             //需要登录啊
             if ([[[jsonString JSONValue] objectForKey:@"isLogin"] isEqualToString:@"1"]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"chaoshidecaozuo" object:nil];
+                return;
             }
             
         }

@@ -18,7 +18,7 @@
 #import "ReCodeTableViewController.h"
 #import "ZijinMangerViewController.h"
 #import "CGWebViewController.h"
-
+#import "ChongzhiViewController.h"
 
 @interface BuyZhaiquanViewController ()
 {
@@ -30,6 +30,7 @@
     NSMutableArray *arrayJiaxika;
     int kegoumaifenshu;
     NSString *jiaxikaId;
+    NSString *jiaxikaName;
 }
 @end
 
@@ -183,10 +184,10 @@
 //添加
 -(void)add{
     
-    if ([textField.text intValue]+10 > [[self.allDic objectForKey:@"syfs"] intValue]) {
+    if ([textField.text intValue]+1 > [self kegoumai]) {
         [MBProgressHUD showError:[NSString stringWithFormat:@"最多%d份",[[self.allDic objectForKey:@"syfs"] intValue]] toView:nil];
     }else{
-        textField.text = [NSString stringWithFormat:@"%d",[textField.text intValue]+10];
+        textField.text = [NSString stringWithFormat:@"%d",[textField.text intValue]+1];
         if ([typeTag isEqualToString:@"1"]) {
             rcLabjisuan.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=left><font size=15 >预计收益%0.2lf元，奖%0.2lf元</font></p>",[Tool suanfa:allDic withFenshu:[textField.text intValue]  withType:0],[Tool suanfa:allDic withFenshu:[textField.text intValue]  withType:1]]];
         }else{
@@ -285,16 +286,20 @@
         
             if (row==0) {
                 lab123.text = @"剩余金额";
-                rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15>%@</font></p>",[NSString stringWithFormat:@"%@",self.allDic[@"syje"]]]];
+                rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15>%@</font></p>",[NSString stringWithFormat:@"%@元",self.allDic[@"syje"]]]];
             }else if (row==1){
                 lab123.text = @"可用金额";
-                rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15 color='333333'>%@</font>  充值</p>",self.allDic[@"amount"]]];
+                rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15 color='333333'>%@元</font>  充值</p>",self.allDic[@"amount"]]];
             }else if (row==2){
                 lab123.text = @"可购买份数";
                 rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15 color='333333'>%.0lf</font></p>",[self  kegoumai]]];
             }else if (row==3){
                 lab123.text = @"请选择加息卡";
                 
+                if (jiaxikaName.length>0) {
+                    rcLab.frame = CGRectMake(120, 15, ScreenWidth-95, 20);
+                    rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=left><font size=15 color='333333'>%@</font></p>",jiaxikaName]];
+                }
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 
             }
@@ -306,6 +311,21 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row==1) {
+    
+        ChongzhiViewController *chonzhi = [[ChongzhiViewController alloc] init];
+        chonzhi.title = @"充值";
+        //返回
+        UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
+        backItem.title=@"返回";
+        self.navigationItem.backBarButtonItem=backItem;
+        self.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:chonzhi animated:YES];
+ 
+        return;
+    }
+    
     
     if (indexPath.row==3) {
         NSString *url =[NSString stringWithFormat:@"%@/sbtz/getJxkList.htm",BASE_URL];
@@ -350,7 +370,8 @@
     }
     NSMutableDictionary *dic = arrayJiaxika[buttonIndex];
     jiaxikaId = dic[@"id"];
-    
+    jiaxikaName = dic[@"jxkNum"];
+    [self.tableView reloadData];
 }
 
 //获取输入框的tag值

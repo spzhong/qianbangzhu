@@ -28,7 +28,6 @@
     
     self.navigationController.navigationBar.hidden = YES;
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
- 
 }
 
  
@@ -38,10 +37,11 @@
     [super viewDidLoad];
     //[self.view setBackgroundColor:[UIColor blackColor]];
 
-    UIImageView *img = [[UIImageView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:img];
-    img.image = [UIImage imageNamed:@"ptbg.png"];
+    //UIImageView *img = [[UIImageView alloc] initWithFrame:self.view.frame];
+    //[self.view addSubview:img];
+    //img.image = [UIImage imageNamed:@"ptbg.png"];
     
+    [self.view setBackgroundColor:RGB(17, 101, 151)];
     
     
     DemoView *view = [[DemoView alloc] initWithFrame:CGRectMake(0,(self.view.frame.size.height-90*3)/2, self.view.frame.size.width, 90*3)];
@@ -57,6 +57,11 @@
         la.textColor = [UIColor whiteColor];
         [self.view addSubview:la];
         
+        UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"设置手势密码图标"]];
+        img.frame = CGRectMake((ScreenWidth-40)/2, (self.view.frame.size.height-90*3)/3-10+30, 40, 40);
+        [self.view addSubview:img];
+        
+        
         UIButton *but = [Tool ButtonProductionFunction:@"手势密码将在您开启程序时启动" Frame:CGRectMake(0,self.view.frame.size.height- (iPhone4 ? 50:80),ScreenWidth,30) bgImgName:nil FontFl:12];
         [but setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.view addSubview:but];
@@ -68,6 +73,10 @@
         la.textColor = [UIColor whiteColor];
         [self.view addSubview:la];
 
+        UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"设置手势密码图标"]];
+        img.frame = CGRectMake((ScreenWidth-40)/2, (self.view.frame.size.height-90*3)/3-10+30, 40, 40);
+        [self.view addSubview:img];
+        
         
         UIButton *but = [Tool ButtonProductionFunction:@"重设手势密码" Frame:CGRectMake(0,self.view.frame.size.height-(iPhone4 ? 30:80),ScreenWidth,30) bgImgName:nil FontFl:12];
         [but setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -82,7 +91,9 @@
             UILabel *la = [Tool LablelProductionFunction:[NSString stringWithFormat:@"您好,%@",[user.name length] == 0 ? user.userId : user.name] Frame:CGRectMake(0, (self.view.frame.size.height-90*3)/3-10, self.view.frame.size.width, 30) Alignment:NSTextAlignmentCenter FontFl:18];
             la.textColor = [UIColor whiteColor];
             [self.view addSubview:la];
-            
+            UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"设置手势密码图标"]];
+            img.frame = CGRectMake((ScreenWidth-40)/2, (self.view.frame.size.height-90*3)/3-10+30, 40, 40);
+            [self.view addSubview:img];
             
       
             //输入的密码
@@ -102,10 +113,13 @@
         }else{
             
             
-            
             UILabel *la = [Tool LablelProductionFunction:@"输入手势密码" Frame:CGRectMake(0, (self.view.frame.size.height-90*3)/3-10, self.view.frame.size.width, 30) Alignment:NSTextAlignmentCenter FontFl:18];
             la.textColor = [UIColor whiteColor];
             [self.view addSubview:la];
+            
+            UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"设置手势密码图标"]];
+            img.frame = CGRectMake((ScreenWidth-40)/2, (self.view.frame.size.height-90*3)/3-10+30, 40, 40);
+            [self.view addSubview:img];
             
             UIButton *but = [Tool ButtonProductionFunction:@"取消修改手势密码" Frame:CGRectMake(0,self.view.frame.size.height-(iPhone4 ? 30:80),ScreenWidth,30) bgImgName:nil FontFl:12];
             [but setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
