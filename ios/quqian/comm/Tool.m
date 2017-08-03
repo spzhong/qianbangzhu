@@ -100,7 +100,7 @@
 +(UITextField *)TextFiledProductionFunction:(NSString *)title Delegate:(id)delegate Frame:(CGRect)rect FontFl:(float)fl backgroundImg:(NSString *)bgImgName UIKeyboardType:(UIKeyboardType)keyBoarde{
     UITextField *textFeild = [[UITextField alloc] initWithFrame:rect];
     textFeild.font = [UIFont systemFontOfSize:fl];
-    textFeild.clearButtonMode = UITextFieldViewModeWhileEditing;
+    //textFeild.clearButtonMode = UITextFieldViewModeWhileEditing;
     textFeild.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     textFeild.returnKeyType = UIReturnKeyDefault;
     textFeild.keyboardType = keyBoarde;

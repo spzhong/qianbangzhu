@@ -570,8 +570,6 @@
 		18A33AFA1ACC13C500664ACB /* icon25.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A33AF71ACC13C500664ACB /* icon25.png */; };
 		18A33AFB1ACC13C500664ACB /* icon26-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A33AF81ACC13C500664ACB /* icon26-1.png */; };
 		18A33AFC1ACC13C500664ACB /* icon26-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A33AF91ACC13C500664ACB /* icon26-2.png */; };
-		18AB823C1B0051AA0062DCEF /* libPaySdkColor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AB82391B0051AA0062DCEF /* libPaySdkColor.a */; };
-		18AB823D1B0051AA0062DCEF /* walletResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18AB823B1B0051AA0062DCEF /* walletResources.bundle */; };
 		18AB82411B00527D0062DCEF /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AB82401B00527D0062DCEF /* ZHPickView.m */; };
 		18CCC5961AC92C7F0087032C /* WebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC5951AC92C7F0087032C /* WebController.m */; };
 		18CCC5A41AC92F070087032C /* button01.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CCC5981AC92F070087032C /* button01.png */; };
@@ -630,6 +628,11 @@
 		6F833EFB1F13B38200F2A579 /* 设置手势密码图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833EFA1F13B38200F2A579 /* 设置手势密码图标.png */; };
 		6F833EFD1F13B67200F2A579 /* 修改手机号图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833EFC1F13B67200F2A579 /* 修改手机号图标.png */; };
 		6F833F001F13BA4A00F2A579 /* XiugaidenglumimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F833EFF1F13BA4A00F2A579 /* XiugaidenglumimViewController.m */; };
+		6F833F061F14EA8B00F2A579 /* 服务码.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833F011F14EA8B00F2A579 /* 服务码.png */; };
+		6F833F071F14EA8B00F2A579 /* 密码.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833F021F14EA8B00F2A579 /* 密码.png */; };
+		6F833F081F14EA8B00F2A579 /* 手机号.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833F031F14EA8B00F2A579 /* 手机号.png */; };
+		6F833F091F14EA8B00F2A579 /* 手机验证码.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833F041F14EA8B00F2A579 /* 手机验证码.png */; };
+		6F833F0A1F14EA8B00F2A579 /* 验证码.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F833F051F14EA8B00F2A579 /* 验证码.png */; };
 		6F861DA51EF17AFF00147EB0 /* CGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F861DA41EF17AFF00147EB0 /* CGWebViewController.m */; };
 		6F9519321F067DA100429B03 /* FilteredProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9519311F067DA100429B03 /* FilteredProtocol.m */; };
 		6F9CBA421EEED911009B4438 /* 信-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9CBA411EEED911009B4438 /* 信-logo.png */; };
@@ -1647,9 +1650,6 @@
 		18A33AF71ACC13C500664ACB /* icon25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon25.png; sourceTree = "<group>"; };
 		18A33AF81ACC13C500664ACB /* icon26-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon26-1.png"; sourceTree = "<group>"; };
 		18A33AF91ACC13C500664ACB /* icon26-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon26-2.png"; sourceTree = "<group>"; };
-		18AB82391B0051AA0062DCEF /* libPaySdkColor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPaySdkColor.a; sourceTree = "<group>"; };
-		18AB823A1B0051AA0062DCEF /* LLPaySdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLPaySdk.h; sourceTree = "<group>"; };
-		18AB823B1B0051AA0062DCEF /* walletResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = walletResources.bundle; sourceTree = "<group>"; };
 		18AB823F1B00527D0062DCEF /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
 		18AB82401B00527D0062DCEF /* ZHPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPickView.m; sourceTree = "<group>"; };
 		18CCC5941AC92C7F0087032C /* WebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebController.h; sourceTree = "<group>"; };
@@ -1721,6 +1721,11 @@
 		6F833EFC1F13B67200F2A579 /* 修改手机号图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "修改手机号图标.png"; sourceTree = "<group>"; };
 		6F833EFE1F13BA4A00F2A579 /* XiugaidenglumimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XiugaidenglumimViewController.h; sourceTree = "<group>"; };
 		6F833EFF1F13BA4A00F2A579 /* XiugaidenglumimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XiugaidenglumimViewController.m; sourceTree = "<group>"; };
+		6F833F011F14EA8B00F2A579 /* 服务码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "服务码.png"; sourceTree = "<group>"; };
+		6F833F021F14EA8B00F2A579 /* 密码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码.png"; sourceTree = "<group>"; };
+		6F833F031F14EA8B00F2A579 /* 手机号.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "手机号.png"; sourceTree = "<group>"; };
+		6F833F041F14EA8B00F2A579 /* 手机验证码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "手机验证码.png"; sourceTree = "<group>"; };
+		6F833F051F14EA8B00F2A579 /* 验证码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "验证码.png"; sourceTree = "<group>"; };
 		6F861DA31EF17AFF00147EB0 /* CGWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGWebViewController.h; sourceTree = "<group>"; };
 		6F861DA41EF17AFF00147EB0 /* CGWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGWebViewController.m; sourceTree = "<group>"; };
 		6F9519301F067DA100429B03 /* FilteredProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteredProtocol.h; sourceTree = "<group>"; };
@@ -1821,7 +1826,6 @@
 				1864B9F51AB7F11800BC1455 /* CoreData.framework in Frameworks */,
 				1864B9F11AB7F10600BC1455 /* ImageIO.framework in Frameworks */,
 				1864B9EF1AB7F0F800BC1455 /* CFNetwork.framework in Frameworks */,
-				18AB823C1B0051AA0062DCEF /* libPaySdkColor.a in Frameworks */,
 				1864B9EB1AB7F0D900BC1455 /* MobileCoreServices.framework in Frameworks */,
 				1864B9091AB7F05B00BC1455 /* libMobClickLibrary.a in Frameworks */,
 			);
@@ -2100,7 +2104,6 @@
 			isa = PBXGroup;
 			children = (
 				18AB823E1B00527D0062DCEF /* ZHpickView */,
-				18AB82381B0051A90062DCEF /* LLPay_iOS_SDK_V2.4 */,
 				188873521ACACA8000744021 /* MJRefresh */,
 				189EC2331AC3E068008EBEAA /* pullList */,
 				1864BA0F1AB826C500BC1455 /* shoushi */,
@@ -3548,16 +3551,6 @@
 			path = "share pic";
 			sourceTree = "<group>";
 		};
-		18AB82381B0051A90062DCEF /* LLPay_iOS_SDK_V2.4 */ = {
-			isa = PBXGroup;
-			children = (
-				18AB82391B0051AA0062DCEF /* libPaySdkColor.a */,
-				18AB823A1B0051AA0062DCEF /* LLPaySdk.h */,
-				18AB823B1B0051AA0062DCEF /* walletResources.bundle */,
-			);
-			path = LLPay_iOS_SDK_V2.4;
-			sourceTree = "<group>";
-		};
 		18AB823E1B00527D0062DCEF /* ZHpickView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3570,6 +3563,11 @@
 		18CCC5971AC92F070087032C /* img */ = {
 			isa = PBXGroup;
 			children = (
+				6F833F011F14EA8B00F2A579 /* 服务码.png */,
+				6F833F021F14EA8B00F2A579 /* 密码.png */,
+				6F833F031F14EA8B00F2A579 /* 手机号.png */,
+				6F833F041F14EA8B00F2A579 /* 手机验证码.png */,
+				6F833F051F14EA8B00F2A579 /* 验证码.png */,
 				6F833EFC1F13B67200F2A579 /* 修改手机号图标.png */,
 				6F833EEE1F13ADC400F2A579 /* 登录密码.png */,
 				6F833EF61F13B2B900F2A579 /* shoushi未选择.png */,
@@ -3812,7 +3810,7 @@
 				TargetAttributes = {
 					1864B3F41AB7EE8000BC1455 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = RA3S34K4EA;
+						DevelopmentTeam = 7TAF9585Y8;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -3864,6 +3862,7 @@
 				6F9E95801EF4F47100408674 /* 签约充值.png in Resources */,
 				1864B9641AB7F05B00BC1455 /* 2.png in Resources */,
 				18A1B2151AC94BFF00C328A1 /* icon8.png in Resources */,
+				6F833F071F14EA8B00F2A579 /* 密码.png in Resources */,
 				1864B9681AB7F05B00BC1455 /* icon2.jpg in Resources */,
 				180A35CB1ACE33D50073BBC0 /* pic6.png in Resources */,
 				1864B8D71AB7F05B00BC1455 /* expressionImage_custom.plist in Resources */,
@@ -3887,6 +3886,7 @@
 				6F25C4C91EFB6EFB00AFE670 /* 箭头R.png in Resources */,
 				180A35DD1ACE99230073BBC0 /* 72.png in Resources */,
 				1854FC681ACBE06B0022A1DC /* icon24.png in Resources */,
+				6F833F0A1F14EA8B00F2A579 /* 验证码.png in Resources */,
 				6F6E54811EF37AB10000480A /* 消息-已读.png in Resources */,
 				6FFAA48F1EE420DB00453972 /* 交易信息.png in Resources */,
 				6FB305851EEC32660011E9E3 /* ptDown.png in Resources */,
@@ -3942,8 +3942,8 @@
 				1864B86D1AB7F05B00BC1455 /* Expression_102@2x.png in Resources */,
 				6F833EF81F13B2B900F2A579 /* shoushi未选择.png in Resources */,
 				1864B8A61AB7F05B00BC1455 /* Expression_59@2x.png in Resources */,
-				18AB823D1B0051AA0062DCEF /* walletResources.bundle in Resources */,
 				6F833EF31F13ADC400F2A579 /* 风险测评.png in Resources */,
+				6F833F091F14EA8B00F2A579 /* 手机验证码.png in Resources */,
 				6FFAA4861EE3071E00453972 /* 注册人数.png in Resources */,
 				6F6E547A1EF37AB10000480A /* 设置.png in Resources */,
 				18CCC5A41AC92F070087032C /* button01.png in Resources */,
@@ -3972,6 +3972,7 @@
 				188873441ACA8B6B00744021 /* button5.png in Resources */,
 				1864B89C1AB7F05B00BC1455 /* Expression_4@2x.png in Resources */,
 				6F6E54831EF37AB10000480A /* 邀请好友.png in Resources */,
+				6F833F061F14EA8B00F2A579 /* 服务码.png in Resources */,
 				6FFAA4681EE2F80600453972 /* yunyinghsuju.png in Resources */,
 				6FFAA4731EE2F9CA00453972 /* YinhangcunguanaViewController.xib in Resources */,
 				1888734D1ACA8FAE00744021 /* icon19-2.png in Resources */,
@@ -3997,6 +3998,7 @@
 				1864B8B61AB7F05B00BC1455 /* Expression_73@2x.png in Resources */,
 				180A35DC1ACE99230073BBC0 /* 58.png in Resources */,
 				180A35D71ACE99230073BBC0 /* 1024.png in Resources */,
+				6F833F081F14EA8B00F2A579 /* 手机号.png in Resources */,
 				6FFAA4941EE4248900453972 /* 银行存管安全模式.png in Resources */,
 				18CCC5B81AC930A60087032C /* icon6-1@2x.png in Resources */,
 				18CCC5BB1AC930A60087032C /* icon7-2@2x.png in Resources */,
@@ -4644,9 +4646,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = RA3S34K4EA;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Qianhai Money Master Internet Financial Services Ltd. (7TAF9585Y8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen Qianhai Money Master Internet Financial Services Ltd. (7TAF9585Y8)";
+				DEVELOPMENT_TEAM = 7TAF9585Y8;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4659,13 +4661,13 @@
 					"$(PROJECT_DIR)/quqian/frame/BaiduMap_IOSSDK_v2/Release-iphoneos",
 					"$(PROJECT_DIR)/quqian/frame/dist",
 					"$(PROJECT_DIR)/quqian/frame/UMAnalytics_Sdk_3.1.8",
-					"$(PROJECT_DIR)/quqian/frame/LLPay_iOS_SDK_V2.4",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dachen.eMDTs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qbz.sendsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8b9c41e6-d50a-4b86-ad9c-ee9dea59f13f";
-				PROVISIONING_PROFILE_SPECIFIER = DCeMDT;
+				PROVISIONING_PROFILE = "afe640b6-8f56-4235-9f21-61937a67a4c9";
+				PROVISIONING_PROFILE_SPECIFIER = sendsApp;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -4673,9 +4675,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = RA3S34K4EA;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Qianhai Money Master Internet Financial Services Ltd. (7TAF9585Y8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen Qianhai Money Master Internet Financial Services Ltd. (7TAF9585Y8)";
+				DEVELOPMENT_TEAM = 7TAF9585Y8;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4688,13 +4690,13 @@
 					"$(PROJECT_DIR)/quqian/frame/BaiduMap_IOSSDK_v2/Release-iphoneos",
 					"$(PROJECT_DIR)/quqian/frame/dist",
 					"$(PROJECT_DIR)/quqian/frame/UMAnalytics_Sdk_3.1.8",
-					"$(PROJECT_DIR)/quqian/frame/LLPay_iOS_SDK_V2.4",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dachen.eMDTs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qbz.sendsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8b9c41e6-d50a-4b86-ad9c-ee9dea59f13f";
-				PROVISIONING_PROFILE_SPECIFIER = DCeMDT;
+				PROVISIONING_PROFILE = "afe640b6-8f56-4235-9f21-61937a67a4c9";
+				PROVISIONING_PROFILE_SPECIFIER = sendsApp;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -49,13 +49,13 @@
 }
 
 -(void)createview{
-    cgkaitong_but = [Tool ButtonProductionFunction:@"存管账户" Frame:CGRectMake(0, 0, ScreenWidth/2, 45) bgImgName:nil FontFl:15];
+    cgkaitong_but = [Tool ButtonProductionFunction:@"存管账户" Frame:CGRectMake(ScreenWidth/2, 0, ScreenWidth/2, 45) bgImgName:nil FontFl:15];
     [cgkaitong_but addTarget:self action:@selector(cgkaitong_but_p) forControlEvents:UIControlEventTouchUpInside];
     [cgkaitong_but setTitleColor:KTHCOLOR forState:UIControlStateNormal];
     [cgkaitong_but setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:cgkaitong_but];
     
-    ptkaitong_but = [Tool ButtonProductionFunction:@"普通账户" Frame:CGRectMake(ScreenWidth/2, 0, ScreenWidth/2, 45) bgImgName:nil FontFl:15];
+    ptkaitong_but = [Tool ButtonProductionFunction:@"普通账户" Frame:CGRectMake(0, 0, ScreenWidth/2, 45) bgImgName:nil FontFl:15];
     [ptkaitong_but addTarget:self action:@selector(ptkaitong_but_p) forControlEvents:UIControlEventTouchUpInside];
     [ptkaitong_but setTitleColor:RGB(51, 51, 51) forState:UIControlStateNormal];
     [ptkaitong_but setBackgroundColor:[UIColor whiteColor]];
@@ -69,7 +69,7 @@
     [self.view addSubview:myTabview];
     [myTabview setBackgroundColor:RGB(242, 242, 242)];
     
-    [self cgkaitong_but_p];
+    [self ptkaitong_but_p];
     
     
     
@@ -88,7 +88,7 @@
 }
 
 -(void)cgkaitong_but_p{
-    selcteView.frame = CGRectMake(0,43, ScreenWidth/2, 2);
+    selcteView.frame = CGRectMake(ScreenWidth/2,43, ScreenWidth/2, 2);
     [cgkaitong_but setTitleColor:KTHCOLOR forState:UIControlStateNormal];
     [ptkaitong_but setTitleColor:RGB(51, 51, 51) forState:UIControlStateNormal];
     tag = 0;
@@ -97,7 +97,7 @@
 
 
 -(void)ptkaitong_but_p{
-    selcteView.frame = CGRectMake(ScreenWidth/2,43, ScreenWidth/2, 2);
+    selcteView.frame = CGRectMake(0,43, ScreenWidth/2, 2);
     [ptkaitong_but setTitleColor:KTHCOLOR forState:UIControlStateNormal];
     [cgkaitong_but setTitleColor:RGB(51, 51, 51) forState:UIControlStateNormal];
     tag = 1;

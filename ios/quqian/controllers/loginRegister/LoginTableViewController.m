@@ -230,7 +230,7 @@
             //imgView.image = [UIImage imageNamed:@"icon16.png"];
             //lab123.text = @"密码";
             textField.frame = CGRectMake(20,0, ScreenWidth-40, 45);
-            textField.placeholder = @"登录密码";
+            textField.placeholder = @"输入登录密码";
             textField.tag = 101;
             textField.text = code;
             textField.secureTextEntry = YES;

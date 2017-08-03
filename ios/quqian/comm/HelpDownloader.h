@@ -16,14 +16,10 @@
 #define currVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:kCFBundleVersionKey]
 
 
-//#define BASE_URL_head @"http://192.168.1.131"
-
-#define BASE_URL_head @"http://test.qbzvip.com"
-
-
+#define BASE_URL_head @"https://qbzvip.com"
 #define BASE_URL [NSString stringWithFormat:@"%@/app",BASE_URL_head]
 
-#define web_URL @"http://test.qbzvip.com"
+ 
 
 
 

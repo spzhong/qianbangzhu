@@ -150,7 +150,13 @@
     UIImageView *head = [Tool ImgProductionFunctionFrame:CGRectMake(15, 7, 30, 30) bgImgName:@"用户头像.png"];
     [bg addSubview:head];
     
-    name = [Tool LablelProductionFunction:[NSString stringWithFormat:@"您好%@",user.name] Frame:CGRectMake(60, 0, 120, 44) Alignment:NSTextAlignmentLeft FontFl:15];
+    
+    if (user.userId.length==0) {
+        name = [Tool LablelProductionFunction:[NSString stringWithFormat:@"您好,%@", user.mobile] Frame:CGRectMake(60, 0, 200, 44) Alignment:NSTextAlignmentLeft FontFl:15];
+    }else{
+        name = [Tool LablelProductionFunction:[NSString stringWithFormat:@"您好,%@",user.userId] Frame:CGRectMake(60, 0, 200, 44) Alignment:NSTextAlignmentLeft FontFl:15];
+    }
+    
     [bg addSubview:name];
     name.textColor = [UIColor whiteColor];
     
@@ -230,34 +236,38 @@
 
 -(void)tableviewHeadView{
     
-    name.text = [NSString stringWithFormat:@"您好，%@",user.name];
+    if (user.userId.length==0) {
+        name.text = [NSString stringWithFormat:@"您好,%@", user.mobile];
+    }else{
+        name.text = [NSString stringWithFormat:@"您好,%@", user.userId];
+    }
+
     
     UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 190+68*2)];
     [bg setBackgroundColor:KTHCOLOR];
     
-    but1 =  [Tool ButtonProductionFunction:@"存管账户" Frame:CGRectMake(ScreenWidth/5, 30, ScreenWidth/5, 30) bgImgName:nil FontFl:15];
+    but1 =  [Tool ButtonProductionFunction:@"存管账户" Frame:CGRectMake(3*ScreenWidth/5, 30, ScreenWidth/5, 30) bgImgName:nil FontFl:15];
     [but1 addTarget:self action:@selector(but1P) forControlEvents:UIControlEventTouchUpInside];
     [bg addSubview:but1];
-    [but1 setBackgroundColor:[UIColor whiteColor]];
-    [but1 setTitleColor:KTHCOLOR forState:UIControlStateNormal];
-    [UtilityUI setBorderOnView:but1 borderColor:KTHCOLOR borderWidth:1 cornerRadius:15];
+    [but1 setBackgroundColor:[UIColor clearColor]];
+    [but1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [UtilityUI setBorderOnView:but1 borderColor:[UIColor whiteColor] borderWidth:1 cornerRadius:15];
+ 
     
-    
-    but2 =  [Tool ButtonProductionFunction:@"普通账户" Frame:CGRectMake(3*ScreenWidth/5, 30, ScreenWidth/5, 30) bgImgName:nil FontFl:15];
+    but2 =  [Tool ButtonProductionFunction:@"普通账户" Frame:CGRectMake(ScreenWidth/5, 30, ScreenWidth/5, 30) bgImgName:nil FontFl:15];
     [but2 addTarget:self action:@selector(but2P) forControlEvents:UIControlEventTouchUpInside];
     [bg addSubview:but2];
-    [but2 setBackgroundColor:[UIColor clearColor]];
-    [but2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [UtilityUI setBorderOnView:but2 borderColor:[UIColor whiteColor] borderWidth:1 cornerRadius:15];
+    [but2 setBackgroundColor:[UIColor whiteColor]];
+    [but2 setTitleColor:KTHCOLOR forState:UIControlStateNormal];
+    [UtilityUI setBorderOnView:but2 borderColor:KTHCOLOR borderWidth:1 cornerRadius:15];
     
     
-    
-    lab1  = [Tool LablelProductionFunction:[NSString stringWithFormat:@"%@\n\n可用余额(元)",user.cgkyye] Frame:CGRectMake(0, 70,ScreenWidth/2, 90) Alignment:NSTextAlignmentCenter  FontFl:15];
+    lab1  = [Tool LablelProductionFunction:[NSString stringWithFormat:@"%@\n\n可用余额(元)",user.keyong_money] Frame:CGRectMake(0, 70,ScreenWidth/2, 90) Alignment:NSTextAlignmentCenter  FontFl:15];
     [bg addSubview:lab1];
     [lab1 setBackgroundColor:[UIColor clearColor]];
     lab1.textColor = [UIColor whiteColor];
     
-    lab2  = [Tool LablelProductionFunction:[NSString stringWithFormat:@"%@\n\n已赚总额(元)",user.cgyzze] Frame:CGRectMake(ScreenWidth/2, 70,ScreenWidth/2, 90) Alignment:NSTextAlignmentCenter  FontFl:15];
+    lab2  = [Tool LablelProductionFunction:[NSString stringWithFormat:@"%@\n\n已赚总额(元)",user.zhuanqu_money] Frame:CGRectMake(ScreenWidth/2, 70,ScreenWidth/2, 90) Alignment:NSTextAlignmentCenter  FontFl:15];
     [bg addSubview:lab2];
     [lab2 setBackgroundColor:[UIColor clearColor]];
     lab2.textColor = [UIColor whiteColor];
@@ -475,55 +485,7 @@
 
 
 
-
-
-
-
-//充值的接口判断
--(void)chongzhi__startRequest{
-    
-  
-    //进行有效登录确认
-    NSString *url =[NSString stringWithFormat:@"%@/user/deal/getrecharge.htm",BASE_URL];
-    NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
-    
-    
-    [[HelpDownloader shared] startRequest:url withbody:postDic
-                                   isType:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                           @"yes",@"isConnectedToNetwork",
-                                           @"yes",@"isshowHUD",
-                                           @"no",@"islockscreen",
-                                           @"post",@"isrequesType",
-                                           nil]
-                               completion:^void(id data,int kk){
-                                   
-                                   if (kk==0) {
-                                       NSMutableDictionary *dic = [data JSONValue];
-                                       if ([[dic objectForKey:@"code"] intValue] == 0) {
-                                           
-                                           ChongZhiTableViewController *project = [[ChongZhiTableViewController alloc] init];
-                                           project.dic = [dic objectForKey:@"rvalue"];
-                                           project.title = @"充值";
-                                           //返回
-                                           UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
-                                           backItem.title=@"返回";
-                                           self.navigationItem.backBarButtonItem=backItem;
-                                           self.hidesBottomBarWhenPushed=YES;
-                                           [self.navigationController pushViewController:project animated:YES];
-                                           self.hidesBottomBarWhenPushed=NO;
  
-                                           
-                                       }else{
-                                           
-                              
-                                       
-                                       }
-                                   }
-                               }];
-}
-
-
-
 
 
 

@@ -201,7 +201,7 @@
         
         EGOImageView *imgView = [[EGOImageView alloc] init];
         imgView.frame = CGRectMake(0, 0, view.frame.size.width,view.frame.size.height);
-        imgView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",web_URL,[dic objectForKey:@"pictureUrl"]]];
+        imgView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BASE_URL_head,[dic objectForKey:@"pictureUrl"]]];
         imgView.delegate = self;
         imgView.index = i;
         imgView.contentMode = UIViewContentModeScaleAspectFill;

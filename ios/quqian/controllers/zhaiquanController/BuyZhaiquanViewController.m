@@ -276,7 +276,8 @@
     [cell.contentView addSubview:lab123];
     
     //右边
-    RCLabel *rcLab = [[RCLabel alloc] initWithFrame:CGRectMake(80, 15, ScreenWidth-95, 20)];
+    UILabel *rcLab = [Tool LablelProductionFunction:@"" Frame:CGRectMake(80, 15, ScreenWidth-95, 20) Alignment:NSTextAlignmentRight FontFl:15];
+    
     [cell.contentView addSubview:rcLab];
     
     
@@ -286,19 +287,31 @@
         
             if (row==0) {
                 lab123.text = @"剩余金额";
-                rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15>%@</font></p>",[NSString stringWithFormat:@"%@元",self.allDic[@"syje"]]]];
+                //普通的账户
+                if (self.iscunguan==0) {
+                    rcLab.text = [NSString stringWithFormat:@"%@元",user.zhze];
+                }else{
+                    //存管的账户
+                    rcLab.text =  [NSString stringWithFormat:@"%@元",user.cgzhze];                  }
+                
             }else if (row==1){
                 lab123.text = @"可用金额";
-                rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15 color='333333'>%@元</font>  充值</p>",self.allDic[@"amount"]]];
+                //普通的账户
+                if (self.iscunguan==0) {
+                    rcLab.text = [NSString stringWithFormat:@"%@元   充值",user.keyong_money];
+                }else{
+                    //存管的账户
+                    rcLab.text = [NSString stringWithFormat:@"%@元   充值",user.cgkyye];
+                }
             }else if (row==2){
                 lab123.text = @"可购买份数";
-                rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15 color='333333'>%.0lf</font></p>",[self  kegoumai]]];
+                rcLab.text = [NSString stringWithFormat:@"%.0lf",[self  kegoumai]];
             }else if (row==3){
                 lab123.text = @"请选择加息卡";
                 
                 if (jiaxikaName.length>0) {
                     rcLab.frame = CGRectMake(120, 15, ScreenWidth-95, 20);
-                    rcLab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=left><font size=15 color='333333'>%@</font></p>",jiaxikaName]];
+                    rcLab.text = [NSString stringWithFormat:@"%@",jiaxikaName];
                 }
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 
@@ -386,35 +399,35 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
 
-    
-    //取消
-    NSString *newString = textField.text;
-    if (string.length==0) {
-        if (newString.length>0) {
-            newString = [newString substringToIndex:[newString length]-1];
-        }
-    }else{
-        newString = [NSString stringWithFormat:@"%@%@",newString,string];
-    }
-    
-    if ([newString intValue] > [[self.allDic objectForKey:@"syfs"] intValue]) {
-        [MBProgressHUD showError:[NSString stringWithFormat:@"最多%d份",[[self.allDic objectForKey:@"syfs"] intValue]] toView:nil];
-        return false;
-    }
-    
-    if ([typeTag isEqualToString:@"1"]) {
-        rcLabjisuan.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=left><font size=15 >预计收益%0.2lf元，奖%0.2lf元</font></p>",[Tool suanfa:allDic withFenshu:[newString intValue]  withType:0],[Tool suanfa:allDic withFenshu:[newString intValue]  withType:1]]];
-        
-    }else{
-        
-        rcLabjisuan.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=left><font size=15 >预计收益%0.2lf元</font></p>",[newString intValue]*([[allDic objectForKey:@"dsbx"] doubleValue] - 100)]];
-        
-        
-        
-//        RCLabel *lab = (RCLabel *)[self getCellSubObjectwithTag:101 withIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
-//        lab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15 >%0.2lf</font><font size=15>元</font></p>",[newString intValue]*([[allDic objectForKey:@"zqjg"] doubleValue])]];
- 
-    }
+//    
+//    //取消
+//    NSString *newString = textField.text;
+//    if (string.length==0) {
+//        if (newString.length>0) {
+//            newString = [newString substringToIndex:[newString length]-1];
+//        }
+//    }else{
+//        newString = [NSString stringWithFormat:@"%@%@",newString,string];
+//    }
+//    
+//    if ([newString intValue] > [[self.allDic objectForKey:@"syfs"] intValue]) {
+//        [MBProgressHUD showError:[NSString stringWithFormat:@"最多%d份",[[self.allDic objectForKey:@"syfs"] intValue]] toView:nil];
+//        return false;
+//    }
+//    
+//    if ([typeTag isEqualToString:@"1"]) {
+//        rcLabjisuan.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=left><font size=15 >预计收益%0.2lf元，奖%0.2lf元</font></p>",[Tool suanfa:allDic withFenshu:[newString intValue]  withType:0],[Tool suanfa:allDic withFenshu:[newString intValue]  withType:1]]];
+//        
+//    }else{
+//        
+//        rcLabjisuan.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=left><font size=15 >预计收益%0.2lf元</font></p>",[newString intValue]*([[allDic objectForKey:@"dsbx"] doubleValue] - 100)]];
+//        
+//        
+//        
+////        RCLabel *lab = (RCLabel *)[self getCellSubObjectwithTag:101 withIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+////        lab.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=right><font size=15 >%0.2lf</font><font size=15>元</font></p>",[newString intValue]*([[allDic objectForKey:@"zqjg"] doubleValue])]];
+// 
+//    }
     
     return YES;
 }
@@ -504,7 +517,7 @@
 //        return;
 //    }
     
-    
+   
     //进行开始投标
     [self makeAlter];
     
@@ -673,10 +686,10 @@
 
     WebController *web = [[WebController alloc] init];
     if ([typeTag isEqualToString:@"0"]) {
-        web.urlString = [NSString stringWithFormat:@"%@/term/ZQZRXY.html",web_URL];
+        web.urlString = [NSString stringWithFormat:@"%@/term/ZQZRXY.html",BASE_URL_head];
         web.title = @"债权转让及受让协议";
     }else if ([typeTag isEqualToString:@"1"]){
-        web.urlString = [NSString stringWithFormat:@"%@/term/SDRZBXY.html",web_URL];
+        web.urlString = [NSString stringWithFormat:@"%@/term/SDRZBXY.html",BASE_URL_head];
         web.title = @"借款协议";
     }
 

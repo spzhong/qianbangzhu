@@ -239,21 +239,14 @@
     
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     
-    
-    
     UserModel *user = [Tool getUser];
-    if ([user.iscloseshoushimia isEqualToString:@"y"]) {
-        
-    }else{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"inputCode" object:nil];
+    if (user) {
+        if ([user.iscloseshoushimia isEqualToString:@"y"]) {
+        }else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"inputCode" object:nil];
+        }
     }
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
-
-//-(void)LockViewDidClick:(DemoView *)lockView andPwd:(NSString *)pwd{
-//
-//}
-
 
 
 

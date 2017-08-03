@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LLPaySdk.h"
+//#import "LLPaySdk.h"
 
 typedef enum LLVerifyPayState{
     kLLQuickPay = 0, //快捷支付
@@ -15,10 +15,10 @@ typedef enum LLVerifyPayState{
     kLLPreAuthorizePay = 2 //预授权
 }LLVerifyPayState;
 
-@interface ChongZhiTableViewController : UITableViewController<LLPaySdkDelegate>
+@interface ChongZhiTableViewController : UITableViewController 
 
 @property(nonatomic,retain)NSMutableDictionary *dic;
-@property(nonatomic,retain)LLPaySdk *sdk;
+
 @property (nonatomic, assign) LLVerifyPayState  bLLPayState;
 @property (nonatomic, assign) BOOL  bTestServer;
 

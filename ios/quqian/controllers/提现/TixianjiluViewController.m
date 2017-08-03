@@ -33,13 +33,13 @@
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:RGB(236, 243, 246)];
     
-    cgkaitong_but = [Tool ButtonProductionFunction:@"存管提现" Frame:CGRectMake(0, 0, ScreenWidth/2, 45) bgImgName:nil FontFl:15];
+    cgkaitong_but = [Tool ButtonProductionFunction:@"存管提现" Frame:CGRectMake(ScreenWidth/2, 0, ScreenWidth/2, 45) bgImgName:nil FontFl:15];
     [cgkaitong_but addTarget:self action:@selector(cgkaitong_but_p) forControlEvents:UIControlEventTouchUpInside];
     [cgkaitong_but setTitleColor:KTHCOLOR forState:UIControlStateNormal];
     [cgkaitong_but setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:cgkaitong_but];
     
-    ptkaitong_but = [Tool ButtonProductionFunction:@"普通提现" Frame:CGRectMake(ScreenWidth/2, 0, ScreenWidth/2, 45) bgImgName:nil FontFl:15];
+    ptkaitong_but = [Tool ButtonProductionFunction:@"普通提现" Frame:CGRectMake(0, 0, ScreenWidth/2, 45) bgImgName:nil FontFl:15];
     [ptkaitong_but addTarget:self action:@selector(ptkaitong_but_p) forControlEvents:UIControlEventTouchUpInside];
     [ptkaitong_but setTitleColor:RGB(51, 51, 51) forState:UIControlStateNormal];
     [ptkaitong_but setBackgroundColor:[UIColor whiteColor]];
@@ -59,7 +59,7 @@
     
     dataArray = [[NSMutableArray alloc] init];
     
-    [self cgkaitong_but_p];
+    [self ptkaitong_but_p];
 }
 
 
@@ -107,7 +107,7 @@
 -(void)cgkaitong_but_p{
     page = 1;
     type = 0;
-    selcteView.frame = CGRectMake(0,43, ScreenWidth/2, 2);
+    selcteView.frame = CGRectMake(ScreenWidth/2,43, ScreenWidth/2, 2);
     [self headerRereshing];
     [cgkaitong_but setTitleColor:KTHCOLOR forState:UIControlStateNormal];
     [ptkaitong_but setTitleColor:RGB(51, 51, 51) forState:UIControlStateNormal];
@@ -117,7 +117,7 @@
 -(void)ptkaitong_but_p{
     page=1;
     type = 1;
-    selcteView.frame = CGRectMake(ScreenWidth/2,43, ScreenWidth/2, 2);
+    selcteView.frame = CGRectMake(0,43, ScreenWidth/2, 2);
     [self headerRereshing];
     [ptkaitong_but setTitleColor:KTHCOLOR forState:UIControlStateNormal];
     [cgkaitong_but setTitleColor:RGB(51, 51, 51) forState:UIControlStateNormal];

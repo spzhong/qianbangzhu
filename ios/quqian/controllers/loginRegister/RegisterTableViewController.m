@@ -175,7 +175,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section==0) {
-        return 5;
+        return 4;
     }else if (section==1){
         return 2;
     }
@@ -208,10 +208,6 @@
         [view removeFromSuperview];view=nil;
     }
     
-    EGOImageView*imgView =[[EGOImageView alloc] init];
-    imgView.frame = CGRectMake(15, 10.5, 24, 24);
-    //[cell.contentView addSubview:imgView];
-    
     
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -224,11 +220,15 @@
         textField.textColor = [UIColor whiteColor];
         textField.textAlignment = NSTextAlignmentCenter;
         
+        EGOImageView*imgView =[[EGOImageView alloc] init];
+        imgView.frame = CGRectMake(18, 8, 106/2, 45);
+        [cell.contentView addSubview:imgView];
+    
         
         if (row==0) {
             //lab123.text = @"手机号";
             
-            imgView.image = [UIImage imageNamed:@"icon15.png"];
+            imgView.image = [UIImage imageNamed:@"手机号.png"];
             
             //textField.frame = CGRectMake(55,0, [Tool adaptation:190 with6:55 with6p:94], 45);
             textField.placeholder = @"手机号";
@@ -236,27 +236,18 @@
             textField.text = moblie;
             
         }else if (row==1){
-            imgView.image = [UIImage imageNamed:@"icon16.png"];
+            imgView.image = [UIImage imageNamed:@"密码.png"];
             
             //lab123.text = @"登录密码";
             //textField.frame = CGRectMake(55,0, [Tool adaptation:190 with6:55 with6p:94], 45);
-            textField.placeholder = @"登录密码";
+            textField.placeholder = @"输入登录密码";
             textField.tag = 101;
             textField.text = code;
             textField.secureTextEntry = YES;
-        }else if (row==2){
-            imgView.image = [UIImage imageNamed:@"icon16.png"];
-            
-            //lab123.text = @"确认登录密码";
-            //textField.frame = CGRectMake(55,0, [Tool adaptation:190 with6:55 with6p:94], 45);
-            textField.placeholder = @"确认登录密码";
-            textField.tag = 102;
-            textField.text = reCode;
-            textField.secureTextEntry = YES;
-        }else if (row==3){
+        } else if (row==2){
             //lab123.text = @"短信验证码";
             
-            imgView.image = [UIImage imageNamed:@"icon17.png"];
+            imgView.image = [UIImage imageNamed:@"手机验证码.png"];
             
             UIButton *buton = [UIButton buttonWithType:UIButtonTypeCustom];
             buton.tag = 10005;
@@ -279,16 +270,16 @@
             
             //textField.frame = CGRectMake(55,0, [Tool adaptation:150 with6:55 with6p:94], 45);
             textField.placeholder = @"短信验证码";
-            textField.tag = 103;
+            textField.tag = 102;
             textField.text = messageCode;
             
-        }else if (row==4){
-            imgView.image = [UIImage imageNamed:@"icon18.png"];
+        }else if (row==3){
+            imgView.image = [UIImage imageNamed:@"服务码.png"];
             
             //lab123.text = @"服务码";
             //textField.frame = CGRectMake(55,0, [Tool adaptation:190 with6:55 with6p:94], 45);
             textField.placeholder = @"推荐人服务码（选填）";
-            textField.tag = 104;
+            textField.tag = 103;
             textField.text = serviceCode;
 
         }
@@ -309,7 +300,7 @@
 -(void)quqianxieyi:(UIButton *)bu{
     
     WebController *web = [[WebController alloc] init];
-    web.urlString = [NSString stringWithFormat:@"%@/term/ZCXY.html",web_URL];
+    web.urlString = [NSString stringWithFormat:@"%@/m/zcxy.html?f_app=app",BASE_URL_head];
     web.title = @"钱帮主注册协议";
     //返回
     UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
@@ -352,7 +343,7 @@
 //获取验证码成功后
 -(void)getPhoneCodeSece{
     isHuoqu = NO;
-    UIButton *huoqu = (UIButton *)[self getCellSubObjectwithTag:10005 withIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+    UIButton *huoqu = (UIButton *)[self getCellSubObjectwithTag:10005 withIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     [huoqu setTitle:@"重新获取(59)秒" forState:UIControlStateNormal];
     self.myTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(dynamicAnimatorShowlab) userInfo:nil repeats:YES];
     huoqu.enabled = NO;
@@ -362,7 +353,7 @@
 //开始降低数据－60
 -(void)dynamicAnimatorShowlab{
     
-    UIButton *huoqu = (UIButton *)[self getCellSubObjectwithTag:10005 withIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+    UIButton *huoqu = (UIButton *)[self getCellSubObjectwithTag:10005 withIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     count--;
     if (count==0) {
         [self.myTimer invalidate];
@@ -446,13 +437,13 @@
     UITextField *textField2 = (UITextField *)[self getCellSubObjectwithTag:101 withIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     UITextField *textField3 = (UITextField *)[self getCellSubObjectwithTag:102 withIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     UITextField *textField4 = (UITextField *)[self getCellSubObjectwithTag:103 withIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-    UITextField *textField5 = (UITextField *)[self getCellSubObjectwithTag:104 withIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+    
     
     [textField1 resignFirstResponder];
     [textField2 resignFirstResponder];
     [textField3 resignFirstResponder];
     [textField4 resignFirstResponder];
-    [textField5 resignFirstResponder];}
+}
 
 
 
@@ -467,10 +458,8 @@
     }else if (textField.tag==101){
         code = textField.text;
     }else if (textField.tag==102){
-        reCode = textField.text;
-    }else if (textField.tag==103){
         messageCode = textField.text;
-    }else if (textField.tag==104){
+    }else if (textField.tag==103){
         serviceCode = textField.text;
     }
 }
@@ -495,13 +484,12 @@
     UITextField *textField2 = (UITextField *)[self getCellSubObjectwithTag:101 withIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     UITextField *textField3 = (UITextField *)[self getCellSubObjectwithTag:102 withIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     UITextField *textField4 = (UITextField *)[self getCellSubObjectwithTag:103 withIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-    UITextField *textField5 = (UITextField *)[self getCellSubObjectwithTag:104 withIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
     
     [textField1 resignFirstResponder];
     [textField2 resignFirstResponder];
     [textField3 resignFirstResponder];
     [textField4 resignFirstResponder];
-    [textField5 resignFirstResponder];
+    
     NSLog(@"moblie:%@",moblie);
     NSLog(@"coed:%@",code);
     NSLog(@"reCode:%@",reCode);
@@ -523,10 +511,6 @@
         [Tool myalter:@"密码长度为6-16个字符"];
         return;
     }
-    if (![code isEqualToString:reCode]) {
-        [Tool myalter:@"你两次输入的密码不一致"];
-        return;
-    }
     if (messageCode.length==0) {
         [Tool myalter:@"请输入验证码"];
         return;
@@ -534,11 +518,10 @@
     
     
     //进行有效登录确认
-    NSString *url =[NSString stringWithFormat:@"%@/m/zcxy.html?f_app=app",BASE_URL_head];
+    NSString *url =[NSString stringWithFormat:@"%@/register.htm",BASE_URL];
     NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
     [postDic setObject:moblie forKey:@"phone"];
     [postDic setObject:code forKey:@"password"];
-    [postDic setObject:reCode forKey:@"newPassword"];
     [postDic setObject:messageCode forKey:@"verifyCode"];
     [postDic setObject:serviceCode forKey:@"code"];
     
