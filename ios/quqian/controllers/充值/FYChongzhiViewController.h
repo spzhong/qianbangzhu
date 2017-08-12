@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FYChongzhiViewController : UIViewController
-
+@property(nonatomic,strong)NSString *yhkh;
+@property(nonatomic,strong)NSString *qyczurl;
+@property(nonatomic,strong)NSString *kjczurl;
 @end

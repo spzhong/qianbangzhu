@@ -238,14 +238,14 @@
     
     UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(ScreenWidth/3, 10, 0.5, 40)];
     [line1 setBackgroundColor:RGB(238, 238, 238)];
-    [cell.contentView addSubview:line1];
+    //[cell.contentView addSubview:line1];
     
     RCLabel *lastTime = [[RCLabel alloc] initWithFrame:CGRectMake(2*ScreenWidth/3,10, ScreenWidth/3, 60)];
     [cell.contentView addSubview:lastTime];
     
     UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(2*ScreenWidth/3, 10, 0.5, 40)];
     [line2 setBackgroundColor:RGB(238, 238, 238)];
-    [cell.contentView addSubview:line2];
+    //[cell.contentView addSubview:line2];
 
     NSMutableDictionary *dicdata = [arraydata objectAtIndex:indexPath.row];
 

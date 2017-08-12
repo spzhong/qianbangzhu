@@ -273,13 +273,13 @@
     if (section==0 || section==1) {
         return 0.01;
     }
-    return 10;
+    return 5;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section==0) {
         return 0.01;
     }
-    return 10;
+    return 5;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -450,15 +450,7 @@
         
         //数据为空－－－需要登录啊
         if (user!=nil) {
-            ZijinMangerViewController *manger = [[ZijinMangerViewController alloc] init];
-            manger.title = @"资金管理";
-            //返回
-            UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
-            backItem.title=@"返回";
-            self.navigationItem.backBarButtonItem=backItem;
-            self.hidesBottomBarWhenPushed=YES;
-            [self.navigationController pushViewController:manger animated:YES];
-            self.hidesBottomBarWhenPushed=NO;
+             
         }
     }
     
@@ -896,7 +888,7 @@
 - (void)wuyoucunzheng {
     
     WuyoucunzhengViewController *view = [[WuyoucunzhengViewController alloc] init];
-    view.title = @"无忧存症";
+    view.title = @"无忧存证";
     //返回
     UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
     backItem.title=@"返回";

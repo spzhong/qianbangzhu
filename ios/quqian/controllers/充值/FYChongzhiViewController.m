@@ -12,8 +12,9 @@
 #import "UtilityUI.h"
 #import "HelpDownloader.h"
 #import "PTWEBViewController.h"
+#import "WebController.h"
 
-@interface FYChongzhiViewController ()
+@interface FYChongzhiViewController ()<UITextViewDelegate>
 {
     UserModel *user;
     UITextField *textFile;
@@ -25,6 +26,18 @@
 
 -(void)enditNSUS{
     [self.view endEditing:YES];
+}
+
+
+#pragma mark - 点击了链接会走这个方法 可以在这里处理操作
+-(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange{
+
+    WebController *web = [[WebController alloc] init];
+    web.urlString = [URL absoluteString];
+    [self.navigationController pushViewController:web animated:YES];
+    NSLog(@"/n/n/n/n/n/n/n/n/n/n   s      /n/n/n/n/n");
+    
+    return NO;
 }
 
 - (void)viewDidLoad {
@@ -71,7 +84,7 @@
     [textFile setBackgroundColor:RGB(236, 243, 246)];
     if ([self.title isEqualToString:@"签约充值"]) {
         bg.frame = CGRectMake(0, 45, ScreenWidth, 120);
-        UILabel *labTile = [Tool LablelProductionFunction:@"银行卡尾号：3075" Frame:CGRectMake(30, 40+45, 120, 40) Alignment:NSTextAlignmentLeft  FontFl:14];
+        UILabel *labTile = [Tool LablelProductionFunction:[NSString stringWithFormat:@"银行卡尾号：%@",self.yhkh] Frame:CGRectMake(30, 40+45, 120, 40) Alignment:NSTextAlignmentLeft  FontFl:14];
         labTile.textColor = RGB(51, 51, 51);
         [bg addSubview:labTile];
         
@@ -88,18 +101,46 @@
     [UtilityUI setBorderOnView:cgkaitong borderColor:KTHCOLOR borderWidth:1 cornerRadius:4];
     
     if ([self.title isEqualToString:@"签约充值"]) {
-        UILabel *labInfo = [Tool LablelProductionFunction:@"温馨提示\n1.签约充值无需输入卡号及验证码。\n2.请注意您的银行卡充值限制，以免造成不便，具体银行卡限额请点击《签约充值限额表》\n3.禁止洗钱、虚假交易等行为，一经发现并确认，将终止该账户的使用。\n4.如果充值金额没有及时到账，请联系客服，400-8535-666" Frame:CGRectMake(15, 250, ScreenWidth-30, 999)  Alignment:NSTextAlignmentLeft FontFl:14];
-        [labInfo sizeToFit];
+        
+        UITextView *labInfo = [Tool TextViewProductionFunction:@"温馨提示\n1.签约充值无需输入卡号及验证码。\n2.请注意您的银行卡充值限制，以免造成不便，具体银行卡限额请点击《签约充值限额表》\n3.禁止洗钱、虚假交易等行为，一经发现并确认，将终止该账户的使用。\n4.如果充值金额没有及时到账，请联系客服，400-8535-666" Frame:CGRectMake(15, 250, ScreenWidth-30, 999) FontFl:14];
         labInfo.textColor = RGB(90, 90, 90);
         [self.view addSubview:labInfo];
+        labInfo.delegate = self;
+       
+        
+        NSRange ragn = [labInfo.text localizedStandardRangeOfString:@"《签约充值限额表》"];
+        
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:labInfo.text];
+        [attr setAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:14]} range:NSMakeRange(0, attr.length)];
+        //点击了链接拨打电话
+        [attr setAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:0 green:147/255.0 blue:238/255.0 alpha:1],
+                              NSFontAttributeName:[UIFont systemFontOfSize:14],
+                              NSLinkAttributeName:self.qyczurl}
+                              range:ragn];
+        labInfo.editable =NO;
+        labInfo.attributedText = attr;
+        
     }else{
         cgkaitong.frame = CGRectMake(30, 170, ScreenWidth-60, 45);
-        UILabel *labInfo = [Tool LablelProductionFunction:@"温馨提示\n1.请注意您的银行卡充值限制，以免造成不便，具体银行卡限额请点击《快捷充值限额表》\n2.禁止洗钱、虚假交易等行为，一经发现并确认，将终止该账户的使用。\n3.如果充值金额没有及时到账，请联系客服，400-8535-666" Frame:CGRectMake(15, 230, ScreenWidth-30, 999)  Alignment:NSTextAlignmentLeft FontFl:14];
+        UITextView *labInfo = [Tool TextViewProductionFunction:@"温馨提示\n1.请注意您的银行卡充值限制，以免造成不便，具体银行卡限额请点击《快捷充值限额表》\n2.禁止洗钱、虚假交易等行为，一经发现并确认，将终止该账户的使用。\n3.如果充值金额没有及时到账，请联系客服，400-8535-666" Frame:CGRectMake(15, 230, ScreenWidth-30, 999) FontFl:14];
         [labInfo sizeToFit];
         labInfo.textColor = RGB(90, 90, 90);
         [self.view addSubview:labInfo];
         
+        labInfo.delegate = self;
         
+        NSRange ragn = [labInfo.text localizedStandardRangeOfString:@"《快捷充值限额表》"];
+        
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:labInfo.text];
+        [attr setAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:14]} range:NSMakeRange(0, attr.length)];
+        //点击了链接拨打电话
+        [attr setAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:0 green:147/255.0 blue:238/255.0 alpha:1],
+                              NSFontAttributeName:[UIFont systemFontOfSize:14],
+                              NSLinkAttributeName:self.kjczurl}
+                      range:ragn];
+        labInfo.editable =NO;
+        labInfo.attributedText = attr;
+
         
     }
     

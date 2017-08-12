@@ -137,8 +137,8 @@
     [buton2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [buton2 addTarget:self action:@selector(add) forControlEvents:UIControlEventTouchUpInside];
     
-    UILabel *lab2 = [Tool LablelProductionFunction:@"份" Frame:CGRectMake(290,40,20,45) Alignment:NSTextAlignmentLeft FontFl:15];
-    [bgView addSubview:lab2];
+//    UILabel *lab2 = [Tool LablelProductionFunction:@"份" Frame:CGRectMake(290,40,20,45) Alignment:NSTextAlignmentLeft FontFl:15];
+//    [bgView addSubview:lab2];
     
     //输入框
     textField  = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectZero FontFl:15 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumberPad];
@@ -289,10 +289,11 @@
                 lab123.text = @"剩余金额";
                 //普通的账户
                 if (self.iscunguan==0) {
-                    rcLab.text = [NSString stringWithFormat:@"%@元",user.zhze];
+                    rcLab.text = [NSString stringWithFormat:@"%@元",user.keyong_money];
                 }else{
                     //存管的账户
-                    rcLab.text =  [NSString stringWithFormat:@"%@元",user.cgzhze];                  }
+                    rcLab.text =  [NSString stringWithFormat:@"%@元",user.cgkyye];
+                }
                 
             }else if (row==1){
                 lab123.text = @"可用金额";

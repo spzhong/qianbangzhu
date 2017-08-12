@@ -22,14 +22,14 @@
     
     UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(ScreenWidth/3, 50, 0.5, 50)];
     [line1 setBackgroundColor:RGB(238, 238, 238)];
-    [self addSubview:line1];
+    //[self addSubview:line1];
     
     self.lastTime = [[RCLabel alloc] initWithFrame:CGRectMake(2*ScreenWidth/3, 50, ScreenWidth/3, 60)];
     [self addSubview:self.lastTime];
     
     UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(2*ScreenWidth/3, 50, 0.5, 50)];
     [line2 setBackgroundColor:RGB(238, 238, 238)];
-    [self addSubview:line2];
+    //[self addSubview:line2];
     
     
     self.xin.layer.borderColor =  [UIColor colorWithRed:60/255.0 green:154/255.0 blue:235/255.0 alpha:1].CGColor;

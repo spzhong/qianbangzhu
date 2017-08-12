@@ -174,19 +174,19 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectio
 {
-    return 0.01;
+    return 5;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0.01;
+    return 5;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return [dataArray count];;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [dataArray count];
+    return 1;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -200,7 +200,7 @@
     
     //散标
     NewSanViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    NSInteger row = [indexPath row];
+    NSInteger row = [indexPath section];
     NSMutableDictionary *san = [dataArray objectAtIndex:row];
     [cell initMakeData:san withType:bdlx];
     
@@ -214,7 +214,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSInteger row = indexPath.row;
+    NSInteger row = indexPath.section;
 
     if ([Tool getUser]==nil) {
         LoginTableViewController *loginView = [[LoginTableViewController alloc] init];

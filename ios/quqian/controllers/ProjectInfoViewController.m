@@ -134,14 +134,14 @@
 //生称makeHeadView
 -(void)makeHeadView_0:(NSMutableDictionary *)san{
     
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 210)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 210+20)];
     [bgView setBackgroundColor:KTHCOLOR];
     
     
     RCLabel *yearlilv = [[RCLabel alloc] initWithFrame:CGRectMake(0, 30, ScreenWidth, 80)];
     [bgView addSubview:yearlilv];
     
-    yearlilv.componentsAndPlainText = [RCLabel extractTextStyle:[Tool exchage:[NSString stringWithFormat:@"%@%%",[san objectForKey:@"nll"]] withDanwei:@"" withName:@"预期年化利率"]];
+    yearlilv.componentsAndPlainText = [RCLabel extractTextStyle:[NSString stringWithFormat:@"<p align=center><font size=35 face='HelveticaNeue' color='#FFFFFF' >%@</font>\n<font size =15 color='#FFFFFF' face='HelveticaNeue'>%@</font></p>",[NSString stringWithFormat:@"%@%%",[san objectForKey:@"nll"]],@"预期年化利率"]];
     
     
     RCLabel *planAllMoney = [[RCLabel alloc] initWithFrame:CGRectMake(0, 130, ScreenWidth/3, 60)];
@@ -175,14 +175,19 @@
     UIView *jindu = [[UIView alloc] initWithFrame:CGRectMake(0, 210-1,w, 1)];
     [jindu setBackgroundColor:RGB(250, 148, 39)];
     [bgView addSubview:jindu];
+    
+    UILabel *JIndiu = [Tool LablelProductionFunction:[NSString stringWithFormat:@"%.0lf%%",[allDic[@"tbjd"] doubleValue]] Frame:CGRectMake(10, 190, 100, 20) Alignment:NSTextAlignmentLeft FontFl:10];
+    [bgView addSubview:JIndiu];
+    [JIndiu setTextColor:[UIColor whiteColor]];
+    
 
     if (![allDic[@"tjf"] isEqualToString:@""] && allDic[@"tjf"] != nil) {
-        bgView.frame = CGRectMake(0, 210, ScreenWidth, 250);
+        bgView.frame = CGRectMake(0, 210, ScreenWidth, 260);
         UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 210, ScreenWidth, 40)];
         [lab setBackgroundColor:[UIColor whiteColor]];
         lab.font = [UIFont systemFontOfSize:14];
         lab.textColor = RGB(51, 51, 51);
-        lab.text = [NSString stringWithFormat:@"         %@",allDic[@"tjf"]];
+        lab.text = [NSString stringWithFormat:@"         %@ 推荐",allDic[@"tjf"]];
         [bgView addSubview:lab];
         
         UIImageView *head = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"信-logo"]];
@@ -190,6 +195,8 @@
         [bgView addSubview:head];
     }
     
+    UIView *bgViewfenge = [Tool ViewProductionFunction:CGRectMake(0, bgView.frame.size.height-10, ScreenWidth, 10) BgColor:[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]];
+    [bgView addSubview:bgViewfenge];
     self.tableView.tableHeaderView = bgView;
 }
 
@@ -444,7 +451,7 @@
         }
         return 0.01;
     }
-     return 20;
+     return 5;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
@@ -453,13 +460,13 @@
         if (section==2) {
             return 45;
         }else if (section==1){
-            return 20;
+            return 5;
         }
     }
     if (section==1) {
         return 45;
     }
-    return 20;
+    return 5;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

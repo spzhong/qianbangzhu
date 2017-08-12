@@ -39,7 +39,7 @@
     [self.tableView setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1.0]];
     [self.tableView setBackgroundColor:[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]];
     
-    UITextView *text = [[UITextView alloc] initWithFrame:CGRectMake(15, 15, 290, 45)];
+    UITextView *text = [[UITextView alloc] initWithFrame:CGRectMake(50, 15, ScreenWidth-60, 45)];
     text.text = [noticeDic objectForKey:@"content"];
     text.font = [UIFont systemFontOfSize:15];
     CGSize constraintSize = CGSizeMake(text.frame.size.width, MAXFLOAT);
@@ -133,10 +133,10 @@
         lab2.text = [noticeDic objectForKey:@"sendTime"];
     }else if (row==2){
         lab1.text = @"内容：";
-        UITextView *text = [[UITextView alloc] initWithFrame:CGRectMake(50, 7, 260, cellHeight)];
+        UITextView *text = [[UITextView alloc] initWithFrame:CGRectMake(50, -5, 260, cellHeight)];
         text.text = [noticeDic objectForKey:@"content"];
         text.font = [UIFont systemFontOfSize:15];
-        text.frame = CGRectMake(50, 7, 260, text.contentSize.height);
+        text.frame = CGRectMake(50, 5, ScreenWidth-60,cellHeight);
         [cell.contentView addSubview:text];
         text.userInteractionEnabled = NO;
     }

@@ -57,11 +57,11 @@
 
 -(void)createview{
     float allH = 40;
-    UIView *bg1 = [[UIView alloc] initWithFrame:CGRectMake(0, 20, ScreenWidth, 50+140)];
+    UIView *bg1 = [[UIView alloc] initWithFrame:CGRectMake(0, 10, ScreenWidth, 50+140)];
     [bg1 setBackgroundColor:[UIColor whiteColor]];
     [self.bgscorll addSubview:bg1];
     
-    UILabel *lab1 = [Tool LablelProductionFunction:@"方式一" Frame:CGRectMake(-70+ScreenWidth/2, allH, 60, 15) Alignment:NSTextAlignmentCenter FontFl:15];
+    UILabel *lab1 = [Tool LablelProductionFunction:@"方式一" Frame:CGRectMake(-70+ScreenWidth/2, allH-5, 60, 25) Alignment:NSTextAlignmentCenter FontFl:13];
     [self.bgscorll addSubview:lab1];
     [UtilityUI setBorderOnView:lab1 borderColor:RGB(253, 153, 0) borderWidth:1 cornerRadius:3];
     [lab1 setTextColor:RGB(253, 153, 0)];
@@ -74,7 +74,7 @@
     imgView.imageURL = [NSURL URLWithString:alldic[@"ewm"]];
     [self.bgscorll addSubview:imgView];
     
-    allH += 200;
+    allH += 170;
     
     UIView *bg2 = [[UIView alloc] initWithFrame:CGRectMake(0, allH, ScreenWidth, 50+80)];
     [bg2 setBackgroundColor:[UIColor whiteColor]];
@@ -82,7 +82,7 @@
     
     allH+=15;
     
-    UILabel *lab21 = [Tool LablelProductionFunction:@"方式二" Frame:CGRectMake(-70+ScreenWidth/2, allH, 60, 15) Alignment:NSTextAlignmentCenter FontFl:15];
+    UILabel *lab21 = [Tool LablelProductionFunction:@"方式二" Frame:CGRectMake(-70+ScreenWidth/2, allH-5, 60, 25) Alignment:NSTextAlignmentCenter FontFl:13];
     [self.bgscorll addSubview:lab21];
     [UtilityUI setBorderOnView:lab21 borderColor:RGB(253, 153, 0) borderWidth:1 cornerRadius:3];
     [lab21 setTextColor:RGB(253, 153, 0)];
@@ -101,7 +101,7 @@
     [self.bgscorll addSubview:lab24];
     
     
-    allH+=60;
+    allH+=30;
     
     UIView *bg3 = [[UIView alloc] initWithFrame:CGRectMake(0, allH, ScreenWidth, 50+40)];
     [bg3 setBackgroundColor:[UIColor whiteColor]];
@@ -109,7 +109,7 @@
     
     allH+=10;
     
-    UILabel *lab31 = [Tool LablelProductionFunction:@"方式三" Frame:CGRectMake(-70+ScreenWidth/2, allH, 60, 15) Alignment:NSTextAlignmentCenter FontFl:15];
+    UILabel *lab31 = [Tool LablelProductionFunction:@"方式三" Frame:CGRectMake(-70+ScreenWidth/2, allH-5, 60, 25) Alignment:NSTextAlignmentCenter FontFl:13];
     [self.bgscorll addSubview:lab31];
     [UtilityUI setBorderOnView:lab31 borderColor:RGB(253, 153, 0) borderWidth:1 cornerRadius:3];
     [lab31 setTextColor:RGB(253, 153, 0)];
@@ -119,9 +119,9 @@
     
     allH+=30;
 
-    UILabel *lab33 = [Tool LablelProductionFunction:alldic[@"url"] Frame:CGRectMake(0, allH, ScreenWidth, 40) Alignment:NSTextAlignmentCenter FontFl:15];
+    
+    UITextView *lab33 = [Tool TextViewProductionFunction:alldic[@"url"] Frame:CGRectMake(0, allH, ScreenWidth, 45) FontFl:15];
     [self.bgscorll addSubview:lab33];
-    lab33.numberOfLines = 0;
     [lab33 setTextAlignment:NSTextAlignmentCenter];
     
     

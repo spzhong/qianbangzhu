@@ -69,6 +69,8 @@
 
 
 
+
+
 //登录成功的回调
 -(void)loginSuccess{
    
@@ -83,7 +85,7 @@
     [super viewWillAppear:YES];
     
     [self.tableView reloadData];
-    
+    self.navigationController.navigationBar.hidden = NO;
     
     //用户信息
     user = (UserModel*)[Tool getUser];
@@ -160,7 +162,7 @@
     [bg addSubview:name];
     name.textColor = [UIColor whiteColor];
     
-    UIButton *setbut =  [Tool ButtonProductionFunction:nil Frame:CGRectMake(ScreenWidth-50, (44-16)/2, 20, 20) bgImgName:@"设置" FontFl:0];
+    UIButton *setbut =  [Tool ButtonProductionFunction:nil Frame:CGRectMake(ScreenWidth-50, (44-18)/2, 25, 25) bgImgName:@"设置" FontFl:0];
     [setbut addTarget:self action:@selector(setView) forControlEvents:UIControlEventTouchUpInside];
     [bg addSubview:setbut];
     
@@ -243,7 +245,7 @@
     }
 
     
-    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 190+68*2)];
+    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 190+68*2+10)];
     [bg setBackgroundColor:KTHCOLOR];
     
     but1 =  [Tool ButtonProductionFunction:@"存管账户" Frame:CGRectMake(3*ScreenWidth/5, 30, ScreenWidth/5, 30) bgImgName:nil FontFl:15];

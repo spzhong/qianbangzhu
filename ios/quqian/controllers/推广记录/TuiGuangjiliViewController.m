@@ -172,17 +172,17 @@
         [subs removeFromSuperview];
     }
     
-    UILabel *lab1 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(0, 0, ScreenWidth/3, 44) Alignment:NSTextAlignmentCenter FontFl:15];
-    UILabel *lab2 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(ScreenWidth/3, 0, ScreenWidth/3, 44) Alignment:NSTextAlignmentCenter FontFl:15];
-    UILabel *lab3 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(2*ScreenWidth/3, 0, ScreenWidth/3, 44) Alignment:NSTextAlignmentCenter FontFl:15];
+    UILabel *lab1 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(0, 0, ScreenWidth/3, 44) Alignment:NSTextAlignmentCenter FontFl:14];
+    UILabel *lab2 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(ScreenWidth/3, 0, ScreenWidth/3, 44) Alignment:NSTextAlignmentCenter FontFl:14];
+    UILabel *lab3 = [Tool LablelProductionFunction:@"" Frame:CGRectMake(2*ScreenWidth/3, 0, ScreenWidth/3, 44) Alignment:NSTextAlignmentCenter FontFl:14];
     [cell.contentView addSubview:lab1];
     [cell.contentView addSubview:lab2];
     [cell.contentView addSubview:lab3];
     
     NSMutableDictionary *dic = dataArray[indexPath.row];
-    lab1.text = dic[@"time"];
-    lab2.text = dic[@"je"];
-    lab3.text = dic[@"zt"];
+    lab1.text = dic[@"zcsj"];
+    lab2.text = dic[@"sjh"];
+    lab3.text = dic[@"cgzt"];
     
     return cell;
 }

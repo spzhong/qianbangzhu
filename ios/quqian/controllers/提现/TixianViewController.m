@@ -25,7 +25,7 @@
     UIButton *cgkaitong_but;
     UIButton *ptkaitong_but;
     UIView *selcteView;
-    UIView *cgView;
+    UIScrollView *cgView;
     UIView *ptView;
     UITextField *textFile_cg;
     UITextField *textFile_pt;
@@ -134,7 +134,8 @@
         return;
     }
     
-    cgView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, ScreenWidth, ScreenHeight)];
+    cgView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, ScreenWidth, ScreenHeight-44)];
+    
     
     //开通了存管账户
     if ([dic[@"cgzt"] isEqualToString:@"S"]) {
@@ -171,6 +172,8 @@
         [labInfo sizeToFit];
         labInfo.textColor = RGB(90, 90, 90);
         [cgView addSubview:labInfo];
+        [cgView setContentSize:CGSizeMake(ScreenWidth, 200+labInfo.frame.size.height+80)];
+        
         
     }else{
         
@@ -218,15 +221,15 @@
         textFile_pt = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(30,40,ScreenWidth-60, 40) FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumberPad];
         [bg addSubview:textFile_pt];
         textFile_pt.textAlignment = NSTextAlignmentCenter;
-        textFile_pt.placeholder = @"请输入提现金额 最少100元";
+        textFile_pt.placeholder = @"请输入提现金额";
         [textFile_pt setBackgroundColor:RGB(236, 243, 246)];
         
         
-        UILabel *labTile2 = [Tool LablelProductionFunction:@"银行卡尾号：3075" Frame:CGRectMake(30, 80, 120, 40) Alignment:NSTextAlignmentLeft  FontFl:14];
+        UILabel *labTile2 = [Tool LablelProductionFunction: [NSString stringWithFormat:@"银行卡尾号：%@",dic[@"yhkh"]]  Frame:CGRectMake(30, 80, 120, 40) Alignment:NSTextAlignmentLeft  FontFl:14];
         labTile2.textColor = RGB(51, 51, 51);
         [bg addSubview:labTile2];
         
-        UILabel *labValue2 = [Tool LablelProductionFunction:@"提现费用：2元/笔" Frame:CGRectMake(0, 80, ScreenWidth-30, 40) Alignment:NSTextAlignmentRight  FontFl:14];
+        UILabel *labValue2 = [Tool LablelProductionFunction:[NSString stringWithFormat:@"提现费用：%@元/笔",dic[@"txfy"]] Frame:CGRectMake(0, 80, ScreenWidth-30, 40) Alignment:NSTextAlignmentRight  FontFl:14];
         labValue2.textColor = RGB(51, 51, 51);
         [bg addSubview:labValue2];
         
@@ -441,7 +444,13 @@
                                            nil]
                                completion:^void(id data,int kk){
                                    if (kk==0) {
+                                       
                                        NSMutableDictionary *dic = [data JSONValue][@"rvalue"];
+                                       
+                                       if ([dic isKindOfClass:[NSNull class]]) {
+                                           [Tool myalter:@"您输入的提现金额有误！"];
+                                           return;
+                                       }
                                        
                                        user.keyong_money = [NSString stringWithFormat:@"%@",dic[@"amount"]];
                                        [Tool savecoredata];

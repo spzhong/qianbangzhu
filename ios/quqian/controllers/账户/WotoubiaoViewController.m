@@ -157,16 +157,16 @@
 }
 
 -(void)networkload:(NSString *)ss{
+    
     NSString *url =[NSString stringWithFormat:@"%@/user/sbtz/list.htm",BASE_URL];
     NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
     
     [postDic setObject:ss forKey:@"status"];
     [postDic setObject:[NSString stringWithFormat:@"%d",curPage] forKey:@"page"];
-    
     [[HelpDownloader shared] startRequest:url withbody:postDic
                                    isType:[NSMutableDictionary dictionaryWithObjectsAndKeys:
                                            @"yes",@"isConnectedToNetwork",
-                                           @"no",@"isshowHUD",
+                                           @"yes",@"isshowHUD",
                                            @"no",@"islockscreen",
                                            @"post",@"isrequesType",
                                            nil]
@@ -245,14 +245,14 @@
     
     UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(ScreenWidth/3, 10, 0.5, 40)];
     [line1 setBackgroundColor:RGB(238, 238, 238)];
-    [cell.contentView addSubview:line1];
+    //[cell.contentView addSubview:line1];
     
     RCLabel *lastTime = [[RCLabel alloc] initWithFrame:CGRectMake(2*ScreenWidth/3,10, ScreenWidth/3, 60)];
     [cell.contentView addSubview:lastTime];
     
     UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(2*ScreenWidth/3, 10, 0.5, 40)];
     [line2 setBackgroundColor:RGB(238, 238, 238)];
-    [cell.contentView addSubview:line2];
+    //[cell.contentView addSubview:line2];
     
     NSMutableDictionary *dicdata = [arraydata objectAtIndex:indexPath.row];
     

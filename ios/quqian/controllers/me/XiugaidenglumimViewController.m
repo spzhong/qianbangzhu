@@ -29,7 +29,7 @@
     UILabel *lab1 = [Tool LablelProductionFunction:@"原始登录密码" Frame:CGRectMake(20, 0, ScreenWidth,  40) Alignment:NSTextAlignmentLeft FontFl:15];
     [self.view addSubview:lab1];
     
-    oldtextField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(20, 40, ScreenWidth-40, 40)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+    oldtextField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(20, 40, ScreenWidth-40, 40)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeDefault];
     [self.view addSubview:oldtextField];
     [oldtextField setBackgroundColor:[UIColor whiteColor]];
     oldtextField.secureTextEntry = YES;
@@ -39,17 +39,17 @@
     UILabel *lab2 = [Tool LablelProductionFunction:@"新登录密码" Frame:CGRectMake(20, 80+20, ScreenWidth,  40) Alignment:NSTextAlignmentLeft FontFl:15];
     [self.view addSubview:lab2];
     
-    newtextField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(20, 140, ScreenWidth-40, 40)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+    newtextField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(20, 140, ScreenWidth-40, 40)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeDefault];
     [self.view addSubview:newtextField];
     [newtextField setBackgroundColor:[UIColor whiteColor]];
     newtextField.secureTextEntry = YES;
     newtextField.placeholder = @" 输入新登录密码";
         
     
-    UILabel *lab3 = [Tool LablelProductionFunction:@"原始登录密码" Frame:CGRectMake(20, 180, ScreenWidth,  40) Alignment:NSTextAlignmentLeft FontFl:15];
-    [self.view addSubview:lab3];
+   //UILabel *lab3 = [Tool LablelProductionFunction:@"原始登录密码" Frame:CGRectMake(20, 180, ScreenWidth,  40) Alignment:NSTextAlignmentLeft FontFl:15];
+    //[self.view addSubview:lab3];
     
-    retextField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(20, 220, ScreenWidth-40, 40)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+    retextField = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(20, 220, ScreenWidth-40, 40)  FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeDefault];
     [self.view addSubview:retextField];
     [retextField setBackgroundColor:[UIColor whiteColor]];
     retextField.secureTextEntry = YES;
