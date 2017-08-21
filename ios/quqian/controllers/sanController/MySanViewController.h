@@ -10,6 +10,6 @@
 
 @interface MySanViewController : UITableViewController
 
-@property(nonatomic)int projectTag; //0是散标，1是稳赚保，2是债权转让，3是理财体验
+@property(nonatomic)int projectTag; //0是散标，1是稳赚保，2是债权转让，3是投资体验
 
 @end

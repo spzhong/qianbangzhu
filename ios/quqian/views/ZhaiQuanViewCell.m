@@ -139,7 +139,7 @@
 
 
 
-//状态--理财体验
+//状态--投资体验
 -(NSMutableDictionary *)exchange_type_tiyan:(int)type{
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     if (type==0) {

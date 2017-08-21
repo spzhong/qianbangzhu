@@ -60,7 +60,7 @@
   
     bdlx = @"0";
  
-    segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"精选理财",@"存管理财", nil]];
+    segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"精选投资",@"存管投资", nil]];
     segment.selectedSegmentIndex = 0;
     [segment addTarget:self action:@selector(exchange) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView=segment;
@@ -314,7 +314,7 @@
     [self.navigationController pushViewController:buy animated:YES];
 }
 
-//理财体验
+//投资体验
 -(void)bid_TiYanPress:(UIButton *)but{
     if ([Tool getUser]==nil) {
         LoginTableViewController *loginView = [[LoginTableViewController alloc] init];
@@ -416,7 +416,7 @@
 }
 
 
-//理财体验－－列表
+//投资体验－－列表
 -(void)tiyan__startRequest:(int)isUp{
     
     //进行有效登录确认

@@ -289,10 +289,10 @@
                 lab123.text = @"剩余金额";
                 //普通的账户
                 if (self.iscunguan==0) {
-                    rcLab.text = [NSString stringWithFormat:@"%@元",user.keyong_money];
+                    rcLab.text = [NSString stringWithFormat:@"%@元", allDic[@"syje"]];
                 }else{
                     //存管的账户
-                    rcLab.text =  [NSString stringWithFormat:@"%@元",user.cgkyye];
+                    rcLab.text =  [NSString stringWithFormat:@"%@元",allDic[@"syje"]];
                 }
                 
             }else if (row==1){

@@ -17,7 +17,7 @@
  详情
  */
 @property(nonatomic,retain)NSString *touzifanghsi;//投资方式
-@property(nonatomic,retain)NSString *licaishuming;//理财说明
+@property(nonatomic,retain)NSString *licaishuming;//投资说明
 @property(nonatomic,retain)NSString *jihuazhuangtai;//计划状态
 @property(nonatomic,retain)NSString *suodingqixian;//锁定期限
 @property(nonatomic,retain)NSString *suodingjieshu;//锁定结束

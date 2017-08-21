@@ -377,7 +377,7 @@
     
     
     
-    UIAlertView *al = [[UIAlertView alloc] initWithTitle:@"购买确认" message:[NSString stringWithFormat:@"您此次申请理财体验需使用\n%d元体验金",currMaoney] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+    UIAlertView *al = [[UIAlertView alloc] initWithTitle:@"购买确认" message:[NSString stringWithFormat:@"您此次申请投资体验需使用\n%d元体验金",currMaoney] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
     al.tag = 109;
     [al show];
     

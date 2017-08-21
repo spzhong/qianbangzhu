@@ -115,7 +115,7 @@
         self.navigationItem.backBarButtonItem=backItem;
         self.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:buy animated:YES];
-    }else if (projectTag==3){//理财体验
+    }else if (projectTag==3){//投资体验
         ApplyTiYanViewController *apply = [[ApplyTiYanViewController alloc] init];
         apply.title = @"立即申请";
         apply.allDic = allDic;
@@ -503,7 +503,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (projectTag==3){//理财体验
+    if (projectTag==3){//投资体验
         
         if (indexPath.section==0) {
             
@@ -658,17 +658,17 @@
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
     
-    //理财体验
+    //投资体验
     if (projectTag==3) {
         
         if (section==0) {
             
             
             NSMutableDictionary *dic = [dataArray objectAtIndex:row];
-            if ([[dic objectForKey:@"left"] isEqualToString:@"理财说明"]) {
+            if ([[dic objectForKey:@"left"] isEqualToString:@"投资说明"]) {
                 WebController *web = [[WebController alloc] init];
                 web.urlString = licai_lcsm_url;
-                web.title = @"理财体验说明书";
+                web.title = @"投资体验说明书";
                 //返回
                 UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
                 backItem.title=@"返回";

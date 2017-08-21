@@ -14,7 +14,7 @@
 
 @synthesize proDate;
 @synthesize touzifanghsi;//投资方式
-@synthesize licaishuming;//理财说明
+@synthesize licaishuming;//投资说明
 @synthesize jihuazhuangtai;//计划状态
 @synthesize suodingqixian;//锁定期限
 @synthesize suodingjieshu;//锁定结束
@@ -38,8 +38,8 @@
     [dic2 setObject:@"投资方式" forKey:@"key"];
     [dic2 setObject:@"体验金" forKey:@"value"];
     NSMutableDictionary *dic3 = [NSMutableDictionary dictionary];
-    [dic3 setObject:@"理财说明" forKey:@"key"];
-    [dic3 setObject:@"《理财体验说明书》" forKey:@"value"];
+    [dic3 setObject:@"投资说明" forKey:@"key"];
+    [dic3 setObject:@"《投资体验说明书》" forKey:@"value"];
     NSMutableDictionary *dic4 = [NSMutableDictionary dictionary];
     [dic4 setObject:@"计划状态" forKey:@"key"];
     [dic4 setObject:@"预售中" forKey:@"value"];
@@ -83,7 +83,7 @@
         return [NSString stringWithFormat:@"<p align=left><font size=14 color='#F08F00'>%@</font><font size=15 >每年</font></p>",vlaue];
     }else if ([left isEqualToString:@"投资方式"]){
         return [NSString stringWithFormat:@"<p align=left><font size=14>%@</font></p>",vlaue];
-    }else if ([left isEqualToString:@"理财说明"]){
+    }else if ([left isEqualToString:@"投资说明"]){
         return [NSString stringWithFormat:@"<p align=left><font size=14 color='#0082B6'>%@</font></p>",vlaue];
     }else if ([left isEqualToString:@"计划状态"]){
         return [NSString stringWithFormat:@"<p align=left><font size=14 >%@</font></p>",vlaue];
@@ -118,7 +118,7 @@
     
     self.proDate = [Tool toString:[dic objectForKey:@""]];//项目期数
     self.touzifanghsi = [Tool toString:[dic objectForKey:@""]];//投资方式
-    self.licaishuming = [Tool toString:[dic objectForKey:@""]];//理财说明
+    self.licaishuming = [Tool toString:[dic objectForKey:@""]];//投资说明
     self.jihuazhuangtai = [Tool toString:[dic objectForKey:@""]];//计划状态
     self.suodingqixian = [Tool toString:[dic objectForKey:@""]];//锁定年限
     self.suodingjieshu = [Tool toString:[dic objectForKey:@""]];//锁定结束
@@ -161,9 +161,9 @@
     }
     
     NSMutableDictionary *dic4 = [NSMutableDictionary dictionary];
-    [dic4 setObject:@"理财说明" forKey:@"left"];
+    [dic4 setObject:@"投资说明" forKey:@"left"];
     if (![[Tool toString:[dic objectForKey:@"lcsm_url"]] isEqualToString:@"-1"]) {
-        [dic4 setObject:[self reLabWith:@"《理财体验说明书》" withValue:@""] forKey:@"right"];
+        [dic4 setObject:[self reLabWith:@"《投资体验说明书》" withValue:@""] forKey:@"right"];
         [array addObject:dic4];
     }
      

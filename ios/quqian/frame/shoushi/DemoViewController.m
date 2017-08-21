@@ -44,7 +44,7 @@
     [self.view setBackgroundColor:RGB(17, 101, 151)];
     
     
-    DemoView *view = [[DemoView alloc] initWithFrame:CGRectMake(0,(self.view.frame.size.height-90*3)/2, self.view.frame.size.width, 90*3)];
+    DemoView *view = [[DemoView alloc] initWithFrame:CGRectMake(0,(self.view.frame.size.height-90*3)/2, self.view.frame.size.width, 1000)];
     view.delegate = self;
     [self.view addSubview:view];
     view.tag  = 1001;

@@ -235,8 +235,8 @@
         project.title = @"稳赚保详情";
     }else if (projectTag==2){//债权转让
         project.title = @"债权详情";
-    }else if (projectTag==3){//理财体验
-        project.title = @"理财体验详情";
+    }else if (projectTag==3){//投资体验
+        project.title = @"投资体验详情";
     }
     //返回
     UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];

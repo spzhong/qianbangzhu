@@ -20,12 +20,6 @@
 #define BASE_URL [NSString stringWithFormat:@"%@/app",BASE_URL_head]
 
  
-
-
-
-
-
-
 @interface HelpDownloader : NSObject
 {
     BOOL pause;//暂停网络

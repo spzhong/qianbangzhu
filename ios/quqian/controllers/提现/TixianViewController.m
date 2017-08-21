@@ -18,7 +18,7 @@
 #import "BangYinHangViewController.h"
 
 
-@interface TixianViewController ()
+@interface TixianViewController ()<UITextFieldDelegate>
 {
     UserModel *user;
     NSMutableDictionary *alldic;
@@ -29,6 +29,7 @@
     UIView *ptView;
     UITextField *textFile_cg;
     UITextField *textFile_pt;
+    UILabel *shijikouchujine;
 }
 @end
 
@@ -84,7 +85,14 @@
     [self.navigationController pushViewController:chognzhi animated:YES];
 }
 
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if (string.length > 0) {
+        shijikouchujine.text = [NSString stringWithFormat:@"实际扣除金额：%@%@元",textField.text,string];
+        
+    }
+    return YES;
+}
 
 -(void)createview:(NSMutableDictionary *)dic{
     cgkaitong_but = [Tool ButtonProductionFunction:@"存管提现" Frame:CGRectMake(ScreenWidth/2, 0, ScreenWidth/2, 45) bgImgName:nil FontFl:15];
@@ -102,6 +110,9 @@
     selcteView = [[UIView alloc] initWithFrame:CGRectZero];
     [selcteView setBackgroundColor:KTHCOLOR];
     [self.view addSubview:selcteView];
+    
+    
+    
     
     [self ptkaitong_but_p];
 }
@@ -127,6 +138,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+
 -(void)CGtixian:(NSMutableDictionary *)dic{
     ptView.hidden = YES;
     if (cgView) {
@@ -135,6 +149,11 @@
     }
     
     cgView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, ScreenWidth, ScreenHeight-44)];
+ 
+
+    UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(enditNSUS)];
+    [cgView addGestureRecognizer:singleTap];
+    
     
     
     //开通了存管账户
@@ -198,6 +217,12 @@
     }
     
     ptView = [[UIView alloc] initWithFrame:CGRectMake(0, 50, ScreenWidth, ScreenHeight)];
+    ptView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(enditNSUS)];
+    [ptView addGestureRecognizer:singleTap];
+
+    
     //开通了富有
     if ([dic[@"ptzt"] isEqualToString:@"S"]) {
         
@@ -220,6 +245,7 @@
         
         textFile_pt = [Tool TextFiledProductionFunction:@"" Delegate:self Frame:CGRectMake(30,40,ScreenWidth-60, 40) FontFl:14 backgroundImg:nil UIKeyboardType:UIKeyboardTypeNumberPad];
         [bg addSubview:textFile_pt];
+        textFile_pt.delegate = self;
         textFile_pt.textAlignment = NSTextAlignmentCenter;
         textFile_pt.placeholder = @"请输入提现金额";
         [textFile_pt setBackgroundColor:RGB(236, 243, 246)];
@@ -233,9 +259,9 @@
         labValue2.textColor = RGB(51, 51, 51);
         [bg addSubview:labValue2];
         
-        UILabel *labValue3 = [Tool LablelProductionFunction:@"实际扣除金额：0.00元" Frame:CGRectMake(30, 120, ScreenWidth-30, 40) Alignment:NSTextAlignmentLeft  FontFl:14];
-        labValue3.textColor = RGB(51, 51, 51);
-        [bg addSubview:labValue3];
+        shijikouchujine = [Tool LablelProductionFunction:@"实际扣除金额：0.00元" Frame:CGRectMake(30, 120, ScreenWidth-30, 40) Alignment:NSTextAlignmentLeft  FontFl:14];
+        shijikouchujine.textColor = RGB(51, 51, 51);
+        [bg addSubview:shijikouchujine];
         
         
         UIButton *cgkaitong = [Tool ButtonProductionFunction:@"立即提现" Frame:CGRectMake(30, 190+45, ScreenWidth-60, 45) bgImgName:nil FontFl:15];

@@ -63,7 +63,7 @@
 }
 
 
-//我的理财体验
+//我的投资体验
 -(void)initMakeData_tiyan:(NSMutableDictionary *)tiyan withMy:(NSString *)my{
     
     [self initMakeData_tiyan:tiyan];
@@ -95,7 +95,7 @@
 
 
 
-//理财体验
+//投资体验
 -(void)initMakeData_tiyan:(NSMutableDictionary *)tiyan{
     self.title.text = [tiyan objectForKey:@"bt"];
     self.title.font = FOUR_CONTROL_FONT;
@@ -191,7 +191,7 @@
 
 
 
-//状态--理财体验
+//状态--投资体验
 -(NSMutableDictionary *)exchange_type_tiyan:(NSString *)type{
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     if ([type isEqualToString:@"敬请期待"]) {

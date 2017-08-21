@@ -222,7 +222,7 @@
     ProjectInfoViewController *project = [[ProjectInfoViewController alloc] init];
     project.projectId = [dic objectForKey:@"id"];
     project.projectTag = 3;
-    project.title = @"理财体验详情";
+    project.title = @"投资体验详情";
     //返回
     UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
     backItem.title=@"返回";

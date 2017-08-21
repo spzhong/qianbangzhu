@@ -397,6 +397,8 @@
 -(void)kuaijiechognzhi{
     FYChongzhiViewController *fy = [[FYChongzhiViewController alloc] init];
     fy.title = @"快捷充值";
+    fy.qyczurl = alldic[@"pt"][@"qyczurl"];
+    fy.kjczurl = alldic[@"pt"][@"kjczurl"];
     //返回
     UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
     backItem.title=@"返回";
