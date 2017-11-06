@@ -603,6 +603,13 @@
 		6F25C4C91EFB6EFB00AFE670 /* 箭头R.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F25C4C61EFB6EFB00AFE670 /* 箭头R.png */; };
 		6F25C4CA1EFB6EFB00AFE670 /* 箭头U.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F25C4C71EFB6EFB00AFE670 /* 箭头U.png */; };
 		6F4407761EF2924C0014FD65 /* PTWEBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4407751EF2924C0014FD65 /* PTWEBViewController.m */; };
+		6F5DFC7B1F5CFE1F0014ACC8 /* 标的详情.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5DFC761F5CFE1F0014ACC8 /* 标的详情.png */; };
+		6F5DFC7C1F5CFE1F0014ACC8 /* 还款记录.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5DFC771F5CFE1F0014ACC8 /* 还款记录.png */; };
+		6F5DFC7D1F5CFE1F0014ACC8 /* 审核资料.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5DFC781F5CFE1F0014ACC8 /* 审核资料.png */; };
+		6F5DFC7E1F5CFE1F0014ACC8 /* 投标记录.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5DFC791F5CFE1F0014ACC8 /* 投标记录.png */; };
+		6F5DFC7F1F5CFE1F0014ACC8 /* 债权信息.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5DFC7A1F5CFE1F0014ACC8 /* 债权信息.png */; };
+		6F5DFC811F5CFF4B0014ACC8 /* 相关资料.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5DFC801F5CFF4B0014ACC8 /* 相关资料.png */; };
+		6F5DFC831F5D004C0014ACC8 /* 借款协议.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5DFC821F5D004C0014ACC8 /* 借款协议.png */; };
 		6F6E54781EF37AB10000480A /* 广东华兴银行LOGO.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E54691EF37AB10000480A /* 广东华兴银行LOGO.png */; };
 		6F6E54791EF37AB10000480A /* 交易记录.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E546A1EF37AB10000480A /* 交易记录.png */; };
 		6F6E547A1EF37AB10000480A /* 设置.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E546B1EF37AB10000480A /* 设置.png */; };
@@ -1694,6 +1701,13 @@
 		6F25C4C71EFB6EFB00AFE670 /* 箭头U.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头U.png"; sourceTree = "<group>"; };
 		6F4407741EF2924C0014FD65 /* PTWEBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTWEBViewController.h; sourceTree = "<group>"; };
 		6F4407751EF2924C0014FD65 /* PTWEBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTWEBViewController.m; sourceTree = "<group>"; };
+		6F5DFC761F5CFE1F0014ACC8 /* 标的详情.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标的详情.png"; sourceTree = "<group>"; };
+		6F5DFC771F5CFE1F0014ACC8 /* 还款记录.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "还款记录.png"; sourceTree = "<group>"; };
+		6F5DFC781F5CFE1F0014ACC8 /* 审核资料.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "审核资料.png"; sourceTree = "<group>"; };
+		6F5DFC791F5CFE1F0014ACC8 /* 投标记录.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "投标记录.png"; sourceTree = "<group>"; };
+		6F5DFC7A1F5CFE1F0014ACC8 /* 债权信息.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "债权信息.png"; sourceTree = "<group>"; };
+		6F5DFC801F5CFF4B0014ACC8 /* 相关资料.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相关资料.png"; sourceTree = "<group>"; };
+		6F5DFC821F5D004C0014ACC8 /* 借款协议.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "借款协议.png"; sourceTree = "<group>"; };
 		6F6E54691EF37AB10000480A /* 广东华兴银行LOGO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "广东华兴银行LOGO.png"; sourceTree = "<group>"; };
 		6F6E546A1EF37AB10000480A /* 交易记录.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "交易记录.png"; sourceTree = "<group>"; };
 		6F6E546B1EF37AB10000480A /* 设置.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设置.png"; sourceTree = "<group>"; };
@@ -3563,6 +3577,13 @@
 		18CCC5971AC92F070087032C /* img */ = {
 			isa = PBXGroup;
 			children = (
+				6F5DFC821F5D004C0014ACC8 /* 借款协议.png */,
+				6F5DFC801F5CFF4B0014ACC8 /* 相关资料.png */,
+				6F5DFC761F5CFE1F0014ACC8 /* 标的详情.png */,
+				6F5DFC771F5CFE1F0014ACC8 /* 还款记录.png */,
+				6F5DFC781F5CFE1F0014ACC8 /* 审核资料.png */,
+				6F5DFC791F5CFE1F0014ACC8 /* 投标记录.png */,
+				6F5DFC7A1F5CFE1F0014ACC8 /* 债权信息.png */,
 				6F833F011F14EA8B00F2A579 /* 服务码.png */,
 				6F833F021F14EA8B00F2A579 /* 密码.png */,
 				6F833F031F14EA8B00F2A579 /* 手机号.png */,
@@ -3986,10 +4007,13 @@
 				6FB3058A1EEC38250011E9E3 /* NewSanViewCell.xib in Resources */,
 				1864B8921AB7F05B00BC1455 /* Expression_40@2x.png in Resources */,
 				188902DB1AC264840096DF3E /* ZhaiQuanViewCell.xib in Resources */,
+				6F5DFC7B1F5CFE1F0014ACC8 /* 标的详情.png in Resources */,
 				188873491ACA8B6B00744021 /* icon18.png in Resources */,
+				6F5DFC7C1F5CFE1F0014ACC8 /* 还款记录.png in Resources */,
 				6F01258E1EFA23BD00B72C86 /* ZhanghuzonglanViewController.xib in Resources */,
 				18A1B2271AC9770300C328A1 /* icon13-2.png in Resources */,
 				1888734C1ACA8FAE00744021 /* icon19-1.png in Resources */,
+				6F5DFC831F5D004C0014ACC8 /* 借款协议.png in Resources */,
 				6F833EFB1F13B38200F2A579 /* 设置手势密码图标.png in Resources */,
 				189EC2381AC3E068008EBEAA /* down_dark.png in Resources */,
 				1864B8891AB7F05B00BC1455 /* Expression_32@2x.png in Resources */,
@@ -4039,8 +4063,11 @@
 				6F6E54861EF37AB10000480A /* 账户总额.png in Resources */,
 				6F6E547B1EF37AB10000480A /* 推广记录.png in Resources */,
 				1864B4091AB7EE8000BC1455 /* Images.xcassets in Resources */,
+				6F5DFC811F5CFF4B0014ACC8 /* 相关资料.png in Resources */,
 				1864B8A71AB7F05B00BC1455 /* Expression_5@2x.png in Resources */,
 				180A35C81ACE33D50073BBC0 /* pic3.png in Resources */,
+				6F5DFC7D1F5CFE1F0014ACC8 /* 审核资料.png in Resources */,
+				6F5DFC7F1F5CFE1F0014ACC8 /* 债权信息.png in Resources */,
 				1864B8CA1AB7F05B00BC1455 /* Expression_91@2x.png in Resources */,
 				1864B8391AB7F05B00BC1455 /* IQAudioPickerController.xcassets in Resources */,
 				1864B8B71AB7F05B00BC1455 /* Expression_74@2x.png in Resources */,
@@ -4053,6 +4080,7 @@
 				6FFAA4821EE3071E00453972 /* 待赚取收益.png in Resources */,
 				1864B8771AB7F05B00BC1455 /* Expression_16@2x.png in Resources */,
 				1864B85A1AB7F05B00BC1455 /* MBProgressHUD.bundle in Resources */,
+				6F5DFC7E1F5CFE1F0014ACC8 /* 投标记录.png in Resources */,
 				6FFAA4661EE2F80600453972 /* wuyoucunzheng.png in Resources */,
 				18A1B2281AC9770300C328A1 /* icon14-1.png in Resources */,
 				1864B8B11AB7F05B00BC1455 /* Expression_69@2x.png in Resources */,
@@ -4646,8 +4674,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Dachen Technoogy Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Qianhai Money Master Internet Financial Services Ltd. (7TAF9585Y8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen Qianhai Money Master Internet Financial Services Ltd. (7TAF9585Y8)";
 				DEVELOPMENT_TEAM = 7TAF9585Y8;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -4675,8 +4703,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Dachen Technoogy Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Qianhai Money Master Internet Financial Services Ltd. (7TAF9585Y8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen Qianhai Money Master Internet Financial Services Ltd. (7TAF9585Y8)";
 				DEVELOPMENT_TEAM = 7TAF9585Y8;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;

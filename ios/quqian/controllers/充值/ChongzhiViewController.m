@@ -382,8 +382,8 @@
     FYChongzhiViewController *fy = [[FYChongzhiViewController alloc] init];
     fy.title = @"签约充值";
     fy.yhkh = alldic[@"pt"][@"yhkh"];
-    fy.qyczurl = alldic[@"pt"][@"qyczurl"];
-    fy.kjczurl = alldic[@"pt"][@"kjczurl"];
+    fy.qyczurl = alldic[@"pt"][@"kjxeurl"];
+    fy.kjczurl = alldic[@"pt"][@"qyxeurl"];
     //返回
     UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
     backItem.title=@"返回";
@@ -397,8 +397,8 @@
 -(void)kuaijiechognzhi{
     FYChongzhiViewController *fy = [[FYChongzhiViewController alloc] init];
     fy.title = @"快捷充值";
-    fy.qyczurl = alldic[@"pt"][@"qyczurl"];
-    fy.kjczurl = alldic[@"pt"][@"kjczurl"];
+    fy.qyczurl = alldic[@"pt"][@"kjxeurl"];
+    fy.kjczurl = alldic[@"pt"][@"qyxeurl"];
     //返回
     UIBarButtonItem*backItem=[[UIBarButtonItem alloc] init];
     backItem.title=@"返回";

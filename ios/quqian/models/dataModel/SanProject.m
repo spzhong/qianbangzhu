@@ -333,8 +333,6 @@
 }
 
 
-
-
 -(NSString *)reLabWith:(NSString *)vlaue{
     return [NSString stringWithFormat:@"<p align=left><font size=14>%@</font></p>",vlaue];
 }

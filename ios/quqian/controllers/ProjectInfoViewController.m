@@ -179,8 +179,9 @@
     UILabel *JIndiu = [Tool LablelProductionFunction:[NSString stringWithFormat:@"%.0lf%%",[allDic[@"tbjd"] doubleValue]] Frame:CGRectMake(10, 190, 100, 20) Alignment:NSTextAlignmentLeft FontFl:10];
     [bgView addSubview:JIndiu];
     [JIndiu setTextColor:[UIColor whiteColor]];
-    
-
+    if (w>50) {
+        JIndiu.frame = CGRectMake(w-10, 190, 100, 20);
+    }
     if (![allDic[@"tjf"] isEqualToString:@""] && allDic[@"tjf"] != nil) {
         bgView.frame = CGRectMake(0, 210, ScreenWidth, 260);
         UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 210, ScreenWidth, 40)];
@@ -636,8 +637,10 @@
             NSMutableDictionary *dic = [secondArray objectAtIndex:row];
             lab123.text = [dic objectForKey:@"left"];
             lab123.font = [UIFont systemFontOfSize:15];
-            lab123.frame = CGRectMake(15, 0, 320+60, 45);
-            
+            lab123.frame = CGRectMake(44, 0, 320+60, 45);
+            imgView.frame = CGRectMake(12, 12, 20, 20);
+            imgView.image = [UIImage imageNamed:lab123.text];
+             
             //边线
             if (row != 0) {
                 UILabel *lab = [Tool LablelProductionFunction:@"" Frame:CGRectMake(15, 0, 320, 0.5) Alignment:NSTextAlignmentLeft FontFl:13];

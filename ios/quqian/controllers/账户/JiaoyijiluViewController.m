@@ -125,7 +125,7 @@
     
     UILabel *lab = [Tool LablelProductionFunction:@"您的资金由广东华兴银行直接存管" Frame:CGRectMake(0, 0, ScreenWidth, 50) Alignment:NSTextAlignmentCenter FontFl:12];
     [lab sizeToFit];
-    lab.textColor = [UIColor whiteColor];
+    lab.textColor = KTHCOLOR;
     lab.frame = CGRectMake((ScreenWidth-lab.frame.size.width)/2, ScreenHeight-64-30, lab.frame.size.width, lab.frame.size.height);
     
     
@@ -134,8 +134,8 @@
     
     
     [self.view addSubview:lab];
-    lab.textColor = [UIColor whiteColor];
     
+    [self setupRefresh];
 }
 
 -(void)createview:(NSMutableDictionary *)dic{
@@ -244,8 +244,8 @@
                                        }
                                        
                                        NSMutableDictionary *dic = [data JSONValue];
-                                       if (![dic[@"rvalue"] isKindOfClass:[NSNull class]]) {
-                                           [dataArray addObjectsFromArray:[data JSONValue][@"rvalue"]];
+                                       if (![dic[@"rvalue"][@"items"] isKindOfClass:[NSNull class]]) {
+                                           [dataArray addObjectsFromArray:[data JSONValue][@"rvalue"][@"items"]];
                                        }else{
                                            [Tool myalter:@"暂无数据"];
                                        }

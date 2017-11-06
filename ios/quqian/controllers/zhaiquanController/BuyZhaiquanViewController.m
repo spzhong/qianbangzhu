@@ -690,7 +690,7 @@
         web.urlString = [NSString stringWithFormat:@"%@/term/ZQZRXY.html",BASE_URL_head];
         web.title = @"债权转让及受让协议";
     }else if ([typeTag isEqualToString:@"1"]){
-        web.urlString = [NSString stringWithFormat:@"%@/term/SDRZBXY.html",BASE_URL_head];
+        web.urlString = allDic[@"jkxy_url"];
         web.title = @"借款协议";
     }
 

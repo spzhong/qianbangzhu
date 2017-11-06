@@ -88,7 +88,9 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
     if (string.length > 0) {
-        shijikouchujine.text = [NSString stringWithFormat:@"实际扣除金额：%@%@元",textField.text,string];
+        double txfy = [alldic[@"pt"][@"txfy"] doubleValue];
+        double cu =  [[NSString stringWithFormat:@"%@%@",textField.text,string] doubleValue];
+        shijikouchujine.text = [NSString stringWithFormat:@"实际扣除金额：%.2lf元",cu+txfy];
         
     }
     return YES;
